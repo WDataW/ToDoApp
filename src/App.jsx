@@ -1,12 +1,13 @@
 import { useState } from 'react'
-import {BlueRectButton, PinkRectButton, PinkCircleButton} from "./components/ui";
+import {BlueRectButton, PinkRectButton, PinkCircleButton, UsernameInput, PasswordInput} from "./components/ui";
 function App() {
 
   return (
     <>
-    <PinkCircleButton label="+"/>
-    <PinkRectButton label="Meow" handleClick={()=>{console.log("Meooow")}}/>
-    <BlueRectButton handleClick={()=>{console.log("Meow")}}/>
+    <UsernameInput/>
+    <PasswordInput/>
+    <PinkRectButton/>
+    <BlueRectButton/>
     </>
   );
 }

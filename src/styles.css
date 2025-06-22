@@ -1,1 +1,14 @@
 @import "tailwindcss";
+@font-face {
+    font-family: "Roboto Flex";
+    src: url("./assets/fonts/RobotoFlex-VariableFont.ttf");
+}
+@layer components{
+    html,body{
+        font-family: "Roboto Flex";
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+}
