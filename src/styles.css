@@ -10,5 +10,15 @@
         height: 100%;
         margin: 0;
         padding: 0;
+        scrollbar-width: thin;
+        
     }
+    h1,h2,h3{
+        font-weight: bold;
+    }
+    h1{ font-size: 3rem; text-align: center;}
+    h2{ font-size: 2rem;}
+    h3{ font-size: 1rem}
+
+   
 }

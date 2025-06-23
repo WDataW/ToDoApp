@@ -1,3 +1,6 @@
+
 export * from "./buttons";
 export * from "./keyboardInputs";
-export {default as Page} from "./Page";
+export * from "./Pages";
+export {default as CheckboxInput} from "./ThemedCheckboxInput";
+export {default as ThemedAnchor} from "./ThemeAnchor";

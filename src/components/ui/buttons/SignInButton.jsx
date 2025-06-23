@@ -1,4 +1,8 @@
 import ThemedRectButton from "./ThemedRectButton";
-export default function SignInButton(){
-    return(<ThemedRectButton label={"Sign In"}/>);
+export default function SignInButton({className}){
+    return(<ThemedRectButton
+                label={"Sign In"} 
+                className={className}
+            />
+    );
 }

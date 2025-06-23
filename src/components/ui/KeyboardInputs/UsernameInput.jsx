@@ -8,6 +8,8 @@ export default function UsernameInput({handleChange}){
             lightIcon="src/assets/icons/light/user.svg"
             darkIcon="src/assets/icons/dark/user.svg"
             alt="User Icon"
+            className="mb-[0.65rem]"
+
         />
     );
 }

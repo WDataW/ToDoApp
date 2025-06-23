@@ -1,6 +1,7 @@
 
 import { useTheme } from "../../../context/Theme";
-const commonStyles="w-full outline-none py-[0.4rem] px-[0.8rem]  rounded-full placeholder-opacity-50";
+
+const commonStyles="w-full outline-none py-[0.4rem] px-[0.8rem]  rounded-md placeholder-opacity-50";
 
 const themeStyles={
     light:"bg-[#F0F1F2] text-black",
@@ -14,19 +15,19 @@ function setIcons(light, dark){
     icons["light"]= light;
     icons["dark"]= dark;
 }
-export default function TextInput({type="text", placeholder="input", lightIcon="", darkIcon="", iconAlt="", handleChange }){
+export default function TextInput({type="text", placeholder="input", lightIcon="", darkIcon="", iconAlt="", className="", handleChange }){
     const [theme] = useTheme();
     setIcons(lightIcon, darkIcon);
     
     if(icons[theme]){
-        return(<div className="relative">
-                  <img src={icons[theme]} alt={iconAlt} className="absolute top-1/2 -translate-y-1/2 left-[1rem] h-1/2" />
-                  <input type={type} placeholder={placeholder} onChange={handleChange} className={`${commonStyles} ${themeStyles[theme]} pl-10`}  />
+        return(<div className={`relative ${className}`}>
+                  <img src={icons[theme]} alt={iconAlt} className="absolute top-1/2 -translate-y-1/2 left-[1rem] h-1/2"  />
+                  <input type={type} placeholder={placeholder} onChange={handleChange} className={`${commonStyles} ${themeStyles[theme]}  pl-10`}  />
                </div>);    
     }
     else {
         return(<>
-                <input type={type} placeholder={placeholder} onChange={handleChange} className={`${commonStyles} ${themeStyles[theme]}`} />
+                <input type={type} placeholder={placeholder} onChange={handleChange} className={`${commonStyles} ${themeStyles[theme]} ${className}`} />
                </>
         );
     }
