@@ -1,4 +1,4 @@
-import KeyboardInput from "./KeyboardInput.jsx";
+import KeyboardInput from "./KeyboardInput";
 export default function PasswordInput({handleChange}){
     return(
         <KeyboardInput

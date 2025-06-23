@@ -1,14 +1,18 @@
 import { useState } from 'react'
-import {BlueRectButton, PinkRectButton, PinkCircleButton, UsernameInput, PasswordInput} from "./components/ui";
-function App() {
+// contexts
 
+// components
+import {Page ,SignUpButton, SignInButton, PinkCircleButton, UsernameInput, PasswordInput} from "./components/ui";
+import ToggleTheme from './components/other/ToggleTheme';
+function App() {
   return (
-    <>
-    <UsernameInput/>
-    <PasswordInput/>
-    <PinkRectButton/>
-    <BlueRectButton/>
-    </>
+    <Page>
+      <UsernameInput/>
+      <PasswordInput/>
+      <SignInButton/>
+      <SignUpButton/>
+      <ToggleTheme/>
+    </Page>
   );
 }
 export default App

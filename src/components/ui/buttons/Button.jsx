@@ -1,6 +1,8 @@
+import { useTheme } from "../../../context/Theme";
+
 const bgColors={
-    pink:"bg-[#FF73FA]",
-    blue:"bg-[#5865F2]",
+    orange:"bg-[#F97316]",
+    blue:"bg-[#3B82F6]",
     gray:"bg-[#F0F1F2]"
 }
 const shapes={
@@ -8,9 +10,9 @@ const shapes={
     circle:"rounded-full aspect-square p-2 w-[2.5em] h-[2.5rem] truncate"
 }
 
-export default function Button({bgColor="pink", shape="circle", label="Button", handleClick}){
+export default function Button({bgColor="blue", shape="rect", label="Button", handleClick}){
     return (<button onClick={handleClick} 
-                    className={`text-white  text-[1rem] ${bgColors[bgColor]} ${shapes[shape]}`}
+                    className={`text-white text-[1rem] ${bgColors[bgColor]} ${shapes[shape]}`}
             >
                     {label}
             </button>

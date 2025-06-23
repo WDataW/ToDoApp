@@ -1,3 +1,3 @@
-export {default as UsernameInput} from "./UsernameInput.jsx";
-export {default as PasswordInput} from "./PasswordInput.jsx";
+export {default as UsernameInput} from "./UsernameInput";
+export {default as PasswordInput} from "./PasswordInput";
  
