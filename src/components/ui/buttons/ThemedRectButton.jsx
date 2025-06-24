@@ -5,7 +5,7 @@ export default function ThemedRectButton({label, handleClick, className}){
     const [theme] = useTheme();
     return(
         <Button
-            bgColor={theme=="dark"?"orange":"blue"}
+            theme={theme}
             shape="rect"
             label={label}
             className={` ${className}`}
