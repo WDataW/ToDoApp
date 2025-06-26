@@ -1,14 +1,17 @@
 import KeyboardInput from "./KeyboardInput";
-export default function PasswordInput({handleChange}){
+export default function PasswordInput({handleChange, label="Password", className, placeholder="Enter your password", value}){
     return(
         <KeyboardInput
             type="password"
-            placeholder="Password"
+            label={label}
+            placeholder={placeholder}
             handleChange={handleChange}
             lightIcon="src/assets/icons/light/key.svg"
             darkIcon="src/assets/icons/dark/key.svg"
             alt="Door Key Icon"
-            className="mb-[0.5rem]"
+            className={className}
+            required={true}
+            value={value}
         />
     );
 }

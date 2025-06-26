@@ -1,5 +1,6 @@
 
-import { useTheme } from "../../../context/Theme";
+import { useTheme  } from "../../../context/Theme";
+import { useId } from "react";
 
 const commonStyles="w-full outline-none py-[0.4rem] px-[0.8rem]  rounded-md placeholder-opacity-50";
 
@@ -15,19 +16,24 @@ function setIcons(light, dark){
     icons["light"]= light;
     icons["dark"]= dark;
 }
-export default function TextInput({type="text", placeholder="input", lightIcon="", darkIcon="", iconAlt="", className="", handleChange }){
+export default function KeyboardInput({type="text",required="true", label="", placeholder="", lightIcon="", darkIcon="", iconAlt="", className="", handleChange, value, ref }){
     const [theme] = useTheme();
     setIcons(lightIcon, darkIcon);
-    
+    const id= useId();
     if(icons[theme]){
-        return(<div className={`relative ${className}`}>
+        return(<>
+                {label && <label className="ml-[0.2rem]" htmlFor={id}>{label}</label>}
+                <div className={`relative ${className}`}>
                   <img src={icons[theme]} alt={iconAlt} className="absolute top-1/2 -translate-y-1/2 left-[1rem] h-1/2"  />
-                  <input type={type} placeholder={placeholder} onChange={handleChange} className={`${commonStyles} ${themeStyles[theme]}  pl-10`}  />
-               </div>);    
+                  <input type={type} value={value} id={id} required={required} ref={ref} placeholder={placeholder} onChange={handleChange} className={`${commonStyles} ${themeStyles[theme]} border pl-10`}  />
+                </div>
+               </>
+        );    
     }
     else {
         return(<>
-                <input type={type} placeholder={placeholder} onChange={handleChange} className={`${commonStyles} ${themeStyles[theme]} ${className}`} />
+                {label && <label className="ml-[0.2rem]" htmlFor={id}>{label}</label>}
+                <input type={type} value={value} id={id} required={required} ref={ref} placeholder={placeholder} onChange={handleChange} className={`${commonStyles} ${themeStyles[theme]} ${className} border`} />
                </>
         );
     }

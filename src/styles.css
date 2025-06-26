@@ -11,7 +11,7 @@
 }
 @font-face {
     font-family: "Roboto Flex";
-    src: url(../public/fonts/RobotoFlex-VariableFont.ttf);
+    src: url(/fonts/RobotoFlex-VariableFont.ttf);
 }
 @layer components{
     html,body{
@@ -28,8 +28,17 @@
     }
     h1{ font-size: 3rem; text-align: center;}
     h2{ font-size: 2rem;}
-    h3{ font-size: 1rem}
+    h3{ font-size: 1.5rem}
+
+    button, input[type="checkbox"]{
+        cursor: pointer;
+    }
     
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button
+    {
+        appearance: none;
+    }
     @media screen and (min-width: 768px) {
         .dark-outterShadow{
             box-shadow: 0.05rem 0.05rem 1rem rgba(var(--dark-theme-color),0.7), -0.05rem 0 1rem rgba(var(--dark-theme-color),0.7);

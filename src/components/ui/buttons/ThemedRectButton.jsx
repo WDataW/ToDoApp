@@ -1,7 +1,7 @@
 import Button from "./Button";
 import { useTheme } from "../../../context/Theme";
 
-export default function ThemedRectButton({label, handleClick, className}){
+export default function ThemedRectButton({label, handleClick, className, disabled}){
     const [theme] = useTheme();
     return(
         <Button
@@ -10,6 +10,7 @@ export default function ThemedRectButton({label, handleClick, className}){
             label={label}
             className={` ${className}`}
             handleClick={handleClick}
+            disabled={disabled}
         />
     );
 }
