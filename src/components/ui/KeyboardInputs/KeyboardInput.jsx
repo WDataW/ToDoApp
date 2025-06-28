@@ -22,17 +22,17 @@ export default function KeyboardInput({type="text",required="true", label="", pl
     const id= useId();
     if(icons[theme]){
         return(<>
-                {label && <label className="ml-[0.2rem]" htmlFor={id}>{label}</label>}
+                {label && <label className="ms-[0.2rem]" htmlFor={id}>{label}</label>}
                 <div className={`relative ${className}`}>
-                  <img src={icons[theme]} alt={iconAlt} className="absolute top-1/2 -translate-y-1/2 left-[1rem] h-1/2"  />
-                  <input type={type} value={value} id={id} required={required} ref={ref} placeholder={placeholder} onChange={handleChange} className={`${commonStyles} ${themeStyles[theme]} border pl-10`}  />
+                  <img src={icons[theme]} alt={iconAlt} className="absolute top-1/2 -translate-y-1/2 start-[1rem] h-1/2"  />
+                  <input type={type} value={value} id={id} required={required} ref={ref} placeholder={placeholder} onChange={handleChange} className={`${commonStyles} ${themeStyles[theme]} border ps-[2.5rem]`}  />
                 </div>
                </>
         );    
     }
     else {
         return(<>
-                {label && <label className="ml-[0.2rem]" htmlFor={id}>{label}</label>}
+                {label && <label className="ms-[0.2rem]" htmlFor={id}>{label}</label>}
                 <input type={type} value={value} id={id} required={required} ref={ref} placeholder={placeholder} onChange={handleChange} className={`${commonStyles} ${themeStyles[theme]} ${className} border`} />
                </>
         );

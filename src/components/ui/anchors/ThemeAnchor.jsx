@@ -1,4 +1,4 @@
-import { useTheme, textThemeColors } from "../../context/Theme";
+import { useTheme, textThemeColors } from "../../../context/Theme";
 
 export default function ThemedAnchor({href="", className="", children}){
     const [theme] = useTheme();

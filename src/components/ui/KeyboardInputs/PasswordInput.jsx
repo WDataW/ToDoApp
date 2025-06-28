@@ -1,10 +1,12 @@
+import { useTranslation } from "../../../context/Language";
 import KeyboardInput from "./KeyboardInput";
-export default function PasswordInput({handleChange, label="Password", className, placeholder="Enter your password", value}){
+export default function PasswordInput({handleChange, label, className, placeholder, value}){
+    const t=useTranslation();
     return(
         <KeyboardInput
             type="password"
-            label={label}
-            placeholder={placeholder}
+            label={label || t("fields.password")}
+            placeholder={placeholder || t("fields.enterPassword")}
             handleChange={handleChange}
             lightIcon="src/assets/icons/light/key.svg"
             darkIcon="src/assets/icons/dark/key.svg"

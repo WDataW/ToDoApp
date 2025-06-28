@@ -7,6 +7,7 @@ import {VerificationCodePage ,ForgotPasswordPage, SignInPage, SetNewPasswordPage
 function App() {
   return (
     <>
+      <VerificationCodePage/>
       <SignUpPage/>
       <SetNewPasswordPage/>
       <ForgotPasswordPage/>

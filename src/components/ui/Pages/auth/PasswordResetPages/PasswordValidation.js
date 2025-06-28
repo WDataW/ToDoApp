@@ -1,4 +1,7 @@
 import { useReducer } from "react";
+import { useTranslation } from "../../../../../context/Language";
+
+
 export function useValidation(){
     const [state, dispatch] = useReducer(passwordReducer, "");
     return [state, dispatch];
@@ -47,24 +50,25 @@ export function validatePassword(password, dispatch){
     }
 }
 function passwordReducer(state ,action){
+    const t = useTranslation();
     switch(action.type){
         case "invalidLength":{
-            return "Password must be between 8 and 64 characters";
+            return t("warnings.passwordLength");
         }
         case "missingUppercase":{
-            return "Password must include at least one uppercase letter";
+            return t("warnings.passwordUppercase");
         }
         case "missingLowercase":{
-            return "Password must include at least one lowercase letter";
+            return t("warnings.passwordLowercase");
         }
         case "missingDigit":{
-            return "Password must include at least one digit";
+            return t("warnings.passwordDigit");
         }
         case "missingSpecialChar":{
-            return "Password must include at least one special character (!@#$%)";
+            return t("warnings.passwordSpecialChar");
         }
         case "containsIllegalChar":{
-            return "Password can't contain illegal characters (space,./)";
+            return t("warnings.passwordIllegalChar");
         }
         default:{
             return "";

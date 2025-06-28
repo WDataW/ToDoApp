@@ -6,7 +6,7 @@ export default function ThemedCheckboxInput({className="", children, ref, checke
     return(
         <>
             <input ref={ref} onChange={handleChange} checked={checked} type='checkbox' id={id} className={`${accentThemeColors[theme]} ${className} `} />
-            <label className="opacity-50 text-[0.85rem] align-middle ml-[0.3rem]" htmlFor={id}>{children}</label>
+            <label className="opacity-80 text-[0.85rem] align-middle ms-[0.3rem]" htmlFor={id}>{children}</label>
         </>
     );
 }

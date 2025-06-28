@@ -6,7 +6,7 @@ export default function Page({className ,children}){
     return(
         <div className={`min-h-screen  ${className} ${textColors[theme]} ${bgColors[theme]} `}>
             {children}
-                
+            <ToggleTheme/>
         </div>
-);
+    );
 }

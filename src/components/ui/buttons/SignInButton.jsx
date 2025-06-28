@@ -1,10 +1,13 @@
+import { useTranslation } from "../../../context/Language";
 import ThemedRectButton from "./ThemedRectButton";
-export default function SignInButton({className, handleClick}){
+export default function SignInButton({className, handleClick, disabled}){
+    const t = useTranslation();
     return(<ThemedRectButton
-                label={"Sign In"}
+                label={t("titles.signIn")}
                 type="submit" 
                 handleClick={handleClick}
                 className={className}
+                disabled={disabled}
             />
     );
 }

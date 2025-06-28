@@ -1,10 +1,12 @@
+import { useTranslation } from "../../../context/Language";
 import KeyboardInput from "./KeyboardInput";
-export default function EmailInput({handleChange, value, placeholder="Enter your email"}){
+export default function EmailInput({handleChange, value, placeholder}){
+    const t= useTranslation()
     return(
         <KeyboardInput 
             type="email"
-            label="Email"
-            placeholder={placeholder}
+            label={t("fields.email")}
+            placeholder={placeholder || t("fields.enterEmail")}
             handleChange={handleChange}
             lightIcon="src/assets/icons/light/email.svg"
             darkIcon="src/assets/icons/dark/email.svg"

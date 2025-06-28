@@ -1,0 +1,50 @@
+{
+    "titles":{
+        "signUp":"تسجيل جديد",
+        "createAccount":"أنشئ الحساب",
+        "setNewPassword":"تعيين كلمة مرور جديدة",
+        "resetPassword":"تعيين كلمة المرور",
+        "signIn":"تسجيل الدخول",
+        "forgotPassword":"نسيت كلمة المرور؟",
+        "continue":"استمرار"
+
+    },
+    "fields":{
+        "username":"اسم المستخدم",
+        "enterUsername":"أدخل اسم المستخدم",
+        "email":"البريد الإلكتروني",
+        "enterEmail":"أدخل البريد الإلكتروني",
+        "password":"كلمة المرور",
+        "enterPassword":"أدخل كلمة المرور",
+        "confirmPassword":"أكد كلمة المرور",
+        "reEnterPassword":"أعد إدخال كلمة المرور",
+        "rememberMe":"تذكرني"
+    
+    },
+    "terms":{
+        "sendAgain":"أرسل مرة أخرى",
+        "didntRecieveAnEmail":"لم يصلك بريد إلكتروني؟",
+        "weSentACodeTo":"لقد أرسلنا رمزا إلى",
+        "creatingNewAccount":"*إنشاء حساب جديد*",
+        "noWorriesWellSendYou":"لا تقلق سنرسل لك تعليمات لإعادة تعيين كلمة المرور",
+        "dontHaveAnAccount":"ليس لديك حساب؟",
+        "useEnglishOnly":"*استخدم اللغة الإنجليزية*",
+        "iAgree":"أوافق على",
+        "ToS": "شروط الخدمة",
+        "and": "و",
+        "PP":"سياسة الخصوصية",
+        "backToSignIn":"تسجيل الدخول"
+    },
+    "errors":{
+        "invalidEmailPassword":"البريد الإلكتروني أو كلمة المرور غير صحيحة"
+      },
+    "warnings":{
+        "passwordLength":"يجب أن تتراوح كلمة المرور بين ٨ و٦٤ حرفا",
+        "passwordUppercase":"يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل",
+        "passwordLowercase":"يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل",
+        "passwordDigit":"يجب أن تحتوي كلمة المرور على رقم واحد على الأقل",
+        "passwordSpecialChar":"يجب أن تحتوي كلمة المرور على رمز مميز واحد على الأقل (!@#$%)",
+        "passwordIllegalChar":"لا يمكن أن تحتوي كلمة المرور على أحرف غير مدعومة مثل (, . / أو أحرف غير إنجليزية) ",
+        "passwordNotConfirmed":"كلمتا المرور لا تتطابق"
+    }
+}

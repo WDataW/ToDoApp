@@ -6,16 +6,16 @@ export function useTheme(){
 }
 export const bgThemeColors  = {
     both:"bg-[var(--cross-theme-color)]",
-    dark:"bg-[rgba(var(--dark-theme-color),1)]",
-    light:"bg-[rgba(var(--light-theme-color),1)]"
+    dark:"bg-[rgba(var(--dark-theme-accent-color),1)]",
+    light:"bg-[rgba(var(--light-theme-accent-color),1)]"
 }
 export const textThemeColors  = {
-    dark:"text-[rgba(var(--dark-theme-color),1)]",
-    light:"text-[rgba(var(--light-theme-color),1)]"
+    dark:"text-[rgba(var(--dark-theme-accent-color),1)]",
+    light:"text-[rgba(var(--light-theme-accent-color),1)]"
 }
 export const accentThemeColors  = {
-    dark:"accent-[rgba(var(--dark-theme-color),1)]",
-    light:"accent-[rgba(var(--light-theme-color),1)]"
+    dark:"accent-[rgba(var(--dark-theme-accent-color),1)]",
+    light:"accent-[rgba(var(--light-theme-accent-color),1)]"
 }
 export const textColors = {
     dark: "text-[var(--dark-text-color)]",

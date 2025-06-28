@@ -1,8 +1,8 @@
 import { Page, KeyboardInput, ThemedAnchor, ThemedRectButton } from "../../..";
 import { useTheme } from "../../../../../context/Theme";
 import { commonStyles } from "../commonStyles";
+import { useTranslation } from "../../../../../context/Language";
 import { useState, useRef, useEffect } from "react";
-import { flushSync } from "react-dom";
 const initialCode={
     0: "",
     1: "",
@@ -25,7 +25,6 @@ export default function VerificationCodePage({email="you@example.com"}){
     function handleChange(e, i){
         const inputValue =e.target.value;
         const newValue = inputValue.length>1? inputValue.charAt(1): inputValue.charAt(0);
-        console.log(newValue);
         
         setCode({...code, [i]:newValue });
         
@@ -55,14 +54,16 @@ export default function VerificationCodePage({email="you@example.com"}){
         }
         return inputElements.current;
     }
+
+    const t = useTranslation();
     const [styles, lowAlphaBgColor] = commonStyles;
     return(
         <Page className={styles["page"]}>
             <div className={`${styles["box"]} ${lowAlphaBgColor[theme]} ${theme}-outterShadow max-w-[23.5rem]`}>     
-                <h2 className="text-center ">Password Reset</h2>
-                <p className="text-center opacity-70 mb-[2rem]">We sent a code to {email}</p>
+                <h2 className="text-center ">{t("titles.resetPassword")}</h2>
+                <p className="text-center opacity-70 mb-[2rem]">{t("terms.weSentACodeTo")} {email}</p>
                 <form id={"verificationCodeForm"} action="">
-                <div className="flex gap-[0.4rem]">
+                <div className="flex gap-[0.4rem]" dir="ltr">
                         {
                                 codeKeys.map((_,i)=>
                                     <KeyboardInput
@@ -79,10 +80,10 @@ export default function VerificationCodePage({email="you@example.com"}){
                                 )
                         }
                     </div>
-                    <ThemedRectButton label={"Continue"} type="submit"></ThemedRectButton>
+                    <ThemedRectButton label={t("titles.continue")} type="submit" disabled={!code["0"] || !code["1"] || !code["2"] || !code["3"]}></ThemedRectButton>
                 </form>    
-                 <a href="" className="text-[0.8rem] opacity-50 ">Back to sign in</a>
-                    <p className="text-[0.8rem] opacity-70 text-center mt-[0.75rem]">Didn't recieve an email? <ThemedAnchor href="">Send again</ThemedAnchor></p>
+                 <a href="" className="text-[0.8rem] opacity-50 ">{t("titles.signIn")}</a>
+                    <p className="text-[0.8rem] opacity-70 text-center mt-[0.75rem]">{t("terms.didntRecieveAnEmail")} <ThemedAnchor href="">{t("terms.sendAgain")}</ThemedAnchor></p>
             </div>
             
         </Page>

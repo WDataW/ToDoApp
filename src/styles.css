@@ -1,7 +1,7 @@
 @import "tailwindcss";
 :root{
-    --dark-theme-color:249, 116, 22 ;
-    --light-theme-color: 59, 130, 246;
+    --dark-theme-accent-color:249, 116, 22;
+    --light-theme-accent-color: 59, 130, 246;
     --cross-theme-color: #F0F1F2;
     --dark-text-color: white;
     --light-text-color: black;
@@ -30,7 +30,7 @@
     h2{ font-size: 2rem;}
     h3{ font-size: 1.5rem}
 
-    button, input[type="checkbox"]{
+    input[type="checkbox"]{
         cursor: pointer;
     }
     
@@ -41,10 +41,10 @@
     }
     @media screen and (min-width: 768px) {
         .dark-outterShadow{
-            box-shadow: 0.05rem 0.05rem 1rem rgba(var(--dark-theme-color),0.7), -0.05rem 0 1rem rgba(var(--dark-theme-color),0.7);
+            box-shadow: inset 0.05rem 0.05rem 0.5rem rgba(247, 248, 248,0.5),inset  -0.05rem -0.05rem 0.5rem rgba(247, 248, 248,0.5); 
         }
         .light-outterShadow{
-            box-shadow: 0.05rem 0.05rem 1rem rgba(var(--light-theme-color),0.7), -0.05rem 0 1rem rgba(var(--light-theme-color),0.7);    
-        }
+            box-shadow: inset 0.05rem 0.05rem 0.5rem rgba(0, 0, 0, 0.7),inset  -0.05rem -0.05rem 0.5rem rgba(0, 0, 0, 0.7);
+            }
     }
 }

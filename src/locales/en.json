@@ -1,0 +1,48 @@
+{
+    "titles":{
+        "signUp":"Sign Up",
+        "createAccount":"createAccount",
+        "setNewPassword":"Set New Password",
+        "resetPassword":"Reset Password",
+        "forgotPassword":"Forgot Password?",
+        "continue":"Continue",
+        "signIn":"Sign in"
+
+    },
+    "fields":{
+        "username":"Username",
+        "enterUsername":"Enter username",
+        "email":"Email",
+        "enterEmail":"Enter email",
+        "password":"Enter password",
+        "enterPassword":"Enter password",
+        "confirmPassword":"Confirm password",
+        "reEnterPassword":"Re-enter password",
+        "rememberMe":"Remember me"
+    },
+    "terms":{
+        "sendAgain":"Send again",
+        "didntRecieveAnEmail":"Didn't recieve an email?",
+        "weSentACodeTo":"We sent a code to",
+        "creatingNewAccount":"*Creating new account*",
+        "noWorriesWellSendYou":"No worries we'll send you reset instrcutions",
+        "dontHaveAnAccount":"Don't have an account?",
+        "useEnglishOnly":"*Use English only*",
+        "iAgree":"I agree to the",
+        "ToS": "Terms of Service",
+        "and": "and",
+        "PP":"Privacy Policy"
+    },
+    "errors":{
+        "invalidEmailPassword":"Invalid email or password"
+      },
+    "warnings":{
+        "passwordLength":"Password must be between 8 and 64 characters",
+        "passwordUppercase":"Password must include at least one uppercase letter",
+        "passwordLowercase":"Password must include at least one lowercase letter",
+        "passwordDigit":"Password must include at least one digit",
+        "passwordSpecialChar":"Password must include at least one special character (!@#$%)",
+        "passwordIllegalChar":"Password can't contain illegal characters (,./non-English letters)",
+        "passwordNotConfirmed":"Passwords don't match"
+    }
+}
