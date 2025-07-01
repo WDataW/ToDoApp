@@ -1,12 +1,16 @@
 {
     "titles":{
         "signUp":"Sign Up",
-        "createAccount":"createAccount",
+        "createAccount":"Create Account",
         "setNewPassword":"Set New Password",
         "resetPassword":"Reset Password",
         "forgotPassword":"Forgot Password?",
         "continue":"Continue",
-        "signIn":"Sign in"
+        "signIn":"Sign in",
+        "home":"Home",
+        "tasks":"Tasks",
+        "stats":"Stats",
+        "profile":"Profile"
 
     },
     "fields":{

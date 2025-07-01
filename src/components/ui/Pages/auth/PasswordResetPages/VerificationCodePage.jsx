@@ -3,6 +3,7 @@ import { useTheme } from "../../../../../context/Theme";
 import { commonStyles } from "../commonStyles";
 import { useTranslation } from "../../../../../context/Language";
 import { useState, useRef, useEffect } from "react";
+
 const initialCode={
     0: "",
     1: "",

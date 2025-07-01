@@ -6,16 +6,16 @@ export function useTheme(){
 }
 export const bgThemeColors  = {
     both:"bg-[var(--cross-theme-color)]",
-    dark:"bg-[rgba(var(--dark-theme-accent-color),1)]",
-    light:"bg-[rgba(var(--light-theme-accent-color),1)]"
+    dark:"bg-[var(--dark-theme-accent-color)]",
+    light:"bg-[var(--light-theme-accent-color)]"
 }
 export const textThemeColors  = {
-    dark:"text-[rgba(var(--dark-theme-accent-color),1)]",
-    light:"text-[rgba(var(--light-theme-accent-color),1)]"
+    dark:"text-[var(--dark-theme-accent-color)]",
+    light:"text-[var(--light-theme-accent-color)]"
 }
 export const accentThemeColors  = {
-    dark:"accent-[rgba(var(--dark-theme-accent-color),1)]",
-    light:"accent-[rgba(var(--light-theme-accent-color),1)]"
+    dark:"accent-[var(--dark-theme-accent-color)]",
+    light:"accent-[var(--light-theme-accent-color)]"
 }
 export const textColors = {
     dark: "text-[var(--dark-text-color)]",
@@ -25,8 +25,20 @@ export const bgColors = {
     dark: "bg-[var(--dark-bg-color)]",
     light: "bg-[var(--light-bg-color)]"
 }
+export const surfaceBgColors = {
+    dark: "bg-[var(--dark-surface-bg-color)]",
+    light: "bg-[var(--light-surface-bg-color)]"
+
+}
+export const activeSurfaceBgColors = {
+    dark: "bg-[var(--dark-active-surface-bg-color)]",
+    light: "bg-[var(--light-active-surface-bg-color)]"
+
+}
+
 
 export default function Theme({children}){
+    console.log("Them Render");
     function getUserPreference(){
         return(
             (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)

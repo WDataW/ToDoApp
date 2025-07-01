@@ -2,17 +2,13 @@ import { useState } from 'react'
 // contexts
 
 // components
-import {VerificationCodePage ,ForgotPasswordPage, SignInPage, SetNewPasswordPage, SignUpPage} from './components/ui';
-
+import {Page,VerificationCodePage ,ForgotPasswordPage, SignInPage, SetNewPasswordPage, SignUpPage, OutlinedImageAnchor, MainNav, BottomNav, SideNav, HomePage} from './components/ui';
+import {Anchor, ImageAnchor} from './components/ui';
 function App() {
   return (
-    <>
-      <VerificationCodePage/>
-      <SignUpPage/>
-      <SetNewPasswordPage/>
-      <ForgotPasswordPage/>
-      <SignInPage/>
-    </>
+  <>
+    <HomePage></HomePage>
+  </>
   );
 }
 export default App

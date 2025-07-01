@@ -53,22 +53,22 @@ function passwordReducer(state ,action){
     const t = useTranslation();
     switch(action.type){
         case "invalidLength":{
-            return t("warnings.passwordLength");
+            return "warnings.passwordLength";
         }
         case "missingUppercase":{
-            return t("warnings.passwordUppercase");
+            return "warnings.passwordUppercase";
         }
         case "missingLowercase":{
-            return t("warnings.passwordLowercase");
+            return "warnings.passwordLowercase";
         }
         case "missingDigit":{
-            return t("warnings.passwordDigit");
+            return "warnings.passwordDigit";
         }
         case "missingSpecialChar":{
-            return t("warnings.passwordSpecialChar");
+            return "warnings.passwordSpecialChar";
         }
         case "containsIllegalChar":{
-            return t("warnings.passwordIllegalChar");
+            return "warnings.passwordIllegalChar";
         }
         default:{
             return "";

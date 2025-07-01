@@ -2,11 +2,9 @@ import { useTheme } from "../../context/Theme";
 export default function ToggleTheme(){
     const [theme, setTheme] = useTheme();
     return(
-        <>
             <input type="checkbox" checked={theme=="dark"} className="h-10 w-10 mt-4" onChange={()=>{
                 const newTheme = theme=="dark"?"light":"dark";
                 setTheme(newTheme);
             }} />
-        </>
     );
 }

@@ -26,7 +26,7 @@ export default function SignUpPage({children}){
                     <UsernameInput placeholder={t("fields.enterUsername")} className="mb-[0.5rem]"/>
                     <EmailInput />
                     <PasswordInput  className="mb-[0.2rem]" value={password} handleChange={(e)=>{setPassword(e.target.value); validatePassword(e.target.value, dispatch);}}/>
-                    <WarningMessage className="ms-[0.2rem] mb-[0.5rem]">{passwordWarning}</WarningMessage>
+                    <WarningMessage className="ms-[0.2rem] mb-[0.5rem]">{t(passwordWarning)}</WarningMessage>
                     <PasswordInput placeholder={t("fields.reEnterPassword")} className={"mb-[0.2rem]"} value={confirmedPassword} handleChange={(e)=>{setConfirmedPassword(e.target.value)}} label={t("fields.confirmPassword")}/>
                     <WarningMessage className="ms-[0.2rem] mb-[0.5rem]">
                         {password!==confirmedPassword && confirmedPassword?t("warnings.passwordNotConfirmed"):""}
