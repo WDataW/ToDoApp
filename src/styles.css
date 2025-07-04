@@ -22,7 +22,7 @@
     
     --light-gradient-color:#0d079e;
     --dark-gradient-color: #DB3B90;
-    --cross-gradient-color:#94BBE9;
+    --cross-gradient-color:#0deac5;
     
     --dark-surface-bg-color:#121212;
     --light-surface-bg-color:#F0F1F2;
@@ -71,5 +71,17 @@
         .light-outterShadow{
             box-shadow: inset 0.05rem 0.05rem 0.5rem rgba(0, 0, 0, 0.7),inset  -0.05rem -0.05rem 0.5rem rgba(0, 0, 0, 0.7);
         }
+    }
+
+    @keyframes gradient-animation {
+        0%{
+            background-position:left;
+        }
+        100%{
+            background-position:right;
+        }
+    }
+    .animate-radial{
+        animation: gradient-animation 1.5s forwards;
     }
 }

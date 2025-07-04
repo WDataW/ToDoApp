@@ -41,8 +41,8 @@ export const activeSurfaceBgColors = {
 
 }
 export const gradientColors = {
-    dark: " bg-[var(--dark-gradient-color)] bg-radial-[at_0%_0%] from-[var(--dark-gradient-color)] to-[var(--cross-gradient-color)]",
-    light: " bg-[var(--light-gradient-color)] bg-radial-[at_0%_0%] from-[var(--light-gradient-color)] to-[var(--cross-gradient-color)]"
+    dark: " bg-[var(--dark-gradient-color)]  from-[var(--dark-gradient-color)] to-[var(--cross-gradient-color)]",
+    light: " bg-[var(--light-gradient-color)] from-[var(--light-gradient-color)] to-[var(--cross-gradient-color)]"
 }
 
 
