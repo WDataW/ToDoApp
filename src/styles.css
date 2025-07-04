@@ -9,19 +9,27 @@
 }
 :root{
     /* colors */
-    --dark-theme-accent-color:#f97416;
+    --dark-theme-accent-color:#fc359f;
     --light-theme-accent-color: #3b82f6;
+    
     --cross-theme-color: #F0F1F2;
-    --dark-text-color: white;
+    
+    --dark-text-color: #cecece;
     --light-text-color: black;
-    --dark-bg-color: #0c0c0c;
+    
+    --dark-bg-color: #181818  ;
     --light-bg-color:#F7F8F8;
+    
+    --light-gradient-color:#0d079e;
+    --dark-gradient-color: #DB3B90;
+    --cross-gradient-color:#94BBE9;
+    
     --dark-surface-bg-color:#121212;
     --light-surface-bg-color:#F0F1F2;
+    
     --dark-active-surface-bg-color:#1f1f1f;
     --light-active-surface-bg-color:#e6e6e6;
 
-    --side-nav-bar-width:0px;
 }
 
 @layer components{
@@ -31,7 +39,7 @@
         margin: 0;
         padding: 0;
         scrollbar-width: thin;
-        font-size: 18px;
+        font-size: 17px;
         
     }
     html{
@@ -45,7 +53,7 @@
     }
     h1{ font-size: 3rem; text-align: center;}
     h2{ font-size: 2rem;}
-    h3{ font-size: 1.5rem}
+    h3{ font-size: 1.35rem}
 
     input[type="checkbox"]{
         cursor: pointer;

@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Page, EmailInput, ResetPasswordButton, ThemedAnchor } from "../../..";
-import { useTheme } from "../../../../../context/Theme";
+import { EmailInput, ResetPasswordButton, ThemedAnchor } from "../../../components/ui";
+import Page from "../../Page";
+import { useTheme } from "../../../context/Theme";
 import { commonStyles } from "../commonStyles";
-import { useTranslation } from "../../../../../context/Language";
+import { useTranslation } from "../../../context/Language";
 export default function ForgotPasswordPage(){  
     const [theme] = useTheme();
     const [styles, lowAlphaBgColor] = commonStyles;

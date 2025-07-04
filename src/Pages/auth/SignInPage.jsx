@@ -1,8 +1,10 @@
-import {Page, EmailInput, PasswordInput, SignInButton, CheckboxInput, ThemedAnchor, ErrorMessage } from "../..";
-import { useTheme } from "../../../../context/Theme";
+import {EmailInput, PasswordInput, SignInButton, CheckboxInput, ThemedAnchor, ErrorMessage } from "../../components/ui";
+import { useTheme } from "../../context/Theme";
 import { useState } from "react";
 import { commonStyles } from "./commonStyles";
-import { useTranslation } from "../../../../context/Language";
+import Page from "../Page";
+
+import { useTranslation } from "../../context/Language";
 const [styles, lowAlphaBgColor] = commonStyles; 
     
 export default function SignInPage({children}){

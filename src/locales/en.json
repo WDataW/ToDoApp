@@ -10,7 +10,8 @@
         "home":"Home",
         "tasks":"Tasks",
         "stats":"Stats",
-        "profile":"Profile"
+        "profile":"Profile",
+        "inbox":"Inbox"
 
     },
     "fields":{

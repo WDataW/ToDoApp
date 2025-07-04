@@ -1,9 +1,10 @@
-import { Page, EmailInput, ResetPasswordButton, ThemedAnchor, PasswordInput, WarningMessage } from "../../..";
-import { useTheme } from "../../../../../context/Theme";
+import {  EmailInput, ResetPasswordButton, ThemedAnchor, PasswordInput, WarningMessage } from "../../../components/ui";
+import Page from "../../Page";
+import { useTheme } from "../../../context/Theme";
 import { commonStyles } from "../commonStyles";
 import { useValidation, validatePassword } from "./PasswordValidation";
 import { useState } from "react";
-import { useTranslation } from "../../../../../context/Language";
+import { useTranslation } from "../../../context/Language";
 export default function SetNewPasswordPage(){  
     // styles
     const [theme] = useTheme();

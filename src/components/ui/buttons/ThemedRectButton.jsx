@@ -1,16 +1,17 @@
 import Button from "./Button";
 import { useTheme } from "../../../context/Theme";
 
-export default function ThemedRectButton({label, handleClick, className, disabled}){
+export default function ThemedRectButton({customTheme ,children, handleClick, className, disabled}){
     const [theme] = useTheme();
     return(
         <Button
-            theme={theme}
+            theme={customTheme || theme}
             shape="rect"
-            label={label}
-            className={` ${className}`}
+            className={className}
             handleClick={handleClick}
             disabled={disabled}
-        />
+        >
+            {children}
+        </Button>
     );
 }

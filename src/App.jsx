@@ -2,11 +2,21 @@ import { useState } from 'react'
 // contexts
 
 // components
-import {Page,VerificationCodePage ,ForgotPasswordPage, SignInPage, SetNewPasswordPage, SignUpPage, OutlinedImageAnchor, MainNav, BottomNav, SideNav, HomePage} from './components/ui';
-import {Anchor, ImageAnchor} from './components/ui';
+import {OutlinedImageAnchor, MainNav, BottomNav, SideNav} from './components/ui';
+import {VerificationCodePage ,ForgotPasswordPage, SignInPage, SetNewPasswordPage, SignUpPage, HomePage} from "./Pages";
+
 function App() {
   return (
   <>
+    
+    {/* 
+    <VerificationCodePage></VerificationCodePage>
+    <ForgotPasswordPage></ForgotPasswordPage>
+    <SignInPage></SignInPage>
+    <SetNewPasswordPage></SetNewPasswordPage>
+    <SignUpPage></SignUpPage>
+    <HomePage></HomePage>
+     */}
     <HomePage></HomePage>
   </>
   );

@@ -1,0 +1,10 @@
+import { SettingsAnchor, InboxAnchor } from "../anchors";
+export default function AppPageHeader({children, ...props}){
+    return(
+        <header className="grid grid-rows-1 grid-cols-3 items-center justify-items-center h-[3rem] mb-[1rem]">
+                <InboxAnchor className="ms-[5vw] opacity-70 justify-self-start h-[1.2rem] w-[1.2rem] sm:h-0" />
+                <h4 className=" text-center  ">{children}</h4>
+                <SettingsAnchor className="me-[5vw] opacity-75 justify-self-end h-[1.1rem] w-[1.1rem] sm:h-0" />
+        </header>
+    );
+}

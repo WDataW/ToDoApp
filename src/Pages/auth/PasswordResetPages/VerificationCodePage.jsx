@@ -1,7 +1,8 @@
-import { Page, KeyboardInput, ThemedAnchor, ThemedRectButton } from "../../..";
-import { useTheme } from "../../../../../context/Theme";
+import { KeyboardInput, ThemedAnchor, ThemedRectButton } from "../../../components/ui";
+import Page from "../../Page";
+import { useTheme } from "../../../context/Theme";
 import { commonStyles } from "../commonStyles";
-import { useTranslation } from "../../../../../context/Language";
+import { useTranslation } from "../../../context/Language";
 import { useState, useRef, useEffect } from "react";
 
 const initialCode={
@@ -81,7 +82,7 @@ export default function VerificationCodePage({email="you@example.com"}){
                                 )
                         }
                     </div>
-                    <ThemedRectButton label={t("titles.continue")} type="submit" disabled={!code["0"] || !code["1"] || !code["2"] || !code["3"]}></ThemedRectButton>
+                    <ThemedRectButton type="submit" disabled={!code["0"] || !code["1"] || !code["2"] || !code["3"]}>{t("titles.continue")}</ThemedRectButton>
                 </form>    
                  <a href="" className="text-[0.8rem] opacity-50 ">{t("titles.signIn")}</a>
                     <p className="text-[0.8rem] opacity-70 text-center mt-[0.75rem]">{t("terms.didntRecieveAnEmail")} <ThemedAnchor href="">{t("terms.sendAgain")}</ThemedAnchor></p>

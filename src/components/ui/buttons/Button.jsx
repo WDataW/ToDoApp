@@ -5,13 +5,13 @@ const shapes={
     circle:"rounded-full aspect-square p-2 w-[2.5em] h-[2.5rem] truncate"
 }
 
-export default function Button({theme = "dark", shape="rect", type="", disabled=false ,label="Button", handleClick, className="" }){
+export default function Button({theme = "dark", shape="rect", type="", disabled=false ,children, handleClick, className="" }){
     return (<button onClick={handleClick} 
                 type={type}
                 disabled={disabled}
                 className={`text-white text-[1rem] ${bgThemeColors[theme]} ${shapes[shape]} ${className} ${disabled?"opacity-50 ":"cursor-pointer"} `}
             >
-                    {label}
+                    {children}
             </button>
     );
 }

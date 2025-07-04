@@ -7,11 +7,16 @@ export function useTheme(){
 export const bgThemeColors  = {
     both:"bg-[var(--cross-theme-color)]",
     dark:"bg-[var(--dark-theme-accent-color)]",
-    light:"bg-[var(--light-theme-accent-color)]"
+    light:"bg-[var(--light-theme-accent-color)]",
+    transparent:"bg-[#00000000]"
 }
 export const textThemeColors  = {
     dark:"text-[var(--dark-theme-accent-color)]",
     light:"text-[var(--light-theme-accent-color)]"
+}
+export const hoverTextThemeColors  = {
+    dark:"hover:text-[var(--dark-theme-accent-color)]",
+    light:"hover:text-[var(--light-theme-accent-color)]"
 }
 export const accentThemeColors  = {
     dark:"accent-[var(--dark-theme-accent-color)]",
@@ -34,6 +39,10 @@ export const activeSurfaceBgColors = {
     dark: "bg-[var(--dark-active-surface-bg-color)]",
     light: "bg-[var(--light-active-surface-bg-color)]"
 
+}
+export const gradientColors = {
+    dark: " bg-[var(--dark-gradient-color)] bg-radial-[at_0%_0%] from-[var(--dark-gradient-color)] to-[var(--cross-gradient-color)]",
+    light: " bg-[var(--light-gradient-color)] bg-radial-[at_0%_0%] from-[var(--light-gradient-color)] to-[var(--cross-gradient-color)]"
 }
 
 

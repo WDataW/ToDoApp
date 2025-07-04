@@ -1,9 +1,10 @@
-import {Page, EmailInput, PasswordInput, UsernameInput, ThemedAnchor, CheckboxInput, ErrorMessage, ThemedRectButton, KeyboardInput, WarningMessage } from "../..";
-import { useTheme } from "../../../../context/Theme";
+import { EmailInput, PasswordInput, UsernameInput, ThemedAnchor, CheckboxInput, ErrorMessage, ThemedRectButton, KeyboardInput, WarningMessage } from "../../components/ui";
+import Page from "../Page";
+import { useTheme } from "../../context/Theme";
 import { useState, useRef } from "react";
 import { commonStyles } from "./commonStyles";
 import { useValidation, validatePassword } from "./PasswordResetPages/PasswordValidation";
-import { useTranslation } from "../../../../context/Language";
+import { useTranslation } from "../../context/Language";
 const [styles, lowAlphaBgColor] = commonStyles; 
 
 
@@ -36,7 +37,7 @@ export default function SignUpPage({children}){
                             {t("terms.iAgree")} <ThemedAnchor>{t("terms.ToS")}</ThemedAnchor> {t("terms.and")} <ThemedAnchor>{t("terms.PP")}</ThemedAnchor>
                         </CheckboxInput>
                     </div>                    
-                    <ThemedRectButton label={t("titles.createAccount")} disabled={!password || password!==confirmedPassword || passwordWarning!=="" || !agreed } />
+                    <ThemedRectButton disabled={!password || password!==confirmedPassword || passwordWarning!=="" || !agreed } >{t("titles.createAccount")}</ThemedRectButton>
                 </form>
                 <a href="" className="text-[0.8rem] opacity-50 ">{t("titles.signIn")}</a>
             </div>
