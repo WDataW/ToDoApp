@@ -1,17 +1,18 @@
 {
-    "info": {
-        "id": "u123456",
-        "name": "Wael Alharbi",
-        "email": "wael@example.com",
-        "profileImage": "/images/users/wael.png",
-        "createdAt": "2024-09-15T08:00:00Z",
-        "role": "standard",
-        "settings": {
-        "language": "en",
-        "theme": "dark",
-        "notifications": true
-    },
-    "tasks": [
+      "info":{  
+          "id": "u123456",
+          "name": "Wael Alharbi",
+          "email": "wael@example.com",
+          "profileImage": "/images/users/wael.png",
+          "createdAt": "2024-09-15T08:00:00Z",
+          "role": "standard",
+          "settings": {
+          "language": "en",
+          "theme": "dark",
+          "notifications": true
+          }
+      },
+      "tasks": [
         {
         "id": "t003",
         "title": "Set up task filtering logic",
@@ -110,4 +111,4 @@
       }
     ]
     }
-}
+

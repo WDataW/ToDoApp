@@ -9,8 +9,9 @@ function App() {
   return (
   <>
     
-    {/* 
-    <VerificationCodePage></VerificationCodePage>
+    
+    {/*
+     <VerificationCodePage></VerificationCodePage>
     <ForgotPasswordPage></ForgotPasswordPage>
     <SignInPage></SignInPage>
     <SetNewPasswordPage></SetNewPasswordPage>

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 export const ThemeContext = createContext();  
 export function useTheme(){
@@ -47,7 +47,6 @@ export const gradientColors = {
 
 
 export default function Theme({children}){
-    console.log("Them Render");
     function getUserPreference(){
         return(
             (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)

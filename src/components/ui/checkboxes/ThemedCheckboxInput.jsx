@@ -1,4 +1,4 @@
-import { useTheme, accentThemeColors } from "../../context/Theme";
+import { useTheme, accentThemeColors } from "../../../context/Theme";
 import { useId } from "react";
 export default function ThemedCheckboxInput({className="", children, ref, checked, handleChange}){
     const [theme] = useTheme();

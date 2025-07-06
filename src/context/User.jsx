@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import userData from "/src/assets/user.json";
 const UserInfoContext = createContext();
 const UserTasksContext = createContext();
@@ -17,10 +17,10 @@ export function UserAchievements(){
     return useContext(UserAchievementsContext);
 }
 export default function User({children}){
-    const [infoState, setInfoState] = useState(userData.info)
-    const [tasksState, setTasksState] = useState(userData.tasks)
-    const [achievmentsState, setAchievmentsState] = useState(userData.achievements)
-    const [inboxState, setInboxState] = useState(userData.inbox)
+    const [infoState, setInfoState] = useState(userData.info);
+    const [tasksState, setTasksState] = useState(userData.tasks);
+    const [achievmentsState, setAchievmentsState] = useState(userData.achievements);
+    const [inboxState, setInboxState] = useState(userData.inbox);
     return(
         <UserInfoContext value={[infoState, setInfoState]}>
             <UserTasksContext value={[tasksState, setTasksState]}>
