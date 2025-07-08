@@ -40,6 +40,11 @@ export const activeSurfaceBgColors = {
     light: "bg-[var(--light-active-surface-bg-color)]"
 
 }
+export const hoverSurfaceBgColors = {
+    dark: "hover:bg-[var(--dark-active-surface-bg-color)]",
+    light: "hover:bg-[var(--light-active-surface-bg-color)]"
+
+}
 export const gradientColors = {
     dark: " bg-[var(--dark-gradient-color)]  from-[var(--dark-gradient-color)] to-[var(--cross-gradient-color)]",
     light: " bg-[var(--light-gradient-color)] from-[var(--light-gradient-color)] to-[var(--cross-gradient-color)]"

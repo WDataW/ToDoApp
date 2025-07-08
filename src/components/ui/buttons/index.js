@@ -4,3 +4,4 @@ export {default as SignInButton} from "./SignInButton";
 export {default as SignUpButton} from "./SignUpButton";
 export {default as ResetPasswordButton} from "./ResetPasswordButton";
 export {default as ThemedRectButton} from "./ThemedRectButton";
+export {default as MeatballMenu} from "./MeatballMenu";

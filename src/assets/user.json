@@ -1,114 +1,250 @@
 {
-      "info":{  
-          "id": "u123456",
-          "name": "Wael Alharbi",
-          "email": "wael@example.com",
-          "profileImage": "/images/users/wael.png",
-          "createdAt": "2024-09-15T08:00:00Z",
-          "role": "standard",
-          "settings": {
-          "language": "en",
-          "theme": "dark",
-          "notifications": true
-          }
-      },
-      "tasks": [
-        {
-        "id": "t003",
-        "title": "Set up task filtering logic",
-        "description": "Implement filter by status and priority in the tasks page.",
-        "status": "not-started",
-        "priority": "medium",
-        "dueDate": "2025-07-06T14:00:00Z",
-        "createdAt": "2025-07-03T09:30:00Z"
-        },
-        {
-        "id": "t004",
-        "title": "Add animation to page transitions",
-        "description": "Use Framer Motion to add smooth transitions between pages.",
-        "status": "in-progress",
-        "priority": "low",
-        "dueDate": "2025-07-07T17:00:00Z",
-        "createdAt": "2025-07-03T10:00:00Z"
-        },
-        {
-        "id": "t005",
-        "title": "Fix mobile responsiveness for stats page",
-        "description": "Ensure layout works well on screens smaller than 768px.",
-        "status": "not-started",
-        "priority": "high",
-        "dueDate": "2025-07-08T12:00:00Z",
-        "createdAt": "2025-07-03T10:30:00Z"
-        },
-        {
-        "id": "t006",
-        "title": "Refactor user profile component",
-        "description": "Make it modular and reusable with Tailwind and props.",
-        "status": "in-progress",
-        "priority": "medium",
-        "dueDate": "2025-07-09T16:00:00Z",
-        "createdAt": "2025-07-03T11:00:00Z"
-        },
-        {
-        "id": "t007",
-        "title": "Write unit tests for task logic",
-        "description": "Cover edge cases for task creation, editing, and deletion.",
-        "status": "not-started",
-        "priority": "high",
-        "dueDate": "2025-07-10T15:00:00Z",
-        "createdAt": "2025-07-03T11:30:00Z"
-        },
-        {
-        "id": "t001",
-        "title": "Finish UI design for todo app",
-        "description": "Create a modern UI for the home, tasks, stats, and profile pages.",
-        "status": "in-progress",
-        "priority": "high",
-        "dueDate": "2025-07-05T16:00:00Z",
-        "createdAt": "2025-07-01T10:00:00Z"
-        },
-        {
-        "id": "t002",
-        "title": "Push latest commit to GitHub",
-        "status": "completed",
-        "priority": "medium",
-        "dueDate": "2025-07-02T18:00:00Z",
-        "createdAt": "2025-07-01T09:00:00Z"
-        }
-    ],
-    "achievements": [
-        {
-        "id": "a001",
-        "title": "First Task Completed",
-        "description": "Completed your first task!",
-        "dateAchieved": "2025-07-02T19:00:00Z",
-        "icon": "🎉"
-        },
-        {
-        "id": "a002",
-        "title": "Power User",
-        "description": "Logged in and used the app 7 days in a row.",
-        "dateAchieved": "2025-07-03T12:00:00Z",
-        "icon": "⚡"
-        }
-    ],
-     "inbox": [
-      {
-        "id": "msg001",
-        "type": "notification",
-        "title": "Welcome to the app!",
-        "content": "Thanks for signing up.",
-        "read": false,
-        "receivedAt": "2025-07-03T15:00:00Z"
-      },
-      {
-        "id": "msg002",
-        "type": "message",
-        "from": "admin",
-        "content": "Your profile is 80% complete.",
-        "read": true,
-        "receivedAt": "2025-07-02T12:00:00Z"
-      }
-    ]
+  "info": {
+    "id": "u123456",
+    "name": "Wael Alharbi",
+    "email": "wael@example.com",
+    "profileImage": "/images/users/wael.png",
+    "createdAt": "2024-09-15T08:00:00Z",
+    "role": "standard",
+    "settings": {
+      "language": "en",
+      "theme": "dark",
+      "notifications": true
     }
-
+  },
+  "tasks": [
+    {
+      "id": "t003",
+      "title": "Set up task filtering logic",
+      "description": "Implement filter by status and priority in the tasks page.",
+      "status": "not-started",
+      "priority": "medium",
+      "dueDate": "2025-07-06T14:00:00Z",
+      "createdAt": "2025-07-03T09:30:00Z",
+      "dueDateMs": 1751810400000,
+      "tags": [
+        {
+          "title": "Logic",
+          "icon": "bg-purple-500"
+        },
+        {
+          "title": "Filter",
+          "icon": "bg-fuchsia-500"
+        }
+      ]
+    },
+    {
+      "id": "t004",
+      "title": "Add animation to page transitions",
+      "description": "Use Framer Motion to add smooth transitions between pages.",
+      "status": "in-progress",
+      "priority": "low",
+      "dueDate": "2025-07-07T17:00:00Z",
+      "createdAt": "2025-07-03T10:00:00Z",
+      "dueDateMs": 1751907600000,
+      "tags": [
+        {
+          "title": "Animation",
+          "icon": "bg-rose-500"
+        },
+        {
+          "title": "UI",
+          "icon": "bg-indigo-400"
+        }
+      ]
+    },
+    {
+      "id": "t004",
+      "title": "Add animation to page transitions",
+      "description": "Use Framer Motion to add smooth transitions between pages.",
+      "status": "in-progress",
+      "priority": "low",
+      "dueDate": "2025-07-07T12:00:00Z",
+      "createdAt": "2025-07-03T10:00:00Z",
+      "dueDateMs": 1751889600000,
+      "tags": [
+        {
+          "title": "Animation",
+          "icon": "bg-rose-500"
+        },
+        {
+          "title": "UX",
+          "icon": "bg-pink-400"
+        }
+      ]
+    },
+    {
+      "id": "t005",
+      "title": "Fix mobile responsiveness for stats page",
+      "description": "Ensure layout works well on screens smaller than 768px.",
+      "status": "not-started",
+      "priority": "high",
+      "dueDate": "2025-07-08T12:00:00Z",
+      "createdAt": "2025-07-03T10:30:00Z",
+      "dueDateMs": 1751976000000,
+      "tags": [
+        {
+          "title": "Responsive",
+          "icon": "bg-sky-500"
+        },
+        {
+          "title": "Mobile",
+          "icon": "bg-blue-400"
+        },
+        {
+          "title": "Bug Fix",
+          "icon": "bg-red-400"
+        }
+      ]
+    },
+    {
+      "id": "t006",
+      "title": "Refactor user profile component",
+      "description": "Make it modular and reusable with Tailwind and props.",
+      "status": "in-progress",
+      "priority": "medium",
+      "dueDate": "2025-07-09T16:00:00Z",
+      "createdAt": "2025-07-03T11:00:00Z",
+      "dueDateMs": 1752076800000,
+      "tags": [
+        {
+          "title": "Refactor",
+          "icon": "bg-yellow-500"
+        },
+        {
+          "title": "Component",
+          "icon": "bg-lime-500"
+        },
+        {
+          "title": "Tailwind",
+          "icon": "bg-cyan-500"
+        }
+      ]
+    },
+    {
+      "id": "t007",
+      "title": "Write unit tests for task logic",
+      "description": "Cover edge cases for task creation, editing, and deletion.",
+      "status": "not-started",
+      "priority": "high",
+      "dueDate": "2025-07-10T15:00:00Z",
+      "createdAt": "2025-07-03T11:30:00Z",
+      "dueDateMs": 1752159600000,
+      "tags": [
+        {
+          "title": "Testing",
+          "icon": "bg-green-500"
+        },
+        {
+          "title": "Edge Cases",
+          "icon": "bg-amber-500"
+        },
+        {
+          "title": "Logic",
+          "icon": "bg-purple-400"
+        }
+      ]
+    },
+    {
+      "id": "t001",
+      "title": "Finish UI design for todo app",
+      "description": "Create a modern UI for the home, tasks, stats, and profile pages.",
+      "status": "in-progress",
+      "priority": "high",
+      "dueDate": "2025-07-05T16:00:00Z",
+      "createdAt": "2025-07-01T10:00:00Z",
+      "dueDateMs": 1751731200000,
+      "tags": [
+        {
+          "title": "UI Design",
+          "icon": "bg-indigo-500"
+        },
+        {
+          "title": "Front-End",
+          "icon": "bg-teal-500"
+        },
+        {
+          "title": "UX",
+          "icon": "bg-pink-300"
+        }
+      ]
+    },
+    {
+      "id": "t002",
+      "title": "Push latest commit to GitHub",
+      "status": "completed",
+      "priority": "medium",
+      "dueDate": "2025-07-02T18:00:00Z",
+      "createdAt": "2025-07-01T09:00:00Z",
+      "dueDateMs": 1751479200000,
+      "tags": [
+        {
+          "title": "GitHub",
+          "icon": "bg-gray-500"
+        },
+        {
+          "title": "Version Control",
+          "icon": "bg-neutral-500"
+        },
+        {
+          "title": "Deploy",
+          "icon": "bg-zinc-500"
+        }
+      ]
+    },
+    {
+      "id": "t008",
+      "title": "Review pull request",
+      "description": "Check the code in PR #42 and leave comments if needed.",
+      "status": "not-started",
+      "priority": "medium",
+      "dueDate": "2025-07-08T02:38:00Z",
+      "createdAt": "2025-07-08T00:38:00Z",
+      "dueDateMs": 1751942280000,
+      "tags": [
+        {
+          "title": "Code Review",
+          "icon": "bg-orange-500"
+        },
+        {
+          "title": "Collaboration",
+          "icon": "bg-blue-500"
+        }
+      ]
+    }
+  ],
+  "achievements": [
+    {
+      "id": "a001",
+      "title": "First Task Completed",
+      "description": "Completed your first task!",
+      "dateAchieved": "2025-07-02T19:00:00Z",
+      "icon": "🎉"
+    },
+    {
+      "id": "a002",
+      "title": "Power User",
+      "description": "Logged in and used the app 7 days in a row.",
+      "dateAchieved": "2025-07-03T12:00:00Z",
+      "icon": "⚡"
+    }
+  ],
+  "inbox": [
+    {
+      "id": "msg001",
+      "type": "notification",
+      "title": "Welcome to the app!",
+      "content": "Thanks for signing up.",
+      "read": false,
+      "receivedAt": "2025-07-03T15:00:00Z"
+    },
+    {
+      "id": "msg002",
+      "type": "message",
+      "from": "admin",
+      "content": "Your profile is 80% complete.",
+      "read": true,
+      "receivedAt": "2025-07-02T12:00:00Z"
+    }
+  ]
+}

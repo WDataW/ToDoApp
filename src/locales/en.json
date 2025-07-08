@@ -1,53 +1,63 @@
 {
-    "titles":{
-        "signUp":"Sign Up",
-        "createAccount":"Create Account",
-        "setNewPassword":"Set New Password",
-        "resetPassword":"Reset Password",
-        "forgotPassword":"Forgot Password?",
-        "continue":"Continue",
-        "signIn":"Sign in",
-        "home":"Home",
-        "tasks":"Tasks",
-        "stats":"Stats",
-        "profile":"Profile",
-        "inbox":"Inbox"
-
+    "titles": {
+        "viewAllTasks": "View All Tasks",
+        "tomorrow": "Tomorrow",
+        "overdue": "Overdue",
+        "todaysFocus": "Today's Focus",
+        "signUp": "Sign Up",
+        "createAccount": "Create Account",
+        "setNewPassword": "Set New Password",
+        "resetPassword": "Reset Password",
+        "forgotPassword": "Forgot Password?",
+        "continue": "Continue",
+        "signIn": "Sign in",
+        "home": "Home",
+        "tasks": "Tasks",
+        "stats": "Stats",
+        "profile": "Profile",
+        "inbox": "Inbox"
     },
-    "fields":{
-        "username":"Username",
-        "enterUsername":"Enter username",
-        "email":"Email",
-        "enterEmail":"Enter email",
-        "password":"Enter password",
-        "enterPassword":"Enter password",
-        "confirmPassword":"Confirm password",
-        "reEnterPassword":"Re-enter password",
-        "rememberMe":"Remember me"
+    "fields": {
+        "username": "Username",
+        "enterUsername": "Enter username",
+        "email": "Email",
+        "enterEmail": "Enter email",
+        "password": "Enter password",
+        "enterPassword": "Enter password",
+        "confirmPassword": "Confirm password",
+        "reEnterPassword": "Re-enter password",
+        "rememberMe": "Remember me"
     },
-    "terms":{
-        "sendAgain":"Send again",
-        "didntRecieveAnEmail":"Didn't recieve an email?",
-        "weSentACodeTo":"We sent a code to",
-        "creatingNewAccount":"*Creating new account*",
-        "noWorriesWellSendYou":"No worries we'll send you reset instrcutions",
-        "dontHaveAnAccount":"Don't have an account?",
-        "useEnglishOnly":"*Use English only*",
-        "iAgree":"I agree to the",
+    "terms": {
+        "highPriority": "High Priority",
+        "mediumPriority": "Medium Priority",
+        "lowPriority": "Low Priority",
+        "dueSoon": "Due Soon",
+        "letsMakeTodayProductive": "Let's make today productive. Check out your tasks!",
+        "welcomeBack": "Welcome back,",
+        "sendAgain": "Send again",
+        "didntRecieveAnEmail": "Didn't recieve an email?",
+        "weSentACodeTo": "We sent a code to",
+        "creatingNewAccount": "*Creating new account*",
+        "noWorriesWellSendYou": "No worries we'll send you reset instrcutions",
+        "dontHaveAnAccount": "Don't have an account?",
+        "useEnglishOnly": "*Use English only*",
+        "iAgree": "I agree to the",
         "ToS": "Terms of Service",
         "and": "and",
-        "PP":"Privacy Policy"
+        "PP": "Privacy Policy",
+        "today": "Today"
     },
-    "errors":{
-        "invalidEmailPassword":"Invalid email or password"
-      },
-    "warnings":{
-        "passwordLength":"Password must be between 8 and 64 characters",
-        "passwordUppercase":"Password must include at least one uppercase letter",
-        "passwordLowercase":"Password must include at least one lowercase letter",
-        "passwordDigit":"Password must include at least one digit",
-        "passwordSpecialChar":"Password must include at least one special character (!@#$%)",
-        "passwordIllegalChar":"Password can't contain illegal characters (,./non-English letters)",
-        "passwordNotConfirmed":"Passwords don't match"
+    "errors": {
+        "invalidEmailPassword": "Invalid email or password"
+    },
+    "warnings": {
+        "passwordLength": "Password must be between 8 and 64 characters",
+        "passwordUppercase": "Password must include at least one uppercase letter",
+        "passwordLowercase": "Password must include at least one lowercase letter",
+        "passwordDigit": "Password must include at least one digit",
+        "passwordSpecialChar": "Password must include at least one special character (!@#$%)",
+        "passwordIllegalChar": "Password can't contain illegal characters (,./non-English letters)",
+        "passwordNotConfirmed": "Passwords don't match"
     }
 }

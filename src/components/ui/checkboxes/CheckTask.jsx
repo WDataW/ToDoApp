@@ -17,12 +17,11 @@ const outlines = {
     light:"outline-[var(--light-bg-color)]",
     dark:"outline-[var(--dark-bg-color)]"
 }
-export default function checkTask({className="" , children, ...props}){
+export default function checkTask({className="", checked , children, ...props}){
     const [theme] = useTheme();
     const bg = bgs[theme];
     const outline = outlines[theme]
-    const [checked, setChecked] = useState(false);
     return(
-        <input type="checkbox" aria-label="Finish Task" className={` appearance-none h-[1.3rem] w-[1.3rem] ${textThemeColors[theme]} ${bg["empty"]} ${!checked && bg["hover"]} ${bg["checked"]} ${className} bg-cover bg-no-repeat bg-center border-[0.1rem] outline-[0.3rem] ${outline} rounded-full flex-none`} checked={checked} onChange={()=>{setChecked(!checked)}} {...props}/>
+        <input type="checkbox" aria-label="Finish Task" className={` appearance-none h-[1.3rem] w-[1.3rem] ${textThemeColors[theme]} ${bg["empty"]} ${!checked && bg["hover"]} ${bg["checked"]} ${className} bg-cover bg-no-repeat bg-center border-[0.1rem] outline-[0.3rem] ${outline} rounded-full flex-none`} checked={checked}  {...props}/>
     );
 }
