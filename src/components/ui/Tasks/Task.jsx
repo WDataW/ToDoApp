@@ -3,6 +3,9 @@ import CheckTask from "../checkboxes/CheckTask";
 import { MeatballMenu } from "../buttons";
 import { useState } from "react";
 import { getDueDate, getDueTime, getTaskTags } from "./tasks";
+import { createPortal } from 'react-dom';
+
+import ActionsContainer from "./ActionsContainer";
 const themeStyles = {
     dark: "bg-[#222222] text-white",
     light: "bg-[#E9EBEB] text-black"
@@ -17,13 +20,28 @@ const icons = {
         clock: "bg-[url(/src/assets/icons/dark/clock.svg)]"
     }
 }
+let actionsMenu;
+function handleMeatballClick(e, taskObjId, clicked, setClicked) {
+
+    const meatballButton = e.target;
+    const position = meatballButton.getBoundingClientRect();
+
+    actionsMenu = <ActionsContainer scrolableParent={document.getElementById(taskObjId).parentElement.parentElement.parentElement} setOpened={setClicked} position={position} />
+    setClicked(!clicked);
+}
+
+
 
 export default function Task({ className = "", taskObj = {}, children, ...props }) {
     const [theme] = useTheme();
     const [checked, setChecked] = useState(false);
+    const [clicked, setClicked] = useState(false);
+
+
 
     const taskContent = (
-        <div className={`${themeStyles[theme]} py-[0.5rem] px-[0.8rem] flex  rounded-[1.5rem] ${className}`} {...props}>
+        <div id={taskObj.id} className={`${themeStyles[theme]} relative py-[0.5rem] px-[0.8rem] flex  rounded-[1.5rem] ${className}`} {...props}>
+            {(clicked && !checked) && createPortal(actionsMenu, document.getElementById("homePage"))}
             <CheckTask checked={checked} onChange={handleChange} className=" ms-[0.15rem] me-[0.9rem] mt-[0.65rem] " />
             <div className="me-[0.5rem]">
                 <div className="text-[0.7rem] opacity-">
@@ -33,10 +51,10 @@ export default function Task({ className = "", taskObj = {}, children, ...props 
                     </div>
                     <div className="flex items-center flex-wrap">
                         {
-                            getTaskTags(taskObj).map((tag) => {
+                            getTaskTags(taskObj).map((tag, i) => {
                                 if (!tag.title) { return null }
                                 return (
-                                    <div className="flex items-center first:ms-0 ms-[0.5rem]">
+                                    <div key={i} className="flex items-center first:ms-0 ms-[0.5rem]">
                                         <span className={`inline-block h-[0.6rem] w-[0.6rem] me-[0.1rem] ${tag.icon} rounded-full bg-[length:0.73rem_0.73rem] bg-center bg-no-repeat`} />
                                         <span className="flex-0 opacity-60 capitalize text-nowrap">{tag.title}</span>
                                     </div>
@@ -48,16 +66,21 @@ export default function Task({ className = "", taskObj = {}, children, ...props 
                 </div>
                 <p>{taskObj.title}</p>
             </div>
-            <MeatballMenu className="ms-auto me-[0.25rem] mt-[0.65rem]  h-[1.4rem] w-[1.4rem]"></MeatballMenu>
+            <MeatballMenu onClick={(e) => {
+                handleMeatballClick(e, taskObj.id, clicked, setClicked);
+            }} className="ms-auto me-[0.25rem] mt-[0.65rem]  h-[1.4rem] w-[1.4rem]"></MeatballMenu>
         </div>
     );
     function handleChange() {
         setChecked(!checked);
+        setClicked(false);
     }
+
+
 
     return (
         <>
-            {!checked ? taskContent : <del>{taskContent}</del>}
+            {!checked ? <div className="animate-in-opacity">{taskContent}</div> : <del className="animate-out-opacity">{taskContent}</del>}
         </>
     );
 }

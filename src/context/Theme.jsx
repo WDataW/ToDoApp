@@ -1,26 +1,51 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
-export const ThemeContext = createContext();  
-export function useTheme(){
+export const ThemeContext = createContext();
+export function useTheme() {
     return useContext(ThemeContext);
 }
-export const bgThemeColors  = {
-    both:"bg-[var(--cross-theme-color)]",
-    dark:"bg-[var(--dark-theme-accent-color)]",
-    light:"bg-[var(--light-theme-accent-color)]",
-    transparent:"bg-[#00000000]"
+
+
+
+export default function Theme({ children }) {
+    function getUserPreference() {
+        return (
+            (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+                ? "dark" : "light"
+        );
+    }
+    const [theme, setTheme] = useState(getUserPreference());
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener("change", () => {
+        setTheme(getUserPreference());
+    });
+    return (
+        <ThemeContext value={[theme, setTheme]}>
+            {children}
+        </ThemeContext>
+    );
+
 }
-export const textThemeColors  = {
-    dark:"text-[var(--dark-theme-accent-color)]",
-    light:"text-[var(--light-theme-accent-color)]"
+
+
+
+
+export const bgThemeColors = {
+    both: "bg-[var(--cross-theme-color)]",
+    dark: "bg-[var(--dark-theme-accent-color)]",
+    light: "bg-[var(--light-theme-accent-color)]",
+    transparent: "bg-[#00000000]"
 }
-export const hoverTextThemeColors  = {
-    dark:"hover:text-[var(--dark-theme-accent-color)]",
-    light:"hover:text-[var(--light-theme-accent-color)]"
+export const textThemeColors = {
+    dark: "text-[var(--dark-theme-accent-color)]",
+    light: "text-[var(--light-theme-accent-color)]"
 }
-export const accentThemeColors  = {
-    dark:"accent-[var(--dark-theme-accent-color)]",
-    light:"accent-[var(--light-theme-accent-color)]"
+export const hoverTextThemeColors = {
+    dark: "hover:text-[var(--dark-theme-accent-color)]",
+    light: "hover:text-[var(--light-theme-accent-color)]"
+}
+export const accentThemeColors = {
+    dark: "accent-[var(--dark-theme-accent-color)]",
+    light: "accent-[var(--light-theme-accent-color)]"
 }
 export const textColors = {
     dark: "text-[var(--dark-text-color)]",
@@ -50,22 +75,12 @@ export const gradientColors = {
     light: " bg-[var(--light-gradient-color)] from-[var(--light-gradient-color)] to-[var(--cross-gradient-color)]"
 }
 
+export const hoverBgThemeColors = {
+    both: "hover:bg-[var(--cross-theme-color)] hover:text-white",
+    dark: "hover:bg-[var(--dark-theme-accent-color)] hover:text-white",
+    light: "hover:bg-[var(--light-theme-accent-color)] hover:text-white",
+    transparent: "hover:bg-[#00000000]"
 
-export default function Theme({children}){
-    function getUserPreference(){
-        return(
-            (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
-            ?"dark" : "light"
-        );
-    }
-    const [theme, setTheme] = useState(getUserPreference());
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener("change",()=>{
-        setTheme(getUserPreference());
-    });
-    return(
-        <ThemeContext value={[theme ,setTheme] }>
-            {children}
-        </ThemeContext>
-    ); 
+
 
 }

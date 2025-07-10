@@ -1,13 +1,16 @@
 @import "tailwindcss";
+
 @font-face {
     font-family: "Roboto Flex";
     src: url(/fonts/RobotoFlex-VariableFont.ttf);
 }
+
 @font-face {
     font-family: "NotoKufi";
     src: url(/fonts/NotoKufiArabic-VariableFont.ttf);
 }
-@theme{
+
+@theme {
     --breakpoint-3xl: 120rem;
     --breakpoint-4xl: 140rem;
     --breakpoint-5xl: 160rem;
@@ -19,82 +22,130 @@
     --breakpoint-11xl: 280rem;
 }
 
-:root{
+:root {
     /* colors */
-    --dark-theme-accent-color:#fc359f;
+    --dark-theme-accent-color: #fc359f;
     --light-theme-accent-color: #3b82f6;
-    
+
     --cross-theme-color: #F0F1F2;
-    
+
     --dark-text-color: #cecece;
     --light-text-color: black;
-    
-    --dark-bg-color: #181818  ;
-    --light-bg-color:#F7F8F8;
-    
-    --light-gradient-color:#0d079e;
+
+    --dark-bg-color: #181818;
+    --light-bg-color: #F7F8F8;
+
+    --light-gradient-color: #0d079e;
     --dark-gradient-color: #DB3B90;
-    --cross-gradient-color:#0deac5;
-    
-    --dark-surface-bg-color:#121212;
-    --light-surface-bg-color:#F0F1F2;
-    
-    --dark-active-surface-bg-color:#1f1f1f;
-    --light-active-surface-bg-color:#e6e6e6;
+    --cross-gradient-color: #0deac5;
+
+    --dark-surface-bg-color: #121212;
+    --light-surface-bg-color: #F0F1F2;
+
+    --dark-active-surface-bg-color: #1f1f1f;
+    --light-active-surface-bg-color: #e6e6e6;
 
 }
 
-@layer components{
-    html,body{
+@layer components {
+
+    html,
+    body {
         width: 100%;
         height: 100%;
         margin: 0;
         padding: 0;
         scrollbar-width: thin;
         scrollbar-color: #8b8b8b transparent;
-        
+
     }
-    html{
+
+    html {
         font-family: "Roboto Flex";
-        @apply text-[17px]  xl:text-[18px] 2xl:text-[23px] 3xl:text-[28px] 4xl:text-[33px] 5xl:text-[37px] 6xl:text-[45px] 7xl:text-[50px] 8xl:text-[54px] 9xl:text-[58px] 10xl:text-[63px] 11xl:text-[68px];
+        @apply text-[17px] xl:text-[18px] 2xl:text-[23px] 3xl:text-[28px] 4xl:text-[33px] 5xl:text-[37px] 6xl:text-[45px] 7xl:text-[50px] 8xl:text-[54px] 9xl:text-[58px] 10xl:text-[63px] 11xl:text-[68px];
     }
-    html:lang(ar){
-        font-family: "NotoKufi";  
+
+    html:lang(ar) {
+        font-family: "NotoKufi";
     }
-    h1,h2,h3{
+
+    h1,
+    h2,
+    h3 {
         font-weight: bold;
     }
-    h1{ font-size: 3rem; text-align: center;}
-    h2{ font-size: 2rem;}
-    h3{ font-size: 1.35rem}
 
-    input[type="checkbox"]{
+    h1 {
+        font-size: 3rem;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.35rem
+    }
+
+    input[type="checkbox"] {
         cursor: pointer;
     }
-    
+
     input[type="number"]::-webkit-inner-spin-button,
-    input[type="number"]::-webkit-outer-spin-button
-    {
+    input[type="number"]::-webkit-outer-spin-button {
         appearance: none;
     }
+
     @media screen and (min-width: 768px) {
-        .dark-outterShadow{
-            box-shadow: inset 0.05rem 0.05rem 0.5rem rgba(255, 255, 255, 0.5),inset  -0.05rem -0.05rem 0.5rem rgba(247, 248, 248,0.5); 
+        .dark-outterShadow {
+            box-shadow: inset 0.05rem 0.05rem 0.5rem rgba(255, 255, 255, 0.5), inset -0.05rem -0.05rem 0.5rem rgba(247, 248, 248, 0.5);
         }
-        .light-outterShadow{
-            box-shadow: inset 0.05rem 0.05rem 0.5rem rgba(0, 0, 0, 0.7),inset  -0.05rem -0.05rem 0.5rem rgba(0, 0, 0, 0.7);
+
+        .light-outterShadow {
+            box-shadow: inset 0.05rem 0.05rem 0.5rem rgba(0, 0, 0, 0.7), inset -0.05rem -0.05rem 0.5rem rgba(0, 0, 0, 0.7);
         }
     }
 
     @keyframes gradient-animation {
-        0%{
-            background-position:left;
+        0% {
+            background-position: left;
         }
-        100%{
-            background-position:right;
+
+        100% {
+            background-position: right;
         }
     }
-    .animate-radial{
+
+    .animate-radial {
         animation: gradient-animation 1.5s forwards;
+    }
+
+    @keyframes in-opacity-animation {
+        0% {
+            opacity: 30%;
+        }
+
+        100% {
+            opacity: 100%;
+        }
+    }
+
+    @keyframes out-opacity-animation {
+        0% {
+            opacity: 100%;
+        }
+
+        100% {
+            opacity: 30%;
+        }
+    }
+
+    .animate-in-opacity {
+        animation: in-opacity-animation 0.3s forwards;
+    }
+
+    .animate-out-opacity {
+        animation: out-opacity-animation 0.2s forwards;
     }
 }
