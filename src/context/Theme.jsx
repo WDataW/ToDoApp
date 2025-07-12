@@ -15,9 +15,24 @@ export default function Theme({ children }) {
         );
     }
     const [theme, setTheme] = useState(getUserPreference());
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener("change", () => {
+
+
+    function initTheme() {
         setTheme(getUserPreference());
-    });
+    }
+    useEffect(() => {
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener("change",
+            initTheme
+        );
+        return () => {
+            window.matchMedia('(prefers-color-scheme: dark)').removeEventListener("change",
+                initTheme
+            );
+        };
+    }, []
+    );
+
     return (
         <ThemeContext value={[theme, setTheme]}>
             {children}

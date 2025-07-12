@@ -12,11 +12,11 @@ const themeStyles = {
 };
 const icons = {
     light: {
-        calender: "bg-[url(/src/assets/icons/light/calendar.svg)]",
+        calendar: "bg-[url(/src/assets/icons/light/calendar.svg)]",
         clock: "bg-[url(/src/assets/icons/light/clock.svg)]"
     },
     dark: {
-        calender: "bg-[url(/src/assets/icons/dark/calendar.svg)]",
+        calendar: "bg-[url(/src/assets/icons/dark/calendar.svg)]",
         clock: "bg-[url(/src/assets/icons/dark/clock.svg)]"
     }
 }
@@ -45,7 +45,6 @@ export default function Task({ className = "", taskObj = {}, children, ...props 
         setOpened(!opened);
     }
     const [opened, setOpened] = useState(false);
-
     const [theme] = useTheme();
     const [checked, setChecked] = useState(false);
     const taskContent = (
@@ -55,7 +54,7 @@ export default function Task({ className = "", taskObj = {}, children, ...props 
             <div className="me-[0.5rem]">
                 <div className="text-[0.7rem] opacity-">
                     <div className=" opacity-60 flex items-center ">
-                        <span className={`inline-block h-[0.6rem] w-[0.6rem] me-[0.2rem] ${icons[theme]["calender"]} bg-cover bg-no-repeat `}></span>{getDueDate(taskObj)}
+                        <span className={`inline-block h-[0.6rem] w-[0.6rem] me-[0.2rem] ${icons[theme]["calendar"]} bg-cover bg-no-repeat `}></span>{getDueDate(taskObj)}
                         <span className={`inline-block h-[0.6rem] w-[0.6rem] ms-[0.5rem] me-[0.2rem] ${icons[theme]["clock"]} bg-cover bg-no-repeat`}></span>{getDueTime(taskObj)}
                     </div>
                     <div className="flex items-center flex-wrap">
