@@ -15,7 +15,10 @@
         "tasks": "Tasks",
         "stats": "Stats",
         "profile": "Profile",
-        "inbox": "Inbox"
+        "inbox": "Inbox",
+        "edit": "Edit",
+        "reschedule": "Reschedule",
+        "delete": "Delete"
     },
     "fields": {
         "username": "Username",

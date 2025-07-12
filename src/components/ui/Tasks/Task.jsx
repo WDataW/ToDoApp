@@ -1,7 +1,7 @@
 import { useTheme } from "../../../context/Theme";
 import CheckTask from "../checkboxes/CheckTask";
 import { MeatballMenu } from "../buttons";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getDueDate, getDueTime, getTaskTags } from "./tasks";
 import { createPortal } from 'react-dom';
 
@@ -20,28 +20,37 @@ const icons = {
         clock: "bg-[url(/src/assets/icons/dark/clock.svg)]"
     }
 }
+
+
+
 let actionsMenu;
-function handleMeatballClick(e, taskObjId, clicked, setClicked) {
-
-    const meatballButton = e.target;
-    const position = meatballButton.getBoundingClientRect();
-
-    actionsMenu = <ActionsContainer scrolableParent={document.getElementById(taskObjId).parentElement.parentElement.parentElement} setOpened={setClicked} position={position} />
-    setClicked(!clicked);
-}
-
-
-
 export default function Task({ className = "", taskObj = {}, children, ...props }) {
+
+    function handleMeatballClick(e) {
+        const meatballButton = e.target;
+        if (!opened) {
+            const position = meatballButton.getBoundingClientRect();
+
+            actionsMenu = <ActionsContainer
+                actionsArray={["edit", "reschedule", "delete"]}
+                taskId={taskObj.id}
+                tabIndex="-1"
+                scrolableParent={document.getElementById(taskObj.id).parentElement.parentElement.parentElement}
+                meatballButton={meatballButton}
+                position={position}
+            />
+        } else {
+            meatballButton.focus();
+        }
+        setOpened(!opened);
+    }
+    const [opened, setOpened] = useState(false);
+
     const [theme] = useTheme();
     const [checked, setChecked] = useState(false);
-    const [clicked, setClicked] = useState(false);
-
-
-
     const taskContent = (
         <div id={taskObj.id} className={`${themeStyles[theme]} relative py-[0.5rem] px-[0.8rem] flex  rounded-[1.5rem] ${className}`} {...props}>
-            {(clicked && !checked) && createPortal(actionsMenu, document.getElementById("homePage"))}
+            {(opened && !checked) && createPortal(actionsMenu, document.getElementById("homePage").querySelector("main"))}
             <CheckTask checked={checked} onChange={handleChange} className=" ms-[0.15rem] me-[0.9rem] mt-[0.65rem] " />
             <div className="me-[0.5rem]">
                 <div className="text-[0.7rem] opacity-">
@@ -67,13 +76,13 @@ export default function Task({ className = "", taskObj = {}, children, ...props 
                 <p>{taskObj.title}</p>
             </div>
             <MeatballMenu onClick={(e) => {
-                handleMeatballClick(e, taskObj.id, clicked, setClicked);
+                handleMeatballClick(e);
             }} className="ms-auto me-[0.25rem] mt-[0.65rem]  h-[1.4rem] w-[1.4rem]"></MeatballMenu>
         </div>
     );
     function handleChange() {
         setChecked(!checked);
-        setClicked(false);
+        setOpened(false);
     }
 
 

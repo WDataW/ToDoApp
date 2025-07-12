@@ -16,9 +16,11 @@ function App() {
     <SignInPage></SignInPage>
     <SetNewPasswordPage></SetNewPasswordPage>
     <SignUpPage></SignUpPage>
+
     <HomePage></HomePage>
-     */}
+    */}
       <HomePage></HomePage>
+
     </>
   );
 }

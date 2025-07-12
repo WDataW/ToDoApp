@@ -8,7 +8,7 @@ import { useTranslation } from "../../context/Language";
 export default function HomePage({ className = "", children, user, ...props }) {
     const [userInfo] = useInfo();
     const t = useTranslation();
-    console.log(new Date().toLocaleString());
+
     return (
         <AppPage id="homePage" className="relative">
             <AppPageHeader>{t("titles.home")}</AppPageHeader>
@@ -20,6 +20,7 @@ export default function HomePage({ className = "", children, user, ...props }) {
                     <TasksSection filterKey="overdue" className="min-w-full md:odd:me-[1rem] mb-[1rem] flex-1 md:min-w-2/5 md:max-w-[calc(50%-0.5rem)]" heading={t("titles.overdue")}></TasksSection>
 
                 </main>
+
             </div>
         </AppPage>
     );

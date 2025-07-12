@@ -15,7 +15,10 @@
         "tasks": "المهام",
         "stats": "الإحصاءات",
         "profile": "حسابي",
-        "inbox": "البريد "
+        "inbox": "البريد ",
+        "edit": "تعديل",
+        "reschedule": "إعادة جدولة",
+        "delete": "حذف"
     },
     "fields": {
         "username": "اسم المستخدم",
