@@ -40,7 +40,6 @@ export function filterTasks(tasks, filterKey) {
 }
 
 import { useLang, useTranslation } from "../../../context/Language";
-import Theme from "../../../context/Theme";
 export function getDueDate(task) {
     const [lang] = useLang();
     const t = useTranslation();
@@ -135,4 +134,30 @@ export function getTaskTags(task) {
         ...createDefaultTags(task),
         ...task.tags
     ]
+}
+
+import { useTasks } from "../../../context/User";
+function useEditTask(customTarget = "") {
+    const [tasks, setTasks] = useTasks();
+    function editTask(taskId, newValue, targetKey = customTarget) {
+
+        const newTasks = tasks.map((task) => {
+            if (task.id !== taskId) {
+                return task;
+            }
+            let editedTask = task;
+            for (let key in task) {
+                if (key == targetKey) {
+                    editedTask = { ...task, [key]: newValue }
+                }
+            }
+            return editedTask
+        });
+        setTasks(newTasks);
+    }
+    return editTask;
+}
+
+export function useEditTaskStatus() {
+    return useEditTask("status");
 }

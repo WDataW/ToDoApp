@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { sortTasksByDate } from "../components/ui/Tasks/Tasks";
+import { sortTasksByDate } from "../components/ui/Tasks/tasks";
 import userData from "/src/assets/user.json";
 const UserInfoContext = createContext();
 const UserTasksContext = createContext();
@@ -17,6 +17,8 @@ export function useInbox() {
 export function UserAchievements() {
     return useContext(UserAchievementsContext);
 }
+
+
 export default function User({ children }) {
     const [infoState, setInfoState] = useState(userData.info);
     const [tasksState, setTasksState] = useState(sortTasksByDate(userData.tasks));

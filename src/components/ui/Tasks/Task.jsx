@@ -4,7 +4,6 @@ import { MeatballMenu } from "../buttons";
 import { useEffect, useRef, useState } from "react";
 import { getDueDate, getDueTime, getTaskTags } from "./tasks";
 import { createPortal } from 'react-dom';
-
 import ActionsContainer from "./ActionsContainer";
 const themeStyles = {
     dark: "bg-[#222222] text-white",
@@ -22,9 +21,11 @@ const icons = {
 }
 
 
-
+import { useEditTaskStatus } from "./tasks";
 let actionsMenu;
 export default function Task({ className = "", taskObj = {}, children, ...props }) {
+    const editStatus = useEditTaskStatus();
+
 
     function handleMeatballClick(e) {
         const meatballButton = e.target;
@@ -50,7 +51,7 @@ export default function Task({ className = "", taskObj = {}, children, ...props 
     const taskContent = (
         <div id={taskObj.id} className={`${themeStyles[theme]} relative py-[0.5rem] px-[0.8rem] flex  rounded-[1.5rem] ${className}`} {...props}>
             {(opened && !checked) && createPortal(actionsMenu, document.getElementById("homePage").querySelector("main"))}
-            <CheckTask checked={checked} onChange={handleChange} className=" ms-[0.15rem] me-[0.9rem] mt-[0.65rem] " />
+            <CheckTask checked={checked} onChange={handleChecked} className=" ms-[0.15rem] me-[0.9rem] mt-[0.65rem] " />
             <div className="me-[0.5rem]">
                 <div className="text-[0.7rem] opacity-">
                     <div className=" opacity-60 flex items-center ">
@@ -79,7 +80,10 @@ export default function Task({ className = "", taskObj = {}, children, ...props 
             }} className="ms-auto me-[0.25rem] mt-[0.65rem]  h-[1.4rem] w-[1.4rem]"></MeatballMenu>
         </div>
     );
-    function handleChange() {
+
+    function handleChecked(e) {
+        const taskId = e.target.parentElement.id;
+        editStatus(taskId, !checked ? "completed" : "active")
         setChecked(!checked);
         setOpened(false);
     }
