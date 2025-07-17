@@ -32,6 +32,7 @@
         "rememberMe": "Remember me"
     },
     "terms": {
+        "noTasksAvaiable": "No tasks available.",
         "highPriority": "High Priority",
         "mediumPriority": "Medium Priority",
         "lowPriority": "Low Priority",

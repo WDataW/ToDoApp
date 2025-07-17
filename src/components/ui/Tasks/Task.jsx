@@ -35,13 +35,10 @@ export default function Task({ className = "", taskObj = {}, children, ...props 
             actionsMenu = <ActionsContainer
                 actionsArray={["edit", "reschedule", "delete"]}
                 taskId={taskObj.id}
-                tabIndex="-1"
                 scrolableParent={document.getElementById(taskObj.id).parentElement.parentElement.parentElement}
                 meatballButton={meatballButton}
                 position={position}
             />
-        } else {
-            meatballButton.focus();
         }
         setOpened(!opened);
     }

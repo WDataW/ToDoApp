@@ -27,7 +27,7 @@ export default function Action({ className = "", action, children, ...props }) {
     const hoverThemeBgColor = hoverBgThemeColors[theme];
     const t = useTranslation();
     return (
-        <button className={`${className} group ps-[0.5rem] flex  items-center py-[0.5rem] rounded-[0.5rem] transition duration-80 ${hoverThemeBgColor}`} {...props}>
+        <button tabIndex="0" className={`${className} group ps-[0.5rem] flex  items-center py-[0.5rem] rounded-[0.5rem] transition duration-80 ${hoverThemeBgColor}`} {...props}>
             <span className={`${icon} ${hoverIcon}  me-[0.3em] h-[1rem] w-[1rem] bg-center bg-cover bg-no-repeat`}></span>
             <span className=" h-[1.15rem] ">
                 {t(`titles.${action}`)}

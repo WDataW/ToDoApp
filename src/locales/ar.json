@@ -32,6 +32,7 @@
         "rememberMe": "تذكرني"
     },
     "terms": {
+        "noTasksAvaiable": "لا يوجد مهام.",
         "highPriority": "أولوية عالية",
         "mediumPriority": "أولوية متوسطة",
         "lowPriority": "أولوية منخفضة",

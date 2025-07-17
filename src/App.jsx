@@ -3,6 +3,7 @@ import { useState } from 'react'
 
 // components
 import { OutlinedImageAnchor, MainNav, BottomNav, SideNav } from './components/ui';
+import { FloatingContainer } from './components/ui/containers';
 import { Page, VerificationCodePage, ForgotPasswordPage, SignInPage, SetNewPasswordPage, SignUpPage, HomePage } from "./Pages";
 import ActionsContainer from './components/ui/Tasks/ActionsContainer';
 function App() {
@@ -19,6 +20,7 @@ function App() {
 
     <HomePage></HomePage>
     */}
+
       <HomePage></HomePage>
 
     </>
