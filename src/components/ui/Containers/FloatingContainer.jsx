@@ -9,12 +9,13 @@ import { useRef, useId, useEffect } from 'react';
 export default function FloatingContainer({ className = "", hide, lastFocused, scrolableParent = null, children, ...props }) {
     const self = useRef(null);
     useEffect(() => {
+        const selfRef = self.current;
         document.addEventListener("click", handleClickAway);
-        self.current.addEventListener("keydown", handleEscape);
+        selfRef.addEventListener("keydown", handleEscape);
         if (scrolableParent) {
             scrolableParent.addEventListener("scroll", handleParentScroll);
         }
-        const focusableChildren = self.current.querySelectorAll("[tabIndex='0']");
+        const focusableChildren = selfRef.querySelectorAll("[tabIndex='0']");
         let firstChild;
         let lastChild;
 
@@ -27,21 +28,28 @@ export default function FloatingContainer({ className = "", hide, lastFocused, s
 
         }
         return () => {
-            if (self.current) {
-
-                self.current.removeEventListener("keydown", handleEscape);
-                document.removeEventListener("click", handleClickAway);
-                if (scrolableParent) {
-                    scrolableParent.removeEventListener("scroll", handleParentScroll);
-                }
-                if (focusableChildren.length !== 0) {
-                    firstChild.removeEventListener("keydown", handleShiftTab);
-                    lastChild.removeEventListener("keydown", handleTab);
-                }
-            }
-
+            cleanUpListeners(selfRef)
         }
     }, []);
+    function cleanUpListeners(selfRef) {
+        const focusableChildren = selfRef.querySelectorAll("[tabIndex='0']");
+        if (selfRef) {
+            if (scrolableParent) {
+                scrolableParent.removeEventListener("scroll", handleParentScroll);
+            }
+            selfRef.removeEventListener("keydown", handleEscape);
+            document.removeEventListener("click", handleClickAway);
+            if (focusableChildren.length !== 0) {
+                const firstChild = focusableChildren[0];
+                firstChild.removeEventListener("keydown", handleShiftTab);
+
+                const lastChild = focusableChildren[focusableChildren.length - 1];
+                lastChild.removeEventListener("keydown", handleTab);
+            }
+        }
+    }
+
+
     let onlyOnce = true; // to allow only one scroll event to be handled, no more.
     function handleParentScroll(e) {
         if (onlyOnce) handleHide(e);
@@ -52,16 +60,21 @@ export default function FloatingContainer({ className = "", hide, lastFocused, s
             handleHide(e);
         }
     }
+    let index = 0;
     function handleShiftTab(e) {
         if (e.key == "Tab" && e.shiftKey) {
             handleHide(e);
         }
     }
     function handleTab(e) {
+        console.log(index);
         if (e.key == "Tab" && !e.shiftKey) {
+            e.preventDefault();
+            const firstChild = self.current.querySelectorAll("[tabIndex='0']")[0];
+            firstChild.focus();
 
-            handleHide(e);
         }
+
     }
     function handleEscape(e) {
         if (e.key == "Escape") handleHide(e);
@@ -69,15 +82,13 @@ export default function FloatingContainer({ className = "", hide, lastFocused, s
     let ignoreHide = true;// the interaction causing the FloatingContainer to be mounted is also invoking handleHide therefore the first interaction is ignored
     function handleHide(e) {
         if (!ignoreHide) {
-            e.preventDefault();
-            hide();
-            rememberFocus();
+            cleanUpListeners(self.current);
+            hide(e);
+            ignoreHide = true;
         }
         ignoreHide = false;
     }
-    function rememberFocus() {
-        lastFocused.focus();
-    }
+
 
 
     const id = useId();

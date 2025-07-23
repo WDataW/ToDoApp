@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { useInfo } from "./User";
 
 export const ThemeContext = createContext();
 export function useTheme() {
@@ -8,28 +9,32 @@ export function useTheme() {
 
 
 export default function Theme({ children }) {
-    function getUserPreference() {
+    function getBrowserPreference() {
         return (
             (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
                 ? "dark" : "light"
         );
     }
-    const [theme, setTheme] = useState(getUserPreference());
+    const [userInfo] = useInfo();
+    const userTheme = userInfo["settings"]["theme"];
+
+    const [theme, setTheme] = useState(userTheme || getBrowserPreference());
 
 
     function initTheme() {
-        setTheme(getUserPreference());
+        setTheme(getBrowserPreference());
     }
     useEffect(() => {
-
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener("change",
-            initTheme
-        );
-        return () => {
-            window.matchMedia('(prefers-color-scheme: dark)').removeEventListener("change",
+        if (!userTheme) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener("change",
                 initTheme
             );
-        };
+            return () => {
+                window.matchMedia('(prefers-color-scheme: dark)').removeEventListener("change",
+                    initTheme
+                );
+            };
+        }
     }, []
     );
 
@@ -95,7 +100,17 @@ export const hoverBgThemeColors = {
     dark: "hover:bg-[var(--dark-theme-accent-color)] hover:text-white",
     light: "hover:bg-[var(--light-theme-accent-color)] hover:text-white",
     transparent: "hover:bg-[#00000000]"
+}
+export const focusBgThemeColors = {
+    both: "focus:bg-[var(--cross-theme-color)] focus:text-white",
+    dark: "focus:bg-[var(--dark-theme-accent-color)] focus:text-white",
+    light: "focus:bg-[var(--light-theme-accent-color)] focus:text-white",
+    transparent: "focus:bg-[#00000000]"
+}
 
-
-
+export const outlineFocusThemeColors = {
+    both: "focus:outline-[var(--cross-theme-color)]",
+    dark: "focus:outline-[var(--dark-theme-accent-color)]",
+    light: "focus:outline-[var(--light-theme-accent-color)]",
+    transparent: "focus:outline-[#00000000]"
 }

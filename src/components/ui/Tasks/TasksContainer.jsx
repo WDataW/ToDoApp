@@ -7,7 +7,7 @@ export default function TasksContainer({ className = "", filterKey = "", childre
     const filteredTasks = filterTasks(tasks, filterKey);
     const t = useTranslation();
     return (
-        <ol className={`flex flex-col gap-[0.5rem] overflow-auto max-h-[20rem]   px-[0.4rem] ${className}`} {...props}>
+        <ol className={`tasks-container flex flex-col gap-[0.5rem] overflow-auto max-h-[20rem]   px-[0.4rem] ${className}`} {...props}>
             {filteredTasks.map((task, i) => {
                 return (
                     <li key={i}>

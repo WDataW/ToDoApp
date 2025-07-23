@@ -31,16 +31,22 @@ export default function Task({ className = "", taskObj = {}, children, ...props 
         const meatballButton = e.target;
         if (!opened) {
             const position = meatballButton.getBoundingClientRect();
-
+            const scrolableParent = meatballButton.closest(".tasks-container");
             actionsMenu = <ActionsContainer
                 actionsArray={["edit", "reschedule", "delete"]}
                 taskId={taskObj.id}
-                scrolableParent={document.getElementById(taskObj.id).parentElement.parentElement.parentElement}
+                scrolableParent={scrolableParent}
                 meatballButton={meatballButton}
+                hideMenu={hideActionsMenu}
                 position={position}
             />
         }
         setOpened(!opened);
+    }
+
+    function hideActionsMenu() {
+        setOpened(false);
+
     }
     const [opened, setOpened] = useState(false);
     const [theme] = useTheme();
@@ -74,7 +80,7 @@ export default function Task({ className = "", taskObj = {}, children, ...props 
             </div>
             <MeatballMenu onClick={(e) => {
                 handleMeatballClick(e);
-            }} className="ms-auto me-[0.25rem] mt-[0.65rem]  h-[1.4rem] w-[1.4rem]"></MeatballMenu>
+            }} className="meatball-actions ms-auto me-[0.25rem] mt-[0.65rem]  h-[1.4rem] w-[1.4rem]"></MeatballMenu>
         </div>
     );
 

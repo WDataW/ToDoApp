@@ -6,7 +6,7 @@ export default function MainNav({ className = "", invert = false, ulClassName = 
     const [theme] = useTheme();
     const bgColor = surfaceBgColors[theme];
     return (
-        <Nav ulClassName={ulClassName} className={`z-9 ${className} ${bgColor}`} {...props}>
+        <Nav ulClassName={ulClassName} className={`z-100 ${className} ${bgColor}`} {...props}>
             {invert && <ProfileNav />}
             <HomeNav active={true} />
             <TasksNav />

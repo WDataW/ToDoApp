@@ -19,7 +19,7 @@
       "description": "Implement filter by status and priority in the tasks page.",
       "status": "not-started",
       "priority": "medium",
-      "dueDate": "2025-07-06T14:00:00Z",
+      "dueDate": "2025-07-24T13:00:00Z",
       "createdAt": "2025-07-03T09:30:00Z",
       "dueDateMs": 1751810400000,
       "tags": [
@@ -39,7 +39,7 @@
       "description": "Use Framer Motion to add smooth transitions between pages.",
       "status": "in-progress",
       "priority": "low",
-      "dueDate": "2025-07-07T17:00:00Z",
+      "dueDate": "2025-07-23T20:00:00Z",
       "createdAt": "2025-07-03T10:00:00Z",
       "dueDateMs": 1751907600000,
       "tags": [
