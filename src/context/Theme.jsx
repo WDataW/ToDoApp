@@ -6,6 +6,12 @@ export function useTheme() {
     return useContext(ThemeContext);
 }
 
+export function useUpdateUserTheme() {
+    const [userInfo, setUserInfo] = useInfo();
+    return (theme) => {
+        setUserInfo({ ...userInfo, settings: { ...userInfo["settings"], theme: theme } });
+    }
+}
 
 
 export default function Theme({ children }) {
@@ -19,6 +25,7 @@ export default function Theme({ children }) {
     const userTheme = userInfo["settings"]["theme"];
 
     const [theme, setTheme] = useState(userTheme || getBrowserPreference());
+
 
 
     function initTheme() {

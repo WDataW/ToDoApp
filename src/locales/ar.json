@@ -32,6 +32,8 @@
         "rememberMe": "تذكرني"
     },
     "terms": {
+        "searchTag": "ابحث عن تصنيف",
+        "active": "غير مكتملة",
         "noTasksAvaiable": "لا يوجد مهام.",
         "highPriority": "أولوية عالية",
         "mediumPriority": "أولوية متوسطة",

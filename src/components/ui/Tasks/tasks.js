@@ -1,45 +1,91 @@
+import { useTasks } from "../../../context/User";
+import { useTheme } from "../../../context/Theme";
+import { useLang, useTranslation } from "../../../context/Language";
 import { dateFormatters, timeFormatters } from "../../../scripts/dateTime";
-// not finished at this point
-export function filterTasks(tasks, filterKey) {
+
+export function loopFilterTasks(tasks, filterKeys) {
+    if (filterKeys.length == 0) {
+        return tasks;
+    }
+    let newTasks = tasks;
+    for (let filter of filterKeys) {
+        newTasks = filterTasks(newTasks, filter);
+    }
+    return newTasks
+}
+function filterTasks(tasks, filterKey) {
+    const t = useTranslation();
+    filterKey = filterKey.toLowerCase();
+    console.log(filterKey);
     const [lang] = useLang();
-    switch (filterKey) {
-        case "today": {
-            const nowDate = dateFormatters[lang](new Date());
-            const todayTasks = tasks.filter(
-                (task) => {
-                    const dueDate = dateFormatters[lang](new Date(task.dueDate));
-                    return dueDate == nowDate;
-                }
-            );
-            return todayTasks;
-        };
-        case "tomorrow": {
-            const tmrwDate = new Date();
-            tmrwDate.setDate(tmrwDate.getDate() + 1);
-            const tomorrowTasks = tasks.filter(
-                (task) => {
-                    const dueDate = new Date(task.dueDate);
-                    return (dueDate.getFullYear() == tmrwDate.getFullYear() && dueDate.getMonth() == tmrwDate.getMonth() && dueDate.getDate() == tmrwDate.getDate());
-                })
-            return tomorrowTasks;
-        };
-        case "overdue": {
-            const nowDate = new Date();
-            const overdueTasks = tasks.filter(
-                (task) => {
-                    const dueDate = new Date(task.dueDate);
-                    return (dueDate.getTime() < nowDate.getTime());
-                })
-            return overdueTasks;
-        };
-        case "hight-priority": { };
-        default: {
+    if (filterKey == "today") {
+        const nowDate = dateFormatters[lang](new Date());
+        const todayTasks = tasks.filter(
+            (task) => {
+                const dueDate = dateFormatters[lang](new Date(task.dueDate));
+                return dueDate == nowDate;
+            }
+        );
+        return todayTasks;
+
+    } else if (filterKey == t("titles.tomorrow")) {
+        const tmrwDate = new Date();
+        tmrwDate.setDate(tmrwDate.getDate() + 1);
+        const tomorrowTasks = tasks.filter(
+            (task) => {
+                const dueDate = new Date(task.dueDate);
+                return (dueDate.getFullYear() == tmrwDate.getFullYear() && dueDate.getMonth() == tmrwDate.getMonth() && dueDate.getDate() == tmrwDate.getDate());
+            })
+        return tomorrowTasks;
+
+    } else if (filterKey == t("titles.overdue").toLowerCase()) {
+        const nowDate = new Date();
+        const overdueTasks = tasks.filter(
+            (task) => {
+                const dueDate = new Date(task.dueDate);
+                return (dueDate.getTime() < nowDate.getTime());
+            })
+        return overdueTasks;
+
+    } else if (filterKey == t("terms.active").toLowerCase()) {
+        const nowDate = new Date();
+        const overdueTasks = tasks.filter(
+            (task) => {
+                const dueDate = new Date(task.dueDate);
+                return (dueDate.getTime() > nowDate.getTime());
+            })
+        return overdueTasks;
+
+    } else if (filterKey == t("terms.highPriority").toLowerCase()) {
+
+        return tasks.filter((task) => task.priority == "high");
+
+
+    } else if (filterKey == t("terms.mediumPriority").toLowerCase()) {
+        return tasks.filter((task) => task.priority == "medium");
+
+    } else if (filterKey == t("terms.lowPriority").toLowerCase()) {
+        return tasks.filter((task) => task.priority == "low");
+
+    } else {
+        if (!filterKey) {
             return tasks;
         }
+        return tasks.filter((task) => {
+            for (let tag of task.tags) {
+                if (tag.title.toLowerCase() == filterKey) {
+                    return true;
+                }
+            }
+            return false;
+        })
     }
+
 }
 
-import { useLang, useTranslation } from "../../../context/Language";
+
+
+
 export function getDueDate(task) {
     const [lang] = useLang();
     const t = useTranslation();
@@ -94,7 +140,7 @@ function partition(array, start, end) {
 function getDuePhrase(task) {
     const t = useTranslation();
     const nowMs = new Date().getTime();
-    const dueMs = task.dueDateMs;
+    const dueMs = new Date(task.dueDate).getTime();
     if (nowMs - dueMs >= 0) {
         return t("titles.overdue");
     } else if (dueMs - nowMs <= 10800000) {
@@ -104,11 +150,10 @@ function getDuePhrase(task) {
     }
 }
 
-import { useTheme } from "../../../context/Theme";
 const priorityStyles = {
-    high: "bg-red-600",
-    medium: "bg-yellow-600",
-    low: "bg-gray-400"
+    high: "bg-[#ef4444]",
+    medium: "bg-[#ffdf20]",
+    low: "bg-[#9ca3af]"
 }
 const alertIcons = {
     light: "bg-[url(/src/assets/icons/light/alert-circle.svg)]",
@@ -136,7 +181,6 @@ export function getTaskTags(task) {
     ]
 }
 
-import { useTasks } from "../../../context/User";
 function useEditTask(customTarget = "") {
     const [tasks, setTasks] = useTasks();
     function editTask(taskId, newValue, targetKey = customTarget) {
@@ -160,4 +204,52 @@ function useEditTask(customTarget = "") {
 
 export function useEditTaskStatus() {
     return useEditTask("status");
+}
+
+
+let currentTagIndex = 0;
+export function getAllTags() {
+    const [tasks] = useTasks();
+    const t = useTranslation();
+    let tags = [
+        { title: t("terms.active"), icon: "bg-[#d1d5db]" },
+        { title: t("terms.highPriority"), icon: priorityStyles["high"] },
+        { title: t("terms.today"), icon: "bg-[#bbf7d0]" },
+        { title: t("titles.tomorrow"), icon: "bg-[#fef3c7]" },
+        { title: t("titles.overdue"), icon: "bg-[#fca5a5]" },
+        { title: t("terms.mediumPriority"), icon: priorityStyles["medium"] },
+        { title: t("terms.lowPriority"), icon: priorityStyles["low"] }
+    ]
+    for (let task of tasks) {
+        tags = [...tags, ...task.tags];
+    }
+    tags = removeDublicateTags(tags);
+    currentTagIndex = 0;
+    return tags;
+}
+
+function removeDublicateTags(tags) {
+    if (currentTagIndex >= tags.length) {
+        return tags;
+    }
+    const indecies = findDublicates(tags[currentTagIndex], tags);
+    if (indecies.length !== 0) {
+        for (let index of indecies) {
+            tags.splice(index, 1);
+        }
+    }
+    currentTagIndex++;
+    return removeDublicateTags(tags);
+}
+
+function findDublicates(targetTag, tags) {
+    const indecies =
+        tags
+            .map((tag, i) =>
+                tag.title == targetTag.title ? i : -1
+            ).filter(index =>
+                index !== -1
+            );
+    indecies.shift();
+    return indecies;
 }

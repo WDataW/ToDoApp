@@ -3,12 +3,10 @@ const inboxIcons = {
     dark: "/src/assets/icons/dark/mail.svg",
     light: "/src/assets/icons/light/mail.svg"
 }
-import { SettingsAnchor, InboxAnchor } from "../../ui";
-import { useId } from "react";
+import { SettingsAnchor } from "../../ui";
 import { useTranslation } from "../../../context/Language";
 import { useTheme } from "../../../context/Theme";
 export default function SideNav({ ...props }) {
-    const id = useId()
     const t = useTranslation();
     const [theme] = useTheme();
     return (

@@ -6,6 +6,7 @@ function getBrowserLanguage() {
     return navigator.language.startsWith("ar") ? "ar" : "en";
 }
 import userData from "../../src/assets/user.json";
+import { useInfo } from "./User";
 function getInitLang() {
     return userData["info"]["settings"]["language"] || getBrowserLanguage();
 }
@@ -23,10 +24,20 @@ i18next.init({
     }
 
 });
+
 export function updateLang(lang) {
     i18next.changeLanguage(lang);
     document.documentElement.lang = lang;
-    document.body.dir = getDirection(lang)
+    document.body.dir = getDirection(lang);
+
+}
+
+export function useUpdateUserLang() {
+    const [userInfo, setUserInfo] = useInfo();
+    return (lang) => {
+        updateLang(lang);
+        setUserInfo({ ...userInfo, settings: { ...userInfo["settings"], language: lang } });
+    }
 }
 export function getDirection(lang) {
     return lang == "ar" ? "rtl" : "ltr";
@@ -41,13 +52,15 @@ const TranslationContext = createContext()
 const LangContext = createContext();
 
 
-
 export default function Language({ children }) {
     const [lang, setLang] = useState(getInitLang());
     const dir = getDirection(lang);
 
+
+
+    const updateUserLang = useUpdateUserLang();
     useEffect(() => {// to initialize app language
-        updateLang(lang)
+        updateUserLang(lang);
     }, []);
 
     return (
