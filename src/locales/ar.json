@@ -33,6 +33,7 @@
     },
     "terms": {
         "searchTag": "ابحث عن تصنيف",
+        "searchTask": "ابحث عن مهمة ",
         "active": "غير مكتملة",
         "noTasksAvaiable": "لا يوجد مهام.",
         "highPriority": "أولوية عالية",

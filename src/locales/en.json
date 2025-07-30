@@ -32,7 +32,8 @@
         "rememberMe": "Remember me"
     },
     "terms": {
-        "searchTag": "Search by tag",
+        "searchTag": "Search tags",
+        "searchTask": "Search tasks",
         "active": "Active",
         "noTasksAvaiable": "No tasks available.",
         "highPriority": "High Priority",

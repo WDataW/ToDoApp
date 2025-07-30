@@ -17,7 +17,5 @@ export default function TaskCategory({ i, active, handleClick = {}, tag = {}, cl
                 )
             }
         </>
-
-
     );
 }

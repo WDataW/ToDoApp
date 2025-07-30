@@ -3,20 +3,19 @@ import { useTheme } from "../../../context/Theme";
 import { useLang, useTranslation } from "../../../context/Language";
 import { dateFormatters, timeFormatters } from "../../../scripts/dateTime";
 
-export function loopFilterTasks(tasks, filterKeys) {
+export function loopFilterTasks(tasks, filterKeys, filterType) {
     if (filterKeys.length == 0) {
         return tasks;
     }
     let newTasks = tasks;
     for (let filter of filterKeys) {
-        newTasks = filterTasks(newTasks, filter);
+        newTasks = filterTasks(newTasks, filter, filterType);
     }
     return newTasks
 }
-function filterTasks(tasks, filterKey) {
+export function filterTasks(tasks, filterKey, filterType) {
     const t = useTranslation();
     filterKey = filterKey.toLowerCase();
-    console.log(filterKey);
     const [lang] = useLang();
     if (filterKey == "today") {
         const nowDate = dateFormatters[lang](new Date());
@@ -68,17 +67,25 @@ function filterTasks(tasks, filterKey) {
         return tasks.filter((task) => task.priority == "low");
 
     } else {
-        if (!filterKey) {
-            return tasks;
-        }
-        return tasks.filter((task) => {
-            for (let tag of task.tags) {
-                if (tag.title.toLowerCase() == filterKey) {
+
+        if (filterType == "tag") {
+            return tasks.filter((task) => {
+                for (let tag of task.tags) {
+                    if (tag.title.toLowerCase() == filterKey) {
+                        return true;
+                    }
+                }
+                return false;
+            })
+        } else if (filterType == "search") {
+            return tasks.filter((task) => {
+                if (task.title.toLowerCase().includes(filterKey)) {
                     return true;
                 }
-            }
-            return false;
-        })
+
+            })
+        }
+        return tasks;
     }
 
 }

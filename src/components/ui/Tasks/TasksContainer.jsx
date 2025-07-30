@@ -1,11 +1,12 @@
 import { useTasks } from "../../../context/User";
-import { loopFilterTasks } from "./tasks";
+import { filterTasks, loopFilterTasks } from "./tasks";
 import { motion } from "motion/react";
 import { useTranslation } from "../../../context/Language";
 import Task from "./Task";
-export default function TasksContainer({ className = "", filterKeys = "", children, ...props }) {
+export default function TasksContainer({ className = "", tagsFilter = "", searchFilter = "", children, ...props }) {
     const [tasks, setTasks] = useTasks();
-    const filteredTasks = loopFilterTasks(tasks, filterKeys);
+    let filteredTasks = loopFilterTasks(tasks, tagsFilter, "tag");
+    if (searchFilter) filteredTasks = filterTasks(filteredTasks, searchFilter, "search");
     const t = useTranslation();
     return (
         <ol className={`tasks-container flex flex-col gap-[0.5rem] overflow-auto max-h-[20rem]   px-[0.4rem] ${className}`} {...props}>
