@@ -32,6 +32,7 @@
         "rememberMe": "تذكرني"
     },
     "terms": {
+        "noMatchingTags": "لم يتم العثور على تصنيفات مطابقة.",
         "searchTag": "ابحث عن تصنيف",
         "searchTask": "ابحث عن مهمة ",
         "active": "غير مكتملة",
