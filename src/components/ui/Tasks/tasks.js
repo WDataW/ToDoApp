@@ -219,10 +219,10 @@ export function getAllTags() {
     const [tasks] = useTasks();
     const t = useTranslation();
     let tags = [
-        { title: t("terms.active"), icon: "bg-[#d1d5db]" },
+        { title: t("terms.active"), icon: "bg-[#5a9afa]" },
         { title: t("terms.highPriority"), icon: priorityStyles["high"] },
-        { title: t("terms.today"), icon: "bg-[#bbf7d0]" },
-        { title: t("titles.tomorrow"), icon: "bg-[#fef3c7]" },
+        { title: t("terms.today"), icon: "bg-[#8affb3]" },
+        { title: t("titles.tomorrow"), icon: "bg-[#ffe88d]" },
         { title: t("titles.overdue"), icon: "bg-[#fca5a5]" },
         { title: t("terms.mediumPriority"), icon: priorityStyles["medium"] },
         { title: t("terms.lowPriority"), icon: priorityStyles["low"] }

@@ -15,10 +15,10 @@ function App() {
      <VerificationCodePage></VerificationCodePage>
     <ForgotPasswordPage></ForgotPasswordPage>
     <SignInPage></SignInPage>
-    
     */}
+
       <TasksPage></TasksPage>
-      {/* <HomePage></HomePage> */}
+      <HomePage></HomePage>
     </>
   );
 }

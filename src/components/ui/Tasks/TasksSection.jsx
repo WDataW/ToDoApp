@@ -1,7 +1,6 @@
 import { SectionContainer } from "../../ui";
 import TasksContainer from "./TasksContainer";
-import { useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 export default function TasksSection({ className = "", heading = "", children, ...props }) {
 
     return (

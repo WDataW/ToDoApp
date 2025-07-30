@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 import { useTranslation } from "../../../context/Language";
 import Task from "./Task";
 export default function TasksContainer({ className = "", tagsFilter = "", searchFilter = "", children, ...props }) {
-    const [tasks, setTasks] = useTasks();
+    const [tasks] = useTasks();
     let filteredTasks = loopFilterTasks(tasks, tagsFilter, "tag");
     if (searchFilter) filteredTasks = filterTasks(filteredTasks, searchFilter, "search");
     const t = useTranslation();
