@@ -27,7 +27,7 @@ export default function CategoriesSection({ activeTags, setActiveTags, className
     const filteredTags = allTags.filter((tag) => tag.title.toLowerCase().startsWith(tagsFilter.toLowerCase()));
     return (
         <section className={className}>
-            <SearchInput required={false} value={tagsFilter} handleChange={handleSearchChange} placeholder={t("terms.searchTag")} className="mb-[0.9rem] max-w-[20rem]"></SearchInput>
+            <SearchInput required={false} value={tagsFilter} handleChange={handleSearchChange} placeholder={t("fields.searchTag")} className="mb-[0.9rem] max-w-[20rem]"></SearchInput>
             {filteredTags.length == 0 && <p>{t("terms.noMatchingTags")}</p>}
             <ul className="tags-list gap-3 flex items-center justify-start pb-[0.3rem] overflow-x-auto h-[7.5rem]">
                 {filteredTags.map((tag, i) =>

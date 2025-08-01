@@ -1,5 +1,6 @@
 {
     "titles": {
+        "tasksProgress": "حالة المهام",
         "viewAllTasks": "عرض جميع المهام",
         "tomorrow": "غدًا",
         "overdue": "متأخر عن التنفيذ",
@@ -29,13 +30,14 @@
         "enterPassword": "أدخل كلمة المرور",
         "confirmPassword": "أكد كلمة المرور",
         "reEnterPassword": "أعد إدخال كلمة المرور",
+        "searchTask": "ابحث عن مهمة ",
+        "searchTag": "ابحث عن تصنيف",
         "rememberMe": "تذكرني"
     },
     "terms": {
+        "completed": "مكتمل",
         "noMatchingTags": "لم يتم العثور على تصنيفات مطابقة.",
-        "searchTag": "ابحث عن تصنيف",
-        "searchTask": "ابحث عن مهمة ",
-        "active": "غير مكتملة",
+        "active": "غير مكتمل",
         "noTasksAvaiable": "لا يوجد مهام.",
         "highPriority": "أولوية عالية",
         "mediumPriority": "أولوية متوسطة",

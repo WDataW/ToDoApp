@@ -1,0 +1,21 @@
+import { useTranslation } from "../../context/Language";
+import AppPage from "./AppPage";
+import { AppPageHeader, Main, PieChart, TasksProgress, SectionContainer } from "../../components/ui";
+
+const chartSectionStyles = "min-w-full md:odd:me-[1rem] mb-[1rem] flex-1 md:min-w-2/5 md:max-w-[calc(50%-0.5rem)]";
+export default function TasksPage({ className = "", children, ...props }) {
+    const t = useTranslation();
+
+    return (
+        <AppPage title={"stats"} className={`${className}`} {...props}>
+            <AppPageHeader>{t("titles.stats")}</AppPageHeader>
+
+            <Main className="flex w-full flex-wrap">
+                <SectionContainer className={`pb-[2.3rem] ${chartSectionStyles}`}>
+                    <TasksProgress></TasksProgress>
+                </SectionContainer>
+            </Main>
+            {children}
+        </AppPage >
+    );
+}

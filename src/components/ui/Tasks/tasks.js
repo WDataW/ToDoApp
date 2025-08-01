@@ -7,22 +7,27 @@ export function loopFilterTasks(tasks, filterKeys, filterType) {
     if (filterKeys.length == 0) {
         return tasks;
     }
+    const t = useTranslation();
     let newTasks = tasks;
+    const includeCompleted = filterKeys.includes(t("terms.completed"));
     for (let filter of filterKeys) {
-        newTasks = filterTasks(newTasks, filter, filterType);
+        newTasks = filterTasks(newTasks, filter, filterType, includeCompleted);
     }
     return newTasks
 }
-export function filterTasks(tasks, filterKey, filterType) {
+export function filterTasks(tasks, filterKey, filterType, includeCompleted) {
     const t = useTranslation();
     filterKey = filterKey.toLowerCase();
     const [lang] = useLang();
-    if (filterKey == "today") {
+    if (filterKey == t("terms.completed").toLowerCase()) {
+        return tasks.filter((task) => task.status == "completed");
+    } else if (filterKey == "today") {
         const nowDate = dateFormatters[lang](new Date());
         const todayTasks = tasks.filter(
             (task) => {
                 const dueDate = dateFormatters[lang](new Date(task.dueDate));
-                return dueDate == nowDate;
+                console.log(includeCompleted);
+                return (dueDate == nowDate) && (task.status !== "completed" || includeCompleted);
             }
         );
         return todayTasks;
@@ -33,7 +38,10 @@ export function filterTasks(tasks, filterKey, filterType) {
         const tomorrowTasks = tasks.filter(
             (task) => {
                 const dueDate = new Date(task.dueDate);
-                return (dueDate.getFullYear() == tmrwDate.getFullYear() && dueDate.getMonth() == tmrwDate.getMonth() && dueDate.getDate() == tmrwDate.getDate());
+                return (dueDate.getFullYear() == tmrwDate.getFullYear() &&
+                    dueDate.getMonth() == tmrwDate.getMonth() &&
+                    dueDate.getDate() == tmrwDate.getDate()) &&
+                    (task.status !== "completed" || includeCompleted);
             })
         return tomorrowTasks;
 
@@ -42,7 +50,8 @@ export function filterTasks(tasks, filterKey, filterType) {
         const overdueTasks = tasks.filter(
             (task) => {
                 const dueDate = new Date(task.dueDate);
-                return (dueDate.getTime() < nowDate.getTime());
+                return (dueDate.getTime() < nowDate.getTime()) &&
+                    (task.status !== "completed" || includeCompleted);
             })
         return overdueTasks;
 
@@ -51,27 +60,26 @@ export function filterTasks(tasks, filterKey, filterType) {
         const overdueTasks = tasks.filter(
             (task) => {
                 const dueDate = new Date(task.dueDate);
-                return (dueDate.getTime() > nowDate.getTime());
+                return (dueDate.getTime() > nowDate.getTime()) &&
+                    (task.status !== "completed" || includeCompleted);
             })
         return overdueTasks;
 
     } else if (filterKey == t("terms.highPriority").toLowerCase()) {
-
-        return tasks.filter((task) => task.priority == "high");
-
+        return tasks.filter((task) => task.priority == "high" && (task.status !== "completed" || includeCompleted));
 
     } else if (filterKey == t("terms.mediumPriority").toLowerCase()) {
-        return tasks.filter((task) => task.priority == "medium");
+        return tasks.filter((task) => task.priority == "medium" && (task.status !== "completed" || includeCompleted));
 
     } else if (filterKey == t("terms.lowPriority").toLowerCase()) {
-        return tasks.filter((task) => task.priority == "low");
+        return tasks.filter((task) => task.priority == "low" && (task.status !== "completed" || includeCompleted));
 
     } else {
 
         if (filterType == "tag") {
             return tasks.filter((task) => {
                 for (let tag of task.tags) {
-                    if (tag.title.toLowerCase() == filterKey) {
+                    if (tag.title.toLowerCase() == filterKey && (task.status !== "completed" || includeCompleted)) {
                         return true;
                     }
                 }
@@ -158,9 +166,9 @@ function getDuePhrase(task) {
 }
 
 const priorityStyles = {
-    high: "bg-[#ef4444]",
-    medium: "bg-[#ffdf20]",
-    low: "bg-[#9ca3af]"
+    high: "bg-[var(--color-high-priority)]",
+    medium: "bg-[var(--color-medium-priority)]",
+    low: "bg-[var(--color-low-priority)]"
 }
 const alertIcons = {
     light: "bg-[url(/src/assets/icons/light/alert-circle.svg)]",
@@ -225,7 +233,8 @@ export function getAllTags() {
         { title: t("titles.tomorrow"), icon: "bg-[#ffe88d]" },
         { title: t("titles.overdue"), icon: "bg-[#fca5a5]" },
         { title: t("terms.mediumPriority"), icon: priorityStyles["medium"] },
-        { title: t("terms.lowPriority"), icon: priorityStyles["low"] }
+        { title: t("terms.lowPriority"), icon: priorityStyles["low"] },
+        { title: t("terms.completed"), icon: "bg-[#e12afb]" }
     ]
     for (let task of tasks) {
         tags = [...tags, ...task.tags];

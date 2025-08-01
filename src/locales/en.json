@@ -1,5 +1,6 @@
 {
     "titles": {
+        "tasksProgress": "Tasks Progress",
         "viewAllTasks": "View All Tasks",
         "tomorrow": "Tomorrow",
         "overdue": "Overdue",
@@ -29,12 +30,13 @@
         "enterPassword": "Enter password",
         "confirmPassword": "Confirm password",
         "reEnterPassword": "Re-enter password",
+        "searchTask": "Search tasks",
+        "searchTag": "Search tags",
         "rememberMe": "Remember me"
     },
     "terms": {
+        "completed": "Completed",
         "noMatchingTags": "No matching tags found.",
-        "searchTag": "Search tags",
-        "searchTask": "Search tasks",
         "active": "Active",
         "noTasksAvaiable": "No tasks available.",
         "highPriority": "High Priority",

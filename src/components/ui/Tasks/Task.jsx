@@ -23,9 +23,8 @@ const icons = {
 
 
 let actionsMenu;
-export default function Task({ className = "", taskObj = {}, children, ...props }) {
+export default function Task({ className = "", taskObj = {}, completed = "false", children, ...props }) {
     const editStatus = useEditTaskStatus();
-
 
     function handleMeatballClick(e) {
         const meatballButton = e.target;
@@ -50,7 +49,7 @@ export default function Task({ className = "", taskObj = {}, children, ...props 
     }
     const [opened, setOpened] = useState(false);
     const [theme] = useTheme();
-    const [checked, setChecked] = useState(false);
+    const [checked, setChecked] = useState(completed);
     const taskContent = (
         <div id={taskObj.id} className={`${themeStyles[theme]} relative py-[0.5rem] px-[0.8rem] flex  rounded-[1.5rem] ${className}`} {...props}>
             {(opened && !checked) && createPortal(actionsMenu, document.querySelector("main"))}
