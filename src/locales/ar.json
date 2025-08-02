@@ -1,5 +1,6 @@
 {
     "titles": {
+        "achievements": "الإنجازات",
         "tasksProgress": "حالة المهام",
         "viewAllTasks": "عرض جميع المهام",
         "tomorrow": "غدًا",
@@ -35,6 +36,7 @@
         "rememberMe": "تذكرني"
     },
     "terms": {
+        "noAchsAvailable": "لم يتم العثور على إنجازات.",
         "completed": "مكتمل",
         "noMatchingTags": "لم يتم العثور على تصنيفات مطابقة.",
         "active": "غير مكتمل",

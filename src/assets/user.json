@@ -185,22 +185,7 @@
       ]
     }
   ],
-  "achievements": [
-    {
-      "id": "a001",
-      "title": "First Task Completed",
-      "description": "Completed your first task!",
-      "dateAchieved": "2025-07-02T19:00:00Z",
-      "icon": "🎉"
-    },
-    {
-      "id": "a002",
-      "title": "Power User",
-      "description": "Logged in and used the app 7 days in a row.",
-      "dateAchieved": "2025-07-03T12:00:00Z",
-      "icon": "⚡"
-    }
-  ],
+  "achievements": [],
   "inbox": [
     {
       "id": "msg001",

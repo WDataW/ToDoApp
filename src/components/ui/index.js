@@ -8,5 +8,6 @@ export * from "./checkboxes";
 export * from "./anchors";
 export * from "./headers";
 export * from "./charts";
+export * from "./achievements";
 export * from "./containers";
 export * from "./navigations";

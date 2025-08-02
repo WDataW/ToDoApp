@@ -1,5 +1,6 @@
 {
     "titles": {
+        "achievements": "Achievements",
         "tasksProgress": "Tasks Progress",
         "viewAllTasks": "View All Tasks",
         "tomorrow": "Tomorrow",
@@ -35,6 +36,7 @@
         "rememberMe": "Remember me"
     },
     "terms": {
+        "noAchsAvailable": "No achievements available.",
         "completed": "Completed",
         "noMatchingTags": "No matching tags found.",
         "active": "Active",

@@ -14,7 +14,7 @@ export function useTasks() {
 export function useInbox() {
     return useContext(UserInboxContext);
 }
-export function UserAchievements() {
+export function useAchievements() {
     return useContext(UserAchievementsContext);
 }
 
