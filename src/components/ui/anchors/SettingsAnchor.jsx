@@ -1,6 +1,5 @@
 import { useTheme } from "../../../context/Theme";
 import ImageAnchor from "./ImageAnchor";
-import NavItem from "../navigations/navItems/NavItem";
 const icons = {
     dark: "bg-[url(/src/assets/icons/dark/settings.svg)]",
     light: "bg-[url(/src/assets/icons/light/settings.svg)]"

@@ -21,16 +21,9 @@
       "priority": "high",
       "dueDate": "2025-07-31T20:59:00Z",
       "createdAt": "2025-07-03T09:30:00Z",
-      "dueDateMs": 1751810400000,
       "tags": [
-        {
-          "title": "Version Control",
-          "icon": "bg-[#ad46ff]"
-        },
-        {
-          "title": "Version",
-          "icon": "bg-[#e12afb]"
-        }
+        "tag3",
+        "tag5"
       ]
     },
     {
@@ -38,19 +31,12 @@
       "title": "Add animation to page transitions",
       "description": "Use Framer Motion to add smooth transitions between pages.",
       "status": "in-progress",
-      "priority": "low",
+      "priority": "medium",
       "dueDate": "2025-07-23T20:00:00Z",
       "createdAt": "2025-07-03T10:00:00Z",
-      "dueDateMs": 1751907600000,
       "tags": [
-        {
-          "title": "Animation",
-          "icon": "bg-[#ff2056]"
-        },
-        {
-          "title": "Animation Party",
-          "icon": "bg-[#7c86ff]"
-        }
+        "tag1",
+        "tag2"
       ]
     },
     {
@@ -61,20 +47,9 @@
       "priority": "high",
       "dueDate": "2025-07-08T12:00:00Z",
       "createdAt": "2025-07-03T10:30:00Z",
-      "dueDateMs": 1751976000000,
       "tags": [
-        {
-          "title": "Responsive",
-          "icon": "bg-[#00a6f4]"
-        },
-        {
-          "title": "Mobile",
-          "icon": "bg-[#51a2ff]"
-        },
-        {
-          "title": "Bug Fix",
-          "icon": "bg-[#ff6467]"
-        }
+        "tag14",
+        "tag5"
       ]
     },
     {
@@ -85,20 +60,9 @@
       "priority": "high",
       "dueDate": "2025-07-09T16:00:00Z",
       "createdAt": "2025-07-03T11:00:00Z",
-      "dueDateMs": 1752076800000,
       "tags": [
-        {
-          "title": "Refactor",
-          "icon": "bg-[#eab308]"
-        },
-        {
-          "title": "Component",
-          "icon": "bg-[#84cc16]"
-        },
-        {
-          "title": "Tailwind",
-          "icon": "bg-[#06b6d4]"
-        }
+        "tag8",
+        "tag9"
       ]
     },
     {
@@ -109,20 +73,9 @@
       "priority": "high",
       "dueDate": "2025-07-12T15:00:00Z",
       "createdAt": "2025-07-03T11:30:00Z",
-      "dueDateMs": 1752159600000,
       "tags": [
-        {
-          "title": "Testing",
-          "icon": "bg-[#22c55e]"
-        },
-        {
-          "title": "Edge Cases",
-          "icon": "bg-[#f59e0b]"
-        },
-        {
-          "title": "Logic",
-          "icon": "bg-[#a78bfa]"
-        }
+        "tag5",
+        "tag3"
       ]
     },
     {
@@ -130,62 +83,156 @@
       "title": "Finish UI design for todo app",
       "description": "Create a modern UI for the home, tasks, stats, and profile pages.",
       "status": "in-progress",
-      "priority": "high",
+      "priority": "low",
       "dueDate": "2025-07-05T16:00:00Z",
       "createdAt": "2025-07-01T10:00:00Z",
-      "dueDateMs": 1751731200000,
       "tags": [
-        {
-          "title": "UI Design",
-          "icon": "bg-[#6366f1]"
-        },
-        {
-          "title": "Front-End",
-          "icon": "bg-[#14b8a6]"
-        },
-        {
-          "title": "UX",
-          "icon": "bg-[#f9a8d4]"
-        }
+        "tag16",
+        "tag17"
       ]
     },
     {
       "id": "t002",
       "title": "Push latest commit to GitHub",
+      "description": "Mammy AMmmamm Mammy AMmmamm Mammy AMmmamm Mammy AMmmammMammy AMmmammMammy AMmmamm Mammy AMmmamm Mammy AMmmammMammy AMmmammMammy AMmmammMammy AMmmamms",
       "status": "completed",
       "priority": "high",
       "dueDate": "2025-07-02T18:00:00Z",
       "createdAt": "2025-07-01T09:00:00Z",
-      "dueDateMs": 1751479200000,
       "tags": [
-        {
-          "title": "Version Control",
-          "icon": "bg-[#737373]"
-        }
+        "tag18",
+        "tag7"
       ]
     },
     {
       "id": "t008",
       "title": "Review pull request",
       "description": "Check the code in PR #42 and leave comments if needed.",
-      "status": "completed",
+      "status": "in",
       "priority": "high",
-      "dueDate": "2025-06-02T02:38:00Z",
+      "dueDate": "2025-08-05T16:38:00Z",
       "createdAt": "2025-07-08T00:38:00Z",
-      "dueDateMs": 1751942280000,
       "tags": [
-        {
-          "title": "Code Review",
-          "icon": "bg-[#f97316]"
-        },
-        {
-          "title": "Collaboration",
-          "icon": "bg-[#3b82f6]"
-        }
+        "tag12",
+        "tag13"
       ]
     }
   ],
-  "achievements": [],
+  "tags": [
+    {
+      "id": "tag1",
+      "title": "Refactor",
+      "icon": "bg-[#eab308]"
+    },
+    {
+      "id": "tag2",
+      "title": "Component",
+      "icon": "bg-[#84cc16]"
+    },
+    {
+      "id": "tag3",
+      "title": "Tailwind",
+      "icon": "bg-[#06b6d4]"
+    },
+    {
+      "id": "tag4",
+      "title": "Testing",
+      "icon": "bg-[#22c55e]"
+    },
+    {
+      "id": "tag5",
+      "title": "Edge Cases",
+      "icon": "bg-[#f59e0b]"
+    },
+    {
+      "id": "tag6",
+      "title": "Logic",
+      "icon": "bg-[#a78bfa]"
+    },
+    {
+      "id": "tag7",
+      "title": "UI Design",
+      "icon": "bg-[#6366f1]"
+    },
+    {
+      "id": "tag8",
+      "title": "Front-End",
+      "icon": "bg-[#14b8a6]"
+    },
+    {
+      "id": "tag9",
+      "title": "UX",
+      "icon": "bg-[#f9a8d4]"
+    },
+    {
+      "id": "tag10",
+      "title": "Code Review",
+      "icon": "bg-[#f97316]"
+    },
+    {
+      "id": "tag11",
+      "title": "Collaboration",
+      "icon": "bg-[#3b82f6]"
+    },
+    {
+      "id": "tag12",
+      "title": "Version Control",
+      "icon": "bg-[#ad46ff]"
+    },
+    {
+      "id": "tag13",
+      "title": "Version",
+      "icon": "bg-[#e12afb]"
+    },
+    {
+      "id": "tag14",
+      "title": "Animation",
+      "icon": "bg-[#ff2056]"
+    },
+    {
+      "id": "tag15",
+      "title": "Animation Party",
+      "icon": "bg-[#7c86ff]"
+    },
+    {
+      "id": "tag16",
+      "title": "Responsive",
+      "icon": "bg-[#00a6f4]"
+    },
+    {
+      "id": "tag17",
+      "title": "Mobile",
+      "icon": "bg-[#51a2ff]"
+    },
+    {
+      "id": "tag18",
+      "title": "Bug Fix",
+      "icon": "bg-[#ff6467]"
+    }
+  ],
+  "achievements": [
+    {
+      "id": "a001",
+      "title": "Productive III",
+      "description": "Completed your first task!",
+      "dateAchieved": "2025-07-02T19:00:00Z",
+      "icon": "/images/achievements/silver.png"
+    },
+    {
+      "id": "a003",
+      "title": "On Time IV",
+      "description": "Completed your first task!",
+      "dateAchieved": "2025-07-02T19:00:00Z",
+      "icon": "/images/achievements/gold.png"
+    },
+    {
+      "id": "a002",
+      "title": "Power User II",
+      "description": "Logged in and used the app 7 days in a row.",
+      "dateAchieved": "2025-07-03T12:00:00Z",
+      "icon": "/images/achievements/bronze.png"
+    }
+  ],
   "inbox": [
     {
       "id": "msg001",

@@ -10,4 +10,5 @@ export * from "./headers";
 export * from "./charts";
 export * from "./achievements";
 export * from "./containers";
+export * from "./selects";
 export * from "./navigations";

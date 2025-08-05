@@ -49,7 +49,7 @@
     --light-active-surface-bg-color: #e6e6e6;
 
     --color-high-priority: #ef4444;
-    --color-medium-priority: #ffdf20;
+    --color-medium-priority: #ffae00;
     --color-low-priority: #9ca3af;
 
 
@@ -94,9 +94,13 @@
     html,
     body {
         @apply w-full h-full m-0 p-0;
+
+
+    }
+
+    * {
         scrollbar-width: thin;
         scrollbar-color: #8b8b8b transparent;
-
     }
 
     html {
@@ -110,7 +114,10 @@
 
     button {
         @apply cursor-pointer;
+    }
 
+    button:disabled {
+        @apply cursor-default;
     }
 
     h1,
@@ -139,6 +146,8 @@
     input[type="number"]::-webkit-outer-spin-button {
         appearance: none;
     }
+
+
 
     @media screen and (min-width: 768px) {
         .dark-outterShadow {

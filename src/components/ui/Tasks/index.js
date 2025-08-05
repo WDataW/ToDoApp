@@ -3,3 +3,6 @@ export { default as TasksContainer } from "./TasksContainer";
 export { default as TasksSection } from "./TasksSection";
 export { default as TaskCategory } from "./TaskCategory";
 export { default as CategoriesSection } from "./CategoriesSection";
+export { default as EditTask } from "./EditTask";
+export { default as TaskInit } from "./TaskInit";
+export { default as TagsPicker } from "./TagsPicker";

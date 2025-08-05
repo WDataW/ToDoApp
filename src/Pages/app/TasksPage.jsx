@@ -13,12 +13,11 @@ export default function TasksPage({ className = "", children, ...props }) {
 
     const [searchFilter, setSearchFilter] = useState("");
     return (
-        <AppPage title={"tasks"} className={`${className}`} {...props}>
+        <AppPage id="tasksPage" title={"tasks"} className={`${className}`} {...props}>
             <AppPageHeader>{t("titles.tasks")}</AppPageHeader>
             <Main>
                 <CategoriesSection activeTags={activeTags} setActiveTags={setActiveTags} className="mb-[1rem]"></CategoriesSection>
                 <AnimatePresence mode="wait">
-
                     <motion.div key={"k" + activeTags.length} exit={{ y: 25, opacity: 0 }} initial={{ y: 25, opacity: 0 }} animate={{ y: 0, opacity: 1 }} >
                         <SearchInput required={false} value={searchFilter} handleChange={(e) => { setSearchFilter(e.target.value) }} placeholder={t("fields.searchTask")} className="mb-[0.9rem] max-w-[20rem]"></SearchInput>
                         <TasksSection heading={activeTags} tagsFilter={activeTags} searchFilter={searchFilter} ></TasksSection>

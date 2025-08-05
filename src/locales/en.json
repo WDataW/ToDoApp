@@ -1,5 +1,6 @@
 {
     "titles": {
+        "editTask": "Edit Task",
         "achievements": "Achievements",
         "tasksProgress": "Tasks Progress",
         "viewAllTasks": "View All Tasks",
@@ -23,6 +24,14 @@
         "delete": "Delete"
     },
     "fields": {
+        "hour": "Hour",
+        "minute": "Minute",
+        "enterTaskTitle": "Enter task title",
+        "enterTaskDescription": "Enter task description",
+        "title": "Title",
+        "description": "Description",
+        "priority": "Priority",
+        "dueDate": "Due Date",
         "username": "Username",
         "enterUsername": "Enter username",
         "email": "Email",
@@ -36,11 +45,19 @@
         "rememberMe": "Remember me"
     },
     "terms": {
+        "noSelectedTags": "No selected tags.",
+        "availableTags": "Available Tags",
+        "selectedTags": "Selected Tags",
+        "save": "Save",
+        "cancel": "Cancel",
         "noAchsAvailable": "No achievements available.",
         "completed": "Completed",
         "noMatchingTags": "No matching tags found.",
         "active": "Active",
         "noTasksAvaiable": "No tasks available.",
+        "high": "High",
+        "medium": "Medium",
+        "low": "Low",
         "highPriority": "High Priority",
         "mediumPriority": "Medium Priority",
         "lowPriority": "Low Priority",

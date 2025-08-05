@@ -67,7 +67,6 @@ export default function FloatingContainer({ className = "", hide, lastFocused, s
         }
     }
     function handleTab(e) {
-        console.log(index);
         if (e.key == "Tab" && !e.shiftKey) {
             e.preventDefault();
             const firstChild = self.current.querySelectorAll("[tabIndex='0']")[0];

@@ -1,5 +1,6 @@
 {
     "titles": {
+        "editTask": "تعديل المهمة",
         "achievements": "الإنجازات",
         "tasksProgress": "حالة المهام",
         "viewAllTasks": "عرض جميع المهام",
@@ -23,6 +24,14 @@
         "delete": "حذف"
     },
     "fields": {
+        "hour": "الساعة",
+        "minute": "الدقيقة",
+        "enterTaskTitle": "أدخل عنوان المهمة",
+        "enterTaskDescription": "أدخل وصف المهمة",
+        "title": "العنوان",
+        "description": "الوصف",
+        "priority": "الأولوية",
+        "dueDate": "تاريخ الاستحقاق",
         "username": "اسم المستخدم",
         "enterUsername": "أدخل اسم المستخدم",
         "email": "البريد الإلكتروني",
@@ -36,11 +45,19 @@
         "rememberMe": "تذكرني"
     },
     "terms": {
+        "noSelectedTags": "لم يتم اختيار تصنيفات.",
+        "availableTags": "التصنيفات المتاحة",
+        "selectedTags": "التصنيفات المختارة",
+        "save": "حفظ",
+        "cancel": "إلغاء",
         "noAchsAvailable": "لم يتم العثور على إنجازات.",
         "completed": "مكتمل",
         "noMatchingTags": "لم يتم العثور على تصنيفات مطابقة.",
         "active": "غير مكتمل",
         "noTasksAvaiable": "لا يوجد مهام.",
+        "high": "عالية",
+        "medium": "متوسطة",
+        "low": "منخفضة",
         "highPriority": "أولوية عالية",
         "mediumPriority": "أولوية متوسطة",
         "lowPriority": "أولوية منخفضة",

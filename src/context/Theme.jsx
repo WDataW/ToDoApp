@@ -85,7 +85,6 @@ export const bgColors = {
 export const surfaceBgColors = {
     dark: "bg-[var(--dark-surface-bg-color)]",
     light: "bg-[var(--light-surface-bg-color)]"
-
 }
 export const activeSurfaceBgColors = {
     dark: "bg-[var(--dark-active-surface-bg-color)]",

@@ -1,8 +1,8 @@
-import { useTasks } from "../../../context/User";
+import { useTags, useTasks } from "../../../context/User";
 import { useTheme } from "../../../context/Theme";
 import { useLang, useTranslation } from "../../../context/Language";
 import { dateFormatters, timeFormatters } from "../../../scripts/dateTime";
-
+import _ from "lodash";
 export function loopFilterTasks(tasks, filterKeys, filterType) {
     if (filterKeys.length == 0) {
         return tasks;
@@ -21,18 +21,17 @@ export function filterTasks(tasks, filterKey, filterType, includeCompleted) {
     const [lang] = useLang();
     if (filterKey == t("terms.completed").toLowerCase()) {
         return tasks.filter((task) => task.status == "completed");
-    } else if (filterKey == "today") {
+    } else if (filterKey == t("terms.today").toLowerCase()) {
         const nowDate = dateFormatters[lang](new Date());
         const todayTasks = tasks.filter(
             (task) => {
                 const dueDate = dateFormatters[lang](new Date(task.dueDate));
-                console.log(includeCompleted);
                 return (dueDate == nowDate) && (task.status !== "completed" || includeCompleted);
             }
         );
         return todayTasks;
 
-    } else if (filterKey == t("titles.tomorrow")) {
+    } else if (filterKey == t("titles.tomorrow").toLowerCase()) {
         const tmrwDate = new Date();
         tmrwDate.setDate(tmrwDate.getDate() + 1);
         const tomorrowTasks = tasks.filter(
@@ -50,20 +49,20 @@ export function filterTasks(tasks, filterKey, filterType, includeCompleted) {
         const overdueTasks = tasks.filter(
             (task) => {
                 const dueDate = new Date(task.dueDate);
-                return (dueDate.getTime() < nowDate.getTime()) &&
-                    (task.status !== "completed" || includeCompleted);
+                return (dueDate.getTime() <= nowDate.getTime()) &&
+                    (task.status !== "completed");
             })
         return overdueTasks;
 
     } else if (filterKey == t("terms.active").toLowerCase()) {
         const nowDate = new Date();
-        const overdueTasks = tasks.filter(
+        const activeTasks = tasks.filter(
             (task) => {
                 const dueDate = new Date(task.dueDate);
-                return (dueDate.getTime() > nowDate.getTime()) &&
-                    (task.status !== "completed" || includeCompleted);
+
+                return (dueDate.getTime() > nowDate.getTime()) && (task.status !== "completed");
             })
-        return overdueTasks;
+        return activeTasks;
 
     } else if (filterKey == t("terms.highPriority").toLowerCase()) {
         return tasks.filter((task) => task.priority == "high" && (task.status !== "completed" || includeCompleted));
@@ -75,16 +74,12 @@ export function filterTasks(tasks, filterKey, filterType, includeCompleted) {
         return tasks.filter((task) => task.priority == "low" && (task.status !== "completed" || includeCompleted));
 
     } else {
-
         if (filterType == "tag") {
-            return tasks.filter((task) => {
-                for (let tag of task.tags) {
-                    if (tag.title.toLowerCase() == filterKey && (task.status !== "completed" || includeCompleted)) {
-                        return true;
-                    }
-                }
-                return false;
-            })
+            const [tags] = useTags();
+            const [targetTag] = tags.filter((tag) => tag.title.toLowerCase() == filterKey);
+            const tagId = targetTag?.id;
+            const taskResults = tasks.filter((task) => task.tags.includes(tagId) && (task.status !== "completed" || includeCompleted));
+            return taskResults;
         } else if (filterType == "search") {
             return tasks.filter((task) => {
                 if (task.title.toLowerCase().includes(filterKey)) {
@@ -138,10 +133,10 @@ function quickSort(array, start, end) {
 }
 function partition(array, start, end) {
     let i = start - 1;
-    const pivot = array[end].dueDateMs;
+    const pivot = new Date(array[end].dueDate).getTime();
 
     for (let j = start; j < end; j++) {
-        if (array[j].dueDateMs < pivot) {
+        if (new Date(array[j].dueDate).getTime() < pivot) {
             i++;
             [array[i], array[j]] = [array[j], array[i]]
         }
@@ -156,9 +151,12 @@ function getDuePhrase(task) {
     const t = useTranslation();
     const nowMs = new Date().getTime();
     const dueMs = new Date(task.dueDate).getTime();
-    if (nowMs - dueMs >= 0) {
+    if (task.status == "completed") {
+        return t("terms.completed");
+    }
+    else if (nowMs - dueMs >= 0 && task.status !== "completed") {
         return t("titles.overdue");
-    } else if (dueMs - nowMs <= 10800000) {
+    } else if (dueMs - nowMs <= 10800000 && dueMs - nowMs >= 0) {
         return t("terms.dueSoon");
     } else {
         return "";
@@ -190,28 +188,30 @@ function createDefaultTags(task) {
 }
 
 export function getTaskTags(task) {
+
+    const [tagsBase] = useTags();
+    const taskTags = [];
+    if (!_.isEmpty(task)) {
+
+        for (let tagId of task.tags) {
+            taskTags.push(...tagsBase.filter((tag) => tag.id == tagId));
+        }
+    }
+
+    return taskTags;
+}
+export function getFinalTaskTags(task) {
     return [
         ...createDefaultTags(task),
-        ...task.tags
+        ...getTaskTags(task)
     ]
 }
 
-function useEditTask(customTarget = "") {
+export function useEditTask() {
     const [tasks, setTasks] = useTasks();
-    function editTask(taskId, newValue, targetKey = customTarget) {
-
-        const newTasks = tasks.map((task) => {
-            if (task.id !== taskId) {
-                return task;
-            }
-            let editedTask = task;
-            for (let key in task) {
-                if (key == targetKey) {
-                    editedTask = { ...task, [key]: newValue }
-                }
-            }
-            return editedTask
-        });
+    function editTask(newTask) {
+        let newTasks = tasks.filter((task) => task.id !== newTask.id);
+        newTasks = [...newTasks, newTask];
         setTasks(newTasks);
     }
     return editTask;
@@ -223,10 +223,11 @@ export function useEditTaskStatus() {
 
 
 let currentTagIndex = 0;
-export function getAllTags() {
-    const [tasks] = useTasks();
+export function getAllTags(prefix = true) {
+
     const t = useTranslation();
-    let tags = [
+    let prefixTags = [];
+    if (prefix) prefixTags = [
         { title: t("terms.active"), icon: "bg-[#5a9afa]" },
         { title: t("terms.highPriority"), icon: priorityStyles["high"] },
         { title: t("terms.today"), icon: "bg-[#8affb3]" },
@@ -236,12 +237,9 @@ export function getAllTags() {
         { title: t("terms.lowPriority"), icon: priorityStyles["low"] },
         { title: t("terms.completed"), icon: "bg-[#e12afb]" }
     ]
-    for (let task of tasks) {
-        tags = [...tags, ...task.tags];
-    }
-    tags = removeDublicateTags(tags);
-    currentTagIndex = 0;
-    return tags;
+
+    const [tags] = useTags();
+    return [...prefixTags, ...tags]
 }
 
 function removeDublicateTags(tags) {
@@ -269,3 +267,6 @@ function findDublicates(targetTag, tags) {
     indecies.shift();
     return indecies;
 }
+
+
+
