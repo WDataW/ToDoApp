@@ -9,7 +9,6 @@ export default function TasksContainer({ className = "", tagsFilter = "", search
     if (searchFilter) filteredTasks = filterTasks(filteredTasks, searchFilter, "search");
     const t = useTranslation();
 
-
     return (
         <ol className={`tasks-container flex flex-col gap-[0.5rem] overflow-auto max-h-[20rem]   px-[0.4rem] ${className}`} {...props}>
             <AnimatePresence >

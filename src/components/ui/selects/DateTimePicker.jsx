@@ -30,7 +30,7 @@ export default function DateTimePicker({ dateTime, setDateTime, className = "", 
                 <HourPicker hour={hour} setHour={setHour} labelClassName="text-[0.9rem] flex-1 max-w-[10rem]"></HourPicker>
                 <MinutePicker minute={minute} setMinute={setMinute} labelClassName="text-[0.9rem] flex-1 max-w-[10rem]"></MinutePicker>
             </div>
-            {pastDate && <WarningMessage className={"ms-[0.2rem] mt-[0.3rem]"}>{t("terms.pastDate")}</WarningMessage>}
+            {pastDate && <WarningMessage className={"ms-[0.2rem] mt-[0.3rem]"}>{t("warnings.pastDate")}</WarningMessage>}
         </div>
     );
 }

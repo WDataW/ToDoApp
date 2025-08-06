@@ -45,7 +45,6 @@
         "rememberMe": "Remember me"
     },
     "terms": {
-        "pastDate": "The date & time you picked is in the past.",
         "create": "Create",
         "createTask": "Create Task",
         "noSelectedTags": "No selected tags.",
@@ -84,6 +83,8 @@
         "invalidEmailPassword": "Invalid email or password"
     },
     "warnings": {
+        "emptyTitle": "Title can not be empty.",
+        "pastDate": "The date and time you picked is in the past.",
         "passwordLength": "Password must be between 8 and 64 characters",
         "passwordUppercase": "Password must include at least one uppercase letter",
         "passwordLowercase": "Password must include at least one lowercase letter",
