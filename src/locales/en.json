@@ -3,7 +3,7 @@
         "editTask": "Edit Task",
         "achievements": "Achievements",
         "tasksProgress": "Tasks Progress",
-        "viewAllTasks": "View All Tasks",
+        "viewAllTasks": "View My Tasks",
         "tomorrow": "Tomorrow",
         "overdue": "Overdue",
         "todaysFocus": "Today's Focus",
@@ -45,6 +45,9 @@
         "rememberMe": "Remember me"
     },
     "terms": {
+        "pastDate": "The date & time you picked is in the past.",
+        "create": "Create",
+        "createTask": "Create Task",
         "noSelectedTags": "No selected tags.",
         "availableTags": "Available Tags",
         "selectedTags": "Selected Tags",

@@ -4,7 +4,7 @@ import { TaskInit } from ".";
 import { Main, YesNoButtons } from "..";
 import { useState } from "react";
 import { useEditTask } from "./tasks";
-export default function EditTask({ close, taskToEdit = {}, className = "", children, ...props }) {
+export default function EditTask({ close, taskToEdit = { title: "", description: "", priority: "medium", dueDate: new Date().setHours(23, 59, 0), tags: [], status: "active" }, yes, no, className = "", children, ...props }) {
     const t = useTranslation();
 
     const editTask = useEditTask()
@@ -14,11 +14,11 @@ export default function EditTask({ close, taskToEdit = {}, className = "", child
         close();
     }
     return (
-        <OverlayPage heading={t("titles.editTask")} close={close} className={`${className}`} {...props}>
+        <OverlayPage close={close} className={`${className}`} {...props}>
             <Main className="flex items-center flex-col ">
                 <div className="w-full  sm:max-w-3/4 ">
                     <TaskInit setNewTask={setNewTask} taskToEdit={taskToEdit} />
-                    <YesNoButtons disabled={!newTask?.title || !newTask?.dueDate} className="justify-center mt-[1rem] text-[0.9rem]" yesFunc={save} yes={t("terms.save")} noFunc={close} no={t("terms.cancel")} />
+                    <YesNoButtons disabled={!newTask?.title || !newTask?.dueDate} className="justify-center mt-[1rem] text-[0.9rem]" yesFunc={save} yes={yes} noFunc={close} no={no} />
                 </div>
             </Main>
         </OverlayPage>

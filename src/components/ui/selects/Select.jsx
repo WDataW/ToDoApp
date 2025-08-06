@@ -3,7 +3,6 @@ import { useId } from "react";
 export default function Select({ className = "", label, labelClassName, children, ...props }) {
     const [theme] = useTheme();
     const id = useId();
-    console.log(props.value, label);
     return (
         <label htmlFor={id} className={`flex flex-col  ${labelClassName}`}>
             <span className="ps-[0.3rem]">

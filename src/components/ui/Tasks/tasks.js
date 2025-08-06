@@ -2,7 +2,6 @@ import { useTags, useTasks } from "../../../context/User";
 import { useTheme } from "../../../context/Theme";
 import { useLang, useTranslation } from "../../../context/Language";
 import { dateFormatters, timeFormatters } from "../../../scripts/dateTime";
-import _ from "lodash";
 export function loopFilterTasks(tasks, filterKeys, filterType) {
     if (filterKeys.length == 0) {
         return tasks;
@@ -191,12 +190,10 @@ export function getTaskTags(task) {
 
     const [tagsBase] = useTags();
     const taskTags = [];
-    if (!_.isEmpty(task)) {
-
-        for (let tagId of task.tags) {
-            taskTags.push(...tagsBase.filter((tag) => tag.id == tagId));
-        }
+    for (let tagId of task.tags) {
+        taskTags.push(...tagsBase.filter((tag) => tag.id == tagId));
     }
+
 
     return taskTags;
 }
@@ -212,7 +209,7 @@ export function useEditTask() {
     function editTask(newTask) {
         let newTasks = tasks.filter((task) => task.id !== newTask.id);
         newTasks = [...newTasks, newTask];
-        setTasks(newTasks);
+        setTasks(sortTasksByDate(newTasks));
     }
     return editTask;
 }

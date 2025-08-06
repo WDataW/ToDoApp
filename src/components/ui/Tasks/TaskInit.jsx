@@ -4,13 +4,13 @@ import { TagsPicker } from ".";
 import { useEffect, useState } from "react";
 import { getTaskTags } from "./tasks";
 import { useTasks } from "@/context/User";
-export default function TaskInit({ setNewTask, taskToEdit = { title: "", description: "", priority: "medium", dueDate: new Date().setHours(23, 59, 0), tags: [] }, className = "", children, ...props }) {
+export default function TaskInit({ setNewTask, taskToEdit, className = "", children, ...props }) {
     const t = useTranslation();
 
     const [dateTime, setDateTime] = useState(new Date(taskToEdit.dueDate));
     const [title, setTitle] = useState(taskToEdit.title);
     const [description, setDescription] = useState(taskToEdit.description);
-    const [priority, setPriority] = useState(t(`terms.${taskToEdit.priority}`).toLowerCase());
+    const [priority, setPriority] = useState(taskToEdit.priority);
     const [selectedTags, setSelectedTags] = useState(getTaskTags(taskToEdit));
 
     const [tasks] = useTasks();

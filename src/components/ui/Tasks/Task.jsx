@@ -1,6 +1,6 @@
 import { useTheme } from "../../../context/Theme";
 import CheckTask from "../checkboxes/CheckTask";
-import { useEditTask, useEditTaskStatus } from "./tasks";
+import { useEditTask } from "./tasks";
 import { MeatballMenu } from "../buttons";
 import { useRef, useState } from "react";
 import { getDueDate, getDueTime, getFinalTaskTags } from "./tasks";
@@ -8,6 +8,7 @@ import { createPortal } from 'react-dom';
 import ActionsContainer from "./ActionsContainer";
 import MiniTag from "./MiniTag";
 import { EditTask } from ".";
+import { useTranslation } from "@/context/Language";
 const themeStyles = {
     dark: "bg-[#222222] text-white",
     light: "bg-[#E9EBEB] text-black"
@@ -79,9 +80,10 @@ export default function Task({ className = "", taskObj = {}, completed = "false"
     const [opened, setOpened] = useState(false);
     const [theme] = useTheme();
     const [checked, setChecked] = useState(completed);
+    const t = useTranslation()
     const taskContent = (
         <div id={taskObj.id} ref={selfRef} className={`${themeStyles[theme]} relative py-[0.5rem] px-[0.8rem] flex  rounded-[1.5rem] ${className}`} {...props}>
-            {editMode && createPortal(<EditTask close={stopEditingTask} taskToEdit={taskObj} />, document.querySelector("main").parentElement)}
+            {editMode && createPortal(<EditTask heading={t("titles.editTask")} yes={t("terms.save")} no={t("terms.cancel")} close={stopEditingTask} taskToEdit={taskObj} />, document.querySelector("main").parentElement)}
             {(opened && !checked) && createPortal(actionsMenu, document.querySelector("main"))}
             <CheckTask checked={checked} onChange={handleChecked} className=" ms-[0.15rem] me-[0.9rem] mt-[0.65rem] " />
             <div className="me-[0.5rem]">
@@ -112,7 +114,7 @@ export default function Task({ className = "", taskObj = {}, completed = "false"
     );
 
     function handleChecked() {
-        editTask({ ...taskObj, status: !checked ? "completed" : "active" });
+        editTask({ ...taskObj, status: !checked ? "completed" : "active", completedAt: new Date().toISOString() });
         setChecked(!checked);
         setOpened(false);
     }

@@ -6,3 +6,4 @@ export { default as ResetPasswordButton } from "./ResetPasswordButton";
 export { default as ThemedRectButton } from "./ThemedRectButton";
 export { default as MeatballMenu } from "./MeatballMenu";
 export { default as YesNoButtons } from "./YesNoButtons";
+export { default as CreateTaskButton } from "./CreateTaskButton";

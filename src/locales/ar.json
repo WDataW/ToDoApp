@@ -3,7 +3,7 @@
         "editTask": "تعديل المهمة",
         "achievements": "الإنجازات",
         "tasksProgress": "حالة المهام",
-        "viewAllTasks": "عرض جميع المهام",
+        "viewAllTasks": "عرض المهام",
         "tomorrow": "غدًا",
         "overdue": "متأخر عن التنفيذ",
         "todaysFocus": "تركيز اليوم",
@@ -45,6 +45,9 @@
         "rememberMe": "تذكرني"
     },
     "terms": {
+        "pastDate": "التاريخ والوقت الذي اخرته يقع في الماضي.",
+        "create": "إنشاء",
+        "createTask": "إنشاء مهمة",
         "noSelectedTags": "لم يتم اختيار تصنيفات.",
         "availableTags": "التصنيفات المتاحة",
         "selectedTags": "التصنيفات المختارة",
