@@ -63,7 +63,7 @@ export default function Task({ className = "", taskObj = {}, completed = "false"
                     { label: "reschedule", action: "" },
                     { label: "delete", action: "" }
                 ]}
-                taskId={taskObj.id}
+                yOffset={7.5}
                 scrolableParent={scrolableParent}
                 meatballButton={meatballButton}
                 hideMenu={hideActionsMenu}

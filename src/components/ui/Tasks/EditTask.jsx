@@ -7,7 +7,7 @@ import { useEditTask } from "./tasks";
 export default function EditTask({ close, taskToEdit = { title: "", description: "", priority: "medium", dueDate: new Date().setHours(23, 59, 0), tags: [], status: "active" }, yes, no, className = "", children, ...props }) {
     const t = useTranslation();
 
-    const editTask = useEditTask()
+    const editTask = useEditTask();
     const [newTask, setNewTask] = useState();
     function save() {
         editTask(newTask);

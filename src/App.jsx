@@ -17,8 +17,8 @@ function App() {
       <SignInPage></SignInPage>
       */}
       {/* <StatsPage></StatsPage> */}
-      {/* <TasksPage></TasksPage> */}
-      <HomePage></HomePage>
+      <TasksPage></TasksPage>
+      {/* <HomePage></HomePage> */}
     </>
   );
 }
