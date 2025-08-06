@@ -106,6 +106,7 @@ export default function Task({ className = "", taskObj = {}, completed = "false"
                     </div>
                 </div>
                 <p>{taskObj.title}</p>
+                <div className="hyphens-auto wrap-anywhere opacity-60 text-[0.85rem] text-wrap">{taskObj.description}</div>
             </div>
             <MeatballMenu onClick={(e) => {
                 handleMeatballClick(e);
