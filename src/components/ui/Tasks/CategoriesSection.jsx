@@ -3,7 +3,8 @@ import { SearchInput } from "../keyboardInputs";
 import { getAllTags } from "./tasks";
 import { useEffect, useState } from "react";
 import { useTranslation } from "../../../context/Language";
-import { useTheme, bgThemeColors } from "@/context/Theme";
+import { CreateTagButton } from "../buttons";
+
 export default function CategoriesSection({ activeTags, setActiveTags, className = "", children, ...props }) {
 
     function handleTagClick(e) {
@@ -23,7 +24,6 @@ export default function CategoriesSection({ activeTags, setActiveTags, className
         setTagsFilter(e.target.value)
     }
     const t = useTranslation();
-    const [theme] = useTheme();
     const allTags = getAllTags();
     const [tagsFilter, setTagsFilter] = useState("");
     const filteredTags = allTags.filter((tag) => tag.title.toLowerCase().startsWith(tagsFilter.toLowerCase()));
@@ -31,9 +31,9 @@ export default function CategoriesSection({ activeTags, setActiveTags, className
         <section className={className}>
             <div className="flex gap-[0.4rem]">
                 <SearchInput required={false} value={tagsFilter} handleChange={handleSearchChange} placeholder={t("fields.searchTag")} className="text-[0.9rem] mb-[0.5rem] max-w-[20rem]"></SearchInput>
-                <button className={`${bgThemeColors[theme]} text-white text-[0.9rem] h-[2.10rem] outline-none  px-[0.8rem]  rounded-[0.4rem] text-nowrap `}>
+                <CreateTagButton className={`text-[0.9rem] h-[2.10rem] outline-none  px-[0.8rem] text-nowrap `}>
                     Create Tag
-                </button>
+                </CreateTagButton>
             </div>
             {filteredTags.length == 0 && <p>{t("terms.noMatchingTags")}</p>}
             <ul className="tags-list gap-3 flex items-center justify-start pb-[0.3rem] overflow-x-auto h-[7.5rem]">

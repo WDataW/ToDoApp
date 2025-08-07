@@ -12,8 +12,8 @@ export default function HomePage({ className = "", children, user, ...props }) {
             <Main className=" flex w-full  flex-wrap">
                 <GreetingBox className={sectionStyles}></GreetingBox>
                 <TasksSection tagsFilter={[t("terms.today")]} className={sectionStyles} heading={[t("titles.todaysFocus")]}></TasksSection>
-                <TasksSection tagsFilter={[t("titles.tomorrow")]} className={sectionStyles} heading={[t("titles.tomorrow")]}></TasksSection>
-                <TasksSection tagsFilter={[t("titles.overdue")]} className={sectionStyles} heading={[t("titles.overdue")]}></TasksSection>
+                <TasksSection tagsFilter={[t("terms.tomorrow")]} className={sectionStyles} heading={[t("terms.tomorrow")]}></TasksSection>
+                <TasksSection tagsFilter={[t("terms.overdue")]} className={sectionStyles} heading={[t("terms.overdue")]}></TasksSection>
             </Main>
         </AppPage>
     );

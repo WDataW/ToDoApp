@@ -1,11 +1,10 @@
 {
     "titles": {
+        "editTag": "Edit Tag",
         "editTask": "Edit Task",
         "achievements": "Achievements",
         "tasksProgress": "Tasks Progress",
         "viewAllTasks": "View My Tasks",
-        "tomorrow": "Tomorrow",
-        "overdue": "Overdue",
         "todaysFocus": "Today's Focus",
         "signUp": "Sign Up",
         "createAccount": "Create Account",
@@ -24,6 +23,7 @@
         "delete": "Delete"
     },
     "fields": {
+        "color": "Color",
         "hour": "Hour",
         "minute": "Minute",
         "enterTaskTitle": "Enter task title",
@@ -45,7 +45,13 @@
         "rememberMe": "Remember me"
     },
     "terms": {
+        "&": "&",
+        "tomorrow": "Tomorrow",
+        "overdue": "Overdue",
+        "tag": "Tag",
+        "tagCard": "Tag Card",
         "create": "Create",
+        "createTag": "Create Tag",
         "createTask": "Create Task",
         "noSelectedTags": "No selected tags.",
         "availableTags": "Available Tags",

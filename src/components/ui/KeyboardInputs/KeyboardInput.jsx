@@ -16,7 +16,7 @@ function setIcons(light, dark) {
     icons["light"] = light;
     icons["dark"] = dark;
 }
-export default function KeyboardInput({ type = "text", required = true, label = "", placeholder = "", lightIcon = "", darkIcon = "", iconAlt = "", className = "", handleChange, value, ref }) {
+export default function KeyboardInput({ type = "text", required = true, label = "", placeholder = "", lightIcon = "", darkIcon = "", iconAlt = "", className = "", handleChange, value, ref, ...props }) {
     const [theme] = useTheme();
     setIcons(lightIcon, darkIcon);
     const id = useId();
@@ -25,7 +25,7 @@ export default function KeyboardInput({ type = "text", required = true, label = 
             {label && <label className="ms-[0.2rem]" htmlFor={id}>{label}</label>}
             <div className={`relative ${className} `}>
                 <img src={icons[theme]} alt={iconAlt} className="absolute top-1/2 -translate-y-1/2 start-[0.8rem] h-1/2" />
-                <input type={type} value={value} id={id} required={required} ref={ref} placeholder={placeholder} onChange={handleChange} className={`${commonStyles} ${themeStyles[theme]} border-s ps-[2.5rem]`} />
+                <input type={type} value={value} id={id} required={required} ref={ref} placeholder={placeholder} onChange={handleChange} className={`${commonStyles} ${themeStyles[theme]} border-s ps-[2.5rem]`}{...props} />
             </div>
         </>
         );
@@ -33,7 +33,7 @@ export default function KeyboardInput({ type = "text", required = true, label = 
     else {
         return (<>
             {label && <label className="ms-[0.2rem]" htmlFor={id}>{label}</label>}
-            <input type={type} value={value} id={id} required={required} ref={ref} placeholder={placeholder} onChange={handleChange} className={`${commonStyles} ${themeStyles[theme]} ${className} border-s`} />
+            <input type={type} value={value} id={id} required={required} ref={ref} placeholder={placeholder} onChange={handleChange} className={`${commonStyles} ${themeStyles[theme]} ${className} border-s`} {...props} />
         </>
         );
     }

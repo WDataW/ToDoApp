@@ -14,7 +14,7 @@
   },
   "tasks": [
     {
-      "id": "t003",
+      "id": "task:7e47befe-1c4f-4519-b47f-8d8cf7c9248f",
       "title": "Set up task filtering logic",
       "description": "Implement filter by status and priority in the tasks page.",
       "status": "completed",
@@ -22,12 +22,11 @@
       "dueDate": "2025-07-31T20:59:00Z",
       "createdAt": "2025-07-03T09:30:00Z",
       "tags": [
-        "tag3",
-        "tag5"
+        "tag:da208ce0-02fe-4388-a50d-0d671acdf606"
       ]
     },
     {
-      "id": "t004",
+      "id": "task:7686a4b2-9503-4b21-ace9-42775866f3c7",
       "title": "Add animation to page transitions",
       "description": "Use Framer Motion to add smooth transitions between pages.",
       "status": "in-progress",
@@ -35,12 +34,11 @@
       "dueDate": "2025-07-23T20:00:00Z",
       "createdAt": "2025-07-03T10:00:00Z",
       "tags": [
-        "tag1",
-        "tag2"
+        "tag:0eb8fbf0-4bf9-4da8-9783-3b836a5053c7"
       ]
     },
     {
-      "id": "t005",
+      "id": "task:a2e96c61-0fc4-47fe-8126-123d33919842",
       "title": "Fix mobile responsiveness for stats page",
       "description": "Ensure layout works well on screens smaller than 768px.",
       "status": "not-started",
@@ -48,12 +46,11 @@
       "dueDate": "2025-07-08T12:00:00Z",
       "createdAt": "2025-07-03T10:30:00Z",
       "tags": [
-        "tag14",
-        "tag5"
+        "tag:4af44dc2-33b9-4281-adc8-a72891cd3fcb"
       ]
     },
     {
-      "id": "t006",
+      "id": "task:4588c6ca-e87f-4a11-ab2d-f01929e2cc84",
       "title": "Refactor user profile component",
       "description": "Make it modular and reusable with Tailwind and props.",
       "status": "in-progress",
@@ -61,12 +58,11 @@
       "dueDate": "2025-07-09T16:00:00Z",
       "createdAt": "2025-07-03T11:00:00Z",
       "tags": [
-        "tag8",
-        "tag9"
+        "tag:3060c335-bb49-4615-aca8-3a9d01489bc8"
       ]
     },
     {
-      "id": "t007",
+      "id": "task:ad9d57cd-92f5-47e9-9bb8-bfc40fcc35c9",
       "title": "Write unit tests for task logic",
       "description": "Cover edge cases for task creation, editing, and deletion.",
       "status": "not-started",
@@ -74,12 +70,11 @@
       "dueDate": "2025-07-12T15:00:00Z",
       "createdAt": "2025-07-03T11:30:00Z",
       "tags": [
-        "tag5",
-        "tag3"
+        "tag:30950837-62d7-4ed1-8607-8a16aa151db0"
       ]
     },
     {
-      "id": "t001",
+      "id": "task:afca1d96-8cf9-408d-83ee-d2796e599eb3",
       "title": "Finish UI design for todo app",
       "description": "Create a modern UI for the home, tasks, stats, and profile pages.",
       "status": "in-progress",
@@ -87,12 +82,11 @@
       "dueDate": "2025-07-05T16:00:00Z",
       "createdAt": "2025-07-01T10:00:00Z",
       "tags": [
-        "tag16",
-        "tag17"
+        "tag:b55ffde8-4f34-49b2-b0e0-1b06c6057b9a"
       ]
     },
     {
-      "id": "t002",
+      "id": "task:f54da39c-8afe-43b9-8780-d771dc3c48cb",
       "title": "Push latest commit to GitHub",
       "description": "Mammy AMmmamm Mammy AMmmamm Mammy AMmmamm Mammy AMmmammMammy AMmmammMammy AMmmamm Mammy AMmmamm Mammy AMmmammMammy AMmmammMammy AMmmammMammy AMmmamms",
       "status": "completed",
@@ -100,12 +94,11 @@
       "dueDate": "2025-07-02T18:00:00Z",
       "createdAt": "2025-07-01T09:00:00Z",
       "tags": [
-        "tag18",
-        "tag7"
+        "tag:4fa8ee28-583e-4ddf-bc2d-0d68447ae316"
       ]
     },
     {
-      "id": "t008",
+      "id": "task:bf062fe2-60df-4af4-9543-50f7a748a255",
       "title": "Review pull request",
       "description": "Check the code in PR #42 and leave comments if needed.",
       "status": "in",
@@ -113,101 +106,98 @@
       "dueDate": "2025-08-05T16:38:00Z",
       "createdAt": "2025-07-08T00:38:00Z",
       "tags": [
-        "tag12",
-        "tag13"
+        "tag:98fda073-5069-4be0-81d0-b8dd49212765"
       ]
     }
   ],
   "tags": [
     {
-      "id": "tag1",
+      "id": "tag:4b4c8590-3d62-4db1-af3d-69ddb13db2c6",
+      "title": "active",
+      "icon": "bg-[#5a9afa]",
+      "builtIn": true
+    },
+    {
+      "id": "tag:95e7d01e-724a-4fc3-98c8-c82a8a371b32",
+      "title": "High Priority",
+      "icon": "bg-[#ef4444]",
+      "builtIn": true
+    },
+    {
+      "id": "tag:7ed073cc-827e-47d9-ac8e-524a0b04f1f8",
+      "title": "today",
+      "icon": "bg-[#8affb3]",
+      "builtIn": true
+    },
+    {
+      "id": "tag:2c6fbc39-a4b9-4583-ad70-b83867eaaf1c",
+      "title": "tomorrow",
+      "icon": "bg-[#ffe88d]",
+      "builtIn": true
+    },
+    {
+      "id": "tag:123f282c-a5d5-4f3f-92f7-1b2d857fd9f5",
+      "title": "overdue",
+      "icon": "bg-[#fca5a5]",
+      "builtIn": true
+    },
+    {
+      "id": "tag:461c3a3c-88e4-4ac8-b01d-6b496afbd29b",
+      "title": "Medium Priority",
+      "icon": "bg-[#ffae00]",
+      "builtIn": true
+    },
+    {
+      "id": "tag:5e14c5cf-6cb5-418b-9cb7-1335ae980492",
+      "title": "Low Priority",
+      "icon": "bg-[#9ca3af]",
+      "builtIn": true
+    },
+    {
+      "id": "tag:5e081a64-08c0-465a-9771-14317c07f714",
+      "title": "completed",
+      "icon": "bg-[#e12afb]",
+      "builtIn": true
+    },
+    {
+      "id": "tag:98fda073-5069-4be0-81d0-b8dd49212765",
       "title": "Refactor",
       "icon": "bg-[#eab308]"
     },
     {
-      "id": "tag2",
+      "id": "tag:4fa8ee28-583e-4ddf-bc2d-0d68447ae316",
       "title": "Component",
       "icon": "bg-[#84cc16]"
     },
     {
-      "id": "tag3",
+      "id": "tag:b55ffde8-4f34-49b2-b0e0-1b06c6057b9a",
       "title": "Tailwind",
       "icon": "bg-[#06b6d4]"
     },
     {
-      "id": "tag4",
+      "id": "tag:30950837-62d7-4ed1-8607-8a16aa151db0",
       "title": "Testing",
       "icon": "bg-[#22c55e]"
     },
     {
-      "id": "tag5",
+      "id": "tag:3060c335-bb49-4615-aca8-3a9d01489bc8",
       "title": "Edge Cases",
       "icon": "bg-[#f59e0b]"
     },
     {
-      "id": "tag6",
+      "id": "tag:4af44dc2-33b9-4281-adc8-a72891cd3fcb",
       "title": "Logic",
       "icon": "bg-[#a78bfa]"
     },
     {
-      "id": "tag7",
+      "id": "tag:0eb8fbf0-4bf9-4da8-9783-3b836a5053c7",
       "title": "UI Design",
       "icon": "bg-[#6366f1]"
     },
     {
-      "id": "tag8",
+      "id": "tag:da208ce0-02fe-4388-a50d-0d671acdf606",
       "title": "Front-End",
       "icon": "bg-[#14b8a6]"
-    },
-    {
-      "id": "tag9",
-      "title": "UX",
-      "icon": "bg-[#f9a8d4]"
-    },
-    {
-      "id": "tag10",
-      "title": "Code Review",
-      "icon": "bg-[#f97316]"
-    },
-    {
-      "id": "tag11",
-      "title": "Collaboration",
-      "icon": "bg-[#3b82f6]"
-    },
-    {
-      "id": "tag12",
-      "title": "Version Control",
-      "icon": "bg-[#ad46ff]"
-    },
-    {
-      "id": "tag13",
-      "title": "Version",
-      "icon": "bg-[#e12afb]"
-    },
-    {
-      "id": "tag14",
-      "title": "Animation",
-      "icon": "bg-[#ff2056]"
-    },
-    {
-      "id": "tag15",
-      "title": "Animation Party",
-      "icon": "bg-[#7c86ff]"
-    },
-    {
-      "id": "tag16",
-      "title": "Responsive",
-      "icon": "bg-[#00a6f4]"
-    },
-    {
-      "id": "tag17",
-      "title": "Mobile",
-      "icon": "bg-[#51a2ff]"
-    },
-    {
-      "id": "tag18",
-      "title": "Bug Fix",
-      "icon": "bg-[#ff6467]"
     }
   ],
   "achievements": [

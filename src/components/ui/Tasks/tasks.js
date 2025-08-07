@@ -30,7 +30,7 @@ export function filterTasks(tasks, filterKey, filterType, includeCompleted) {
         );
         return todayTasks;
 
-    } else if (filterKey == t("titles.tomorrow").toLowerCase()) {
+    } else if (filterKey == t("terms.tomorrow").toLowerCase()) {
         const tmrwDate = new Date();
         tmrwDate.setDate(tmrwDate.getDate() + 1);
         const tomorrowTasks = tasks.filter(
@@ -43,7 +43,7 @@ export function filterTasks(tasks, filterKey, filterType, includeCompleted) {
             })
         return tomorrowTasks;
 
-    } else if (filterKey == t("titles.overdue").toLowerCase()) {
+    } else if (filterKey == t("terms.overdue").toLowerCase()) {
         const nowDate = new Date();
         const overdueTasks = tasks.filter(
             (task) => {
@@ -75,8 +75,7 @@ export function filterTasks(tasks, filterKey, filterType, includeCompleted) {
     } else {
         if (filterType == "tag") {
             const [tags] = useTags();
-            const [targetTag] = tags.filter((tag) => tag.title.toLowerCase() == filterKey);
-            const tagId = targetTag?.id;
+            const tagId = filterKey;
             const taskResults = tasks.filter((task) => task.tags.includes(tagId) && (task.status !== "completed" || includeCompleted));
             return taskResults;
         } else if (filterType == "search") {
@@ -154,7 +153,7 @@ function getDuePhrase(task) {
         return t("terms.completed");
     }
     else if (nowMs - dueMs >= 0 && task.status !== "completed") {
-        return t("titles.overdue");
+        return t("terms.overdue");
     } else if (dueMs - nowMs <= 10800000 && dueMs - nowMs >= 0) {
         return t("terms.dueSoon");
     } else {
@@ -213,30 +212,46 @@ export function useEditTask() {
     }
     return editTask;
 }
-
-export function useEditTaskStatus() {
-    return useEditTask("status");
+export function useEditTag() {
+    const [tags, setTags] = useTags();
+    function editTag(newTag) {
+        let newTags;
+        if (tags.filter((tag) => tag.id == newTag.id).length !== 0) {
+            let tagIndex;
+            tags.map((tag, i) => {
+                if (tag.id == newTag.id) {
+                    tagIndex = i;
+                }
+            });
+            newTags = [...tags];
+            newTags[tagIndex] = newTag;
+        } else {
+            newTags = [newTag, ...tags];
+        }
+        setTags(newTags);
+    }
+    return editTag;
 }
+
+// export function useEditTaskStatus() {
+//     return useEditTask("status");
+// }
 
 
 let currentTagIndex = 0;
-export function getAllTags(prefix = true) {
+export function getAllTags(includeBuiltInTags = true) {
 
     const t = useTranslation();
-    let prefixTags = [];
-    if (prefix) prefixTags = [
-        { title: t("terms.active"), icon: "bg-[#5a9afa]" },
-        { title: t("terms.highPriority"), icon: priorityStyles["high"] },
-        { title: t("terms.today"), icon: "bg-[#8affb3]" },
-        { title: t("titles.tomorrow"), icon: "bg-[#ffe88d]" },
-        { title: t("titles.overdue"), icon: "bg-[#fca5a5]" },
-        { title: t("terms.mediumPriority"), icon: priorityStyles["medium"] },
-        { title: t("terms.lowPriority"), icon: priorityStyles["low"] },
-        { title: t("terms.completed"), icon: "bg-[#e12afb]" }
-    ]
 
-    const [tags] = useTags();
-    return [...prefixTags, ...tags]
+    const [baseTags] = useTags();
+    let tags = [...baseTags];
+    if (!includeBuiltInTags) {
+        tags = tags.filter((tag) => !tag?.builtIn);
+    }
+
+
+
+    return [...tags]
 }
 
 function removeDublicateTags(tags) {
@@ -267,3 +282,30 @@ function findDublicates(targetTag, tags) {
 
 
 
+export function interpreteBuiltInTagTitle(builtInTag) {
+    const t = useTranslation();
+    let title = builtInTag.title.replace(" ", "");
+
+    const firstLetter = title.slice(0, 1).toLowerCase();
+    const notFirstLetter = title.slice(1);
+    const translationKey = firstLetter + notFirstLetter;
+    return t(`terms.${translationKey}`);
+
+}
+
+
+export function headingsInterpreter(tagTitle) {
+    const UUIDTitle = tagTitle.replace("tag:", "");
+    if (isUUID(UUIDTitle)) {
+        const [tags] = useTags();
+        const [targetTag] = tags.filter((tag) => tag.id == tagTitle);
+
+        return targetTag.title;
+    }
+    return tagTitle
+}
+
+function isUUID(id) {
+    const UUIDRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+    return UUIDRegex.test(id);
+}

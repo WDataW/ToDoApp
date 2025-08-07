@@ -5,7 +5,7 @@ const shapes = {
     circle: "rounded-full aspect-square p-2 w-[2.5em] h-[2.5rem] truncate"
 }
 
-export default function Button({ theme = "dark", shape = "rect", type = "", disabled = false, children, handleClick, className = "", ...props }) {
+export default function Button({ theme = "dark", shape = "rect", type = "", disabled = false, children, handleClick = () => { }, className = "", ...props }) {
     return (<button onClick={handleClick}
         type={type}
         disabled={disabled}

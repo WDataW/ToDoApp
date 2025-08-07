@@ -2,7 +2,7 @@ import { useTranslation } from "../../context/Language";
 import { useState } from "react";
 import AppPage from "./AppPage";
 import { AnimatePresence, motion } from "motion/react";
-import { useTheme } from "@/context/Theme";
+import EditTag from "@/components/ui/tasks/EditTag";
 import { AppPageHeader, CategoriesSection, CreateTaskButton, TasksSection, Main, SearchInput } from "../../components/ui";
 export default function TasksPage({ className = "", children, ...props }) {
     const t = useTranslation();
@@ -11,13 +11,11 @@ export default function TasksPage({ className = "", children, ...props }) {
     let lastTagIndex = activeTags.length - 1;
     if (activeTags.length == 0) lastTagIndex = 0;
 
-    const [theme] = useTheme();
     const [searchFilter, setSearchFilter] = useState("");
     return (
         <AppPage id="tasksPage" title={"tasks"} className={`${className}`} {...props}>
-            <AppPageHeader>{t("titles.tasks")}</AppPageHeader>
-            <Main>
-
+            <AppPageHeader >{t("titles.tasks")}</AppPageHeader>
+            <Main >
                 <CategoriesSection activeTags={activeTags} setActiveTags={setActiveTags} className="mb-[1rem]"></CategoriesSection>
                 <AnimatePresence mode="wait">
                     <motion.div key={"k" + activeTags.length} exit={{ y: 25, opacity: 0 }} initial={{ y: 25, opacity: 0 }} animate={{ y: 0, opacity: 1 }} >
@@ -28,7 +26,6 @@ export default function TasksPage({ className = "", children, ...props }) {
                         <TasksSection heading={activeTags} tagsFilter={activeTags} searchFilter={searchFilter} ></TasksSection>
                     </motion.div>
                 </AnimatePresence>
-
             </Main>
             {children}
         </AppPage >

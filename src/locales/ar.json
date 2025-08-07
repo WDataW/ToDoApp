@@ -1,11 +1,10 @@
 {
     "titles": {
+        "editTag": "تعديل التصنيف",
         "editTask": "تعديل المهمة",
         "achievements": "الإنجازات",
         "tasksProgress": "حالة المهام",
         "viewAllTasks": "عرض المهام",
-        "tomorrow": "غدًا",
-        "overdue": "متأخر عن التنفيذ",
         "todaysFocus": "تركيز اليوم",
         "signUp": "تسجيل جديد",
         "createAccount": "أنشئ الحساب",
@@ -24,6 +23,7 @@
         "delete": "حذف"
     },
     "fields": {
+        "color": "اللون",
         "hour": "الساعة",
         "minute": "الدقيقة",
         "enterTaskTitle": "أدخل عنوان المهمة",
@@ -45,7 +45,13 @@
         "rememberMe": "تذكرني"
     },
     "terms": {
+        "&": "و",
+        "tomorrow": "غدًا",
+        "overdue": "متأخر عن التنفيذ",
+        "tag": "التصنيف",
+        "tagCard": "بطاقة التصنيف",
         "create": "إنشاء",
+        "createTag": "إنشاء تصنيف",
         "createTask": "إنشاء مهمة",
         "noSelectedTags": "لم يتم اختيار تصنيفات.",
         "availableTags": "التصنيفات المتاحة",
@@ -61,7 +67,7 @@
         "medium": "متوسطة",
         "low": "منخفضة",
         "highPriority": "أولوية عالية",
-        "mediumPriority": "أولوية ييبريس يسببسي متوسطة",
+        "mediumPriority": "أولوية متوسطة",
         "lowPriority": "أولوية منخفضة",
         "dueSoon": "قريبًا",
         "letsMakeTodayProductive": "لنجعل هذا اليوم مثمرا، اطلع على مهامك!",

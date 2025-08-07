@@ -15,7 +15,7 @@ export default function TaskInit({ setNewTask, taskToEdit, className = "", child
 
     const [tasks] = useTasks();
     const createdAt = new Date().toISOString();
-    const newTaskId = `task${tasks.length}`;//may be changed later
+    const newTaskId = `task:${crypto.randomUUID()}`;
     useEffect(() => {
         setNewTask({
             createdAt,
