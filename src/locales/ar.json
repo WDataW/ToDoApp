@@ -1,5 +1,6 @@
 {
     "titles": {
+        "completionVsCreation": "إنشاء المهمات مقابل إكمالها",
         "editTag": "تعديل التصنيف",
         "editTask": "تعديل المهمة",
         "achievements": "الإنجازات",
@@ -23,6 +24,8 @@
         "delete": "حذف"
     },
     "fields": {
+        "year": "السنة",
+        "month": "الشهر",
         "color": "اللون",
         "hour": "الساعة",
         "minute": "الدقيقة",
@@ -45,6 +48,12 @@
         "rememberMe": "تذكرني"
     },
     "terms": {
+        "monthly": "شهري",
+        "yearly": "سنوي",
+        "mode": "النمط",
+        "day": "يوم",
+        "wasCompleted": "تم إكماله",
+        "created": "تم إنشاؤه",
         "&": "و",
         "tomorrow": "غدًا",
         "overdue": "متأخر عن التنفيذ",

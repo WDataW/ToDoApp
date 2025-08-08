@@ -12,23 +12,23 @@ export default function TasksProgress({ className = "", children, ...props }) {
     const overdueTasks = filterTasks(tasks, t("terms.overdue")).length;
 
     const chartData = [
-        { taskType: "completed", amount: completedTasks, fill: "#e12afb" },
+        { taskType: "completed", amount: completedTasks, fill: "#3bfb2aff" },
         { taskType: "active", amount: activeTasks, fill: "#5a9afa" },
         { taskType: "overdue", amount: overdueTasks, fill: "crimson" },
 
     ];
     const chartConfig = {
         amount: {
-            label: t("titles.tasks"),
+            label: t("titles.tasks").toLowerCase(),
         },
         completed: {
-            label: t("terms.completed"),
+            label: t("terms.completed").toLowerCase(),
         },
         active: {
-            label: t("terms.active"),
+            label: t("terms.active").toLowerCase(),
         },
         overdue: {
-            label: t("terms.overdue"),
+            label: t("terms.overdue").toLowerCase(),
         },
 
     }

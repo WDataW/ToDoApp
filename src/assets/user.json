@@ -18,9 +18,10 @@
       "title": "Set up task filtering logic",
       "description": "Implement filter by status and priority in the tasks page.",
       "status": "completed",
+      "completedAt": "2025-01-01T21:00:00Z",
       "priority": "high",
       "dueDate": "2025-07-31T20:59:00Z",
-      "createdAt": "2025-07-03T09:30:00Z",
+      "createdAt": "2025-08-03T09:30:00Z",
       "tags": [
         "tag:da208ce0-02fe-4388-a50d-0d671acdf606"
       ]
@@ -29,10 +30,11 @@
       "id": "task:7686a4b2-9503-4b21-ace9-42775866f3c7",
       "title": "Add animation to page transitions",
       "description": "Use Framer Motion to add smooth transitions between pages.",
-      "status": "in-progress",
+      "status": "completed",
       "priority": "medium",
-      "dueDate": "2025-07-23T20:00:00Z",
-      "createdAt": "2025-07-03T10:00:00Z",
+      "completedAt": "2025-11-30T21:00:00Z",
+      "dueDate": "2024-12-01T20:00:00Z",
+      "createdAt": "2024-07-03T10:00:00Z",
       "tags": [
         "tag:0eb8fbf0-4bf9-4da8-9783-3b836a5053c7"
       ]
@@ -65,7 +67,8 @@
       "id": "task:ad9d57cd-92f5-47e9-9bb8-bfc40fcc35c9",
       "title": "Write unit tests for task logic",
       "description": "Cover edge cases for task creation, editing, and deletion.",
-      "status": "not-started",
+      "status": "completed",
+      "completedAt": "2025-07-25T18:00:00Z",
       "priority": "high",
       "dueDate": "2025-07-12T15:00:00Z",
       "createdAt": "2025-07-03T11:30:00Z",
@@ -91,6 +94,7 @@
       "description": "Mammy AMmmamm Mammy AMmmamm Mammy AMmmamm Mammy AMmmammMammy AMmmammMammy AMmmamm Mammy AMmmamm Mammy AMmmammMammy AMmmammMammy AMmmammMammy AMmmamms",
       "status": "completed",
       "priority": "high",
+      "completedAt": "2025-07-10T18:00:00Z",
       "dueDate": "2025-07-02T18:00:00Z",
       "createdAt": "2025-07-01T09:00:00Z",
       "tags": [

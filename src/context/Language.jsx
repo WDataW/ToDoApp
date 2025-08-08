@@ -25,6 +25,25 @@ i18next.init({
 
 });
 
+export function numToArabic(num) {
+    const nums = {
+        0: "٠",
+        1: "١",
+        2: "٢",
+        3: "٣",
+        4: "٤",
+        5: "٥",
+        6: "٦",
+        7: "٧",
+        8: "٨",
+        9: "٩",
+    }
+    num = String(num);
+    const enNums = num.split("");
+    const arNums = enNums.map((num) => nums[num]);
+    return arNums.join("");
+}
+
 export function updateLang(lang) {
     i18next.changeLanguage(lang);
     document.documentElement.lang = lang;

@@ -1,6 +1,6 @@
 import { useTags, useTasks } from "../../../context/User";
 import { useTheme } from "../../../context/Theme";
-import { useLang, useTranslation } from "../../../context/Language";
+import { numToArabic, useLang, useTranslation } from "../../../context/Language";
 import { dateFormatters, timeFormatters } from "../../../scripts/dateTime";
 export function loopFilterTasks(tasks, filterKeys, filterType) {
     if (filterKeys.length == 0) {
@@ -309,3 +309,102 @@ function isUUID(id) {
     const UUIDRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
     return UUIDRegex.test(id);
 }
+
+
+
+
+
+
+/* double linechart */
+import { ISOToDate } from "../../../scripts/dateTime";
+import { getDaysInMonth } from "date-fns";
+
+export function useCreatedTasksInMonth(year, month) {
+    const [tasks] = useTasks();
+    const searchDate = new Date(year, month, 0);
+    const result = tasks.filter((task) => {
+        const createdAt = ISOToDate(task.createdAt);
+        return (
+            createdAt.getFullYear() == searchDate.getFullYear()
+            && createdAt.getMonth() == searchDate.getMonth()
+        )
+    })
+    return result;
+}
+
+
+export function useCompletedTasksInMonth(year, month) {
+    const [tasks] = useTasks();
+    const searchDate = new Date(year, month, 0);
+    const result = tasks.filter((task) => {
+        if (task.status !== "completed") return false;
+        const completedAt = ISOToDate(task.completedAt);
+        return (
+            completedAt.getFullYear() == searchDate.getFullYear()
+            && completedAt.getMonth() == searchDate.getMonth()
+        )
+    })
+    return result;
+}
+
+
+export function useYearlyTasksData(year) {
+    let months = [];
+    const [lang] = useLang();
+    for (let i = 1; i <= 12; i++) {
+        const createdTasks = useCreatedTasksInMonth(year, i);
+        const completedTasks = useCompletedTasksInMonth(year, i);
+        const month = new Date(year, i - 1).toLocaleString(lang == "ar" ? "ar-SA" : "en-US", { calendar: "gregory", month: lang == "ar" ? "long" : "short" });
+        months = [...months, { month: month, created: createdTasks.length, completed: completedTasks.length }]
+    }
+    return months;
+}
+
+
+export function useCreatedTasksInDay(year, month, day) {
+    const [tasks] = useTasks();
+    const searchDate = new Date(Date.UTC(year, month - 1, day));
+
+    const result = tasks.filter((task) => {
+        const taskCreatedAt = ISOToDate(task.createdAt);
+
+        return (
+            taskCreatedAt.getFullYear() == searchDate.getFullYear()
+            && taskCreatedAt.getMonth() == searchDate.getMonth()
+            && taskCreatedAt.getDate() == searchDate.getDate()
+        );
+    }
+    );
+    return result;
+}
+
+export function useCompletedTasksInDay(year, month, day) {
+    const [tasks] = useTasks();
+    const searchDate = new Date(Date.UTC(year, month - 1, day));
+
+    const result = tasks.filter((task) => {
+        if (task.status !== "completed") return false;
+        const taskCompletedAt = ISOToDate(task.completedAt);
+
+        return (
+            taskCompletedAt.getFullYear() == searchDate.getFullYear()
+            && taskCompletedAt.getMonth() == searchDate.getMonth()
+            && taskCompletedAt.getDate() == searchDate.getDate()
+        );
+    }
+    );
+    return result;
+}
+
+
+export function useMonthlyTasksData(year, month) {
+    let days = [];
+    const [lang] = useLang();
+    for (let i = 1; i <= getDaysInMonth(new Date(year, month - 1)); i++) {
+        const createdTasks = useCreatedTasksInDay(year, month, i);
+        const completedTasks = useCompletedTasksInDay(year, month, i);
+        days = [...days, { day: lang == "ar" ? numToArabic(String(i)) : String(i), created: createdTasks.length, completed: completedTasks.length }]
+    }
+    return days;
+}
+

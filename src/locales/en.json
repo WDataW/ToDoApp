@@ -1,5 +1,6 @@
 {
     "titles": {
+        "completionVsCreation": "Tasks Creation Vs Completion",
         "editTag": "Edit Tag",
         "editTask": "Edit Task",
         "achievements": "Achievements",
@@ -23,6 +24,8 @@
         "delete": "Delete"
     },
     "fields": {
+        "year": "Year",
+        "month": "Month",
         "color": "Color",
         "hour": "Hour",
         "minute": "Minute",
@@ -45,6 +48,12 @@
         "rememberMe": "Remember me"
     },
     "terms": {
+        "monthly": "Monthly",
+        "yearly": "Yearly",
+        "mode": "Mode",
+        "day": "Day",
+        "wasCompleted": "completed",
+        "created": "created",
         "&": "&",
         "tomorrow": "Tomorrow",
         "overdue": "Overdue",
