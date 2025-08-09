@@ -48,6 +48,7 @@
         "rememberMe": "Remember me"
     },
     "terms": {
+        "tasks": "Tasks",
         "monthly": "Monthly",
         "yearly": "Yearly",
         "mode": "Mode",

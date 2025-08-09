@@ -33,6 +33,6 @@ export default function TasksProgress({ className = "", children, ...props }) {
 
     }
     return (
-        <PieChart chartData={chartData} chartConfig={chartConfig}>{t("titles.tasksProgress")}</PieChart>
+        <PieChart total={completedTasks + activeTasks + overdueTasks} chartData={chartData} chartConfig={chartConfig}>{t("titles.tasksProgress")}</PieChart>
     );
 }

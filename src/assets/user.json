@@ -30,10 +30,10 @@
       "id": "task:7686a4b2-9503-4b21-ace9-42775866f3c7",
       "title": "Add animation to page transitions",
       "description": "Use Framer Motion to add smooth transitions between pages.",
-      "status": "completed",
+      "status": "",
       "priority": "medium",
       "completedAt": "2025-11-30T21:00:00Z",
-      "dueDate": "2024-12-01T20:00:00Z",
+      "dueDate": "2025-12-01T20:00:00Z",
       "createdAt": "2024-07-03T10:00:00Z",
       "tags": [
         "tag:0eb8fbf0-4bf9-4da8-9783-3b836a5053c7"
