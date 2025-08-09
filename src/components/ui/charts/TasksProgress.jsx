@@ -1,7 +1,7 @@
 import { useTranslation } from "@/context/Language";
 import PieChart from "./PieChart";
 import { useTasks } from "@/context/User";
-import { filterTasks } from "../tasks/tasks";
+import { filterTasks, useActivity } from "../tasks/tasks";
 
 
 export default function TasksProgress({ className = "", children, ...props }) {
@@ -32,6 +32,8 @@ export default function TasksProgress({ className = "", children, ...props }) {
         },
 
     }
+
+    useActivity();
     return (
         <PieChart total={completedTasks + activeTasks + overdueTasks} chartData={chartData} chartConfig={chartConfig}>{t("titles.tasksProgress")}</PieChart>
     );

@@ -2,6 +2,7 @@ import * as React from "react"
 import * as RechartsPrimitive from "recharts"
 
 import { cn } from "@/lib/utils"
+import { numToArabic, useLang } from "@/context/Language"
 
 // Format: { THEME_NAME: CSS_SELECTOR }
 const THEMES = {
@@ -141,7 +142,7 @@ function ChartTooltipContent({
   }
 
   const nestLabel = payload.length === 1 && indicator !== "dot"
-
+  const [lang] = useLang();
   return (
     <div
       className={cn(
@@ -197,11 +198,9 @@ function ChartTooltipContent({
                         {itemConfig?.label || item.name}
                       </span>
                     </div>
-                    {item.value && (
-                      <span className="text-foreground font-mono font-medium tabular-nums">
-                        {item.value.toLocaleString()}
-                      </span>
-                    )}
+                    <span className={`text-foreground font-mono font-medium ${lang == "ar" && "text-[1rem]"} tabular-nums`}>
+                      {lang == "ar" ? numToArabic(item.value.toLocaleString()) : item.value.toLocaleString()}
+                    </span>
                   </div>
                 </>
               )}
@@ -232,7 +231,7 @@ function ChartLegendContent({
     <div
       className={cn(
         "flex items-center flex-wrap justify-center gap-[0.7rem] ",
-        verticalAlign === "top" ? "pb-3" : "pt-3",
+        // verticalAlign === "top" ? "pb-3" : "pt-3",
         className
       )}>
       {payload.map((item) => {

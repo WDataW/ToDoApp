@@ -1,6 +1,7 @@
 {
     "titles": {
-        "completionVsCreation": "Tasks Creation Vs Completion",
+        "activityByWeekdays": "Productivity By Weekdays",
+        "completionVsCreation": "Tasks Creation / Completion",
         "editTag": "Edit Tag",
         "editTask": "Edit Task",
         "achievements": "Achievements",
@@ -48,6 +49,7 @@
         "rememberMe": "Remember me"
     },
     "terms": {
+        "tasksCompleted": "Tasks Completed",
         "tasks": "Tasks",
         "monthly": "Monthly",
         "yearly": "Yearly",

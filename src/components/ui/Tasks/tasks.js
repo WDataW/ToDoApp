@@ -1,7 +1,7 @@
 import { useTags, useTasks } from "../../../context/User";
 import { useTheme } from "../../../context/Theme";
 import { numToArabic, useLang, useTranslation } from "../../../context/Language";
-import { dateFormatters, timeFormatters } from "../../../scripts/dateTime";
+import { dateFormatters, daysOfWeek, timeFormatters } from "../../../scripts/dateTime";
 export function loopFilterTasks(tasks, filterKeys, filterType) {
     if (filterKeys.length == 0) {
         return tasks;
@@ -408,3 +408,23 @@ export function useMonthlyTasksData(year, month) {
     return days;
 }
 
+
+
+/* Radar chart */
+export function useActivity() {
+    const [tasks] = useTasks();
+    const [lang] = useLang();
+    let activity = [];
+    for (let i = 0; i < 7; i++) {
+        const tasksAccomplishedInDay = tasks.filter((task) => {
+            if (task.status !== "completed") return false;
+
+            const completedAt = new Date(task.completedAt);
+            return completedAt.getDay() == i;
+        });
+        const date = new Date(2025, 5, i + 1);
+        const day = date.toLocaleString(lang == "ar" ? "ar-SA" : "en-US", { calendar: "gregory", weekday: lang == "ar" ? "long" : "short" });
+        activity = [...activity, { label: "completed tasks", day: day, completed: tasksAccomplishedInDay.length }]
+    }
+    return activity;
+}

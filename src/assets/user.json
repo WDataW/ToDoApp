@@ -105,8 +105,9 @@
       "id": "task:bf062fe2-60df-4af4-9543-50f7a748a255",
       "title": "Review pull request",
       "description": "Check the code in PR #42 and leave comments if needed.",
-      "status": "in",
+      "status": "completed",
       "priority": "high",
+      "completedAt": "2025-08-09T16:38:00Z",
       "dueDate": "2025-08-05T16:38:00Z",
       "createdAt": "2025-07-08T00:38:00Z",
       "tags": [

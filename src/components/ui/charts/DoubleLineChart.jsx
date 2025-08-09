@@ -55,7 +55,7 @@ export default function DoubleLineChart({ chartData, axisKey, chartConfig, line1
                 />
                 <ChartLegend
                     content={<ChartLegendContent verticalAlign="top" payload={[{ id: "completed" }, { id: "created" }]} />}
-                    className=""
+                    className="pt-[0.3rem]"
                 />
             </LineChart>
         </ChartContainer>

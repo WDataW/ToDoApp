@@ -1,5 +1,6 @@
 {
     "titles": {
+        "activityByWeekdays": "الإنجاز حسب أيام الأسبوع",
         "completionVsCreation": "إنشاء المهمات مقابل إكمالها",
         "editTag": "تعديل التصنيف",
         "editTask": "تعديل المهمة",
@@ -48,6 +49,7 @@
         "rememberMe": "تذكرني"
     },
     "terms": {
+        "tasksCompleted": "مهام منجزة",
         "tasks": "مهام",
         "monthly": "شهري",
         "yearly": "سنوي",

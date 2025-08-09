@@ -18,14 +18,28 @@ const colors = {
     dark: "var(--dark-theme-accent-color)",
     neutral: "var(--neutral-theme-color)"
 }
-import { useTranslation } from "@/context/Language"
+import { numToArabic, useLang, useTranslation } from "@/context/Language"
 import { useTheme } from "@/context/Theme"
+import { useScreenWidth } from "@/context/ScreenSize";
 export default function CustomPieChart({ total, chartData, chartConfig, children }) {
     const t = useTranslation();
+    const [lang] = useLang();
+
 
     const [theme] = useTheme();
+    const w = useScreenWidth();
+    function calcRadius(w) {
+        if (w >= 310) {
+            return 70;
+        } else if (w < 310 && w > 240) {
+            return 40;
+        }
+        else {
+            return 20
+        }
+    }
 
-
+    const radius = calcRadius(w);
     return (
         <ChartContainer
             config={chartConfig}
@@ -39,7 +53,7 @@ export default function CustomPieChart({ total, chartData, chartConfig, children
                     labelClassName="text-white"
                     content={<ChartTooltipContent className="text-[0.8rem]" hideLabel />}
                 />
-                <Pie data={chartData} innerRadius={70} dataKey="amount" nameKey={"taskType"} >
+                <Pie data={chartData} innerRadius={radius} dataKey="amount" nameKey={"taskType"} >
                     <Label
                         content={({ viewBox }) => {
                             if (viewBox && "cx" in viewBox && "cy" in viewBox) {
@@ -57,7 +71,7 @@ export default function CustomPieChart({ total, chartData, chartConfig, children
                                             y={viewBox.cy}
                                             className={`${theme == "dark" ? "fill-white" : "fill-black"} ${total > 999999 ? "text-[2.1rem]" : "text-[2.3rem]"}  font-bold`}
                                         >
-                                            {total}
+                                            {lang == "ar" ? numToArabic(total) : total}
                                         </tspan>
                                         <tspan
                                             x={viewBox.cx}
@@ -74,7 +88,7 @@ export default function CustomPieChart({ total, chartData, chartConfig, children
                 </Pie>
                 <ChartLegend
                     content={<ChartLegendContent verticalAlign="top" nameKey="taskType" />}
-                    className=""
+                    className="pb-[1rem]"
                 />
             </PieChart>
         </ChartContainer>
