@@ -25,6 +25,8 @@ export default function CustomPieChart({ total, chartData, chartConfig, children
     const t = useTranslation();
     const [lang] = useLang();
 
+    let amounts = 0;
+    chartData.map((obj) => { amounts += obj.amount });
 
     const [theme] = useTheme();
     const w = useScreenWidth();
@@ -43,7 +45,7 @@ export default function CustomPieChart({ total, chartData, chartConfig, children
     return (
         <ChartContainer
             config={chartConfig}
-            className={`mx-auto aspect-square max-h-[17rem]`}
+            className={`relative mx-auto aspect-square max-h-[17rem]`}
         >
             <h3 className="border-b  mx-[0.4rem]">{children}</h3>
 
@@ -86,11 +88,12 @@ export default function CustomPieChart({ total, chartData, chartConfig, children
                         }}
                     />
                 </Pie>
-                <ChartLegend
+                {amounts != 0 && <ChartLegend
                     content={<ChartLegendContent verticalAlign="top" nameKey="taskType" />}
                     className="pb-[1rem]"
-                />
+                />}
             </PieChart>
+            {amounts == 0 && <p className={`text-[0.9rem] absolute top-1/2 start-1/2 -translate-y-1/2 ${lang == "ar" ? "translate-x-1/2" : "-translate-x-1/2"}`}>{t("terms.noAvailableData")}</p>}
         </ChartContainer>
     )
 }

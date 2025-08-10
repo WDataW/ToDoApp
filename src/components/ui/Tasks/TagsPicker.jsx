@@ -1,6 +1,6 @@
 import { useState } from "react";
 import MiniTag from "./MiniTag";
-import { getAllTags } from "./tasks";
+import { useAllTags } from "./tasks";
 import { SectionContainer } from "../containers";
 import { useTheme } from "@/context/Theme";
 import { useTranslation } from "@/context/Language";
@@ -29,7 +29,7 @@ export default function tagsPicker({ className = "", selectedTags, setSelectedTa
     }
     const [theme] = useTheme();
     const t = useTranslation();
-    const [tags, setTags] = useState(getAllTags(false).filter((tag) => !selectedTags.includes(tag)));
+    const [tags, setTags] = useState(useAllTags(false).filter((tag) => !selectedTags.includes(tag)));
     return (
         <SectionContainer>
             <p className="ps-[0.3rem] pb-[0.3rem]">{t("terms.availableTags")}</p>

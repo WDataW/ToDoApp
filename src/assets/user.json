@@ -30,13 +30,13 @@
       "id": "task:7686a4b2-9503-4b21-ace9-42775866f3c7",
       "title": "Add animation to page transitions",
       "description": "Use Framer Motion to add smooth transitions between pages.",
-      "status": "",
-      "priority": "medium",
+      "status": "completed",
+      "priority": "high",
       "completedAt": "2025-11-30T21:00:00Z",
       "dueDate": "2025-12-01T20:00:00Z",
       "createdAt": "2024-07-03T10:00:00Z",
       "tags": [
-        "tag:0eb8fbf0-4bf9-4da8-9783-3b836a5053c7"
+        "tag:da208ce0-02fe-4388-a50d-0d671acdf606"
       ]
     },
     {
@@ -73,7 +73,8 @@
       "dueDate": "2025-07-12T15:00:00Z",
       "createdAt": "2025-07-03T11:30:00Z",
       "tags": [
-        "tag:30950837-62d7-4ed1-8607-8a16aa151db0"
+        "tag:30950837-62d7-4ed1-8607-8a16aa151db0",
+        "tag:98fda073-5069-4be0-81d0-b8dd49212765"
       ]
     },
     {
@@ -85,7 +86,8 @@
       "dueDate": "2025-07-05T16:00:00Z",
       "createdAt": "2025-07-01T10:00:00Z",
       "tags": [
-        "tag:b55ffde8-4f34-49b2-b0e0-1b06c6057b9a"
+        "tag:b55ffde8-4f34-49b2-b0e0-1b06c6057b9a",
+        "tag:98fda073-5069-4be0-81d0-b8dd49212765"
       ]
     },
     {
@@ -105,10 +107,10 @@
       "id": "task:bf062fe2-60df-4af4-9543-50f7a748a255",
       "title": "Review pull request",
       "description": "Check the code in PR #42 and leave comments if needed.",
-      "status": "completed",
-      "priority": "high",
+      "status": "",
+      "priority": "medium",
       "completedAt": "2025-08-09T16:38:00Z",
-      "dueDate": "2025-08-05T16:38:00Z",
+      "dueDate": "2025-08-11T16:38:00Z",
       "createdAt": "2025-07-08T00:38:00Z",
       "tags": [
         "tag:98fda073-5069-4be0-81d0-b8dd49212765"
@@ -120,88 +122,104 @@
       "id": "tag:4b4c8590-3d62-4db1-af3d-69ddb13db2c6",
       "title": "active",
       "icon": "bg-[#5a9afa]",
+      "color": "#5a9afa",
       "builtIn": true
     },
     {
       "id": "tag:95e7d01e-724a-4fc3-98c8-c82a8a371b32",
       "title": "High Priority",
       "icon": "bg-[#ef4444]",
+      "color": "#ef4444",
       "builtIn": true
     },
     {
       "id": "tag:7ed073cc-827e-47d9-ac8e-524a0b04f1f8",
       "title": "today",
       "icon": "bg-[#8affb3]",
+      "color": "#8affb3",
       "builtIn": true
     },
     {
       "id": "tag:2c6fbc39-a4b9-4583-ad70-b83867eaaf1c",
       "title": "tomorrow",
       "icon": "bg-[#ffe88d]",
+      "color": "#ffe88d",
       "builtIn": true
     },
     {
       "id": "tag:123f282c-a5d5-4f3f-92f7-1b2d857fd9f5",
       "title": "overdue",
       "icon": "bg-[#fca5a5]",
+      "color": "#fca5a5",
       "builtIn": true
     },
     {
       "id": "tag:461c3a3c-88e4-4ac8-b01d-6b496afbd29b",
       "title": "Medium Priority",
       "icon": "bg-[#ffae00]",
+      "color": "#ffae00",
       "builtIn": true
     },
     {
       "id": "tag:5e14c5cf-6cb5-418b-9cb7-1335ae980492",
       "title": "Low Priority",
       "icon": "bg-[#9ca3af]",
+      "color": "#9ca3af",
       "builtIn": true
     },
     {
       "id": "tag:5e081a64-08c0-465a-9771-14317c07f714",
       "title": "completed",
       "icon": "bg-[#e12afb]",
+      "color": "#e12afb",
       "builtIn": true
     },
     {
       "id": "tag:98fda073-5069-4be0-81d0-b8dd49212765",
       "title": "Refactor",
-      "icon": "bg-[#eab308]"
+      "icon": "bg-[#eab308]",
+      "color": "#eab308"
     },
     {
       "id": "tag:4fa8ee28-583e-4ddf-bc2d-0d68447ae316",
       "title": "Component",
+      "color": "#84cc16",
       "icon": "bg-[#84cc16]"
     },
     {
       "id": "tag:b55ffde8-4f34-49b2-b0e0-1b06c6057b9a",
       "title": "Tailwind",
+      "color": "#06b6d4",
       "icon": "bg-[#06b6d4]"
     },
     {
       "id": "tag:30950837-62d7-4ed1-8607-8a16aa151db0",
       "title": "Testing",
+      "color": "#22c55e",
       "icon": "bg-[#22c55e]"
     },
     {
       "id": "tag:3060c335-bb49-4615-aca8-3a9d01489bc8",
       "title": "Edge Cases",
+      "color": "#f59e0b",
       "icon": "bg-[#f59e0b]"
     },
     {
       "id": "tag:4af44dc2-33b9-4281-adc8-a72891cd3fcb",
       "title": "Logic",
+      "color": "#a78bfa",
       "icon": "bg-[#a78bfa]"
     },
     {
       "id": "tag:0eb8fbf0-4bf9-4da8-9783-3b836a5053c7",
       "title": "UI Design",
+      "color": "#6366f1",
       "icon": "bg-[#6366f1]"
     },
     {
       "id": "tag:da208ce0-02fe-4388-a50d-0d671acdf606",
       "title": "Front-End",
+      "color": "#14b8a6",
       "icon": "bg-[#14b8a6]"
     }
   ],

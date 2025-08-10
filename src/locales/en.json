@@ -1,5 +1,6 @@
 {
     "titles": {
+        "taskDistributionByTags": "Task Distribution By Tags",
         "activityByWeekdays": "Productivity By Weekdays",
         "completionVsCreation": "Tasks Creation / Completion",
         "editTag": "Edit Tag",
@@ -46,9 +47,16 @@
         "reEnterPassword": "Re-enter password",
         "searchTask": "Search tasks",
         "searchTag": "Search tags",
-        "rememberMe": "Remember me"
+        "rememberMe": "Remember me",
+        "filter": "Filter",
+        "category": "Category"
     },
     "terms": {
+        "tasksCount": "Tasks Count",
+        "noMatchingResults": "No matching results",
+        "noAvailableData": "No available data",
+        "others": "Others",
+        "all": "All",
         "tasksCompleted": "Tasks Completed",
         "tasks": "Tasks",
         "monthly": "Monthly",

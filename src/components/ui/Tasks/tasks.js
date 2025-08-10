@@ -1,14 +1,14 @@
 import { useTags, useTasks } from "../../../context/User";
 import { useTheme } from "../../../context/Theme";
 import { numToArabic, useLang, useTranslation } from "../../../context/Language";
-import { dateFormatters, daysOfWeek, timeFormatters } from "../../../scripts/dateTime";
+import { dateFormatters, timeFormatters } from "../../../scripts/dateTime";
 export function loopFilterTasks(tasks, filterKeys, filterType) {
     if (filterKeys.length == 0) {
         return tasks;
     }
     const t = useTranslation();
     let newTasks = tasks;
-    const includeCompleted = filterKeys.includes(t("terms.completed"));
+    const includeCompleted = filterKeys.includes(t("terms.completed")) || filterKeys.includes(t("terms.all"));
     for (let filter of filterKeys) {
         newTasks = filterTasks(newTasks, filter, filterType, includeCompleted);
     }
@@ -18,7 +18,11 @@ export function filterTasks(tasks, filterKey, filterType, includeCompleted) {
     const t = useTranslation();
     filterKey = filterKey.toLowerCase();
     const [lang] = useLang();
-    if (filterKey == t("terms.completed").toLowerCase()) {
+
+    if (filterKey == t("terms.all").toLowerCase()) {
+        return tasks;
+    }
+    else if (filterKey == t("terms.completed").toLowerCase()) {
         return tasks.filter((task) => task.status == "completed");
     } else if (filterKey == t("terms.today").toLowerCase()) {
         const nowDate = dateFormatters[lang](new Date());
@@ -116,20 +120,20 @@ export function getDueTime(task) {
 
 export function sortTasksByDate(tasks) {
     const newTasks = [...tasks];
-    quickSort(newTasks, 0, newTasks.length - 1);
+    quickSort(newTasks, 0, newTasks.length - 1, partitionDate);
     return newTasks;
 }
-function quickSort(array, start, end) {
+function quickSort(array, start, end, partition) {
     if (end <= start) {
         return;
     }
 
     const pivot = partition(array, start, end);
-    quickSort(array, start, pivot - 1);
-    quickSort(array, pivot + 1, end);
+    quickSort(array, start, pivot - 1, partition);
+    quickSort(array, pivot + 1, end, partition);
 
 }
-function partition(array, start, end) {
+function partitionDate(array, start, end) {
     let i = start - 1;
     const pivot = new Date(array[end].dueDate).getTime();
 
@@ -238,8 +242,8 @@ export function useEditTag() {
 // }
 
 
-let currentTagIndex = 0;
-export function getAllTags(includeBuiltInTags = true) {
+// let currentTagIndex = 0;
+export function useAllTags(includeBuiltInTags = true) {
 
     const t = useTranslation();
 
@@ -248,37 +252,34 @@ export function getAllTags(includeBuiltInTags = true) {
     if (!includeBuiltInTags) {
         tags = tags.filter((tag) => !tag?.builtIn);
     }
-
-
-
     return [...tags]
 }
 
-function removeDublicateTags(tags) {
-    if (currentTagIndex >= tags.length) {
-        return tags;
-    }
-    const indecies = findDublicates(tags[currentTagIndex], tags);
-    if (indecies.length !== 0) {
-        for (let index of indecies) {
-            tags.splice(index, 1);
-        }
-    }
-    currentTagIndex++;
-    return removeDublicateTags(tags);
-}
+// function removeDublicateTags(tags) {
+//     if (currentTagIndex >= tags.length) {
+//         return tags;
+//     }
+//     const indecies = findDublicates(tags[currentTagIndex], tags);
+//     if (indecies.length !== 0) {
+//         for (let index of indecies) {
+//             tags.splice(index, 1);
+//         }
+//     }
+//     currentTagIndex++;
+//     return removeDublicateTags(tags);
+// }
 
-function findDublicates(targetTag, tags) {
-    const indecies =
-        tags
-            .map((tag, i) =>
-                tag.title == targetTag.title ? i : -1
-            ).filter(index =>
-                index !== -1
-            );
-    indecies.shift();
-    return indecies;
-}
+// function findDublicates(targetTag, tags) {
+//     const indecies =
+//         tags
+//             .map((tag, i) =>
+//                 tag.title == targetTag.title ? i : -1
+//             ).filter(index =>
+//                 index !== -1
+//             );
+//     indecies.shift();
+//     return indecies;
+// }
 
 
 
@@ -427,4 +428,91 @@ export function useActivity() {
         activity = [...activity, { label: "completed tasks", day: day, completed: tasksAccomplishedInDay.length }]
     }
     return activity;
+}
+
+
+/* Bar Chart */
+export function useTagBars(filters) {
+    const [tasks] = useTasks();
+    const t = useTranslation();
+    const filteredTasks = loopFilterTasks(tasks, filters);
+    const tags = getTasksTags(filteredTasks);
+    const bars = convertTagsToBars(tags);
+    const reducedBars = reduceBars(bars)
+    return reducedBars;
+}
+
+function getTasksTags(tasks) {
+
+    let tags = [];
+    for (let task of tasks) {
+        if (task.tags.length == 0) continue;
+        for (let tag of task.tags) {
+            tags.push(tag);
+        }
+    }
+    return tags;
+}
+
+function convertTagsToBars(tags) {
+    if (tags.length == 0) {
+        return [];
+    }
+    const key = tags[0];
+
+    const allTags = useAllTags();
+    const [targetTag] = allTags.filter((tag) => tag.id == key);
+    const title = targetTag.title;
+    const color = targetTag.color
+    let frequency = 0;
+    for (let tag of tags) {
+        if (tag == key) {
+            frequency++;
+        }
+    }
+    tags = tags.filter((tag) => tag !== key);
+    const bars = [{ tag: title, frequency: frequency, fill: color }, ...convertTagsToBars(tags)];
+    return bars
+}
+
+function reduceBars(bars) {
+    const t = useTranslation();
+    const [lang] = useLang();
+
+    const sortedBars = sortBarsByFrequency(bars);
+
+    let otherCount = 0;
+    sortedBars.slice(4).map((bar) => { otherCount += bar.frequency });// to increment otherCount
+
+    let otherTagCount = sortedBars.length - 4;
+    const otherObj = otherTagCount > 0 ? { tag: `${lang == "ar" ? numToArabic(otherTagCount) : otherTagCount} ${t("terms.others")}`, frequency: otherCount, fill: "rgba(128, 128, 128, 0.49)" } : null;
+
+    let reducedBars;
+    if (otherObj) {
+        reducedBars = [...sortedBars.slice(0, 4), otherObj];
+    } else {
+        reducedBars = sortedBars.slice(0, 4);
+    }
+    return reducedBars;
+}
+
+function sortBarsByFrequency(bars) {
+    const newBars = [...bars];
+    quickSort(newBars, 0, newBars.length - 1, partitionFrequency);
+    return newBars;
+}
+
+function partitionFrequency(array, start, end) {
+    let i = start - 1;
+    const pivot = array[0].frequency;
+
+    for (let j = start; j < end; j++) {
+        if (array[j].frequency > pivot) {
+            i++;
+            [array[i], array[j]] = [array[j], array[i]]
+        }
+    }
+    i++;
+    [array[i], array[end]] = [array[end], array[i]];
+    return i;
 }

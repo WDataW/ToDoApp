@@ -1,6 +1,6 @@
 import { useTranslation } from "../../context/Language";
 import AppPage from "./AppPage";
-import { AppPageHeader, ActivityChart, Main, TaskCompletionLines, AchievementsContainer, TasksProgress, SectionContainer } from "../../components/ui";
+import { AppPageHeader, TasksDistribution, ActivityChart, Main, TaskCompletionLines, AchievementsContainer, TasksProgress, SectionContainer } from "../../components/ui";
 const chartSectionStyles = "min-w-full md:even:me-[1rem] mb-[1rem] flex-1 md:min-w-2/5 md:max-w-[calc(50%-0.5rem)]";
 export default function TasksPage({ className = "", children, ...props }) {
     const t = useTranslation();
@@ -22,6 +22,9 @@ export default function TasksPage({ className = "", children, ...props }) {
 
                 <SectionContainer className={`${chartSectionStyles} justify-center `}>
                     <TaskCompletionLines className="w-full"></TaskCompletionLines>
+                </SectionContainer>
+                <SectionContainer className={` pb-[2.3rem] sm:pb-[1.5rem]   ${chartSectionStyles}`}>
+                    <TasksDistribution></TasksDistribution>
                 </SectionContainer>
             </Main>
             {children}

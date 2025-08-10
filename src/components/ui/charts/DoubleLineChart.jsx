@@ -10,6 +10,7 @@ import {
     ChartLegendContent
 } from "@/components/ui/charts/chart"
 import { useTheme } from "@/context/Theme"
+import { useLang } from "@/context/Language"
 
 export const description = "A multiple line chart"
 
@@ -17,6 +18,7 @@ export const description = "A multiple line chart"
 
 export default function DoubleLineChart({ chartData, axisKey, chartConfig, line1Key, line2Key, labelFormatter }) {
     const [theme] = useTheme();
+    const [lang] = useLang();
     const themeLineColor = `var(--${theme}-theme-accent-color)`;
     return (
 
@@ -30,8 +32,9 @@ export default function DoubleLineChart({ chartData, axisKey, chartConfig, line1
                     right: 12,
                 }}
             >
-                <CartesianGrid vertical={false} />
+                <CartesianGrid stroke={theme == "dark" ? "rgba(226, 226, 226, 0.5)" : "rgb(50, 50, 50, 0.3)"} vertical={false} />
                 <XAxis
+                    reversed={lang == "ar"}
                     dataKey={axisKey}
                     tickLine={true}
                     axisLine={false}

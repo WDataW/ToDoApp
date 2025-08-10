@@ -1,5 +1,6 @@
 {
     "titles": {
+        "taskDistributionByTags": "توزع المهام حسب التصنيفات",
         "activityByWeekdays": "الإنجاز حسب أيام الأسبوع",
         "completionVsCreation": "إنشاء المهمات مقابل إكمالها",
         "editTag": "تعديل التصنيف",
@@ -46,9 +47,16 @@
         "reEnterPassword": "أعد إدخال كلمة المرور",
         "searchTask": "ابحث عن مهمة ",
         "searchTag": "ابحث عن تصنيف",
-        "rememberMe": "تذكرني"
+        "rememberMe": "تذكرني",
+        "filter": "الفلتر",
+        "category": "الصنف"
     },
     "terms": {
+        "tasksCount": "عدد المهام",
+        "noMatchingResults": "لا نتائج مطابقة",
+        "noAvailableData": "لا بيانات متوفرة",
+        "others": "أُخرى",
+        "all": "الكل",
         "tasksCompleted": "مهام منجزة",
         "tasks": "مهام",
         "monthly": "شهري",

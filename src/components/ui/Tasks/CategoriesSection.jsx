@@ -1,6 +1,6 @@
 import TaskCategory from "./TaskCategory";
 import { SearchInput } from "../keyboardInputs";
-import { getAllTags } from "./tasks";
+import { useAllTags } from "./tasks";
 import { useEffect, useState } from "react";
 import { useTranslation } from "../../../context/Language";
 import { CreateTagButton } from "../buttons";
@@ -24,7 +24,7 @@ export default function CategoriesSection({ activeTags, setActiveTags, className
         setTagsFilter(e.target.value)
     }
     const t = useTranslation();
-    const allTags = getAllTags();
+    const allTags = useAllTags();
     const [tagsFilter, setTagsFilter] = useState("");
     const filteredTags = allTags.filter((tag) => tag.title.toLowerCase().startsWith(tagsFilter.toLowerCase()));
     return (
