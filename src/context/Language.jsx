@@ -12,8 +12,10 @@ function getInitLang() {
 }
 
 i18next.init({
+
     lng: getInitLang(),
     fallbackLng: "en",
+
     resources: {
         en: {
             translation: en
@@ -21,12 +23,13 @@ i18next.init({
         ar: {
             translation: ar
         }
-    }
+    },
+
 
 });
-
+i18next.services.formatter.add("arabNum", (value) => numToArabic(value));
 export function numToArabic(num) {
-    const nums = {
+    const arabicNums = {
         0: "٠",
         1: "١",
         2: "٢",
@@ -40,8 +43,24 @@ export function numToArabic(num) {
     }
     num = String(num);
     const enNums = num.split("");
-    const arNums = enNums.map((num) => nums[num]);
+    const arNums = enNums.map((num) => arabicNums[num] || num);
     return arNums.join("");
+}
+const romanNums = {
+    1: "I",
+    2: "II",
+    3: "III",
+    4: "IV",
+    5: "V",
+    6: "VI",
+    7: "VII",
+    8: "VIII",
+    9: "IX",
+    10: "X",
+}
+export function numToRoman(num) {// limit =10
+    if (num > 10 || num == 0 || isNaN(parseFloat(num))) return num;
+    return romanNums[num];
 }
 
 export function updateLang(lang) {
@@ -83,7 +102,7 @@ export default function Language({ children }) {
     }, []);
 
     return (
-        <TranslationContext value={(args) => i18next.t(args)}>
+        <TranslationContext value={(args, inter) => i18next.t(args, inter)}>
             <LangContext value={[lang, setLang]}>
                 {children}
             </LangContext>

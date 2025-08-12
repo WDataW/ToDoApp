@@ -3,6 +3,9 @@
     "id": "u123456",
     "name": "Wael Alharbi",
     "email": "wael@example.com",
+    "lastLogIn": "2025-08-11T08:00:00Z",
+    "currentLogInStreak": 5,
+    "highestLogInStreak": 12,
     "profileImage": "/images/users/wael.png",
     "createdAt": "2024-09-15T08:00:00Z",
     "role": "standard",
@@ -96,7 +99,7 @@
       "description": "Mammy AMmmamm Mammy AMmmamm Mammy AMmmamm Mammy AMmmammMammy AMmmammMammy AMmmamm Mammy AMmmamm Mammy AMmmammMammy AMmmammMammy AMmmammMammy AMmmamms",
       "status": "completed",
       "priority": "high",
-      "completedAt": "2025-07-10T18:00:00Z",
+      "completedAt": "2025-07-25T18:00:00Z",
       "dueDate": "2025-07-02T18:00:00Z",
       "createdAt": "2025-07-01T09:00:00Z",
       "tags": [
@@ -107,9 +110,9 @@
       "id": "task:bf062fe2-60df-4af4-9543-50f7a748a255",
       "title": "Review pull request",
       "description": "Check the code in PR #42 and leave comments if needed.",
-      "status": "",
+      "status": "completed",
       "priority": "medium",
-      "completedAt": "2025-08-09T16:38:00Z",
+      "completedAt": "2025-08-05T16:38:00Z",
       "dueDate": "2025-08-11T16:38:00Z",
       "createdAt": "2025-07-08T00:38:00Z",
       "tags": [
@@ -229,21 +232,21 @@
       "title": "Productive III",
       "description": "Completed your first task!",
       "dateAchieved": "2025-07-02T19:00:00Z",
-      "icon": "/images/achievements/silver.png"
+      "icon": "/images/achievements/productive/gold.png"
     },
     {
       "id": "a003",
       "title": "On Time IV",
       "description": "Completed your first task!",
       "dateAchieved": "2025-07-02T19:00:00Z",
-      "icon": "/images/achievements/gold.png"
+      "icon": "/images/achievements/onTime/glitch.png"
     },
     {
       "id": "a002",
       "title": "Power User II",
       "description": "Logged in and used the app 7 days in a row.",
       "dateAchieved": "2025-07-03T12:00:00Z",
-      "icon": "/images/achievements/bronze.png"
+      "icon": "/images/achievements/powerUser/diamond.png"
     }
   ],
   "inbox": [

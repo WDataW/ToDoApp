@@ -7,10 +7,7 @@ import { useTagBars } from "../tasks/tasks";
 
 
 const chartConfig = {
-    Tasks: {
-        label: "Tasks",
-        color: "var(--chart-1)",
-    },
+
 }
 
 export default function TasksDistribution({ className = "", children, ...props }) {

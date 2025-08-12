@@ -8,7 +8,6 @@ export default function TasksPage({ className = "", children, ...props }) {
     return (
         <AppPage title={"stats"} className={`${className}`} {...props}>
             <AppPageHeader>{t("titles.stats")}</AppPageHeader>
-
             <Main className="flex w-full flex-wrap">
                 <SectionContainer className=" w-full mb-[1rem] ">
                     <AchievementsContainer></AchievementsContainer>
@@ -16,7 +15,7 @@ export default function TasksPage({ className = "", children, ...props }) {
                 <SectionContainer className={` pb-[2.3rem] md:pb-0 ${chartSectionStyles}`}>
                     <TasksProgress></TasksProgress>
                 </SectionContainer>
-                <SectionContainer className={` pb-[2.3rem] sm:pb-[1.5rem]   ${chartSectionStyles}`}>
+                <SectionContainer className={` pb-[4rem] xs:pb-[1.5rem]    ${chartSectionStyles}`}>
                     <ActivityChart></ActivityChart>
                 </SectionContainer>
 

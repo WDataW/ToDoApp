@@ -80,7 +80,7 @@ export default function CustomPieChart({ total, chartData, chartConfig, children
                                             y={(viewBox.cy || 0) + 24}
                                             className={`${theme == "dark" ? "fill-white" : "fill-black"} `}
                                         >
-                                            {t("terms.tasks")}
+                                            {t("terms.tasks", { count: total })}
                                         </tspan>
                                     </motion.text>
                                 )

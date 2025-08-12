@@ -5,9 +5,7 @@ export default function ActivityChart({ className = "", children, ...props }) {
     const t = useTranslation();
     const activity = useActivity();
     const chartConfig = {
-        completed: {
-            label: "completed",
-        },
+
     }
 
     return (

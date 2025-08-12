@@ -1,4 +1,4 @@
-import { useTags, useTasks } from "../../../context/User";
+import { useInfo, useTags, useTasks } from "../../../context/User";
 import { useTheme } from "../../../context/Theme";
 import { numToArabic, useLang, useTranslation } from "../../../context/Language";
 import { dateFormatters, timeFormatters } from "../../../scripts/dateTime";
@@ -515,4 +515,155 @@ function partitionFrequency(array, start, end) {
     i++;
     [array[i], array[end]] = [array[end], array[i]];
     return i;
+}
+
+/* generate achievements */
+export const trophyThemes = {
+    1: "bronze",
+    2: "silver",
+    3: "gold",
+    4: "diamond",
+    5: "glitch",
+}
+export function useGeneratedTrophies() {
+    const [tasks] = useTasks();
+    const productive = generateProductive(tasks);
+    const onTime = generateOnTime(tasks);
+    const powerUser = generatePowerUser();
+    return [...productive, ...onTime, ...powerUser];
+}
+function generateProductive(tasks) {
+    const t = useTranslation()
+    const completedTasksLength = filterTasks(tasks, "completed").length;
+    if (completedTasksLength == 0) {
+        return [];
+    }
+    const titleKey = "productive"
+    let level;
+    let description;
+    let nextGoal;
+    if (completedTasksLength >= 1000) {
+        description = t("terms.completeTasks", { count: 1000 });
+        nextGoal = -1;
+        level = 5;
+    } else if (completedTasksLength >= 500) {
+        description = t("terms.completeTasks", { count: 500 });
+        nextGoal = 1000;
+        level = 4;
+    } else if (completedTasksLength >= 200) {
+        description = t("terms.completeTasks", { count: 200 });
+        nextGoal = 500;
+        level = 3;
+    } else if (completedTasksLength >= 100) {
+        description = t("terms.completeTasks", { count: 100 });
+        nextGoal = 200;
+        level = 2;
+    } else if (completedTasksLength >= 1) {
+        description = t("terms.completeTasks", { count: 1 });
+
+        nextGoal = 100;
+        level = 1;
+    } else {
+        return [];
+    }
+    return [{
+        titleKey,
+        currentCount: completedTasksLength,
+        level,
+        description,
+        nextGoal,
+        nextGoalDescription: t("terms.completeTasks", { count: nextGoal }),
+
+        theme: trophyThemes[level]
+    }]
+}
+function generateOnTime(tasks) {
+    const t = useTranslation();
+    const completedTasks = filterTasks(tasks, "completed");
+    if (completedTasks.length == 0) {
+        return [];
+    }
+    const onTimeTasksLength = completedTasks.filter((task) => {
+        const dueDate = new Date(task.dueDate).getTime();
+        const completedAt = new Date(task.completedAt).getTime();
+        return completedAt < dueDate;
+    }).length;
+    const titleKey = "onTime"
+    let level;
+    let description;
+    let nextGoal;
+    if (onTimeTasksLength >= 500) {
+        level = 5;
+        description = t("terms.completeTasksOnTime", { count: 500 });
+        nextGoal = -1;
+    } else if (onTimeTasksLength >= 250) {
+        level = 4;
+        description = t("terms.completeTasksOnTime", { count: 250 });
+        nextGoal = 500;
+    } else if (onTimeTasksLength >= 150) {
+        level = 3;
+        description = t("terms.completeTasksOnTime", { count: 150 });
+        nextGoal = 250;
+    } else if (onTimeTasksLength >= 50) {
+        level = 2;
+        description = t("terms.completeTasksOnTime", { count: 50 });
+        nextGoal = 150;
+    } else if (onTimeTasksLength >= 1) {
+        level = 1;
+        description = t("terms.completeTasksOnTime", { count: 1 });
+        nextGoal = 50;
+    } else {
+        return [];
+    }
+    return [{
+        titleKey,
+        currentCount: onTimeTasksLength,
+        level,
+        description,
+        nextGoal,
+        nextGoalDescription: t("terms.completeTasksOnTime", { count: nextGoal }),
+        theme: trophyThemes[level]
+    }]
+}
+
+function generatePowerUser() {
+    const t = useTranslation();
+    const [info] = useInfo();
+    const highestLogInStreak = info.highestLogInStreak;
+    const titleKey = "powerUser"
+    let level;
+    let description;
+    let nextGoal;
+    if (highestLogInStreak >= 120) {
+        level = 5;
+        description = t("terms.logInStreak", { count: 120 });
+        nextGoal = -1;
+    } else if (highestLogInStreak >= 60) {
+        level = 4;
+        description = description = t("terms.logInStreak", { count: 60 });
+        nextGoal = 120;
+    } else if (highestLogInStreak >= 35) {
+        level = 3;
+        description = description = t("terms.logInStreak", { count: 35 });
+        nextGoal = 60;
+    } else if (highestLogInStreak >= 15) {
+        level = 2;
+        description = description = t("terms.logInStreak", { count: 15 });
+        nextGoal = 35;
+    } else if (highestLogInStreak >= 3) {
+        level = 1;
+        description = description = t("terms.logInStreak", { count: 3 });
+        nextGoal = 15;
+    } else {
+        return [];
+    }
+    return [{
+        titleKey,
+        currentCount: highestLogInStreak,
+        level,
+        description,
+        nextGoal,
+        nextGoalDescription: t("terms.logInStreak", { count: nextGoal }),
+        theme: trophyThemes[level]
+    }]
 }

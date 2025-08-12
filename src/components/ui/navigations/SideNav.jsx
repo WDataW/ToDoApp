@@ -4,11 +4,12 @@ const inboxIcons = {
     light: "/src/assets/icons/light/mail.svg"
 }
 import { SettingsAnchor } from "../../ui";
-import { useTranslation } from "../../../context/Language";
+import { useLang, useTranslation } from "../../../context/Language";
 import { useTheme } from "../../../context/Theme";
 export default function SideNav({ ...props }) {
     const t = useTranslation();
     const [theme] = useTheme();
+    const [lang] = useLang();
     return (
         <MainNav invert={true} ulClassName="items-center flex-col h-full gap-[0.3rem] py-[1rem]" className="fixed start-0 top-0 h-full w-[4.7rem] " {...props}>
             <li >

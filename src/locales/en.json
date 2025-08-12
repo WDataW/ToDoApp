@@ -1,5 +1,8 @@
 {
     "titles": {
+        "powerUser": "Power User",
+        "productive": "Productive",
+        "onTime": "On Time",
         "taskDistributionByTags": "Task Distribution By Tags",
         "activityByWeekdays": "Productivity By Weekdays",
         "completionVsCreation": "Tasks Creation / Completion",
@@ -52,13 +55,22 @@
         "category": "Category"
     },
     "terms": {
+        "logInStreak": "Log in for {{count}} consecutive days",
+        "completeTasksOnTime": "Complete {{count}} task on time",
+        "completeTasksOnTime_other": "Complete {{count}} tasks on time",
+        "completeTasks": "Complete {{count}} task",
+        "completeTasks_other": "Complete {{count}} tasks",
+        "complete": "Complete",
+        "trophies": "Trophies",
+        "goals": "Goals",
         "tasksCount": "Tasks Count",
         "noMatchingResults": "No matching results",
         "noAvailableData": "No available data",
         "others": "Others",
         "all": "All",
         "tasksCompleted": "Tasks Completed",
-        "tasks": "Tasks",
+        "tasks_one": "Task",
+        "tasks_other": "Tasks",
         "monthly": "Monthly",
         "yearly": "Yearly",
         "mode": "Mode",
