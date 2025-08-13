@@ -80,7 +80,8 @@ export const textColors = {
 }
 export const bgColors = {
     dark: "bg-[var(--dark-bg-color)]",
-    light: "bg-[var(--light-bg-color)]"
+    light: "bg-[var(--light-bg-color)]",
+    darkenBg: "bg-[rgba(0,0,0,0.6)]"
 }
 export const surfaceBgColors = {
     dark: "bg-[var(--dark-surface-bg-color)]",

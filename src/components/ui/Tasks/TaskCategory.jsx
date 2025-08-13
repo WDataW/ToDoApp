@@ -72,7 +72,7 @@ export default function TaskCategory({ i, active, handleClick = () => { }, tag =
                         {showActionsMenu && createPortal(actionsMenu, document.querySelector("main"))}
                         <motion.button
                             style={{ backgroundColor: color, backgroundImage: `radial-gradient(at 10% 0%, ${color} 0%, white 100%)` }}
-                            initial={{}}
+                            initial={{ scaleY: 1 }}
                             animate={{}}
                             id={tagId} onClick={handleClick}
                             className={`${className}  min-w-[10rem] h-[5rem] shadow-sm/40 flex items-end  min-w-[10rem]"} ${tag.icon}   rounded-[0.5rem]`} {...props}>

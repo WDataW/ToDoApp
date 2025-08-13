@@ -11,7 +11,7 @@ export default function TasksContainer({ className = "", tagsFilter = "", search
 
     return (
         <ol className={`tasks-container flex flex-col gap-[0.5rem] overflow-auto max-h-[20rem]   px-[0.4rem] ${className}`} {...props}>
-            <AnimatePresence mode="wait">
+            <AnimatePresence >
                 {filteredTasks.map((task, i) => {
                     return (
                         <motion.li key={task.id} exit={{ opacity: 0, scale: 0.8 }} initial={{ opacity: 0 }} viewport={{ once: true }} whileInView={{ opacity: 1, transition: { duration: 0.4 } }}>

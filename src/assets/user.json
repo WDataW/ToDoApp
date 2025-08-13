@@ -122,6 +122,13 @@
   ],
   "tags": [
     {
+      "id": "tag:d0597671-079f-4a33-9faa-90bd258280fd",
+      "title": "All",
+      "icon": "bg-[#878787]",
+      "color": "#878787",
+      "builtIn": true
+    },
+    {
       "id": "tag:4b4c8590-3d62-4db1-af3d-69ddb13db2c6",
       "title": "active",
       "icon": "bg-[#5a9afa]",

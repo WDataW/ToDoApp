@@ -55,6 +55,7 @@
         "category": "Category"
     },
     "terms": {
+        "deleting": "Deleting",
         "logInStreak": "Log in for {{count}} consecutive days",
         "completeTasksOnTime": "Complete {{count}} task on time",
         "completeTasksOnTime_other": "Complete {{count}} tasks on time",
@@ -84,7 +85,7 @@
         "tagCard": "Tag Card",
         "create": "Create",
         "createTag": "Create Tag",
-        "createTask": "Create Task",
+        "createTask": "Schedule Task",
         "noSelectedTags": "No selected tags.",
         "availableTags": "Available Tags",
         "selectedTags": "Selected Tags",

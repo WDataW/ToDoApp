@@ -55,6 +55,7 @@
         "category": "الصنف"
     },
     "terms": {
+        "deleting": "سيتم حذف",
         "logInStreak_few": "سجل الدخول {{count, arabNum}} أيام متتالية",
         "logInStreak_many": "سجل الدخول {{count,arabNum}} يومًا متتاليًا",
         "logInStreak_other": "سجل الدخول {{count,arabNum}} يومًا متتاليًا",

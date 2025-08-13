@@ -1,6 +1,6 @@
 import { useTheme } from "../../../context/Theme";
 import CheckTask from "../checkboxes/CheckTask";
-import { useEditTask } from "./tasks";
+import { useDeleteTask, useEditTask } from "./tasks";
 import { MeatballMenu } from "../buttons";
 import { useRef, useState } from "react";
 import { getDueDate, getDueTime, getFinalTaskTags } from "./tasks";
@@ -9,6 +9,7 @@ import ActionsContainer from "./ActionsContainer";
 import MiniTag from "./MiniTag";
 import { EditTask } from ".";
 import { useTranslation } from "@/context/Language";
+import DeleteSomething from "../buttons/DeleteSomething";
 const themeStyles = {
     dark: "bg-[#222222] text-white",
     light: "bg-[#E9EBEB] text-black"
@@ -51,7 +52,12 @@ export default function Task({ className = "", taskObj = {}, completed = "false"
 
         setEditMode(false);
     }
-
+    function startDeletingTask() {
+        setDeleteMode(true)
+    }
+    function stopDeletingTask() {
+        setDeleteMode(false)
+    }
     function handleMeatballClick(e) {
         const meatballButton = e.target;
         if (!opened) {
@@ -60,10 +66,9 @@ export default function Task({ className = "", taskObj = {}, completed = "false"
             actionsMenu = <ActionsContainer
                 actionsArray={[
                     { label: "edit", action: editTaskAction },
-                    { label: "reschedule", action: "" },
-                    { label: "delete", action: "" }
+                    { label: "delete", action: startDeletingTask }
                 ]}
-                yOffset={7.5}
+                yOffset={5.3}
                 scrolableParent={scrolableParent}
                 meatballButton={meatballButton}
                 hideMenu={hideActionsMenu}
@@ -80,10 +85,13 @@ export default function Task({ className = "", taskObj = {}, completed = "false"
     const [opened, setOpened] = useState(false);
     const [theme] = useTheme();
     const [checked, setChecked] = useState(completed);
+    const [deleteMode, setDeleteMode] = useState(false);
+    const deleteTask = useDeleteTask();
     const t = useTranslation()
     const taskContent = (
         <div id={taskObj.id} ref={selfRef} className={`${themeStyles[theme]} relative py-[0.5rem] px-[0.8rem] flex  rounded-[1.5rem] ${className}`} {...props}>
-            {editMode && createPortal(<EditTask heading={t("titles.editTask")} yes={t("terms.save")} no={t("terms.cancel")} close={stopEditingTask} taskToEdit={taskObj} />, document.querySelector("main").parentElement)}
+            {editMode && createPortal(<EditTask heading={t("titles.editTask")} yes={t("terms.save")} no={t("terms.cancel")} close={stopEditingTask} taskToEdit={taskObj} />, selfRef.current.closest("main").parentElement)}
+            {deleteMode && createPortal(<DeleteSomething page={selfRef.current.closest("main").parentElement} title={t("terms.tasks", { count: 1 })} something={taskObj.title} yesFunc={() => { deleteTask((taskObj)) }} noFunc={stopDeletingTask}></DeleteSomething>, selfRef.current.closest("main").parentElement)}
             {(opened && !checked) && createPortal(actionsMenu, document.querySelector("main"))}
             <CheckTask checked={checked} onChange={handleChecked} className=" ms-[0.15rem] me-[0.9rem] mt-[0.65rem] " />
             <div className="me-[0.5rem]">
@@ -108,9 +116,9 @@ export default function Task({ className = "", taskObj = {}, completed = "false"
                 <p>{taskObj.title}</p>
                 <div className="hyphens-auto wrap-anywhere opacity-60 text-[0.85rem] text-wrap">{taskObj.description}</div>
             </div>
-            <MeatballMenu onClick={(e) => {
+            {!checked && <MeatballMenu onClick={(e) => {
                 handleMeatballClick(e);
-            }} className="meatball-actions ms-auto me-[0.25rem] mt-[0.65rem]  h-[1.4rem] w-[1.4rem]"></MeatballMenu>
+            }} className="meatball-actions ms-auto me-[0.25rem] mt-[0.65rem]  h-[1.4rem] w-[1.4rem]"></MeatballMenu>}
         </div>
     );
 

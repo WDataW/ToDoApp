@@ -14,6 +14,7 @@ export function loopFilterTasks(tasks, filterKeys, filterType) {
     }
     return newTasks
 }
+
 export function filterTasks(tasks, filterKey, filterType, includeCompleted) {
     const t = useTranslation();
     filterKey = filterKey.toLowerCase();
@@ -206,6 +207,14 @@ export function getFinalTaskTags(task) {
         ...getTaskTags(task)
     ]
 }
+export function useDeleteTask() {
+    const [tasks, setTasks] = useTasks();
+    function deleteTask(taskToDelete) {
+        let newTasks = tasks.filter((task) => task.id !== taskToDelete.id);
+        setTasks(newTasks);
+    }
+    return deleteTask;
+}
 
 export function useEditTask() {
     const [tasks, setTasks] = useTasks();
@@ -230,19 +239,15 @@ export function useEditTag() {
             newTags = [...tags];
             newTags[tagIndex] = newTag;
         } else {
-            newTags = [newTag, ...tags];
+            const allTag = tags[0];
+            const restTags = tags.slice(1);
+            newTags = [allTag, newTag, ...restTags];
         }
         setTags(newTags);
     }
     return editTag;
 }
 
-// export function useEditTaskStatus() {
-//     return useEditTask("status");
-// }
-
-
-// let currentTagIndex = 0;
 export function useAllTags(includeBuiltInTags = true) {
 
     const t = useTranslation();
@@ -254,34 +259,6 @@ export function useAllTags(includeBuiltInTags = true) {
     }
     return [...tags]
 }
-
-// function removeDublicateTags(tags) {
-//     if (currentTagIndex >= tags.length) {
-//         return tags;
-//     }
-//     const indecies = findDublicates(tags[currentTagIndex], tags);
-//     if (indecies.length !== 0) {
-//         for (let index of indecies) {
-//             tags.splice(index, 1);
-//         }
-//     }
-//     currentTagIndex++;
-//     return removeDublicateTags(tags);
-// }
-
-// function findDublicates(targetTag, tags) {
-//     const indecies =
-//         tags
-//             .map((tag, i) =>
-//                 tag.title == targetTag.title ? i : -1
-//             ).filter(index =>
-//                 index !== -1
-//             );
-//     indecies.shift();
-//     return indecies;
-// }
-
-
 
 export function interpreteBuiltInTagTitle(builtInTag) {
     const t = useTranslation();

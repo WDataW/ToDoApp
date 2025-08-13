@@ -1,5 +1,6 @@
 
 import { useTranslation } from "@/context/Language";
+import { v4 as randomUUID } from "uuid";
 import { KeyboardInput, WarningMessage, ColorPicker, TaskCategory } from "..";
 import MiniTag from "./MiniTag";
 import { useEffect, useState } from "react";
@@ -12,7 +13,6 @@ export default function TagInit({ setNewTag, tagToEdit, className = "", children
         setTitle(e.target.value);
     }
 
-
     const t = useTranslation();
     const [theme] = useTheme();
 
@@ -20,7 +20,7 @@ export default function TagInit({ setNewTag, tagToEdit, className = "", children
     const defaultColor = getComputedStyle(document.documentElement).getPropertyValue(`--${theme}-theme-accent-color`).trim();
     const tagColor = tagToEdit.icon.replace("bg-[", "").replace("]", "");
     const [color, setColor] = useState(tagColor || defaultColor);
-    const newTagId = `tag:${crypto.randomUUID()}`;
+    const newTagId = `tag:${randomUUID()}`;
     let icon = `bg-[${color}]`;
 
     let builtInTitle = ""

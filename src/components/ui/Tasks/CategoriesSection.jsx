@@ -15,9 +15,6 @@ export default function CategoriesSection({ activeTags, setActiveTags, className
         }
         if (activeTags.length !== 1) setActiveTags(activeTags.filter((tag) => tag !== currentTag));
     }
-    useEffect(() => {
-        document.querySelector(".tags-list li button").click();// to start with 'Active' tag
-    }, []);
 
 
     function handleSearchChange(e) {
