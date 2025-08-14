@@ -1,12 +1,12 @@
 
-import { useTranslation } from "@/context/Language";
+import { useLang, useTranslation } from "@/context/Language";
 import { v4 as randomUUID } from "uuid";
 import { KeyboardInput, WarningMessage, ColorPicker, TaskCategory } from "..";
 import MiniTag from "./MiniTag";
 import { useEffect, useState } from "react";
 import { useTheme } from "@/context/Theme";
 import { useTags } from "@/context/User";
-import { interpreteBuiltInTagTitle } from "./tasks";
+import { interpreteBuiltInTagTitle, isBuiltInTitle } from "./tasks";
 export default function TagInit({ setNewTag, tagToEdit, className = "", children, ...props }) {
     function handleTitleChange(e) {
         // if (tagToEdit?.builtIn) return;
@@ -15,6 +15,7 @@ export default function TagInit({ setNewTag, tagToEdit, className = "", children
 
     const t = useTranslation();
     const [theme] = useTheme();
+    const [tags] = useTags();
 
     const [title, setTitle] = useState(tagToEdit.title);
     const defaultColor = getComputedStyle(document.documentElement).getPropertyValue(`--${theme}-theme-accent-color`).trim();
@@ -22,17 +23,27 @@ export default function TagInit({ setNewTag, tagToEdit, className = "", children
     const [color, setColor] = useState(tagColor || defaultColor);
     const newTagId = `tag:${randomUUID()}`;
     let icon = `bg-[${color}]`;
-
+    const builtInKey = isBuiltInTitle(title, t);
+    const uniqueTitle = tags.filter((tag) => {
+        return (tag.title.toLowerCase() == title.toLowerCase() ||
+            tag.title.toLowerCase() == t(`terms.${builtInKey}`, { lng: "en" }).toLowerCase()) &&
+            title.toLowerCase() != tagToEdit.title.toLowerCase()
+    }).length == 0;
     let builtInTitle = ""
     if (tagToEdit?.builtIn) {
-        builtInTitle = interpreteBuiltInTagTitle(tagToEdit);
+        builtInTitle = interpreteBuiltInTagTitle(tagToEdit, t);
     }
-
+    const isBuiltIn = builtInKey ? true : false;
+    if (isBuiltIn && t(`terms.${builtInKey}`) != title) setTitle(t(`terms.${builtInKey}`));
+    const [lang] = useLang();
+    const titleToSave = (lang == "ar" && isBuiltIn) ? t(`terms.${builtInKey}`, { lng: "en" }) : title;
     const newTag = {
+        builtIn: isBuiltIn,
         id: newTagId,
         ...tagToEdit,
-        title,
+        title: titleToSave,
         icon,
+        unique: uniqueTitle,
     }
     useEffect(() => {
         setNewTag(newTag);
@@ -40,15 +51,13 @@ export default function TagInit({ setNewTag, tagToEdit, className = "", children
         title, icon
     ]);
 
-    const [tags] = useTags();
-    const uniqueTitle = tags.filter((tag) => tag.title.toLowerCase() == title.toLowerCase() && title.toLowerCase() != tagToEdit.title.toLowerCase()).length == 0;
     return (
 
         <div className=" flex text-[0.9rem] flex-col  gap-[0.8rem]">
             <div className="flex flex-col  max-w-[22rem]">
                 <KeyboardInput disabled={builtInTitle} value={builtInTitle || title} handleChange={handleTitleChange} label={t("fields.title")} placeholder={t("fields.enterTaskTitle")} className={`w-full ${className}`} {...props} />
-                {!title ? <WarningMessage className={"ms-[0.2rem] mt-[0.3rem]"}>{t("warnings.emptyTitle")}</WarningMessage> : <></>}
-                {!uniqueTitle ? <WarningMessage className={"ms-[0.2rem] mt-[0.3rem]"}>Title must be unique</WarningMessage> : <></>}
+                {!title && <WarningMessage className={"ms-[0.2rem] mt-[0.3rem]"}>{t("warnings.emptyTitle")}</WarningMessage>}
+                {!uniqueTitle && <WarningMessage className={"ms-[0.2rem] mt-[0.3rem]"}>Title must be unique</WarningMessage>}
             </div>
             <ColorPicker className={"max-w-[22rem]"} color={color} setColor={setColor}></ColorPicker>
             <div className="flex">

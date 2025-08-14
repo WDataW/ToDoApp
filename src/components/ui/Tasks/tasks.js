@@ -216,6 +216,16 @@ export function useDeleteTask() {
     return deleteTask;
 }
 
+export function useDeleteTag() {
+    const [tags, setTags] = useTags();
+    function deleteTag(tagToDelete) {
+        let newTags = tags.filter((tag) => tag.id !== tagToDelete.id && tag.title !== tagToDelete.id);
+        setTags(newTags);
+    }
+    return deleteTag
+
+}
+
 export function useEditTask() {
     const [tasks, setTasks] = useTasks();
     function editTask(newTask) {
@@ -239,19 +249,26 @@ export function useEditTag() {
             newTags = [...tags];
             newTags[tagIndex] = newTag;
         } else {
-            const allTag = tags[0];
-            const restTags = tags.slice(1);
-            newTags = [allTag, newTag, ...restTags];
+            if (tags.length !== 0) {
+            }
+            newTags = [newTag, ...tags];
         }
         setTags(newTags);
     }
     return editTag;
 }
 
+export function isBuiltInTitle(title, t) {
+    const builtInTitleKeys = ["all", "active", "highPriority", "mediumPriority", "lowPriority", "today", "tomorrow", "overdue", "completed"]
+    for (let key of builtInTitleKeys) {
+        if (t(`terms.${key}`, { lng: "en" }).toLowerCase() == title.toLowerCase() || t(`terms.${key}`, { lng: "ar" }) == title) {
+            return key;
+        }
+    }
+    return;
+}
+
 export function useAllTags(includeBuiltInTags = true) {
-
-    const t = useTranslation();
-
     const [baseTags] = useTags();
     let tags = [...baseTags];
     if (!includeBuiltInTags) {
@@ -260,14 +277,14 @@ export function useAllTags(includeBuiltInTags = true) {
     return [...tags]
 }
 
-export function interpreteBuiltInTagTitle(builtInTag) {
-    const t = useTranslation();
-    let title = builtInTag.title.replace(" ", "");
-
-    const firstLetter = title.slice(0, 1).toLowerCase();
-    const notFirstLetter = title.slice(1);
-    const translationKey = firstLetter + notFirstLetter;
-    return t(`terms.${translationKey}`);
+export function interpreteBuiltInTagTitle(builtInTag, t) {
+    builtInTag.title = builtInTag.title.toLowerCase();
+    let words = builtInTag.title.split(" ");
+    words = words.map((word, i) => {
+        if (i == 0) return word;
+        return word.slice(0, 1).toUpperCase() + word.slice(1);
+    });
+    return t(`terms.${words.join("")}`);
 
 }
 
@@ -278,7 +295,8 @@ export function headingsInterpreter(tagTitle) {
         const [tags] = useTags();
         const [targetTag] = tags.filter((tag) => tag.id == tagTitle);
 
-        return targetTag.title;
+        if (targetTag) return targetTag.title;
+        return "";
     }
     return tagTitle
 }

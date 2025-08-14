@@ -1,6 +1,8 @@
+import { useTranslation } from "@/context/Language";
 import { interpreteBuiltInTagTitle } from "./tasks";
 
 export default function MiniTag({ tag, className = "", children, ...props }) {
+    const t = useTranslation();
     let color = "";
     if (tag.icon.startsWith("bg-[#")) {
         color = tag.icon.replace("bg-[", "").replace("]", "");
@@ -9,7 +11,7 @@ export default function MiniTag({ tag, className = "", children, ...props }) {
 
     let tagTitle;
     if (tag?.builtIn) {
-        tagTitle = interpreteBuiltInTagTitle(tag);
+        tagTitle = interpreteBuiltInTagTitle(tag, t);
     }
 
 

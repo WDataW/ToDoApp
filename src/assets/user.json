@@ -195,65 +195,6 @@
       "title": "Component",
       "color": "#84cc16",
       "icon": "bg-[#84cc16]"
-    },
-    {
-      "id": "tag:b55ffde8-4f34-49b2-b0e0-1b06c6057b9a",
-      "title": "Tailwind",
-      "color": "#06b6d4",
-      "icon": "bg-[#06b6d4]"
-    },
-    {
-      "id": "tag:30950837-62d7-4ed1-8607-8a16aa151db0",
-      "title": "Testing",
-      "color": "#22c55e",
-      "icon": "bg-[#22c55e]"
-    },
-    {
-      "id": "tag:3060c335-bb49-4615-aca8-3a9d01489bc8",
-      "title": "Edge Cases",
-      "color": "#f59e0b",
-      "icon": "bg-[#f59e0b]"
-    },
-    {
-      "id": "tag:4af44dc2-33b9-4281-adc8-a72891cd3fcb",
-      "title": "Logic",
-      "color": "#a78bfa",
-      "icon": "bg-[#a78bfa]"
-    },
-    {
-      "id": "tag:0eb8fbf0-4bf9-4da8-9783-3b836a5053c7",
-      "title": "UI Design",
-      "color": "#6366f1",
-      "icon": "bg-[#6366f1]"
-    },
-    {
-      "id": "tag:da208ce0-02fe-4388-a50d-0d671acdf606",
-      "title": "Front-End",
-      "color": "#14b8a6",
-      "icon": "bg-[#14b8a6]"
-    }
-  ],
-  "achievements": [
-    {
-      "id": "a001",
-      "title": "Productive III",
-      "description": "Completed your first task!",
-      "dateAchieved": "2025-07-02T19:00:00Z",
-      "icon": "/images/achievements/productive/gold.png"
-    },
-    {
-      "id": "a003",
-      "title": "On Time IV",
-      "description": "Completed your first task!",
-      "dateAchieved": "2025-07-02T19:00:00Z",
-      "icon": "/images/achievements/onTime/glitch.png"
-    },
-    {
-      "id": "a002",
-      "title": "Power User II",
-      "description": "Logged in and used the app 7 days in a row.",
-      "dateAchieved": "2025-07-03T12:00:00Z",
-      "icon": "/images/achievements/powerUser/diamond.png"
     }
   ],
   "inbox": [

@@ -1,11 +1,21 @@
 import { useTranslation } from "../../context/Language";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AppPage from "./AppPage";
 import { AnimatePresence, motion } from "motion/react";
 import { AppPageHeader, CategoriesSection, CreateTaskButton, TasksSection, Main, SearchInput } from "../../components/ui";
 export default function TasksPage({ className = "", children, ...props }) {
     const t = useTranslation();
-    const [activeTags, setActiveTags] = useState(["Active"]);
+    const [activeTags, setActiveTags] = useState([t("terms.active")]);
+    useEffect(() => {
+        if (activeTags.length == 0) {
+            const firstTag = document.querySelector(".tags-list li div button")
+            if (firstTag) {
+                const defaultActive = firstTag.id;
+                setActiveTags([defaultActive]);
+            }
+        }
+    }, [activeTags]);
+
     const [searchFilter, setSearchFilter] = useState("");
     return (
         <AppPage id="tasksPage" title={"tasks"} className={`${className}`} {...props}>

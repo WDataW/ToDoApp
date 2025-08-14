@@ -92,7 +92,6 @@ const LangContext = createContext();
 
 export default function Language({ children }) {
     const [lang, setLang] = useState(getInitLang());
-    const dir = getDirection(lang);
 
 
 

@@ -5,33 +5,46 @@ import { createPortal } from "react-dom";
 import ActionsContainer from "./ActionsContainer";
 import EditTag from "./EditTag";
 import { useTranslation } from "@/context/Language";
-import { interpreteBuiltInTagTitle } from "./tasks";
+import { interpreteBuiltInTagTitle, useDeleteTag } from "./tasks";
+import DeleteSomething from "../buttons/DeleteSomething";
 
 let actionsMenu;
-export default function TaskCategory({ i, active, handleClick = () => { }, tag = {}, className = "", children, ...props }) {
+export default function TaskCategory({ i, setActiveTags, active, handleClick = () => { }, tag = {}, className = "", children, ...props }) {
+    const [deleteMode, setDeleteMode] = useState(false);
     const color = tag.icon.replace("bg-[", "").replace("]", "");
     const [showActionsMenu, setShowActionsMenu] = useState(false);
+    const deleteTag = useDeleteTag();
     const t = useTranslation();
     const selfRef = useRef();
     const [editMode, setEditMode] = useState();
+
+    let tagTitle = tag.title;
+    let tagId = tag.id;
+    if (tag?.builtIn) {
+        tagTitle = interpreteBuiltInTagTitle(tag, t);
+        tagId = tagTitle;
+    }
+
     function editTagAction(e) {
         const main = e.target.closest("main");
         main.classList.add("hidden");
-
         const pageHeader = main.parentElement.querySelector("header");
         pageHeader.classList.add("hidden");
-
         setEditMode(true);
     }
     function closeEditTag() {
         const main = selfRef.current.closest("main");
         main.classList.remove("hidden");
-
         const pageHeader = main.parentElement.querySelector("header");
         pageHeader.classList.remove("hidden");
         setEditMode(false);
     }
-
+    function startDeleting() {
+        setDeleteMode(true);
+    }
+    function stopDeleting() {
+        setDeleteMode(false);
+    }
     function handleMeatballClick(e) {
         const meatballButton = e.target;
         if (!showActionsMenu) {
@@ -41,7 +54,7 @@ export default function TaskCategory({ i, active, handleClick = () => { }, tag =
                 yOffset={5.3}
                 actionsArray={[
                     { label: "edit", action: editTagAction },
-                    { label: "delete", action: () => { } }
+                    { label: "delete", action: startDeleting }
                 ]}
                 scrolableParent={scrolableParent}
                 meatballButton={meatballButton}
@@ -51,24 +64,22 @@ export default function TaskCategory({ i, active, handleClick = () => { }, tag =
         }
         setShowActionsMenu(!showActionsMenu);
     }
-
     function hideActionsMenu() {
         setShowActionsMenu(false);
-
-    }
-    let tagTitle = tag.title;
-    let tagId = tag.id;
-    if (tag?.builtIn) {
-        tagTitle = interpreteBuiltInTagTitle(tag);
-        tagId = tagTitle;
     }
 
+    function processDeletingTag() {
+        const newActiveTags = active.filter((a) => a !== tagId);
+        setActiveTags(newActiveTags);
+        deleteTag(tag);
+    }
     return (
         <>
             {
                 !active.includes(tagTitle) && !active.includes(tagId) ? (
                     <div ref={selfRef} className="relative inline-block">
                         {editMode && createPortal(<EditTag heading={t("titles.editTag")} yes={t("terms.save")} no={t("terms.cancel")} tagToEdit={tag} close={closeEditTag} />, document.querySelector("main").parentElement)}
+                        {deleteMode && createPortal(<DeleteSomething something={tagTitle} title={t("terms.tag")} yesFunc={processDeletingTag} noFunc={stopDeleting} />, selfRef.current.closest("main").parentElement)}
                         {showActionsMenu && createPortal(actionsMenu, document.querySelector("main"))}
                         <motion.button
                             style={{ backgroundColor: color, backgroundImage: `radial-gradient(at 10% 0%, ${color} 0%, white 100%)` }}
@@ -87,6 +98,7 @@ export default function TaskCategory({ i, active, handleClick = () => { }, tag =
                 ) : (
                     <div ref={selfRef} className="relative inline-block">
                         {editMode && createPortal(<EditTag heading={t("titles.editTag")} yes={t("terms.save")} no={t("terms.cancel")} tagToEdit={tag} close={closeEditTag} />, document.querySelector("main").parentElement)}
+                        {deleteMode && createPortal(<DeleteSomething something={tagTitle} title={t("terms.tag")} yesFunc={processDeletingTag} noFunc={stopDeleting} />, selfRef.current.closest("main").parentElement)}
                         {showActionsMenu && createPortal(actionsMenu, document.querySelector("main"))}
                         <motion.button
                             style={{ backgroundColor: color, backgroundImage: `radial-gradient(at 10% 0%, ${color} 0%, white 100%)` }}

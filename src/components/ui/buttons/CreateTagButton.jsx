@@ -3,7 +3,7 @@ import { useTheme, bgThemeColors } from "@/context/Theme";
 import { useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { EditTag } from "..";
-export default function CreateTagButton({ customTheme, className, children, ...props }) {
+export default function CreateTagButton({ activeTags, setActiveTags, customTheme, className, ...props }) {
     const t = useTranslation();
     const [theme] = customTheme || useTheme();
     const selfRef = useRef();
@@ -28,7 +28,7 @@ export default function CreateTagButton({ customTheme, className, children, ...p
         setCreateTagMode(false);
     }
     return (<>
-        {createTagMode && createPortal(<EditTag heading={t("terms.createTask")} close={stopCreatingTag} yes={t("terms.create")} no={t("terms.cancel")} />, selfRef.current.closest("main").parentElement)}
+        {createTagMode && createPortal(<EditTag activeTags={activeTags} setActiveTags={setActiveTags} heading={t("terms.createTag")} close={stopCreatingTag} yes={t("terms.create")} no={t("terms.cancel")} />, selfRef.current.closest("main").parentElement)}
         <button ref={selfRef} onClick={createTag} className={`${className} ${bgThemeColors[theme]} rounded-[0.4rem]  text-white`}  {...props}>{t("terms.createTag")}</button>
     </>
     );
