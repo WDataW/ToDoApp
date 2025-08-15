@@ -1,5 +1,7 @@
 {
     "titles": {
+        "pin": "Pin",
+        "unpin": "Unpin",
         "powerUser": "Power User",
         "productive": "Productive",
         "onTime": "On Time",

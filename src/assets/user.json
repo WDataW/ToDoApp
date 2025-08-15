@@ -20,13 +20,13 @@
       "id": "task:7e47befe-1c4f-4519-b47f-8d8cf7c9248f",
       "title": "Set up task filtering logic",
       "description": "Implement filter by status and priority in the tasks page.",
-      "status": "completed",
+      "status": "",
       "completedAt": "2025-01-01T21:00:00Z",
       "priority": "high",
-      "dueDate": "2025-07-31T20:59:00Z",
+      "dueDate": "2025-10-31T20:59:00Z",
       "createdAt": "2025-08-03T09:30:00Z",
       "tags": [
-        "tag:da208ce0-02fe-4388-a50d-0d671acdf606"
+        "tag:98fda073-5069-4be0-81d0-b8dd49212765"
       ]
     },
     {
@@ -39,7 +39,7 @@
       "dueDate": "2025-12-01T20:00:00Z",
       "createdAt": "2024-07-03T10:00:00Z",
       "tags": [
-        "tag:da208ce0-02fe-4388-a50d-0d671acdf606"
+        "tag:98fda073-5069-4be0-81d0-b8dd49212765"
       ]
     },
     {
@@ -51,7 +51,7 @@
       "dueDate": "2025-07-08T12:00:00Z",
       "createdAt": "2025-07-03T10:30:00Z",
       "tags": [
-        "tag:4af44dc2-33b9-4281-adc8-a72891cd3fcb"
+        "tag:98fda073-5069-4be0-81d0-b8dd49212765"
       ]
     },
     {
@@ -63,7 +63,7 @@
       "dueDate": "2025-07-09T16:00:00Z",
       "createdAt": "2025-07-03T11:00:00Z",
       "tags": [
-        "tag:3060c335-bb49-4615-aca8-3a9d01489bc8"
+        "tag:4fa8ee28-583e-4ddf-bc2d-0d68447ae316"
       ]
     },
     {
@@ -76,8 +76,7 @@
       "dueDate": "2025-07-12T15:00:00Z",
       "createdAt": "2025-07-03T11:30:00Z",
       "tags": [
-        "tag:30950837-62d7-4ed1-8607-8a16aa151db0",
-        "tag:98fda073-5069-4be0-81d0-b8dd49212765"
+        "tag:4fa8ee28-583e-4ddf-bc2d-0d68447ae316"
       ]
     },
     {
@@ -89,8 +88,7 @@
       "dueDate": "2025-07-05T16:00:00Z",
       "createdAt": "2025-07-01T10:00:00Z",
       "tags": [
-        "tag:b55ffde8-4f34-49b2-b0e0-1b06c6057b9a",
-        "tag:98fda073-5069-4be0-81d0-b8dd49212765"
+        "tag:4fa8ee28-583e-4ddf-bc2d-0d68447ae316"
       ]
     },
     {
@@ -116,7 +114,7 @@
       "dueDate": "2025-08-11T16:38:00Z",
       "createdAt": "2025-07-08T00:38:00Z",
       "tags": [
-        "tag:98fda073-5069-4be0-81d0-b8dd49212765"
+        "tag:4fa8ee28-583e-4ddf-bc2d-0d68447ae316"
       ]
     }
   ],
@@ -126,75 +124,88 @@
       "title": "All",
       "icon": "bg-[#878787]",
       "color": "#878787",
-      "builtIn": true
+      "builtIn": true,
+      "pinned": true
     },
     {
       "id": "tag:4b4c8590-3d62-4db1-af3d-69ddb13db2c6",
       "title": "active",
       "icon": "bg-[#5a9afa]",
       "color": "#5a9afa",
-      "builtIn": true
+      "builtIn": true,
+      "pinned": true
     },
     {
       "id": "tag:95e7d01e-724a-4fc3-98c8-c82a8a371b32",
       "title": "High Priority",
       "icon": "bg-[#ef4444]",
       "color": "#ef4444",
-      "builtIn": true
+      "builtIn": true,
+      "pinned": false
     },
     {
       "id": "tag:7ed073cc-827e-47d9-ac8e-524a0b04f1f8",
       "title": "today",
       "icon": "bg-[#8affb3]",
       "color": "#8affb3",
-      "builtIn": true
+      "builtIn": true,
+      "pinned": false
     },
     {
       "id": "tag:2c6fbc39-a4b9-4583-ad70-b83867eaaf1c",
       "title": "tomorrow",
       "icon": "bg-[#ffe88d]",
       "color": "#ffe88d",
-      "builtIn": true
+      "builtIn": true,
+      "pinned": false
     },
     {
       "id": "tag:123f282c-a5d5-4f3f-92f7-1b2d857fd9f5",
       "title": "overdue",
       "icon": "bg-[#fca5a5]",
       "color": "#fca5a5",
-      "builtIn": true
+      "builtIn": true,
+      "pinned": false
     },
     {
       "id": "tag:461c3a3c-88e4-4ac8-b01d-6b496afbd29b",
       "title": "Medium Priority",
       "icon": "bg-[#ffae00]",
       "color": "#ffae00",
-      "builtIn": true
+      "builtIn": true,
+      "pinned": false
     },
     {
       "id": "tag:5e14c5cf-6cb5-418b-9cb7-1335ae980492",
       "title": "Low Priority",
       "icon": "bg-[#9ca3af]",
       "color": "#9ca3af",
-      "builtIn": true
+      "builtIn": true,
+      "pinned": false
     },
     {
       "id": "tag:5e081a64-08c0-465a-9771-14317c07f714",
       "title": "completed",
       "icon": "bg-[#e12afb]",
       "color": "#e12afb",
-      "builtIn": true
+      "builtIn": true,
+      "pinned": false
     },
     {
       "id": "tag:98fda073-5069-4be0-81d0-b8dd49212765",
       "title": "Refactor",
       "icon": "bg-[#eab308]",
-      "color": "#eab308"
+      "color": "#eab308",
+      "builtIn": false,
+      "pinned": false
     },
     {
       "id": "tag:4fa8ee28-583e-4ddf-bc2d-0d68447ae316",
       "title": "Component",
       "color": "#84cc16",
-      "icon": "bg-[#84cc16]"
+      "icon": "bg-[#84cc16]",
+      "builtIn": false,
+      "pinned": false
     }
   ],
   "inbox": [

@@ -29,7 +29,8 @@ export default function tagsPicker({ className = "", selectedTags, setSelectedTa
     }
     const [theme] = useTheme();
     const t = useTranslation();
-    const [tags, setTags] = useState(useAllTags(false).filter((tag) => !selectedTags.includes(tag)));
+
+    const [tags, setTags] = useState(useAllTags(false).filter((tag) => !selectedTags.includes(tag))[0]);
     return (
         <SectionContainer>
             <p className="ps-[0.3rem] pb-[0.3rem]">{t("terms.availableTags")}</p>

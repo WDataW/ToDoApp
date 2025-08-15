@@ -10,13 +10,12 @@ export function loopFilterTasks(tasks, filterKeys, filterType) {
     let newTasks = tasks;
     const includeCompleted = filterKeys.includes(t("terms.completed")) || filterKeys.includes(t("terms.all"));
     for (let filter of filterKeys) {
-        newTasks = filterTasks(newTasks, filter, filterType, includeCompleted);
+        newTasks = filterTasks(t, newTasks, filter, filterType, includeCompleted);
     }
     return newTasks
 }
 
-export function filterTasks(tasks, filterKey, filterType, includeCompleted) {
-    const t = useTranslation();
+export function filterTasks(t, tasks, filterKey, filterType, includeCompleted) {// edit t
     filterKey = filterKey.toLowerCase();
     const [lang] = useLang();
 
@@ -79,7 +78,6 @@ export function filterTasks(tasks, filterKey, filterType, includeCompleted) {
 
     } else {
         if (filterType == "tag") {
-            const [tags] = useTags();
             const tagId = filterKey;
             const taskResults = tasks.filter((task) => task.tags.includes(tagId) && (task.status !== "completed" || includeCompleted));
             return taskResults;
@@ -192,7 +190,7 @@ function createDefaultTags(task) {
 
 export function getTaskTags(task) {
 
-    const [tagsBase] = useTags();
+    const [tagsBase] = useAllTags();
     const taskTags = [];
     for (let tagId of task.tags) {
         taskTags.push(...tagsBase.filter((tag) => tag.id == tagId));
@@ -217,9 +215,15 @@ export function useDeleteTask() {
 }
 
 export function useDeleteTag() {
-    const [tags, setTags] = useTags();
+    const [tags, setTags] = useAllTags();
+    const [tasks, setTasks] = useTasks();
     function deleteTag(tagToDelete) {
+        let newTasks = tasks;
+        for (let task of newTasks) {
+            task.tags = task.tags.filter((tag) => tag !== tagToDelete.id);
+        }
         let newTags = tags.filter((tag) => tag.id !== tagToDelete.id && tag.title !== tagToDelete.id);
+        setTasks(newTasks);
         setTags(newTags);
     }
     return deleteTag
@@ -236,7 +240,7 @@ export function useEditTask() {
     return editTask;
 }
 export function useEditTag() {
-    const [tags, setTags] = useTags();
+    const [tags, setTags] = useAllTags();
     function editTag(newTag) {
         let newTags;
         if (tags.filter((tag) => tag.id == newTag.id).length !== 0) {
@@ -269,12 +273,14 @@ export function isBuiltInTitle(title, t) {
 }
 
 export function useAllTags(includeBuiltInTags = true) {
-    const [baseTags] = useTags();
+    const [baseTags, setTags] = useTags();
     let tags = [...baseTags];
     if (!includeBuiltInTags) {
         tags = tags.filter((tag) => !tag?.builtIn);
     }
-    return [...tags]
+    const pinnedTags = tags.filter((tag) => tag.pinned);
+    const unPinnnedTags = tags.filter((tag) => !tag.pinned);
+    return [[...pinnedTags, ...unPinnnedTags], setTags]
 }
 
 export function interpreteBuiltInTagTitle(builtInTag, t) {
@@ -292,7 +298,7 @@ export function interpreteBuiltInTagTitle(builtInTag, t) {
 export function headingsInterpreter(tagTitle) {
     const UUIDTitle = tagTitle.replace("tag:", "");
     if (isUUID(UUIDTitle)) {
-        const [tags] = useTags();
+        const [tags] = useAllTags();
         const [targetTag] = tags.filter((tag) => tag.id == tagTitle);
 
         if (targetTag) return targetTag.title;
@@ -429,7 +435,6 @@ export function useActivity() {
 /* Bar Chart */
 export function useTagBars(filters) {
     const [tasks] = useTasks();
-    const t = useTranslation();
     const filteredTasks = loopFilterTasks(tasks, filters);
     const tags = getTasksTags(filteredTasks);
     const bars = convertTagsToBars(tags);
@@ -455,7 +460,7 @@ function convertTagsToBars(tags) {
     }
     const key = tags[0];
 
-    const allTags = useAllTags();
+    const [allTags] = useAllTags();
     const [targetTag] = allTags.filter((tag) => tag.id == key);
     const title = targetTag.title;
     const color = targetTag.color
@@ -522,17 +527,17 @@ export const trophyThemes = {
 }
 export function useGeneratedTrophies() {
     const [tasks] = useTasks();
-    const productive = generateProductive(tasks);
-    const onTime = generateOnTime(tasks);
-    const powerUser = generatePowerUser();
+    const t = useTranslation()
+    const productive = generateProductive(tasks, t);
+    const onTime = generateOnTime(tasks, t);
+    const powerUser = generatePowerUser(t);
     return [...productive, ...onTime, ...powerUser];
 }
-function generateProductive(tasks) {
-    const t = useTranslation()
-    const completedTasksLength = filterTasks(tasks, "completed").length;
-    if (completedTasksLength == 0) {
-        return [];
-    }
+
+
+function generateProductive(tasks, t) {
+    const completedTasksLength = filterTasks(t, tasks, t("terms.completed")).length;
+
     const titleKey = "productive"
     let level;
     let description;
@@ -555,11 +560,11 @@ function generateProductive(tasks) {
         level = 2;
     } else if (completedTasksLength >= 1) {
         description = t("terms.completeTasks", { count: 1 });
-
         nextGoal = 100;
         level = 1;
     } else {
-        return [];
+        nextGoal = 1;
+        level = 0;
     }
     return [{
         titleKey,
@@ -568,16 +573,11 @@ function generateProductive(tasks) {
         description,
         nextGoal,
         nextGoalDescription: t("terms.completeTasks", { count: nextGoal }),
-
         theme: trophyThemes[level]
     }]
 }
-function generateOnTime(tasks) {
-    const t = useTranslation();
-    const completedTasks = filterTasks(tasks, "completed");
-    if (completedTasks.length == 0) {
-        return [];
-    }
+function generateOnTime(tasks, t) {
+    const completedTasks = filterTasks(t, tasks, t("terms.completed"));
     const onTimeTasksLength = completedTasks.filter((task) => {
         const dueDate = new Date(task.dueDate).getTime();
         const completedAt = new Date(task.completedAt).getTime();
@@ -608,7 +608,8 @@ function generateOnTime(tasks) {
         description = t("terms.completeTasksOnTime", { count: 1 });
         nextGoal = 50;
     } else {
-        return [];
+        nextGoal = 1;
+        level = 0;
     }
     return [{
         titleKey,
@@ -621,8 +622,7 @@ function generateOnTime(tasks) {
     }]
 }
 
-function generatePowerUser() {
-    const t = useTranslation();
+function generatePowerUser(t) {
     const [info] = useInfo();
     const highestLogInStreak = info.highestLogInStreak;
     const titleKey = "powerUser"
@@ -650,7 +650,8 @@ function generatePowerUser() {
         description = description = t("terms.logInStreak", { count: 3 });
         nextGoal = 15;
     } else {
-        return [];
+        nextGoal = 3;
+        level = 0;
     }
     return [{
         titleKey,

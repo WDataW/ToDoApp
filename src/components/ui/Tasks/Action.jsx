@@ -5,18 +5,20 @@ const icons = {
     light: {
         edit: "bg-[url(/src/assets/icons/light/edit.svg)]  opacity-90",
         delete: "bg-[url(/src/assets/icons/light/trash.svg)]   opacity-90",
-        reschedule: "bg-[url(/src/assets/icons/light/calendar.svg)]"
+        pin: "bg-[url(/src/assets/icons/light/pin.svg)]  opacity-90",
+        unpin: "bg-[url(/src/assets/icons/light/unpin.svg)]  opacity-90"
     },
     dark: {
         edit: "bg-[url(/src/assets/icons/dark/edit.svg)]  opacity-80",
         delete: "bg-[url(/src/assets/icons/dark/trash.svg)]  opacity-80",
-        reschedule: "bg-[url(/src/assets/icons/dark/calendar.svg)]"
+        pin: "bg-[url(/src/assets/icons/dark/pin.svg)]  opacity-75",
+        unpin: "bg-[url(/src/assets/icons/dark/unpin.svg)]  opacity-75"
     },
     hover: {
-        edit: "group-hover:bg-[url(/src/assets/icons/dark/edit.svg)]  ",
+        edit: "group-hover:bg-[url(/src/assets/icons/dark/edit.svg)]",
         delete: "group-hover:bg-[url(/src/assets/icons/dark/trash.svg)] ",
-        reschedule: "group-hover:bg-[url(/src/assets/icons/dark/calendar.svg)]  "
-
+        pin: "group-hover:bg-[url(/src/assets/icons/dark/pin.svg)]",
+        unpin: "group-hover:bg-[url(/src/assets/icons/dark/unpin.svg)]"
     }
 }
 

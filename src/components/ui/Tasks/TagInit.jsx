@@ -5,8 +5,7 @@ import { KeyboardInput, WarningMessage, ColorPicker, TaskCategory } from "..";
 import MiniTag from "./MiniTag";
 import { useEffect, useState } from "react";
 import { useTheme } from "@/context/Theme";
-import { useTags } from "@/context/User";
-import { interpreteBuiltInTagTitle, isBuiltInTitle } from "./tasks";
+import { interpreteBuiltInTagTitle, isBuiltInTitle, useAllTags } from "./tasks";
 export default function TagInit({ setNewTag, tagToEdit, className = "", children, ...props }) {
     function handleTitleChange(e) {
         // if (tagToEdit?.builtIn) return;
@@ -15,14 +14,15 @@ export default function TagInit({ setNewTag, tagToEdit, className = "", children
 
     const t = useTranslation();
     const [theme] = useTheme();
-    const [tags] = useTags();
-
+    const [tags] = useAllTags();
     const [title, setTitle] = useState(tagToEdit.title);
+
     const defaultColor = getComputedStyle(document.documentElement).getPropertyValue(`--${theme}-theme-accent-color`).trim();
     const tagColor = tagToEdit.icon.replace("bg-[", "").replace("]", "");
     const [color, setColor] = useState(tagColor || defaultColor);
     const newTagId = `tag:${randomUUID()}`;
     let icon = `bg-[${color}]`;
+
     const builtInKey = isBuiltInTitle(title, t);
     const uniqueTitle = tags.filter((tag) => {
         return (tag.title.toLowerCase() == title.toLowerCase() ||
@@ -43,6 +43,7 @@ export default function TagInit({ setNewTag, tagToEdit, className = "", children
         ...tagToEdit,
         title: titleToSave,
         icon,
+        color,
         unique: uniqueTitle,
     }
     useEffect(() => {
