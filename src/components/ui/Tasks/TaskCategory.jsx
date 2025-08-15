@@ -102,7 +102,7 @@ export default function TaskCategory({ i, setActiveTags, active, handleClick = (
                         </motion.button >
                         <MeatballMenu ref={meatballButtonRef} onClick={(e) => {
                             handleMeatballClick(e);
-                        }} customTheme="light" className="absolute bottom-[0.3rem] end-[0.5rem] meatball-actions ms-auto me-[0.25rem] mt-[0.65rem]  h-[1.4rem] w-[1.4rem]"></MeatballMenu>
+                        }} customTheme="light" className="absolute bottom-[0.3rem] transition-all end-[0.5rem] meatball-actions ms-auto me-[0.25rem] mt-[0.65rem]  h-[1.4rem] w-[1.4rem]"></MeatballMenu>
                         {pinned && <span className="bg-[url(/src/assets/icons/light/pin.svg)]  bg-no-repeat bg-center bg-cover h-[1.1rem] w-[1.1rem] transition-all absolute top-[0.5rem] end-[0.5rem]" />}
                         {children}
 
@@ -123,7 +123,7 @@ export default function TaskCategory({ i, setActiveTags, active, handleClick = (
                         </motion.button>
                         <MeatballMenu ref={meatballButtonRef} onClick={(e) => {
                             handleMeatballClick(e);
-                        }} customTheme="light" className="absolute bottom-[0.3rem] end-[0.5rem] meatball-actions ms-auto me-[0.25rem] mt-[0.65rem]  h-[1.4rem] w-[1.4rem]"></MeatballMenu>
+                        }} customTheme="light" className="absolute bottom-[0.2rem] transition-all end-[0.5rem] meatball-actions ms-auto me-[0.25rem] mt-[0.65rem]  h-[1.4rem] w-[1.4rem]"></MeatballMenu>
                         {pinned && <span className="bg-[url(/src/assets/icons/light/pin.svg)]  bg-no-repeat bg-center bg-cover h-[1.1rem] w-[1.1rem] absolute transition-all top-[0.2rem] end-[0.5rem]" />}
                         {children}
                     </div>
