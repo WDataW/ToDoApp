@@ -57,6 +57,8 @@
         "category": "Category"
     },
     "terms": {
+        "uniqueTitle": "Title must be unique",
+        "pinned": "Pinned",
         "deleting": "Deleting",
         "logInStreak": "Log in for {{count}} consecutive days",
         "completeTasksOnTime": "Complete {{count}} task on time",

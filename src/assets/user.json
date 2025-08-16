@@ -10,7 +10,7 @@
     "createdAt": "2024-09-15T08:00:00Z",
     "role": "standard",
     "settings": {
-      "language": "en",
+      "language": "ar",
       "theme": "dark",
       "notifications": true
     }
@@ -25,6 +25,7 @@
       "priority": "high",
       "dueDate": "2025-10-31T20:59:00Z",
       "createdAt": "2025-08-03T09:30:00Z",
+      "pinned": false,
       "tags": [
         "tag:98fda073-5069-4be0-81d0-b8dd49212765"
       ]
@@ -38,6 +39,7 @@
       "completedAt": "2025-11-30T21:00:00Z",
       "dueDate": "2025-12-01T20:00:00Z",
       "createdAt": "2024-07-03T10:00:00Z",
+      "pinned": false,
       "tags": [
         "tag:98fda073-5069-4be0-81d0-b8dd49212765"
       ]
@@ -50,6 +52,7 @@
       "priority": "high",
       "dueDate": "2025-07-08T12:00:00Z",
       "createdAt": "2025-07-03T10:30:00Z",
+      "pinned": false,
       "tags": [
         "tag:98fda073-5069-4be0-81d0-b8dd49212765"
       ]
@@ -62,6 +65,7 @@
       "priority": "high",
       "dueDate": "2025-07-09T16:00:00Z",
       "createdAt": "2025-07-03T11:00:00Z",
+      "pinned": false,
       "tags": [
         "tag:4fa8ee28-583e-4ddf-bc2d-0d68447ae316"
       ]
@@ -75,6 +79,7 @@
       "priority": "high",
       "dueDate": "2025-07-12T15:00:00Z",
       "createdAt": "2025-07-03T11:30:00Z",
+      "pinned": false,
       "tags": [
         "tag:4fa8ee28-583e-4ddf-bc2d-0d68447ae316"
       ]
@@ -87,6 +92,7 @@
       "priority": "low",
       "dueDate": "2025-07-05T16:00:00Z",
       "createdAt": "2025-07-01T10:00:00Z",
+      "pinned": false,
       "tags": [
         "tag:4fa8ee28-583e-4ddf-bc2d-0d68447ae316"
       ]
@@ -100,6 +106,7 @@
       "completedAt": "2025-07-25T18:00:00Z",
       "dueDate": "2025-07-02T18:00:00Z",
       "createdAt": "2025-07-01T09:00:00Z",
+      "pinned": false,
       "tags": [
         "tag:4fa8ee28-583e-4ddf-bc2d-0d68447ae316"
       ]
@@ -113,6 +120,7 @@
       "completedAt": "2025-08-05T16:38:00Z",
       "dueDate": "2025-08-11T16:38:00Z",
       "createdAt": "2025-07-08T00:38:00Z",
+      "pinned": false,
       "tags": [
         "tag:4fa8ee28-583e-4ddf-bc2d-0d68447ae316"
       ]
@@ -134,14 +142,6 @@
       "color": "#5a9afa",
       "builtIn": true,
       "pinned": true
-    },
-    {
-      "id": "tag:95e7d01e-724a-4fc3-98c8-c82a8a371b32",
-      "title": "High Priority",
-      "icon": "bg-[#ef4444]",
-      "color": "#ef4444",
-      "builtIn": true,
-      "pinned": false
     },
     {
       "id": "tag:7ed073cc-827e-47d9-ac8e-524a0b04f1f8",
@@ -168,6 +168,14 @@
       "pinned": false
     },
     {
+      "id": "tag:95e7d01e-724a-4fc3-98c8-c82a8a371b32",
+      "title": "High Priority",
+      "icon": "bg-[#ef4444]",
+      "color": "#ef4444",
+      "builtIn": true,
+      "pinned": false
+    },
+    {
       "id": "tag:461c3a3c-88e4-4ac8-b01d-6b496afbd29b",
       "title": "Medium Priority",
       "icon": "bg-[#ffae00]",
@@ -190,6 +198,14 @@
       "color": "#e12afb",
       "builtIn": true,
       "pinned": false
+    },
+    {
+      "id": "tag:85212381-6d26-4799-8be5-fd78ce042c28",
+      "title": "pinned",
+      "icon": "bg-[#ff00c8]",
+      "color": "#ff00c8",
+      "builtIn": true,
+      "pinned": true
     },
     {
       "id": "tag:98fda073-5069-4be0-81d0-b8dd49212765",

@@ -57,6 +57,8 @@
         "category": "الصنف"
     },
     "terms": {
+        "uniqueTitle": "العنوان مستخدم مسبقُا",
+        "pinned": "مثبتة",
         "deleting": "سيتم حذف",
         "logInStreak_few": "سجل الدخول {{count, arabNum}} أيام متتالية",
         "logInStreak_many": "سجل الدخول {{count,arabNum}} يومًا متتاليًا",

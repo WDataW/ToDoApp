@@ -10,6 +10,7 @@ import MiniTag from "./MiniTag";
 import { EditTask } from ".";
 import { useTranslation } from "@/context/Language";
 import DeleteSomething from "../buttons/DeleteSomething";
+import { useTasks } from "@/context/User";
 const themeStyles = {
     dark: "bg-[#222222] text-white",
     light: "bg-[#E9EBEB] text-black"
@@ -29,7 +30,7 @@ const icons = {
 let actionsMenu;
 export default function Task({ className = "", taskObj = {}, completed = "false", children, ...props }) {
     const editTask = useEditTask();
-
+    const meatballButtonRef = useRef(null);
     const selfRef = useRef();
     const [editMode, setEditMode] = useState(false);
 
@@ -42,7 +43,16 @@ export default function Task({ className = "", taskObj = {}, completed = "false"
 
         setEditMode(true);
     }
+    const [tasks, setTasks] = useTasks();
+    function editPin() {
+        setPinned(!pinned);
+        const newTask = { ...taskObj, pinned: !pinned };
+        let newTasks = tasks.filter((cTask) => cTask.id !== taskObj.id);
+        newTasks = [newTask, ...newTasks];
+        if (meatballButtonRef.current) meatballButtonRef.current.click();
+        setTasks(newTasks);
 
+    }
     function stopEditingTask() {
         const main = selfRef.current.closest("main");
         main.classList.remove("hidden");
@@ -66,6 +76,7 @@ export default function Task({ className = "", taskObj = {}, completed = "false"
             actionsMenu = <ActionsContainer
                 actionsArray={[
                     { label: "edit", action: editTaskAction },
+                    { label: pinned ? "unpin" : "pin", action: () => { editPin() } },
                     { label: "delete", action: startDeletingTask }
                 ]}
                 yOffset={5.3}
@@ -86,6 +97,7 @@ export default function Task({ className = "", taskObj = {}, completed = "false"
     const [theme] = useTheme();
     const [checked, setChecked] = useState(completed);
     const [deleteMode, setDeleteMode] = useState(false);
+    const [pinned, setPinned] = useState(taskObj.pinned);
     const deleteTask = useDeleteTask();
     const t = useTranslation()
     const taskContent = (
@@ -97,8 +109,9 @@ export default function Task({ className = "", taskObj = {}, completed = "false"
             <div className="me-[0.5rem]">
                 <div className="text-[0.7rem] opacity-">
                     <div className=" opacity-60 flex items-center ">
-                        <span className={`inline-block h-[0.6rem] w-[0.6rem] me-[0.2rem] ${icons[theme]["calendar"]} bg-cover bg-no-repeat `}></span>{getDueDate(taskObj)}
-                        <span className={`inline-block h-[0.6rem] w-[0.6rem] ms-[0.5rem] me-[0.2rem] ${icons[theme]["clock"]} bg-cover bg-no-repeat`}></span>{getDueTime(taskObj)}
+                        {!checked && pinned && <><span className="inline-block bg-size-[108%] h-[0.6rem] w-[0.6rem] me-[0.2rem] bg-[url(/src/assets/icons/dark/pin.svg)]  bg-no-repeat bg-center bg-cover " ></span><>{t("terms.pinned")}</></>}
+                        <span className={`inline-block h-[0.6rem] w-[0.6rem] ${!checked && pinned && "ms-[0.5rem]"} me-[0.2rem] ${icons[theme]["calendar"]} bg-cover bg-no-repeat bg-center `}></span>{getDueDate(taskObj)}
+                        <span className={`inline-block h-[0.6rem] w-[0.6rem] ms-[0.5rem] me-[0.2rem] ${icons[theme]["clock"]} bg-cover bg-center bg-no-repeat`}></span>{getDueTime(taskObj)}
                     </div>
                     <div className="flex items-center flex-wrap">
                         {
@@ -116,14 +129,15 @@ export default function Task({ className = "", taskObj = {}, completed = "false"
                 <p>{taskObj.title}</p>
                 <div className="hyphens-auto wrap-anywhere opacity-60 text-[0.85rem] text-wrap">{taskObj.description}</div>
             </div>
-            {!checked && <MeatballMenu onClick={(e) => {
+            {!checked && <MeatballMenu ref={meatballButtonRef} onClick={(e) => {
                 handleMeatballClick(e);
             }} className="meatball-actions ms-auto me-[0.25rem] mt-[0.65rem]  h-[1.4rem] w-[1.4rem]"></MeatballMenu>}
+
         </div>
     );
 
     function handleChecked() {
-        editTask({ ...taskObj, status: !checked ? "completed" : "active", completedAt: new Date().toISOString() });
+        editTask({ ...taskObj, status: !checked ? "completed" : "active", completedAt: new Date().toISOString(), pinned: false });
         setChecked(!checked);
         setOpened(false);
     }

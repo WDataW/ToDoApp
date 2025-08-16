@@ -22,6 +22,9 @@ export function filterTasks(t, tasks, filterKey, filterType, includeCompleted) {
     if (filterKey == t("terms.all").toLowerCase()) {
         return tasks;
     }
+    else if (filterKey == t("terms.pinned").toLowerCase()) {
+        return tasks.filter((task) => task.pinned);
+    }
     else if (filterKey == t("terms.completed").toLowerCase()) {
         return tasks.filter((task) => task.status == "completed");
     } else if (filterKey == t("terms.today").toLowerCase()) {
@@ -118,9 +121,10 @@ export function getDueTime(task) {
 }
 
 export function sortTasksByDate(tasks) {
-    const newTasks = [...tasks];
+    const newTasks = [...tasks].filter((task) => !task.pinned);
+    const pinnedTasks = [...tasks].filter((task) => task.pinned);
     quickSort(newTasks, 0, newTasks.length - 1, partitionDate);
-    return newTasks;
+    return [...pinnedTasks, ...newTasks];
 }
 function quickSort(array, start, end, partition) {
     if (end <= start) {
@@ -263,7 +267,7 @@ export function useEditTag() {
 }
 
 export function isBuiltInTitle(title, t) {
-    const builtInTitleKeys = ["all", "active", "highPriority", "mediumPriority", "lowPriority", "today", "tomorrow", "overdue", "completed"]
+    const builtInTitleKeys = ["all", "active", "highPriority", "mediumPriority", "lowPriority", "today", "tomorrow", "overdue", "completed", "pinned"]
     for (let key of builtInTitleKeys) {
         if (t(`terms.${key}`, { lng: "en" }).toLowerCase() == title.toLowerCase() || t(`terms.${key}`, { lng: "ar" }) == title) {
             return key;
