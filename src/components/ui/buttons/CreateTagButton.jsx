@@ -29,7 +29,7 @@ export default function CreateTagButton({ activeTags, setActiveTags, customTheme
     }
     return (<>
         {createTagMode && createPortal(<EditTag activeTags={activeTags} setActiveTags={setActiveTags} heading={t("terms.createTag")} close={stopCreatingTag} yes={t("terms.create")} no={t("terms.cancel")} />, selfRef.current.closest("main").parentElement)}
-        <button ref={selfRef} onClick={createTag} className={`${className} ${bgThemeColors[theme]} rounded-[0.4rem]  text-white`}  {...props}>{t("terms.createTag")}</button>
+        <button ref={selfRef} onClick={createTag} className={`create-tag ${className} ${bgThemeColors[theme]} rounded-[0.4rem]  text-white`}  {...props}>{t("terms.createTag")}</button>
     </>
     );
 }

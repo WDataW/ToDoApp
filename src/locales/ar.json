@@ -57,6 +57,7 @@
         "category": "الصنف"
     },
     "terms": {
+        "noAvailableTags": "لا تصنيفات متاحة.",
         "calendar": "التقويم",
         "addToHome": "الظهور في الصفحة الرئيسية",
         "uniqueTitle": "العنوان مستخدم مسبقُا",

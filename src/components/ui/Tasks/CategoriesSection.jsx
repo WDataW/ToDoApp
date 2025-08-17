@@ -30,12 +30,12 @@ export default function CategoriesSection({ activeTags, setActiveTags, className
     return (
         <section className={className}>
             <div className="flex gap-[0.4rem]">
-                <SearchInput required={false} value={tagsFilter} handleChange={handleSearchChange} placeholder={t("fields.searchTag")} className="text-[0.9rem] mb-[0.5rem] max-w-[20rem]"></SearchInput>
+                <SearchInput required={false} value={tagsFilter} handleChange={handleSearchChange} placeholder={t("fields.searchTag")} className="text-[0.9rem] mb-[0.3rem] max-w-[20rem]"></SearchInput>
                 <CreateTagButton activeTags={activeTags} setActiveTags={setActiveTags} className={`text-[0.9rem] h-[2.10rem] outline-none  px-[0.8rem] text-nowrap `}>
                 </CreateTagButton>
             </div>
             {filteredTags.length == 0 && <p>{t("terms.noMatchingTags")}</p>}
-            <ul className="tags-list gap-3 flex items-center justify-start pb-[0.3rem] overflow-x-auto h-[7.5rem]">
+            <ul className="tags-list gap-[0.6rem] flex items-center justify-start  overflow-x-auto h-[7rem]">
                 {filteredTags.map((tag, i) =>
                     <li key={tag.id}>
                         <TaskCategory i={i} active={activeTags} setActiveTags={setActiveTags} handleClick={handleTagClick} tag={tag} className="min-w-[10rem]" />

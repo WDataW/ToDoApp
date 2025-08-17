@@ -10,7 +10,12 @@ const plusIcons = {
     light: "bg-[url(/src/assets/icons/light/plus.svg)]"
 }
 
-export default function tagsPicker({ className = "", selectedTags, setSelectedTags }) {
+export default function tagsPicker({ noNewTags, close, className = "", selectedTags, setSelectedTags }) {
+
+    function handleAddTag() {
+        close();
+        document.querySelector(".create-tag").click();
+    }
     function handleTagClick(e) {
         const newTags = tags.filter((tag) => tag.title !== e.currentTarget.id);
         setTags(newTags);
@@ -30,17 +35,18 @@ export default function tagsPicker({ className = "", selectedTags, setSelectedTa
     const [theme] = useTheme();
     const t = useTranslation();
 
-    const [tags, setTags] = useState(useAllTags(false).filter((tag) => !selectedTags.includes(tag))[0]);
+    const [tags, setTags] = useState(useAllTags(false)[0].filter((tag) => !selectedTags.includes(tag)));
     return (
         <SectionContainer>
             <p className="ps-[0.3rem] pb-[0.3rem]">{t("terms.availableTags")}</p>
             <div className={`${className}`} >
                 <ul className="flex overflow-x-auto gap-[0.3rem] pb-[0.3rem] mb-[1rem] ">
-                    <li key={"createNewTag"} aria-label="Create new tag">
-                        <button className="inline-block h-[1.7rem] w-[1.7rem] aspect-square rounded-full border text-nowrap">
+                    {!noNewTags && <li key={"createNewTag"} aria-label="Create new tag">
+                        <button onClick={handleAddTag} className="inline-block h-[1.7rem] w-[1.7rem] aspect-square rounded-full border text-nowrap">
                             <span className={`opacity-60 inline-block h-full w-full  ${plusIcons[theme]} bg-center bg-[length:1.3rem_1.3rem] bg-no-repeat`} />
                         </button>
-                    </li>
+                    </li>}
+                    {noNewTags && tags.length == 0 && <p className="p-[0.25rem] opacity-60 ms-[0.3rem]">{t("terms.noAvailableTags")}</p>}
                     {tags.map((tag, i) => {
                         return <li key={i}>
                             <button id={tag.title} onClick={handleTagClick}>
@@ -52,7 +58,7 @@ export default function tagsPicker({ className = "", selectedTags, setSelectedTa
             </div>
             <p className="ps-[0.3rem] pb-[0.3rem]">{t("terms.selectedTags")}</p>
             <div className={` overflow-x-auto pb-[0.3rem]  ${className}`} >
-                <ul className="flex">
+                <ul className="flex overflow-x-auto gap-[0.3rem] pb-[0.3rem]">
                     {selectedTags.map((tag, i) => {
                         return <li key={i}>
                             <button id={tag.title} onClick={handleSelectedTagClick}>

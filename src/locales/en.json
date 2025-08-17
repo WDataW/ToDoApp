@@ -57,6 +57,7 @@
         "category": "Category"
     },
     "terms": {
+        "noAvailableTags": "No available tags.",
         "calendar": "Calendar",
         "addToHome": "Add to Home",
         "uniqueTitle": "Title must be unique",

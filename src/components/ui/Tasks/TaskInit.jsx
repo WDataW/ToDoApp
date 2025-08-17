@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { getTaskTags } from "./tasks";
 import { v4 as randomUUID } from "uuid";
 
-export default function TaskInit({ setNewTask, taskToEdit, className = "", children, ...props }) {
+export default function TaskInit({ noNewTags, setNewTask, taskToEdit, close, className = "", children, ...props }) {
     const t = useTranslation();
 
     const [dateTime, setDateTime] = useState(new Date(taskToEdit.dueDate));
@@ -13,7 +13,6 @@ export default function TaskInit({ setNewTask, taskToEdit, className = "", child
     const [description, setDescription] = useState(taskToEdit.description);
     const [priority, setPriority] = useState(taskToEdit.priority);
     const [selectedTags, setSelectedTags] = useState(getTaskTags(taskToEdit));
-
     const createdAt = new Date().toISOString();
     const newTaskId = `task:${randomUUID()}`;
     useEffect(() => {
@@ -39,7 +38,7 @@ export default function TaskInit({ setNewTask, taskToEdit, className = "", child
             </div>
             <Textarea value={description} onChange={(e) => { setDescription(e.target.value) }} className="sm:max-w-[20rem]" label={t("fields.description")} placeholder={t("fields.enterTaskDescription")}></Textarea>
             <PriorityPicker priority={priority} setPriority={setPriority} labelClassName="w-1/2 max-w-[10rem]"></PriorityPicker>
-            <TagsPicker selectedTags={selectedTags} setSelectedTags={setSelectedTags}  ></TagsPicker>
+            <TagsPicker noNewTags={noNewTags} close={close} selectedTags={selectedTags} setSelectedTags={setSelectedTags}  ></TagsPicker>
 
         </div>
     );

@@ -15,7 +15,7 @@ export default function greetingBox({ className = "", children, ...props }) {
                 <p className="mb-[2rem] text-[0.8rem]">{t("terms.letsMakeTodayProductive")}</p>
                 <div className="flex gap-[0.4rem]">
                     <ThemedRectButton customTheme="transparent" className={`border-[0.1rem] bg-[rgba(0,0,0,0.10)] max-w-[10rem] transition duration-300 hover:bg-white ${hoverTextColor}`}>{t("titles.viewAllTasks")}</ThemedRectButton>
-                    <CreateTaskButton customTheme="transparent" className={`w-full  px-[0.5rem] py-[0.5rem] border-[0.1rem] bg-[rgba(0,0,0,0.10)]  max-w-[7rem] transition duration-300 hover:bg-white ${hoverTextColor}`} />
+                    <CreateTaskButton noNewTags={true} customTheme="transparent" className={`w-full  px-[0.5rem] py-[0.5rem] border-[0.1rem] bg-[rgba(0,0,0,0.10)]  max-w-[7rem] transition duration-300 hover:bg-white ${hoverTextColor}`} />
                 </div>
             </div>
         </section>

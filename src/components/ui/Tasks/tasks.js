@@ -329,7 +329,7 @@ export function headingsInterpreter(tagTitle) {
     return tagTitle
 }
 
-function isUUID(id) {
+export function isUUID(id) {
     const UUIDRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
     return UUIDRegex.test(id);
 }
