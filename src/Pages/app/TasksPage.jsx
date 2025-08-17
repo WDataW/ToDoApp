@@ -2,7 +2,7 @@ import { useTranslation } from "../../context/Language";
 import { useEffect, useState } from "react";
 import AppPage from "./AppPage";
 import { AnimatePresence, motion } from "motion/react";
-import { AppPageHeader, CategoriesSection, CreateTaskButton, TasksSection, Main, SearchInput } from "../../components/ui";
+import { AppPageHeader, CategoriesSection, CreateTaskButton, TasksSection, Main, SearchInput, TasksCalendar } from "../../components/ui";
 export default function TasksPage({ className = "", children, ...props }) {
     const t = useTranslation();
     const [activeTags, setActiveTags] = useState([t("terms.active")]);
@@ -21,6 +21,7 @@ export default function TasksPage({ className = "", children, ...props }) {
         <AppPage id="tasksPage" title={"tasks"} className={`${className}`} {...props}>
             <AppPageHeader >{t("titles.tasks")}</AppPageHeader>
             <Main >
+                <TasksCalendar />
                 <CategoriesSection activeTags={activeTags} setActiveTags={setActiveTags} className="mb-[1rem]"></CategoriesSection>
                 <AnimatePresence mode="wait">
                     <motion.div key={"k" + activeTags.length} exit={{ y: 25, opacity: 0 }} initial={{ y: 25, opacity: 0 }} animate={{ y: 0, opacity: 1 }} >

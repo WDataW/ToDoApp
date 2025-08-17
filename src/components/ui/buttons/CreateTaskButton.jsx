@@ -28,8 +28,8 @@ export default function CreateTaskButton({ customTheme, className, children, ...
         setCreateTaskMode(false);
     }
     return (<>
-        {createTaskMode && createPortal(<EditTask heading={t("terms.createTask")} close={stopCreatingTask} yes={t("terms.create")} no={t("terms.cancel")} />, selfRef.current.closest("main").parentElement)}
-        <button ref={selfRef} onClick={createTask} className={`${className} ${bgThemeColors[theme]} rounded-[0.4rem]  text-white`}  {...props}>{t("terms.createTask")}</button>
+        {createTaskMode && createPortal(<EditTask heading={t("terms.createTask")} close={stopCreatingTask} yes={t("terms.create")} no={t("terms.cancel")} {...props} />, selfRef.current.closest("main").parentElement)}
+        <button ref={selfRef} onClick={createTask} className={`${className} ${bgThemeColors[theme]} rounded-[0.4rem]  text-white`} >{t("terms.createTask")}</button>
     </>
     );
 }

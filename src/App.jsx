@@ -18,7 +18,7 @@ function App() {
       */}
       {/* <StatsPage></StatsPage> */}
       <TasksPage></TasksPage>
-      <HomePage></HomePage>
+      {/* <HomePage></HomePage> */}
     </>
   );
 }

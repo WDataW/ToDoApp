@@ -108,17 +108,17 @@ export default function Task({ className = "", taskObj = {}, completed = "false"
             <CheckTask checked={checked} onChange={handleChecked} className=" ms-[0.15rem] me-[0.9rem] mt-[0.65rem] " />
             <div className="me-[0.5rem]">
                 <div className="text-[0.7rem] opacity-">
-                    <div className=" opacity-60 flex items-center ">
-                        {!checked && pinned && <><span className="inline-block bg-size-[108%] h-[0.6rem] w-[0.6rem] me-[0.2rem] bg-[url(/src/assets/icons/dark/pin.svg)]  bg-no-repeat bg-center bg-cover " ></span><>{t("terms.pinned")}</></>}
-                        <span className={`inline-block h-[0.6rem] w-[0.6rem] ${!checked && pinned && "ms-[0.5rem]"} me-[0.2rem] ${icons[theme]["calendar"]} bg-cover bg-no-repeat bg-center `}></span>{getDueDate(taskObj)}
-                        <span className={`inline-block h-[0.6rem] w-[0.6rem] ms-[0.5rem] me-[0.2rem] ${icons[theme]["clock"]} bg-cover bg-center bg-no-repeat`}></span>{getDueTime(taskObj)}
+                    <div className=" opacity-60 flex items-center flex-wrap gap-x-[0.5rem]">
+                        {!checked && pinned && <div><span className="inline-block bg-size-[108%] h-[0.6rem] w-[0.6rem] me-[0.2rem] bg-[url(/src/assets/icons/dark/pin.svg)]  bg-no-repeat bg-center bg-cover " ></span>{t("terms.pinned")}</div>}
+                        <div className="text-nowrap"> <span className={`inline-block h-[0.6rem] w-[0.6rem]  me-[0.2rem] ${icons[theme]["calendar"]} bg-cover bg-no-repeat bg-center `}></span>{getDueDate(taskObj)}</div>
+                        <div className="text-nowrap">   <span className={`inline-block h-[0.6rem] w-[0.6rem]  me-[0.2rem] ${icons[theme]["clock"]} bg-cover bg-center bg-no-repeat`}></span>{getDueTime(taskObj)}</div>
                     </div>
-                    <div className="flex items-center flex-wrap">
+                    <div className="flex items-center gap-x-[0.5rem] flex-wrap">
                         {
                             getFinalTaskTags(taskObj).map((tag, i) => {
                                 if (!tag.title) { return null }
                                 return (
-                                    <MiniTag className="first:ms-0 ms-[0.5rem]" key={i} tag={tag} />
+                                    <MiniTag key={i} tag={tag} />
 
                                 );
                             }

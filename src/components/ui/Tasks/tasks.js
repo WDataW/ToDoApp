@@ -2,11 +2,10 @@ import { useInfo, useTags, useTasks } from "../../../context/User";
 import { useTheme } from "../../../context/Theme";
 import { numToArabic, useLang, useTranslation } from "../../../context/Language";
 import { dateFormatters, timeFormatters } from "../../../scripts/dateTime";
-export function loopFilterTasks(tasks, filterKeys, filterType) {
+export function loopFilterTasks(t, tasks, filterKeys, filterType) {
     if (filterKeys.length == 0) {
         return tasks;
     }
-    const t = useTranslation();
     let newTasks = tasks;
     const includeCompleted = filterKeys.includes(t("terms.completed")) || filterKeys.includes(t("terms.all"));
     for (let filter of filterKeys) {
@@ -16,7 +15,7 @@ export function loopFilterTasks(tasks, filterKeys, filterType) {
 }
 
 export function filterTasks(t, tasks, filterKey, filterType, includeCompleted) {// edit t
-    filterKey = filterKey.toLowerCase();
+    if (filterKey.toLowerCase) filterKey = filterKey.toLowerCase();
     const [lang] = useLang();
 
     if (filterKey == t("terms.all").toLowerCase()) {
@@ -91,6 +90,15 @@ export function filterTasks(t, tasks, filterKey, filterType, includeCompleted) {
                 }
 
             })
+        } else if (filterType = "date") {
+            const dueTasks = tasks.filter((task) => {
+                const due = new Date(task.dueDate);
+                return due.getFullYear() == filterKey.getFullYear() &&
+                    due.getMonth() == filterKey.getMonth() &&
+                    due.getDate() == filterKey.getDate()
+
+            });
+            return dueTasks;
         }
         return tasks;
     }
@@ -411,6 +419,23 @@ export function useCompletedTasksInDay(year, month, day) {
     );
     return result;
 }
+export function useDueTasksInDay(year, month, day) {
+    const [tasks] = useTasks();
+    const searchDate = new Date(Date.UTC(year, month - 1, day));
+
+    const result = tasks.filter((task) => {
+        // if (task.status == "completed") return false;
+        const taskDueDate = ISOToDate(task.dueDate);
+
+        return (
+            taskDueDate.getFullYear() == searchDate.getFullYear()
+            && taskDueDate.getMonth() == searchDate.getMonth()
+            && taskDueDate.getDate() == searchDate.getDate()
+        );
+    }
+    );
+    return result;
+}
 
 
 export function useMonthlyTasksData(year, month) {
@@ -420,6 +445,17 @@ export function useMonthlyTasksData(year, month) {
         const createdTasks = useCreatedTasksInDay(year, month, i);
         const completedTasks = useCompletedTasksInDay(year, month, i);
         days = [...days, { day: lang == "ar" ? numToArabic(String(i)) : String(i), created: createdTasks.length, completed: completedTasks.length }]
+    }
+    return days;
+}
+
+
+export function useMonthlyDueTasksData(year, month) {
+    let days = [];
+    const [lang] = useLang();
+    for (let i = 1; i <= getDaysInMonth(new Date(year, month - 1)); i++) {
+        const dueTasks = useDueTasksInDay(year, month, i);
+        days = [...days, { day: lang == "ar" ? numToArabic(String(i)) : String(i), due: dueTasks.length }];
     }
     return days;
 }
@@ -449,7 +485,8 @@ export function useActivity() {
 /* Bar Chart */
 export function useTagBars(filters) {
     const [tasks] = useTasks();
-    const filteredTasks = loopFilterTasks(tasks, filters);
+    const t = useTranslation();
+    const filteredTasks = loopFilterTasks(t, tasks, filters);
     const tags = getTasksTags(filteredTasks);
     const bars = convertTagsToBars(tags);
     const reducedBars = reduceBars(bars)
@@ -685,3 +722,14 @@ export function useHomePageTags() {
     const homeTags = tags.filter((tag) => tag.home);
     return homeTags
 }
+
+
+export const taskSkeleton = {
+    title: "",
+    description: "",
+    priority: "medium",
+    dueDate: new Date().setHours(23, 59, 0),
+    tags: [],
+    status: "active"
+}
+

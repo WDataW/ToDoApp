@@ -64,3 +64,9 @@ export const daysOfWeek = {
     5: "friday",
     6: "saturday",
 }
+
+export function isEqual(date1, date2) {
+    return date1.getFullYear() == date2.getFullYear() &&
+        date1.getMonth() == date2.getMonth() &&
+        date1.getDate() == date2.getDate()
+}

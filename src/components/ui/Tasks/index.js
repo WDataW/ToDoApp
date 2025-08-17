@@ -7,3 +7,4 @@ export { default as EditTask } from "./EditTask";
 export { default as TaskInit } from "./TaskInit";
 export { default as TagsPicker } from "./TagsPicker";
 export { default as EditTag } from "./EditTag";
+export { default as TasksCalendar } from "./TasksCalendar";

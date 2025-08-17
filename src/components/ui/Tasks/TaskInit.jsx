@@ -3,7 +3,6 @@ import { KeyboardInput, DateTimePicker, PriorityPicker, Textarea, WarningMessage
 import { TagsPicker } from ".";
 import { useEffect, useState } from "react";
 import { getTaskTags } from "./tasks";
-import { useTasks } from "@/context/User";
 import { v4 as randomUUID } from "uuid";
 
 export default function TaskInit({ setNewTask, taskToEdit, className = "", children, ...props }) {
@@ -15,7 +14,6 @@ export default function TaskInit({ setNewTask, taskToEdit, className = "", child
     const [priority, setPriority] = useState(taskToEdit.priority);
     const [selectedTags, setSelectedTags] = useState(getTaskTags(taskToEdit));
 
-    const [tasks] = useTasks();
     const createdAt = new Date().toISOString();
     const newTaskId = `task:${randomUUID()}`;
     useEffect(() => {

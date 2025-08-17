@@ -3,12 +3,13 @@ import { filterTasks, loopFilterTasks } from "./tasks";
 import { motion, AnimatePresence } from "motion/react";
 import { useTranslation } from "../../../context/Language";
 import Task from "./Task";
-export default function TasksContainer({ className = "", tagsFilter = "", searchFilter = "", children, ...props }) {
+export default function TasksContainer({ className = "", dateFilter, tagsFilter = "", searchFilter = "", children, ...props }) {
     const [tasks] = useTasks();
     const t = useTranslation();
-    let filteredTasks = loopFilterTasks(tasks, tagsFilter, "tag");
+    let filteredTasks = tasks;
+    if (tagsFilter) filteredTasks = loopFilterTasks(t, tasks, tagsFilter, "tag");
+    if (dateFilter) filteredTasks = filterTasks(t, filteredTasks, dateFilter, "date", true);
     if (searchFilter) filteredTasks = filterTasks(t, filteredTasks, searchFilter, "search");
-
     return (
         <ol className={`tasks-container flex flex-col gap-[0.5rem] overflow-auto max-h-[20rem]   px-[0.4rem] ${className}`} {...props}>
             <AnimatePresence >

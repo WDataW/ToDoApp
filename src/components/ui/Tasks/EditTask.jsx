@@ -3,8 +3,8 @@ import { useTranslation } from "@/context/Language";
 import { TaskInit } from ".";
 import { Main, YesNoButtons } from "..";
 import { useState } from "react";
-import { useEditTask } from "./tasks";
-export default function EditTask({ close, taskToEdit = { title: "", description: "", priority: "medium", dueDate: new Date().setHours(23, 59, 0), tags: [], status: "active" }, yes, no, className = "", children, ...props }) {
+import { taskSkeleton, useEditTask } from "./tasks";
+export default function EditTask({ close, taskToEdit = { taskSkeleton }, yes, no, className = "", children, ...props }) {
     const t = useTranslation();
 
     const editTask = useEditTask();
