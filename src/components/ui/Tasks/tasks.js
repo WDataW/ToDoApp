@@ -276,6 +276,16 @@ export function isBuiltInTitle(title, t) {
     return;
 }
 
+export function useTagInfo(targetTag, t) {
+    const [tags] = useAllTags();
+    const builtInTitle = t(`terms.${isBuiltInTitle(targetTag.title, t)}`);
+    if (targetTag.builtIn) return [builtInTitle, builtInTitle];
+
+    const filterKey = tags.filter((tag) => tag.title == targetTag.title)[0].id;
+    return [targetTag.title, filterKey]
+
+}
+
 export function useAllTags(includeBuiltInTags = true) {
     const [baseTags, setTags] = useTags();
     let tags = [...baseTags];
@@ -666,4 +676,12 @@ function generatePowerUser(t) {
         nextGoalDescription: t("terms.logInStreak", { count: nextGoal }),
         theme: trophyThemes[level]
     }]
+}
+
+
+
+export function useHomePageTags() {
+    const [tags] = useTags();
+    const homeTags = tags.filter((tag) => tag.home);
+    return homeTags
 }

@@ -57,6 +57,7 @@
         "category": "Category"
     },
     "terms": {
+        "addToHome": "Add to Home",
         "uniqueTitle": "Title must be unique",
         "pinned": "Pinned",
         "deleting": "Deleting",

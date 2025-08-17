@@ -10,7 +10,7 @@
     "createdAt": "2024-09-15T08:00:00Z",
     "role": "standard",
     "settings": {
-      "language": "ar",
+      "language": "en",
       "theme": "dark",
       "notifications": true
     }
@@ -133,7 +133,8 @@
       "icon": "bg-[#878787]",
       "color": "#878787",
       "builtIn": true,
-      "pinned": true
+      "pinned": true,
+      "home": false
     },
     {
       "id": "tag:4b4c8590-3d62-4db1-af3d-69ddb13db2c6",
@@ -141,7 +142,8 @@
       "icon": "bg-[#5a9afa]",
       "color": "#5a9afa",
       "builtIn": true,
-      "pinned": true
+      "pinned": true,
+      "home": false
     },
     {
       "id": "tag:7ed073cc-827e-47d9-ac8e-524a0b04f1f8",
@@ -149,7 +151,8 @@
       "icon": "bg-[#8affb3]",
       "color": "#8affb3",
       "builtIn": true,
-      "pinned": false
+      "pinned": false,
+      "home": false
     },
     {
       "id": "tag:2c6fbc39-a4b9-4583-ad70-b83867eaaf1c",
@@ -157,7 +160,8 @@
       "icon": "bg-[#ffe88d]",
       "color": "#ffe88d",
       "builtIn": true,
-      "pinned": false
+      "pinned": false,
+      "home": false
     },
     {
       "id": "tag:123f282c-a5d5-4f3f-92f7-1b2d857fd9f5",
@@ -165,7 +169,8 @@
       "icon": "bg-[#fca5a5]",
       "color": "#fca5a5",
       "builtIn": true,
-      "pinned": false
+      "pinned": false,
+      "home": false
     },
     {
       "id": "tag:95e7d01e-724a-4fc3-98c8-c82a8a371b32",
@@ -173,7 +178,8 @@
       "icon": "bg-[#ef4444]",
       "color": "#ef4444",
       "builtIn": true,
-      "pinned": false
+      "pinned": false,
+      "home": false
     },
     {
       "id": "tag:461c3a3c-88e4-4ac8-b01d-6b496afbd29b",
@@ -181,7 +187,8 @@
       "icon": "bg-[#ffae00]",
       "color": "#ffae00",
       "builtIn": true,
-      "pinned": false
+      "pinned": false,
+      "home": false
     },
     {
       "id": "tag:5e14c5cf-6cb5-418b-9cb7-1335ae980492",
@@ -189,7 +196,8 @@
       "icon": "bg-[#9ca3af]",
       "color": "#9ca3af",
       "builtIn": true,
-      "pinned": false
+      "pinned": false,
+      "home": false
     },
     {
       "id": "tag:5e081a64-08c0-465a-9771-14317c07f714",
@@ -197,7 +205,8 @@
       "icon": "bg-[#e12afb]",
       "color": "#e12afb",
       "builtIn": true,
-      "pinned": false
+      "pinned": false,
+      "home": false
     },
     {
       "id": "tag:85212381-6d26-4799-8be5-fd78ce042c28",
@@ -205,7 +214,8 @@
       "icon": "bg-[#ff00c8]",
       "color": "#ff00c8",
       "builtIn": true,
-      "pinned": true
+      "pinned": true,
+      "home": false
     },
     {
       "id": "tag:98fda073-5069-4be0-81d0-b8dd49212765",
@@ -213,7 +223,8 @@
       "icon": "bg-[#eab308]",
       "color": "#eab308",
       "builtIn": false,
-      "pinned": false
+      "pinned": false,
+      "home": false
     },
     {
       "id": "tag:4fa8ee28-583e-4ddf-bc2d-0d68447ae316",
@@ -221,7 +232,8 @@
       "color": "#84cc16",
       "icon": "bg-[#84cc16]",
       "builtIn": false,
-      "pinned": false
+      "pinned": false,
+      "home": true
     }
   ],
   "inbox": [

@@ -57,6 +57,7 @@
         "category": "الصنف"
     },
     "terms": {
+        "addToHome": "الظهور في الصفحة الرئيسية",
         "uniqueTitle": "العنوان مستخدم مسبقُا",
         "pinned": "مثبتة",
         "deleting": "سيتم حذف",
