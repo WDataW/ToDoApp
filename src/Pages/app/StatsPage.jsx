@@ -7,7 +7,6 @@ export default function TasksPage({ className = "", children, ...props }) {
 
     return (
         <AppPage title={"stats"} className={`${className}`} {...props}>
-            <AppPageHeader>{t("titles.stats")}</AppPageHeader>
             <Main className="flex w-full flex-wrap">
                 <SectionContainer className=" w-full mb-[1rem] ">
                     <AchievementsContainer></AchievementsContainer>

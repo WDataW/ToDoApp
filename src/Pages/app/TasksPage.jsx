@@ -20,7 +20,6 @@ export default function TasksPage({ className = "", children, ...props }) {
     const [searchFilter, setSearchFilter] = useState("");
     return (
         <AppPage id="tasksPage" title={"tasks"} className={`${className}`} {...props}>
-            <AppPageHeader >{t("titles.tasks")}</AppPageHeader>
             <Main >
                 <TasksCalendar className="mb-[4rem]" />
                 <CategoriesSection activeTags={activeTags} setActiveTags={setActiveTags} className="mb-[0.7rem]"></CategoriesSection>

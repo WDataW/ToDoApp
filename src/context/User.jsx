@@ -1,9 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { sortTasksByDate } from "../components/ui/Tasks/tasks";
 import userData from "/src/assets/user.json";
+import { processMail, sortInbox } from "@/components/ui/inbox/mail";
 const UserInfoContext = createContext();
 const UserTasksContext = createContext();
-const UserAchievementsContext = createContext();
 const UserInboxContext = createContext();
 const UserTagsContext = createContext();
 export function useInfo() {
@@ -24,7 +24,7 @@ export function useTags() {
 export default function User({ children }) {
     const [infoState, setInfoState] = useState(userData.info);
     const [tasksState, setTasksState] = useState(sortTasksByDate(userData.tasks));
-    const [inboxState, setInboxState] = useState(userData.inbox);
+    const [inboxState, setInboxState] = useState(sortInbox(userData.inbox));
     const [tagsState, setTagsState] = useState(userData.tags);
     return (
         <UserInfoContext value={[infoState, setInfoState]}>

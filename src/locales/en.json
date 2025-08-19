@@ -1,5 +1,6 @@
 {
     "titles": {
+        "message": "Message",
         "pin": "Pin",
         "unpin": "Unpin",
         "powerUser": "Power User",
@@ -31,6 +32,7 @@
         "delete": "Delete"
     },
     "fields": {
+        "searchMail": "Search mail",
         "year": "Year",
         "month": "Month",
         "color": "Color",
@@ -57,6 +59,8 @@
         "category": "Category"
     },
     "terms": {
+        "atTime": "at",
+        "from": "From",
         "noAvailableTags": "No available tags.",
         "calendar": "Calendar",
         "addToHome": "Add to Home",
@@ -77,6 +81,8 @@
         "others": "Others",
         "all": "All",
         "tasksCompleted": "Tasks Completed",
+        "system": "System",
+        "tasks": "Tasks",
         "tasks_one": "Task",
         "tasks_other": "Tasks",
         "monthly": "Monthly",
@@ -138,5 +144,13 @@
         "passwordSpecialChar": "Password must include at least one special character (!@#$%)",
         "passwordIllegalChar": "Password can't contain illegal characters (,./non-English letters)",
         "passwordNotConfirmed": "Passwords don't match"
+    },
+    "mail": {
+        "welcome": {
+            "title": "Welcome to the app!",
+            "content": "We're glad to have you here. Enjoy your journey!"
+        },
+        "isDueIn_one": "{{task}} is due in {{count}} hour.",
+        "isDueIn_other": "{{task}} is due in {{count}} hours."
     }
 }

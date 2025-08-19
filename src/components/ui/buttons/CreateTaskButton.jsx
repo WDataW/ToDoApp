@@ -3,6 +3,7 @@ import { useTheme, bgThemeColors } from "@/context/Theme";
 import { useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { EditTask } from "../tasks";
+import { hidePageContents, showPageContents } from "@/Pages/pages";
 export default function CreateTaskButton({ customTheme, className, children, ...props }) {
     const t = useTranslation();
     const [theme] = customTheme || useTheme();
@@ -10,21 +11,11 @@ export default function CreateTaskButton({ customTheme, className, children, ...
     const [createTaskMode, setCreateTaskMode] = useState(false);
 
     function createTask() {
-        const main = selfRef.current.closest("main");
-        main.classList.add("hidden");
-
-        const pageHeader = main.parentElement.querySelector("header");
-        pageHeader.classList.add("hidden");
-
+        hidePageContents(selfRef.current)
         setCreateTaskMode(true);
     }
     function stopCreatingTask() {
-        const main = selfRef.current.closest("main");
-        main.classList.remove("hidden");
-
-        const pageHeader = main.parentElement.querySelector("header");
-        pageHeader.classList.remove("hidden");
-
+        showPageContents(selfRef.current)
         setCreateTaskMode(false);
     }
     return (<>

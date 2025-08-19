@@ -16,8 +16,8 @@ function App() {
       <ForgotPasswordPage></ForgotPasswordPage>
       <SignInPage></SignInPage>
       */}
-      {/* <StatsPage></StatsPage> */}
-      <TasksPage></TasksPage>
+      {/* <TasksPage></TasksPage> */}
+      <StatsPage></StatsPage>
       {/* <HomePage></HomePage> */}
     </>
   );

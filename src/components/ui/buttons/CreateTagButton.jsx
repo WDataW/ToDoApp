@@ -3,6 +3,7 @@ import { useTheme, bgThemeColors } from "@/context/Theme";
 import { useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { EditTag } from "..";
+import { hidePageContents, showPageContents } from "@/Pages/pages";
 export default function CreateTagButton({ activeTags, setActiveTags, customTheme, className, ...props }) {
     const t = useTranslation();
     const [theme] = customTheme || useTheme();
@@ -10,21 +11,11 @@ export default function CreateTagButton({ activeTags, setActiveTags, customTheme
     const [createTagMode, setCreateTagMode] = useState(false);
 
     function createTag() {
-        const main = selfRef.current.closest("main");
-        main.classList.add("hidden");
-
-        const pageHeader = main.parentElement.querySelector("header");
-        pageHeader.classList.add("hidden");
-
+        hidePageContents(selfRef.current)
         setCreateTagMode(true);
     }
     function stopCreatingTag() {
-        const main = selfRef.current.closest("main");
-        main.classList.remove("hidden");
-
-        const pageHeader = main.parentElement.querySelector("header");
-        pageHeader.classList.remove("hidden");
-
+        showPageContents(selfRef.current)
         setCreateTagMode(false);
     }
     return (<>

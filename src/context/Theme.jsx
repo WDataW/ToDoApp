@@ -57,9 +57,15 @@ export default function Theme({ children }) {
 
 
 export const bgThemeColors = {
-    both: "bg-[var(--cross-theme-color)]",
     dark: "bg-[var(--dark-theme-accent-color)]",
     light: "bg-[var(--light-theme-accent-color)]",
+    transparent: "bg-[#00000000]"
+}
+
+
+export const darkerBgThemeColors = {
+    dark: "bg-[var(--color-darker-dark-theme)]",
+    light: "bg-[var(--color-darker-light-theme)]",
     transparent: "bg-[#00000000]"
 }
 export const textThemeColors = {

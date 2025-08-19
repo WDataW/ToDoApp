@@ -23,7 +23,70 @@ export const dateFormatters = {
     ar: formatArabicDate
 }
 
+export const numericDateFormatters = {
+    ar: formatArabicNumericDate,
+    en: formatEnglishNumericDate
+}
+function formatArabicNumericDate(date) {
+    return date.toLocaleString(
+        "ar-SA",
+        {
+            calendar: "gregory",
+            day: "numeric",
+            month: "numeric",
+            year: "numeric"
+        }
+    );
 
+}
+function formatEnglishNumericDate(date) {
+    return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+}
+function formatFullEnglishDate(date) {
+    return date.toLocaleString(
+        "en-US",
+        {
+            calendar: "gregory",
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        }
+    );
+}
+function formatFullArabicDate(date) {
+    return date.toLocaleString(
+        "ar-SA",
+        {
+            calendar: "gregory",
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        }
+    );
+}
+export const fullDateFormatters = {
+    en: formatFullEnglishDate,
+    ar: formatFullArabicDate
+}
+
+
+export function dateToMonthAndNumber(date, lang, t) {
+    const now = new Date();
+    if (dateFormatters[lang](date) == dateFormatters[lang](now)) {
+        return t("terms.today");
+    }
+    return dateFormatters[lang](date);
+}
+
+export function fullDateFormat(date, lang, t) {
+    const now = new Date();
+    if (fullDateFormatters[lang](date) == fullDateFormatters[lang](now)) {
+        return t("terms.today");
+    }
+    return fullDateFormatters[lang](date);
+
+
+}
 function formatArabicTime(date) {
     return date.toLocaleTimeString(
         "ar-SA",

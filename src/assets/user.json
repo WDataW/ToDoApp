@@ -238,20 +238,20 @@
   ],
   "inbox": [
     {
-      "id": "msg001",
-      "type": "notification",
-      "title": "Welcome to the app!",
-      "content": "Thanks for signing up.",
+      "id": "message:594106ea-a250-4267-b7f9-4961333ada02",
+      "from": "system",
+      "key": "welcome",
       "read": false,
       "receivedAt": "2025-07-03T15:00:00Z"
     },
     {
-      "id": "msg002",
-      "type": "message",
-      "from": "admin",
-      "content": "Your profile is 80% complete.",
-      "read": true,
-      "receivedAt": "2025-07-02T12:00:00Z"
+      "id": "message:f3a2c033-541b-4255-b91b-7667f2974131",
+      "from": "tasks",
+      "type": "due",
+      "title": "Wash your hands",
+      "dueHours": 2,
+      "read": false,
+      "receivedAt": "2025-07-10T12:00:00Z"
     }
   ]
 }

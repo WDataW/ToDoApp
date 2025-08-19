@@ -120,6 +120,7 @@ export function getDueDate(task) {
     }
     return dateFormatters[lang](dueDate);
 }
+
 export function getDueTime(task) {
     const [lang] = useLang();
     const dueString = task.dueDate;
@@ -134,7 +135,7 @@ export function sortTasksByDate(tasks) {
     quickSort(newTasks, 0, newTasks.length - 1, partitionDate);
     return [...pinnedTasks, ...newTasks];
 }
-function quickSort(array, start, end, partition) {
+export function quickSort(array, start, end, partition) {
     if (end <= start) {
         return;
     }

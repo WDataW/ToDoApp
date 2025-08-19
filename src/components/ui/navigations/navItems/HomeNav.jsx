@@ -8,6 +8,7 @@ const icons = {
 export default function HomeNav({ className = "", ...props }) {
     const [theme] = useTheme();
     const t = useTranslation();
+
     return (
         <NavItem className={`${className}`} image={icons[theme]} {...props}>
             {t("titles.home")}

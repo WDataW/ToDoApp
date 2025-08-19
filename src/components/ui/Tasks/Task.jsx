@@ -11,6 +11,7 @@ import { EditTask } from ".";
 import { useTranslation } from "@/context/Language";
 import DeleteSomething from "../buttons/DeleteSomething";
 import { useTasks } from "@/context/User";
+import { hidePageContents, showPageContents } from "@/Pages/pages";
 const themeStyles = {
     dark: "bg-[#222222] text-white",
     light: "bg-[#E9EBEB] text-black"
@@ -35,12 +36,7 @@ export default function Task({ className = "", taskObj = {}, completed = "false"
     const [editMode, setEditMode] = useState(false);
 
     function editTaskAction(e) {
-        const main = e.target.closest("main");
-        main.classList.add("hidden");
-
-        const pageHeader = main.parentElement.querySelector("header");
-        pageHeader.classList.add("hidden");
-
+        hidePageContents(e.target)
         setEditMode(true);
     }
     const [tasks, setTasks] = useTasks();
@@ -54,12 +50,7 @@ export default function Task({ className = "", taskObj = {}, completed = "false"
 
     }
     function stopEditingTask() {
-        const main = selfRef.current.closest("main");
-        main.classList.remove("hidden");
-
-        const pageHeader = main.parentElement.querySelector("header");
-        pageHeader.classList.add("hidden");
-
+        showPageContents(selfRef.current);
         setEditMode(false);
     }
     function startDeletingTask() {

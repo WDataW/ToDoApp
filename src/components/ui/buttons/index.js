@@ -9,3 +9,4 @@ export { default as YesNoButtons } from "./YesNoButtons";
 export { default as CreateTaskButton } from "./CreateTaskButton";
 export { default as YesNoPopUp } from "./YesNoPopUp";
 export { default as CreateTagButton } from "./CreateTagButton";
+export { default as SelectButtons } from "./SelectButtons";

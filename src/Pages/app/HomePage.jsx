@@ -9,7 +9,6 @@ export default function HomePage({ className = "", children, user, ...props }) {
     const homeTags = useHomePageTags();
     return (
         <AppPage title="home" id="homePage" className="relative">
-            <AppPageHeader >{t("titles.home")}</AppPageHeader>
             <Main className=" flex w-full  flex-wrap">
                 <GreetingBox className={sectionStyles}></GreetingBox>
                 {homeTags.map((tag, i) => {

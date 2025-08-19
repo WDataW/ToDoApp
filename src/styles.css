@@ -28,6 +28,9 @@
 
 :root {
     /* colors */
+    --color-darker-dark-theme: #70003c;
+    --color-darker-light-theme: #003489;
+    --light-theme-accent-color: #3b82f6;
     --dark-theme-accent-color: #fc359f;
     --light-theme-accent-color: #3b82f6;
 

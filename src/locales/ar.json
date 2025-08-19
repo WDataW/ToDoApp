@@ -1,5 +1,6 @@
 {
     "titles": {
+        "message": "رسالة",
         "pin": "تثبيت",
         "unpin": "إزالة تثبيت",
         "powerUser": "مُستخدم قوي",
@@ -31,6 +32,7 @@
         "delete": "حذف"
     },
     "fields": {
+        "searchMail": "البحث في البريد",
         "year": "السنة",
         "month": "الشهر",
         "color": "اللون",
@@ -57,6 +59,8 @@
         "category": "الصنف"
     },
     "terms": {
+        "atTime": "الساعة",
+        "from": "من",
         "noAvailableTags": "لا تصنيفات متاحة.",
         "calendar": "التقويم",
         "addToHome": "الظهور في الصفحة الرئيسية",
@@ -79,6 +83,8 @@
         "others": "أُخرى",
         "all": "الكل",
         "tasksCompleted": "مهام منجزة",
+        "system": "النظام",
+        "tasks": "المهام",
         "tasks_one": "مهمة",
         "tasks_two": "مهمتين",
         "tasks_few": "مهام",
@@ -144,5 +150,16 @@
         "passwordSpecialChar": "يجب أن تحتوي كلمة المرور على رمز مميز واحد على الأقل (!@#$%)",
         "passwordIllegalChar": "لا يمكن أن تحتوي كلمة المرور على أحرف غير مدعومة مثل (, . / أو أحرف غير إنجليزية) ",
         "passwordNotConfirmed": "كلمتا المرور لا تتطابقان"
+    },
+    "mail": {
+        "welcome": {
+            "title": "مرحبا بك في التطبيق!",
+            "content": "يسعدنا انضمامك إلينا، نتمنى لك تجربة ممتعة!"
+        },
+        "isDueIn_one": "{{task}} مستحقة خلال ساعة واحدة",
+        "isDueIn_two": "{{task}} مستحقة خلال ساعتين",
+        "isDueIn_few": "{{task}} مستحقة خلال {{count, arabNum}} ساعات.",
+        "isDueIn_many": "{{task}} مستحقة خلال {{count, arabNum}} ساعة.",
+        "isDueIn_other": "{{task}} مستحقة خلال {{count, arabNum}} ساعة."
     }
 }

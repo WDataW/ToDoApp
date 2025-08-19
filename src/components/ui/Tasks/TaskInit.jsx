@@ -39,7 +39,6 @@ export default function TaskInit({ noNewTags, setNewTask, taskToEdit, close, cla
             <Textarea value={description} onChange={(e) => { setDescription(e.target.value) }} className="sm:max-w-[20rem]" label={t("fields.description")} placeholder={t("fields.enterTaskDescription")}></Textarea>
             <PriorityPicker priority={priority} setPriority={setPriority} labelClassName="w-1/2 max-w-[10rem]"></PriorityPicker>
             <TagsPicker noNewTags={noNewTags} close={close} selectedTags={selectedTags} setSelectedTags={setSelectedTags}  ></TagsPicker>
-
         </div>
     );
 }

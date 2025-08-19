@@ -5,8 +5,9 @@ import { createPortal } from "react-dom";
 import ActionsContainer from "./ActionsContainer";
 import EditTag from "./EditTag";
 import { useTranslation } from "@/context/Language";
-import { interpreteBuiltInTagTitle, useAllTags, useDeleteTag, useEditTag } from "./tasks";
+import { interpreteBuiltInTagTitle, useAllTags, useDeleteTag } from "./tasks";
 import DeleteSomething from "../buttons/DeleteSomething";
+import { hidePageContents, showPageContents } from "@/Pages/pages";
 
 let actionsMenu;
 export default function TaskCategory({ i, setActiveTags, active, handleClick = () => { }, tag = {}, className = "", children, ...props }) {
@@ -16,7 +17,6 @@ export default function TaskCategory({ i, setActiveTags, active, handleClick = (
     const deleteTag = useDeleteTag();
     const t = useTranslation();
     const selfRef = useRef();
-    const editTag = useEditTag();
     const [editMode, setEditMode] = useState();
     const [pinned, setPinned] = useState(tag.pinned || false);
     const meatballButtonRef = useRef(null);
@@ -36,17 +36,11 @@ export default function TaskCategory({ i, setActiveTags, active, handleClick = (
         setTags(newTags);
     }
     function editTagAction(e) {
-        const main = e.target.closest("main");
-        main.classList.add("hidden");
-        const pageHeader = main.parentElement.querySelector("header");
-        pageHeader.classList.add("hidden");
+        hidePageContents(e.target)
         setEditMode(true);
     }
     function closeEditTag() {
-        const main = selfRef.current.closest("main");
-        main.classList.remove("hidden");
-        const pageHeader = main.parentElement.querySelector("header");
-        pageHeader.classList.remove("hidden");
+        showPageContents(selfRef.current)
         setEditMode(false);
     }
     function startDeleting() {
