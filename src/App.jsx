@@ -12,12 +12,13 @@ function App() {
 
 
 
-      {/*     <VerificationCodePage></VerificationCodePage>
-      <ForgotPasswordPage></ForgotPasswordPage>
+      <ForgotPasswordPage ></ForgotPasswordPage >
+      <SetNewPasswordPage></SetNewPasswordPage>
+      <VerificationCodePage></VerificationCodePage>
       <SignInPage></SignInPage>
-      */}
+      <SignUpPage></SignUpPage>
       {/* <TasksPage></TasksPage> */}
-      <StatsPage></StatsPage>
+      {/* <StatsPage></StatsPage> */}
       {/* <HomePage></HomePage> */}
     </>
   );

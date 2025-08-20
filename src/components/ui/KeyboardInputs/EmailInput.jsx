@@ -1,6 +1,6 @@
 import { useTranslation } from "../../../context/Language";
 import KeyboardInput from "./KeyboardInput";
-export default function EmailInput({ handleChange, value, placeholder }) {
+export default function EmailInput({ handleChange, value, placeholder, ...props }) {
     const t = useTranslation()
     return (
         <KeyboardInput
@@ -14,6 +14,7 @@ export default function EmailInput({ handleChange, value, placeholder }) {
             className="mb-[0.5rem]"
             required={true}
             value={value}
+            {...props}
         />
     );
 }

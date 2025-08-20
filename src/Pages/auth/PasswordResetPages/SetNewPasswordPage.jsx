@@ -5,10 +5,11 @@ import { commonStyles } from "../commonStyles";
 import { useValidation, validatePassword } from "./PasswordValidation";
 import { useState } from "react";
 import { useTranslation } from "../../../context/Language";
+import { useScreenWidth } from "@/context/ScreenSize";
 export default function SetNewPasswordPage() {
     // styles
     const [theme] = useTheme();
-    const [styles, lowAlphaBgColor] = commonStyles;
+    const styles = commonStyles;
 
     // state
     const [passwordWarning, dispatch] = useValidation();
@@ -16,15 +17,16 @@ export default function SetNewPasswordPage() {
     const [confirmedPassword, setConfirmedPassword] = useState("");
 
     const t = useTranslation();
+    const w = useScreenWidth();
     return (
         <Page className={styles["page"]}>
-            <div className={`${styles["box"]} ${lowAlphaBgColor[theme]} ${theme}-outterShadow max-w-[23.5rem]`}>
+            <div className={`frosted-glass p-[1.5rem] rounded-[0.5rem] md:text-white w-full  max-w-[23.5rem]`}>
                 <h2 className="text-center ">{t("titles.setNewPassword")}</h2>
                 <p className="text-center opacity-70 mb-[2rem]">{t("terms.useEnglishOnly")}</p>
                 <form action="">
-                    <PasswordInput className="mb-[0.2rem]" value={password} handleChange={(e) => { setPassword(e.target.value); validatePassword(e.target.value, dispatch); }} />
+                    <PasswordInput customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} className="mb-[0.2rem]" value={password} handleChange={(e) => { setPassword(e.target.value); validatePassword(e.target.value, dispatch); }} />
                     <WarningMessage className="ms-[0.2rem] mb-[0.5rem]">{t(passwordWarning)}</WarningMessage>
-                    <PasswordInput className={"mb-[0.2rem]"} value={confirmedPassword} handleChange={(e) => { setConfirmedPassword(e.target.value) }} label={t("fields.confirmPassword")} placeholder={t("fields.reEnterPassword")} />
+                    <PasswordInput customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} className={"mb-[0.2rem]"} value={confirmedPassword} handleChange={(e) => { setConfirmedPassword(e.target.value) }} label={t("fields.confirmPassword")} placeholder={t("fields.reEnterPassword")} />
                     <WarningMessage className="ms-[0.2rem] mb-[0.5rem]">{password !== confirmedPassword && confirmedPassword ? t("warnings.passwordNotConfirmed") : ""}</WarningMessage>
 
                     <ResetPasswordButton disabled={!password || password !== confirmedPassword || passwordWarning !== ""} />

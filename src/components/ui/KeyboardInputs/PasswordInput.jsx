@@ -1,6 +1,6 @@
 import { useTranslation } from "../../../context/Language";
 import KeyboardInput from "./KeyboardInput";
-export default function PasswordInput({ handleChange, label, className, placeholder, value }) {
+export default function PasswordInput({ handleChange, label, className, placeholder, value, ...props }) {
     const t = useTranslation();
     return (
         <KeyboardInput
@@ -14,6 +14,7 @@ export default function PasswordInput({ handleChange, label, className, placehol
             className={className}
             required={true}
             value={value}
+            {...props}
         />
     );
 }

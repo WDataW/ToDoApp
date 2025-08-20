@@ -4,6 +4,7 @@ import { useTheme } from "../../../context/Theme";
 import { commonStyles } from "../commonStyles";
 import { useTranslation } from "../../../context/Language";
 import { useState, useRef, useEffect } from "react";
+import { useScreenWidth } from "@/context/ScreenSize";
 
 const initialCode = {
     0: "",
@@ -12,31 +13,51 @@ const initialCode = {
     3: ""
 }
 
-// to do: focus on the first input with effect
 
 export default function VerificationCodePage({ email = "you@example.com" }) {
-    // temporary
     useEffect(() => {
+        for (let i = 0; i < 4; i++) {
+            getMap().get(i).addEventListener("keydown", handleBackspace);
+        }
         getMap().get(0).focus();
+        return () => {
+            for (let i = 0; i < 4; i++) {
+                if (getMap().get(i)) getMap().get(i).removeEventListener("keydown", handleBackspace);
+            }
+        }
     }, []);
 
     const [theme] = useTheme();
 
+
+    const [currentIndex, setCurrentIndex] = useState(0);
+    useEffect(() => {
+        if (currentIndex >= 0) {
+            getMap().get(currentIndex).focus()
+        } else if (currentIndex < 0) {
+            setCurrentIndex(0);
+        }
+    }, [currentIndex])
+    function handleBackspace(e) {
+        if (e.key == "Backspace") {
+
+            setCurrentIndex((c) => c - 1);
+
+
+        }
+    }
     const codeKeys = ["0", "1", "2", "3"];
     const [code, setCode] = useState(initialCode);
     function handleChange(e, i) {
         const inputValue = e.target.value;
         const newValue = inputValue.length > 1 ? inputValue.charAt(1) : inputValue.charAt(0);
-
         setCode({ ...code, [i]: newValue });
 
         const map = getMap()
         const nextInputIndex = i == 3 ? 0 : i + 1
-        const nextInputElement = map.get(nextInputIndex);
         if (!map.get(i).value) return;// means the current input box has been cleared no need to move to the next
 
-        (nextInputIndex !== 0 && nextInputElement.focus());
-        (nextInputIndex == 0 && map.get(3).blur())
+        setCurrentIndex(nextInputIndex);
 
         for (let i = 0; i < 4; i++) {
             if (!map.get(i).value) {
@@ -58,10 +79,11 @@ export default function VerificationCodePage({ email = "you@example.com" }) {
     }
 
     const t = useTranslation();
-    const [styles, lowAlphaBgColor] = commonStyles;
+    const styles = commonStyles;
+    const w = useScreenWidth();
     return (
         <Page className={styles["page"]}>
-            <div className={`${styles["box"]} ${lowAlphaBgColor[theme]} ${theme}-outterShadow max-w-[23.5rem]`}>
+            <div className={`frosted-glass p-[1.5rem] rounded-[0.5rem] md:text-white w-full max-w-[23.5rem]`}>
                 <h2 className="text-center ">{t("titles.resetPassword")}</h2>
                 <p className="text-center opacity-70 mb-[2rem]">{t("terms.weSentACodeTo")} {email}</p>
                 <form id={"verificationCodeForm"} action="">
@@ -69,6 +91,7 @@ export default function VerificationCodePage({ email = "you@example.com" }) {
                         {
                             codeKeys.map((_, i) =>
                                 <KeyboardInput
+                                    customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"}
                                     key={i}
                                     ref={(ref) => {
                                         const map = getMap();
@@ -78,7 +101,8 @@ export default function VerificationCodePage({ email = "you@example.com" }) {
                                     handleChange={(e) => { handleChange(e, i) }}
                                     type="number"
                                     required={true}
-                                    className="mb-[0.65rem] aspect-1/1 text-center text-3xl  " />
+                                    customStyles={"w-full bg-transparent outline-none  border-b   placeholder-opacity-50"}
+                                    className="border rounded-[0.3rem] mb-[0.65rem] aspect-1/1 text-center text-3xl  " />
                             )
                         }
                     </div>

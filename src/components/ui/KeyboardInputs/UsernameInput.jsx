@@ -1,6 +1,6 @@
 import { useTranslation } from "../../../context/Language";
 import KeyboardInput from "./KeyboardInput";
-export default function UsernameInput({ handleChange, value, placeholder = "Enter your username" }) {
+export default function UsernameInput({ handleChange, value, placeholder, ...props }) {
     const t = useTranslation();
     return (
         <KeyboardInput
@@ -15,6 +15,7 @@ export default function UsernameInput({ handleChange, value, placeholder = "Ente
             className="mb-[0.5rem]"
             required={true}
             value={value}
+            {...props}
         />
     );
 }

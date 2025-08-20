@@ -4,21 +4,23 @@ import Page from "../../Page";
 import { useTheme } from "../../../context/Theme";
 import { commonStyles } from "../commonStyles";
 import { useTranslation } from "../../../context/Language";
+import { useScreenWidth } from "@/context/ScreenSize";
 export default function ForgotPasswordPage() {
     const [theme] = useTheme();
-    const [styles, lowAlphaBgColor] = commonStyles;
+    const styles = commonStyles;
     const t = useTranslation();
     const [email, setEmail] = useState("");
+    const w = useScreenWidth();
     return (
         <Page className={styles["page"]}>
-            <div className={`${styles["box"]} ${lowAlphaBgColor[theme]} ${theme}-outterShadow max-w-[23.5rem]`}>
+            <div className={`frosted-glass p-[1.5rem] rounded-[0.5rem] md:text-white w-full  max-w-[23.5rem]`}>
                 <form action="">
                     <h2 className="text-center ">{t("titles.forgotPassword")}</h2>
                     <p className="text-center opacity-70 mb-[2rem]">{t("terms.noWorriesWellSendYou")}</p>
-                    <EmailInput handleChange={(e) => {
+                    <EmailInput customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} handleChange={(e) => {
                         setEmail(e.target.value);
                     }} />
-                    <ResetPasswordButton disabled={!email} />
+                    <ResetPasswordButton customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} disabled={!email} />
                     <a href={null} className="text-[0.8rem] opacity-50 ">{t("titles.signIn")}</a>
                     <p className="text-[0.8rem] opacity-70 text-center mt-[0.75rem]">{t("terms.dontHaveAnAccount")} <ThemedAnchor href="">{t("titles.signUp")}</ThemedAnchor></p>
 

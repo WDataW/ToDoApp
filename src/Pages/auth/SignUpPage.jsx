@@ -5,10 +5,12 @@ import { useState, useRef } from "react";
 import { commonStyles } from "./commonStyles";
 import { useValidation, validatePassword } from "./PasswordResetPages/PasswordValidation";
 import { useTranslation } from "../../context/Language";
-const [styles, lowAlphaBgColor] = commonStyles;
+import { useScreenWidth } from "@/context/ScreenSize";
+const styles = commonStyles;
 
 
 export default function SignUpPage({ children }) {
+    const w = useScreenWidth();
     const agreeToTermsCheckbox = useRef(null)
     const [theme] = useTheme();
     const [passwordWarning, dispatch] = useValidation();
@@ -19,16 +21,16 @@ export default function SignUpPage({ children }) {
 
     return (
         <Page className={styles["page"]}>
-            <div className={`${styles["box"]} ${lowAlphaBgColor[theme]} ${theme}-outterShadow max-w-[30rem]`}>
+            <div className={`frosted-glass p-[1.5rem] rounded-[0.5rem] md:text-white w-full  max-w-[25rem]`}>
                 <h2 className="text-center">
                     {t("titles.signUp")}
                 </h2>
                 <form action="">
-                    <UsernameInput placeholder={t("fields.enterUsername")} className="mb-[0.5rem]" />
-                    <EmailInput />
-                    <PasswordInput className="mb-[0.2rem]" value={password} handleChange={(e) => { setPassword(e.target.value); validatePassword(e.target.value, dispatch); }} />
+                    <UsernameInput customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} placeholder={t("fields.enterUsername")} className="mb-[0.5rem]" />
+                    <EmailInput customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} />
+                    <PasswordInput customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} className="mb-[0.2rem]" value={password} handleChange={(e) => { setPassword(e.target.value); validatePassword(e.target.value, dispatch); }} />
                     <WarningMessage className="ms-[0.2rem] mb-[0.5rem]">{t(passwordWarning)}</WarningMessage>
-                    <PasswordInput placeholder={t("fields.reEnterPassword")} className={"mb-[0.2rem]"} value={confirmedPassword} handleChange={(e) => { setConfirmedPassword(e.target.value) }} label={t("fields.confirmPassword")} />
+                    <PasswordInput customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} placeholder={t("fields.reEnterPassword")} className={"mb-[0.2rem]"} value={confirmedPassword} handleChange={(e) => { setConfirmedPassword(e.target.value) }} label={t("fields.confirmPassword")} />
                     <WarningMessage className="ms-[0.2rem] mb-[0.5rem]">
                         {password !== confirmedPassword && confirmedPassword ? t("warnings.passwordNotConfirmed") : ""}
                     </WarningMessage>
