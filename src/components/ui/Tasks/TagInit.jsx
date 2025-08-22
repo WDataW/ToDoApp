@@ -93,7 +93,7 @@ export default function TagInit({ setNewTag, tagToEdit, className = "", children
             <div>
                 <label className="ms-[0.3rem] gap-[0.5rem] flex items-center">
                     <span>{t("terms.addToHome")}</span>
-                    <ThemedCheckboxInput checked={home} handleChange={(e) => { setHome(e.target.value) }} className="" />
+                    <ThemedCheckboxInput checked={home} handleChange={(e) => { setHome(!home) }} className="" />
                 </label>
             </div>
         </div>

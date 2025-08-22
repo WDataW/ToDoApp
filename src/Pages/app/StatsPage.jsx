@@ -2,7 +2,7 @@ import { useTranslation } from "../../context/Language";
 import AppPage from "./AppPage";
 import { AppPageHeader, TasksDistribution, ActivityChart, Main, TaskCompletionLines, AchievementsContainer, TasksProgress, SectionContainer } from "../../components/ui";
 const chartSectionStyles = "min-w-full md:even:me-[1rem] mb-[1rem] flex-1 md:min-w-2/5 md:max-w-[calc(50%-0.5rem)]";
-export default function TasksPage({ className = "", children, ...props }) {
+export default function StatsPage({ className = "", children, ...props }) {
     const t = useTranslation();
 
     return (

@@ -1,8 +1,6 @@
 import { Page } from ".";
 import { useEffect, useRef } from "react";
-import { ImageAnchor } from "@/components/ui";
 import { useTheme } from "@/context/Theme";
-import { useLang } from "@/context/Language";
 export default function OverlayPage({ overAnOverlay = false, close, heading = "", className = "", children, ...props }) {
     const selfRef = useRef(null);
     useEffect(
@@ -20,7 +18,6 @@ export default function OverlayPage({ overAnOverlay = false, close, heading = ""
         dark: "bg-[url(/src/assets/icons/dark/back.svg)]",
         light: "bg-[url(/src/assets/icons/light/back.svg)]"
     }
-    const [lang] = useLang();
     const icon = overAnOverlay ? `${backIcons[theme]} bg-size-[len:1rem_1.5rem] -scale-x-100` : xIcons[theme]
     const xRef = useRef();
     return (

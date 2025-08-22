@@ -13,4 +13,5 @@ export * from "./containers";
 export * from "./selects";
 export * from "./inbox";
 export * from "./calendar";
+export * from "./settings";
 export * from "./navigations";

@@ -11,17 +11,17 @@ export default function AppPage({ title, className = "", children, ...props }) {
     const t = useTranslation();
     const [viewInbox, setViewInbox] = useState(false)
     const selfRef = useRef();
-    const MainNavigation = screenWidth >= 640 ? <SideNav selfRef={selfRef} viewInbox={viewInbox} setViewInbox={setViewInbox} title={title} /> : <BottomNav title={title} />;
+    const MainNavigation = screenWidth >= 640 ? <SideNav viewInbox={viewInbox} setViewInbox={setViewInbox} title={title} /> : <BottomNav title={title} />;
     function stopViewingInbox() {
         setViewInbox(false);
-        showPageContents(selfRef.current);
+        showPageContents(document.getElementById("inboxButton"));
     }
 
     return (<>
         {viewInbox && createPortal(<InboxPage heading={t("titles.inbox")} close={stopViewingInbox} />, document.querySelector(".page-target"))}
-        <Page className={`page-target pb-[4.7rem] sm:ps-[4.7rem] sm:pb-0 ${className}`} {...props}>
+        <Page className={`page-target pb-[4.7rem] sm:ps-[4.7rem]  ${className}`} {...props}>
             {MainNavigation}
-            <AppPageHeader selfRef={selfRef} viewInbox={viewInbox} setViewInbox={setViewInbox}>{t(`titles.${title}`)}</AppPageHeader>
+            <AppPageHeader title={title} viewInbox={viewInbox} setViewInbox={setViewInbox}>{t(`titles.${title}`)}</AppPageHeader>
             {children}
         </Page>
     </>

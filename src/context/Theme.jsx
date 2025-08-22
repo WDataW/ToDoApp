@@ -14,15 +14,15 @@ export function useUpdateUserTheme() {
 }
 
 
+export function getBrowserPreference() {
+    return (
+        (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+            ? "dark" : "light"
+    );
+}
 export default function Theme({ children }) {
-    function getBrowserPreference() {
-        return (
-            (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
-                ? "dark" : "light"
-        );
-    }
     const [userInfo] = useInfo();
-    const userTheme = userInfo["settings"]["theme"];
+    const userTheme = userInfo?.settings?.theme;
 
     const [theme, setTheme] = useState(userTheme || getBrowserPreference());
 
@@ -59,6 +59,7 @@ export default function Theme({ children }) {
 export const bgThemeColors = {
     dark: "bg-[var(--dark-theme-accent-color)]",
     light: "bg-[var(--light-theme-accent-color)]",
+    danger: "bg-[#FF0000]",
     transparent: "bg-[#00000000]"
 }
 
@@ -71,6 +72,10 @@ export const darkerBgThemeColors = {
 export const textThemeColors = {
     dark: "text-[var(--dark-theme-accent-color)]",
     light: "text-[var(--light-theme-accent-color)]"
+}
+export const darkTextThemeColors = {
+    dark: "text-[var(--color-darker-dark-theme)]",
+    light: "text-[var(--color-darker-light-theme)]"
 }
 export const hoverTextThemeColors = {
     dark: "hover:text-[var(--dark-theme-accent-color)]",
@@ -87,7 +92,7 @@ export const textColors = {
 export const bgColors = {
     dark: "bg-[var(--dark-bg-color)]",
     light: "bg-[var(--light-bg-color)]",
-    darkenBg: "bg-[rgba(0,0,0,0.6)]"
+    darkenBg: "bg-[rgba(0,0,0,0.6)]",
 }
 export const surfaceBgColors = {
     dark: "bg-[var(--dark-surface-bg-color)]",

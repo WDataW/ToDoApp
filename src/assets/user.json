@@ -1,7 +1,7 @@
 {
   "info": {
     "id": "u123456",
-    "name": "Wael Alharbi",
+    "fullName": "Wael Alharbi",
     "email": "wael@example.com",
     "lastLogIn": "2025-08-11T08:00:00Z",
     "currentLogInStreak": 5,
@@ -10,9 +10,14 @@
     "createdAt": "2024-09-15T08:00:00Z",
     "role": "standard",
     "settings": {
-      "language": "en",
-      "theme": "dark",
-      "notifications": true
+      "language": "",
+      "theme": "",
+      "notifications": {
+        "all": true,
+        "taskReminder": true,
+        "overdueAlert": true,
+        "announcements": true
+      }
     }
   },
   "tasks": [
@@ -242,7 +247,7 @@
       "from": "system",
       "key": "welcome",
       "read": false,
-      "receivedAt": "2025-07-03T15:00:00Z"
+      "receivedAt": "2025-07-03T15:23:00Z"
     },
     {
       "id": "message:f3a2c033-541b-4255-b91b-7667f2974131",

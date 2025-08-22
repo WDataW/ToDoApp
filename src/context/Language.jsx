@@ -8,7 +8,9 @@ function getBrowserLanguage() {
 import userData from "../../src/assets/user.json";
 import { useInfo } from "./User";
 function getInitLang() {
-    return userData["info"]["settings"]["language"] || getBrowserLanguage();
+    let userLang;
+    if (userData) userLang = userData?.info?.settings?.language;
+    return userLang || getBrowserLanguage();
 }
 
 i18next.init({

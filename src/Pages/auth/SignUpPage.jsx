@@ -1,4 +1,4 @@
-import { EmailInput, PasswordInput, UsernameInput, ThemedAnchor, CheckboxInput, ErrorMessage, ThemedRectButton, KeyboardInput, WarningMessage } from "../../components/ui";
+import { EmailInput, PasswordInput, UsernameInput, ThemedAnchor, CheckboxInput, ErrorMessage, ThemedRectButton, WarningMessage } from "../../components/ui";
 import Page from "../Page";
 import { useTheme } from "../../context/Theme";
 import { useState, useRef } from "react";
@@ -26,6 +26,7 @@ export default function SignUpPage({ children }) {
                     {t("titles.signUp")}
                 </h2>
                 <form action="">
+
                     <UsernameInput customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} placeholder={t("fields.enterUsername")} className="mb-[0.5rem]" />
                     <EmailInput customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} />
                     <PasswordInput customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} className="mb-[0.2rem]" value={password} handleChange={(e) => { setPassword(e.target.value); validatePassword(e.target.value, dispatch); }} />

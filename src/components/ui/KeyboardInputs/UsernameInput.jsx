@@ -7,12 +7,12 @@ export default function UsernameInput({ handleChange, value, placeholder, ...pro
             type="text"
             autocomplete="username"
             label={t("fields.username")}
-            placeholder={placeholder}
+            placeholder={placeholder || t("fields.enterUsername")}
             handleChange={handleChange}
             lightIcon="/src/assets/icons/light/user.svg"
             darkIcon="/src/assets/icons/dark/user.svg"
             alt="User Icon"
-            className="mb-[0.5rem]"
+            className="mb-[0.5rem] "
             required={true}
             value={value}
             {...props}
