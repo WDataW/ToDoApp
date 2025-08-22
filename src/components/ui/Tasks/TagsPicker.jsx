@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import MiniTag from "./MiniTag";
 import { useAllTags } from "./tasks";
 import { SectionContainer } from "../containers";
 import { useTheme } from "@/context/Theme";
 import { useTranslation } from "@/context/Language";
+import { hidePageContents, showPageContents } from "@/Pages/pages";
+import { createPortal } from "react-dom";
+import { EditTag } from ".";
 
 const plusIcons = {
     dark: "bg-[url(/src/assets/icons/dark/plus.svg)]",
@@ -11,10 +14,21 @@ const plusIcons = {
 }
 
 export default function tagsPicker({ noNewTags, close, className = "", selectedTags, setSelectedTags }) {
+    const [createTagMode, setCreateTagMode] = useState(false);
+
+    function createTag() {
+        hidePageContents(selfRef.current, true)
+        setCreateTagMode(true);
+    }
+    function stopCreatingTag() {
+        showPageContents(selfRef.current, true)
+        setCreateTagMode(false);
+
+    }
+
 
     function handleAddTag() {
-        close();
-        document.querySelector(".create-tag").click();
+        createTag();
     }
     function handleTagClick(e) {
         const newTags = tags.filter((tag) => tag.title !== e.currentTarget.id);
@@ -34,19 +48,21 @@ export default function tagsPicker({ noNewTags, close, className = "", selectedT
     }
     const [theme] = useTheme();
     const t = useTranslation();
-
+    const selfRef = useRef();
     const [tags, setTags] = useState(useAllTags(false)[0].filter((tag) => !selectedTags.includes(tag)));
-    return (
-        <SectionContainer>
+
+    return (<>
+        {createTagMode && createPortal(<EditTag yesFunc={(newTag) => { setTags([newTag, ...tags]) }} overAnOverlay={true} heading={t("terms.createTag")} close={stopCreatingTag} yes={t("terms.create")} no={t("terms.cancel")} />, selfRef.current.closest(".overlay-target"))}
+
+        <SectionContainer >
             <p className="ps-[0.3rem] pb-[0.3rem]">{t("terms.availableTags")}</p>
-            <div className={`${className}`} >
+            <div ref={selfRef} className={`${className}`} >
                 <ul className="flex overflow-x-auto gap-[0.3rem] pb-[0.3rem] mb-[1rem] ">
-                    {!noNewTags && <li key={"createNewTag"} aria-label="Create new tag">
+                    <li key={"createNewTag"} aria-label="Create new tag">
                         <button onClick={handleAddTag} className="inline-block h-[1.7rem] w-[1.7rem] aspect-square rounded-full border text-nowrap">
                             <span className={`opacity-60 inline-block h-full w-full  ${plusIcons[theme]} bg-center bg-[length:1.3rem_1.3rem] bg-no-repeat`} />
                         </button>
-                    </li>}
-                    {noNewTags && tags.length == 0 && <p className="p-[0.25rem] opacity-60 ms-[0.3rem]">{t("terms.noAvailableTags")}</p>}
+                    </li>
                     {tags.map((tag, i) => {
                         return <li key={i}>
                             <button id={tag.title} onClick={handleTagClick}>
@@ -71,5 +87,6 @@ export default function tagsPicker({ noNewTags, close, className = "", selectedT
 
             </div>
         </SectionContainer>
+    </>
     );
 }

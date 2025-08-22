@@ -1,5 +1,5 @@
 import AppPage from "./AppPage";
-import { GreetingBox, AppPageHeader, TasksSection, Main, EditTask } from "../../components/ui";
+import { GreetingBox, AppPageHeader, TasksSection, Main, EditTask, CreateTagButton } from "../../components/ui";
 import { useTranslation } from "../../context/Language";
 import { useHomePageTags, useTagInfo } from "@/components/ui/tasks/tasks";
 

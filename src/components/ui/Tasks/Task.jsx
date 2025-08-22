@@ -70,7 +70,7 @@ export default function Task({ className = "", taskObj = {}, completed = "false"
                     { label: pinned ? "unpin" : "pin", action: () => { editPin() } },
                     { label: "delete", action: startDeletingTask }
                 ]}
-                yOffset={5.3}
+                yOffset={7.5}
                 scrolableParent={scrolableParent}
                 meatballButton={meatballButton}
                 hideMenu={hideActionsMenu}

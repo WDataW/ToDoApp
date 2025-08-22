@@ -2,11 +2,11 @@ import { useTranslation } from "../../context/Language";
 import { useEffect, useState } from "react";
 import AppPage from "./AppPage";
 import { AnimatePresence, motion } from "motion/react";
-import { AppPageHeader, CategoriesSection, CreateTaskButton, TasksSection, Main, SearchInput, TasksCalendar } from "../../components/ui";
+import { CategoriesSection, CreateTaskButton, TasksSection, Main, SearchInput, TasksCalendar } from "../../components/ui";
 import { isUUID, taskSkeleton } from "@/components/ui/tasks/tasks";
 export default function TasksPage({ className = "", children, ...props }) {
     const t = useTranslation();
-    const [activeTags, setActiveTags] = useState([t("terms.active")]);
+    const [activeTags, setActiveTags] = useState([]);
     useEffect(() => {
         if (activeTags.length == 0) {
             const firstTag = document.querySelector(".tags-list li div button")

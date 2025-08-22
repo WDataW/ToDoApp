@@ -11,13 +11,13 @@ function App() {
     <>
 
 
-      <SettingsPage></SettingsPage>
+      {/* <SettingsPage></SettingsPage> */}
       {/* <ForgotPasswordPage ></ForgotPasswordPage > */}
       {/* <SetNewPasswordPage></SetNewPasswordPage> */}
       {/* <VerificationCodePage></VerificationCodePage> */}
       {/* <SignInPage></SignInPage> */}
       {/* <SignUpPage></SignUpPage> */}
-      {/* <TasksPage></TasksPage> */}
+      <TasksPage></TasksPage>
       {/* <StatsPage></StatsPage> */}
       {/* <HomePage></HomePage> */}
     </>

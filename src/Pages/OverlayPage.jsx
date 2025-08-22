@@ -21,11 +21,13 @@ export default function OverlayPage({ overAnOverlay = false, close, heading = ""
     const icon = overAnOverlay ? `${backIcons[theme]} bg-size-[len:1rem_1.5rem] -scale-x-100` : xIcons[theme]
     const xRef = useRef();
     return (
-        <Page ref={selfRef} tabIndex={0} className={`overlay-target overflow-scroll-auto absolute w-full ${!overAnOverlay && "sm:w-[calc(100%-4.7rem)]"} pb-[4rem] sm:pb-[2rem] top-0 ${className}`} {...props}>
+        <Page ref={selfRef} tabIndex={0} className={`overflow-auto  overlay-target h-screen fixed w-full ${!overAnOverlay && "sm:w-[calc(100%-4.7rem)]"} z-11 pb-[4rem] sm:pb-[2rem] top-0 ${className}`} {...props}>
+
             <header dir="ltr" className="grid grid-rows-1 grid-cols-3 items-center h-[3rem] mb-[1rem] justify-items-center">
                 <h4 className="text-nowrap col-start-2">{heading}</h4>
                 <button ref={xRef} onClick={close} className={`inline-block justify-self-end me-[1rem] h-[1.2rem] w-[1.2rem] bg-center bg-cover bg-no-repeat ${icon}`} ></button>
             </header>
+
             {children}
         </Page >
     );

@@ -4,13 +4,14 @@ import TagInit from "./tagInit";
 import { useState } from "react";
 import { isBuiltInTitle, useEditTag } from "./tasks";
 import { useTranslation } from "@/context/Language";
-export default function EditTag({ setActiveTags, activeTags, close, tagToEdit = { title: "", icon: "" }, yes, no, className = "", children, ...props }) {
+export default function EditTag({ yesFunc, setActiveTags, activeTags, close, tagToEdit = { title: "", icon: "" }, yes, no, className = "", children, ...props }) {
     const editTag = useEditTag();
     const [newTag, setNewTag] = useState();
     const t = useTranslation();
     function save() {
         editTag(newTag);
         if (activeTags && activeTags.length == 0) setActiveTags(newTag.builtIn ? [t(`terms.${isBuiltInTitle(newTag.title, t)}`)] : [newTag.id]);
+        if (yesFunc) yesFunc(newTag);
         close();
     }
 
