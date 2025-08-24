@@ -6,6 +6,7 @@ import { OutlinedImageAnchor, MainNav, BottomNav, SideNav } from './components/u
 import { FloatingContainer } from './components/ui/containers';
 import { Page, VerificationCodePage, StatsPage, ForgotPasswordPage, SignInPage, SetNewPasswordPage, SignUpPage, HomePage, TasksPage, SettingsPage } from "./Pages";
 import ActionsContainer from './components/ui/Tasks/ActionsContainer';
+import { LandingPage } from './Pages/landing';
 function App() {
   return (
     <>
@@ -17,9 +18,10 @@ function App() {
       {/* <VerificationCodePage></VerificationCodePage> */}
       {/* <SignInPage></SignInPage> */}
       {/* <SignUpPage></SignUpPage> */}
-      <TasksPage></TasksPage>
+      {/* <TasksPage></TasksPage> */}
       {/* <StatsPage></StatsPage> */}
       {/* <HomePage></HomePage> */}
+      <LandingPage></LandingPage>
     </>
   );
 }

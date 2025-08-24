@@ -61,6 +61,8 @@
         "category": "الصنف"
     },
     "terms": {
+        "features": "الميزات",
+        "about": "عن التطبيق",
         "confirm": "تأكيد",
         "signoutConfirmation": "هل ترغب فعلا في تسجيل الخروج؟",
         "deleteAccount": "حذف الحساب",
