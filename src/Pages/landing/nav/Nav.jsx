@@ -16,7 +16,7 @@ export default function Nav({ className = "", children, ...props }) {
     const [lang] = useLang();
     const [showBurger, setShowBurger] = useState(false);
     return (<>
-        {((lang == "en" && w < 810) || (lang == "ar" && w < 870)) &&
+        {((lang == "en" && w < 825) || (lang == "ar" && w < 885)) &&
 
             <AnimatePresence>
                 {showBurger && <BurgerNav />}
@@ -29,7 +29,7 @@ export default function Nav({ className = "", children, ...props }) {
                 </li>
 
             </ul>
-            {((lang == "en" && w >= 810) || (lang == "ar" && w >= 870)) &&
+            {((lang == "en" && w >= 825) || (lang == "ar" && w >= 885)) &&
                 <MidNav className="text-nowrap text-center flex items-center justify-center gap-[0.8rem]" />
             }
 
@@ -44,7 +44,7 @@ export default function Nav({ className = "", children, ...props }) {
                         </li>
                     </>
                 }
-                {((lang == "en" && w < 810) || (lang == "ar" && w < 870)) &&
+                {((lang == "en" && w < 825) || (lang == "ar" && w < 885)) &&
                     <li className="ms-[0.5rem] max-h-[1.5rem]">
                         <BurgerMenu value={showBurger} setValue={setShowBurger} />
                     </li>

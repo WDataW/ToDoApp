@@ -1,5 +1,6 @@
 {
     "titles": {
+        "doMoreStressLess": "إنجاز أكثر، راحة أكثر",
         "signingOut": "تسجيل الخروج",
         "settings": "الإعدادات",
         "message": "رسالة",
@@ -61,6 +62,8 @@
         "category": "الصنف"
     },
     "terms": {
+        "getStarted": "ابدأ الآن",
+        "stayFocused": "ابق مركزًا على أهدافك",
         "features": "الميزات",
         "about": "عن التطبيق",
         "confirm": "تأكيد",

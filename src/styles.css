@@ -32,6 +32,7 @@
     --color-darker-light-theme: #003489;
     --light-theme-accent-color: #3b82f6;
     --dark-theme-accent-color: #fc359f;
+    --low-dark-theme-accent-color: #fc359f3f;
 
 
 
@@ -180,14 +181,6 @@
             background-color: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .dark-outterShadow {
-            box-shadow: inset 0.05rem 0.05rem 0.5rem rgba(255, 255, 255, 0.5), inset -0.05rem -0.05rem 0.5rem rgba(247, 248, 248, 0.5);
-        }
-
-        .light-outterShadow {
-            box-shadow: inset 0.05rem 0.05rem 0.5rem rgba(0, 0, 0, 0.7), inset -0.05rem -0.05rem 0.5rem rgba(0, 0, 0, 0.7);
         }
     }
 

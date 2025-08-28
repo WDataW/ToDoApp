@@ -1,5 +1,6 @@
 {
     "titles": {
+        "doMoreStressLess": "Do More. Worry Less",
         "signingOut": "Signing Out",
         "settings": "Settings",
         "message": "Message",
@@ -61,6 +62,8 @@
         "category": "Category"
     },
     "terms": {
+        "getStarted": "Get started",
+        "stayFocused": "Stay focused on what matters most",
         "features": "Features",
         "about": "About",
         "confirm": "Confirm",
