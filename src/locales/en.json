@@ -1,5 +1,6 @@
 {
     "titles": {
+        "keyFeatures": "Key Features",
         "doMoreStressLess": "Do More. Worry Less",
         "signingOut": "Signing Out",
         "settings": "Settings",
@@ -176,5 +177,23 @@
         },
         "isDueIn_one": "{{task}} is due in {{count}} hour.",
         "isDueIn_other": "{{task}} is due in {{count}} hours."
+    },
+    "features": {
+        "create&edit": "Create & Edit Tasks",
+        "create&editD": "Easily add, update, or delete tasks to stay organized and in control.",
+        "tags&categories": "Tags & Categories",
+        "tags&categoriesD": "Sort tasks with custom tags and categories for better organization.",
+        "achievements&rewards": "Achievements",
+        "achievements&rewardsD": "Unlock milestones and stay motivated as you complete tasks.",
+        "stats&charts": "Stats & Charts",
+        "stats&chartsD": "Track your productivity with detailed stats and visual charts.",
+        "arabic&english": "Arabic & English Support",
+        "arabic&englishD": "Built for everyone: full support for both Arabic and English.",
+        "dark&light": "Dark & Light Themes",
+        "dark&lightD": "Work your way with flexible theme modes.",
+        "accentColors": "Accent Colors",
+        "accentColorsD": "Choose your own accent color to personalize your app.",
+        "notifications": "Smart Notifications",
+        "notificationsD": "Get timely reminders and alerts so you never miss a task."
     }
 }

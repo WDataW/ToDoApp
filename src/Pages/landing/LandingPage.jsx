@@ -3,6 +3,7 @@ import Nav from "./nav/Nav";
 import ToggleLang from "@/components/other/ToggleLang";
 import ToggleTheme from "@/components/other/ToggleTheme";
 import HeroSection from "./HeroSection";
+import FeaturesSection from "./features/FeaturesSection";
 
 const bgColors = {
     light: "bg-[#f7f6f5]",
@@ -15,10 +16,9 @@ export default function LandingPage({ className = "", children, ...props }) {
     return (
         <div className={`page-target  relative ${bgColors[theme]} ${theme == "dark" ? "text-white" : "text-black"} min-h-screen ${className}`} {...props}>
             <Nav></Nav>
-
-            <HeroSection></HeroSection>
-            <main className={`${paddingX} overflow-hidden pt-[2.5rem]`}>
-
+            <main className={` overflow-hidden `}>
+                <HeroSection></HeroSection>
+                <FeaturesSection></FeaturesSection>
                 <ToggleLang></ToggleLang>
                 <ToggleTheme></ToggleTheme>
             </main>

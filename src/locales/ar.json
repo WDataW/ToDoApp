@@ -1,5 +1,6 @@
 {
     "titles": {
+        "keyFeatures": "الميزات الرئيسية",
         "doMoreStressLess": "إنجاز أكثر، راحة أكثر",
         "signingOut": "تسجيل الخروج",
         "settings": "الإعدادات",
@@ -185,5 +186,23 @@
         "isDueIn_few": "{{task}} مستحقة خلال {{count, arabNum}} ساعات.",
         "isDueIn_many": "{{task}} مستحقة خلال {{count, arabNum}} ساعة.",
         "isDueIn_other": "{{task}} مستحقة خلال {{count, arabNum}} ساعة."
+    },
+    "features": {
+        "create&edit": "إنشاء وتحرير المهام",
+        "create&editD": "أضف مهامك بسهولة وعدّلها أو احذفها لتبقى منظماً وتحت السيطرة.",
+        "tags&categories": "الوسوم والتصنيفات",
+        "tags&categoriesD": "نظّم مهامك باستخدام وسوم وتصنيفات مخصصة.",
+        "achievements&rewards": "الإنجازات",
+        "achievements&rewardsD": "احتفل بتقدمك من خلال الإنجازات وسلاسل المهام المكتملة.",
+        "stats&charts": "الإحصاءات والمخططات",
+        "stats&chartsD": "تتبّع إنتاجيتك عبر رسومات وإحصاءات واضحة.",
+        "arabic&english": "دعم العربية والإنجليزية",
+        "arabic&englishD": "مصمم للجميع مع دعم كامل للغتين العربية والإنجليزية.",
+        "dark&light": "الوضع الداكن والفاتح",
+        "dark&lightD": "اختر الوضع الذي يناسب راحتك وإضاءة محيطك.",
+        "accentColors": "الألوان المخصصة",
+        "accentColorsD": "خصّص تجربة التطبيق باختيار لونك المفضل.",
+        "notifications": "الإشعارات الذكية",
+        "notificationsD": "احصل على تنبيهات وتذكيرات في الوقت المناسب حتى لا يفوتك شيء."
     }
 }
