@@ -1,15 +1,16 @@
 import { useTranslation } from "@/context/Language";
 import { paddingX } from "../LandingPage";
 import FeatureCard from "./FeatureCard";
+import { SelectButtons } from "@/components/ui";
 const features = [
     { key: "create&edit", icon: "edit-contained" },
     { key: "tags&categories", icon: "tag" },
-    { key: "achievements&rewards", icon: "star" },
+    { key: "notifications", icon: "bell" },
     { key: "stats&charts", icon: "pie-chart", noOpacity: true },
+    { key: "achievements&rewards", icon: "star" },
     { key: "arabic&english", icon: "language" },
     { key: "dark&light", icon: "moon" },
     { key: "accentColors", icon: "theme" },
-    { key: "notifications", icon: "bell" },
 ]
 
 
@@ -21,6 +22,8 @@ export default function FeaturesSection({ className = "", children, ...props }) 
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-[1.5rem] auto-rows-auto">
                 {features.map((feat, i) => <li key={i}> <FeatureCard feat={feat} /></li>)}
             </ul>
+
+
         </div>
     );
 }

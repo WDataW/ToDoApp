@@ -14,9 +14,13 @@ export default function CreateTagButton({ activeTags, setActiveTags, customTheme
         hidePageContents(selfRef.current)
         setCreateTagMode(true);
     }
+    function rememeberFocus() {
+        selfRef.current.focus();
+    }
     function stopCreatingTag() {
         showPageContents(selfRef.current)
         setCreateTagMode(false);
+        rememeberFocus();
     }
     return (<>
         {createTagMode && createPortal(<EditTag activeTags={activeTags} setActiveTags={setActiveTags} heading={t("terms.createTag")} close={stopCreatingTag} yes={t("terms.create")} no={t("terms.cancel")} />, selfRef.current.closest("main").parentElement)}

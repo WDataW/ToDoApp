@@ -22,6 +22,7 @@ export function useTags() {
 
 const userSkeleton = {
     info: {
+
         id: "",
         name: "guest",
         role: "guest",

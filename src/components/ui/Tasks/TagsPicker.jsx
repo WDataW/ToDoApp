@@ -23,10 +23,12 @@ export default function tagsPicker({ noNewTags, close, className = "", selectedT
     function stopCreatingTag() {
         showPageContents(selfRef.current, true)
         setCreateTagMode(false);
-
+        rememeberFocus();
     }
 
-
+    function rememeberFocus() {
+        buttonRef.current.focus();
+    }
     function handleAddTag() {
         createTag();
     }
@@ -50,7 +52,7 @@ export default function tagsPicker({ noNewTags, close, className = "", selectedT
     const t = useTranslation();
     const selfRef = useRef();
     const [tags, setTags] = useState(useAllTags(false)[0].filter((tag) => !selectedTags.includes(tag)));
-
+    const buttonRef = useRef();
     return (<>
         {createTagMode && createPortal(<EditTag yesFunc={(newTag) => { setTags([newTag, ...tags]) }} overAnOverlay={true} heading={t("terms.createTag")} close={stopCreatingTag} yes={t("terms.create")} no={t("terms.cancel")} />, selfRef.current.closest(".overlay-target"))}
 
@@ -59,7 +61,7 @@ export default function tagsPicker({ noNewTags, close, className = "", selectedT
             <div ref={selfRef} className={`${className}`} >
                 <ul className="flex overflow-x-auto gap-[0.3rem] pb-[0.3rem] mb-[1rem] ">
                     <li key={"createNewTag"} aria-label="Create new tag">
-                        <button onClick={handleAddTag} className="inline-block h-[1.7rem] w-[1.7rem] aspect-square rounded-full border text-nowrap">
+                        <button ref={buttonRef} onClick={handleAddTag} className="inline-block h-[1.7rem] w-[1.7rem] aspect-square rounded-full border text-nowrap">
                             <span className={`opacity-60 inline-block h-full w-full  ${plusIcons[theme]} bg-center bg-[length:1.3rem_1.3rem] bg-no-repeat`} />
                         </button>
                     </li>

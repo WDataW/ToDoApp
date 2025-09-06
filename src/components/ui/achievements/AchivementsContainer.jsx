@@ -1,13 +1,10 @@
 import { useTranslation } from "@/context/Language";
 import { useState } from "react";
-import { motion } from "motion/react";
-import { useTheme } from "@/context/Theme";
 import Trophies from "./Trophies";
 import Goals from "./Goals";
 import { SelectButtons } from "../buttons";
 export default function AchivementsContainer({ className = "", children, ...props }) {
     const t = useTranslation();
-    const [theme] = useTheme();
     const [mode, setMode] = useState("trophies");
 
     return (

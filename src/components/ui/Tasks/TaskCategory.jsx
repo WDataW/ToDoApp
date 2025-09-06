@@ -34,6 +34,10 @@ export default function TaskCategory({ i, setActiveTags, active, handleClick = (
         newTags = [newTag, ...newTags];
         meatballButtonRef.current.click();
         setTags(newTags);
+        rememeberFocus();
+    }
+    function rememeberFocus() {
+        meatballButtonRef.current.focus();
     }
     function editTagAction(e) {
         hidePageContents(e.target)
@@ -42,12 +46,14 @@ export default function TaskCategory({ i, setActiveTags, active, handleClick = (
     function closeEditTag() {
         showPageContents(selfRef.current)
         setEditMode(false);
+        rememeberFocus();
     }
     function startDeleting() {
         setDeleteMode(true);
     }
     function stopDeleting() {
         setDeleteMode(false);
+        rememeberFocus();
     }
     function handleMeatballClick(e) {
         const meatballButton = e.target;
@@ -77,6 +83,7 @@ export default function TaskCategory({ i, setActiveTags, active, handleClick = (
         const newActiveTags = active.filter((a) => a !== tagId);
         setActiveTags(newActiveTags);
         deleteTag(tag);
+        rememeberFocus();
     }
     return (
         <>

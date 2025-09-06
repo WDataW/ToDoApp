@@ -1,7 +1,7 @@
 {
   "info": {
     "id": "u123456",
-    "fullName": "Wael Alharbi",
+    "fullName": "Lebron",
     "email": "wael@example.com",
     "lastLogIn": "2025-08-11T08:00:00Z",
     "currentLogInStreak": 5,
@@ -10,8 +10,8 @@
     "createdAt": "2024-09-15T08:00:00Z",
     "role": "standard",
     "settings": {
-      "language": "",
-      "theme": "",
+      "language": "en",
+      "theme": "light",
       "notifications": {
         "all": true,
         "taskReminder": true,
@@ -22,24 +22,36 @@
   },
   "tasks": [
     {
-      "id": "task:7e47befe-1c4f-4519-b47f-8d8cf7c9248f",
-      "title": "Set up task filtering logic",
-      "description": "Implement filter by status and priority in the tasks page.",
+      "id": "task:7e57befe-1c4f-4519-b47f-8d8cf7c9248f",
+      "title": "Buy mom a gift",
+      "description": "MOM DESERVES A GIFT. BUY HER ONE",
       "status": "",
       "completedAt": "2025-01-01T21:00:00Z",
       "priority": "high",
-      "dueDate": "2025-10-31T20:59:00Z",
+      "dueDate": "2025-09-05T00:00:00Z",
       "createdAt": "2025-08-03T09:30:00Z",
       "pinned": false,
       "tags": [
-        "tag:98fda073-5069-4be0-81d0-b8dd49212765"
+        "tag:4fa8ee28-583e-4ddf-bc2d-0d68447ae316"
       ]
+    },
+    {
+      "id": "task:7e67befe-1c4f-4519-b47f-8d8cf7c9248f",
+      "title": "Fix the sink",
+      "description": "The sink upstairs is dripping. Don't forget to fix it or call a plumber if too lazy",
+      "status": "",
+      "completedAt": "2025-01-01T21:00:00Z",
+      "priority": "medium",
+      "dueDate": "2025-09-05T20:59:00Z",
+      "createdAt": "2025-08-03T09:30:00Z",
+      "pinned": false,
+      "tags": []
     },
     {
       "id": "task:7686a4b2-9503-4b21-ace9-42775866f3c7",
       "title": "Add animation to page transitions",
       "description": "Use Framer Motion to add smooth transitions between pages.",
-      "status": "",
+      "status": "completed",
       "priority": "high",
       "completedAt": "2025-11-30T21:00:00Z",
       "dueDate": "2025-12-01T20:00:00Z",
@@ -71,23 +83,19 @@
       "dueDate": "2025-07-31T16:00:00Z",
       "createdAt": "2025-07-03T11:00:00Z",
       "pinned": false,
-      "tags": [
-        "tag:4fa8ee28-583e-4ddf-bc2d-0d68447ae316"
-      ]
+      "tags": []
     },
     {
       "id": "task:ad9d57cd-92f5-47e9-9bb8-bfc40fcc35c9",
       "title": "Write unit tests for task logic",
       "description": "Cover edge cases for task creation, editing, and deletion.",
-      "status": "",
+      "status": "completed",
       "completedAt": "2025-07-25T18:00:00Z",
       "priority": "high",
       "dueDate": "2025-07-12T15:00:00Z",
       "createdAt": "2025-07-03T11:30:00Z",
       "pinned": false,
-      "tags": [
-        "tag:4fa8ee28-583e-4ddf-bc2d-0d68447ae316"
-      ]
+      "tags": []
     },
     {
       "id": "task:afca1d96-8cf9-408d-83ee-d2796e599eb3",
@@ -98,37 +106,31 @@
       "dueDate": "2025-07-05T16:00:00Z",
       "createdAt": "2025-07-01T10:00:00Z",
       "pinned": false,
-      "tags": [
-        "tag:4fa8ee28-583e-4ddf-bc2d-0d68447ae316"
-      ]
+      "tags": []
     },
     {
       "id": "task:f54da39c-8afe-43b9-8780-d771dc3c48cb",
       "title": "Push latest commit to GitHub",
       "description": "Mammy AMmmamm Mammy AMmmamm Mammy AMmmamm Mammy AMmmammMammy AMmmammMammy AMmmamm Mammy AMmmamm Mammy AMmmammMammy AMmmammMammy AMmmammMammy AMmmamms",
-      "status": "",
+      "status": "completed",
       "priority": "high",
       "completedAt": "2025-07-25T18:00:00Z",
       "dueDate": "2025-07-02T18:00:00Z",
       "createdAt": "2025-07-01T09:00:00Z",
       "pinned": false,
-      "tags": [
-        "tag:4fa8ee28-583e-4ddf-bc2d-0d68447ae316"
-      ]
+      "tags": []
     },
     {
       "id": "task:bf062fe2-60df-4af4-9543-50f7a748a255",
       "title": "Review pull request",
       "description": "Check the code in PR #42 and leave comments if needed.",
-      "status": "",
+      "status": "completed",
       "priority": "medium",
       "completedAt": "2025-08-05T16:38:00Z",
       "dueDate": "2025-08-11T16:38:00Z",
       "createdAt": "2025-07-08T00:38:00Z",
       "pinned": false,
-      "tags": [
-        "tag:4fa8ee28-583e-4ddf-bc2d-0d68447ae316"
-      ]
+      "tags": []
     }
   ],
   "tags": [
@@ -148,7 +150,7 @@
       "color": "#5a9afa",
       "builtIn": true,
       "pinned": true,
-      "home": false
+      "home": true
     },
     {
       "id": "tag:7ed073cc-827e-47d9-ac8e-524a0b04f1f8",
@@ -166,7 +168,7 @@
       "color": "#ffe88d",
       "builtIn": true,
       "pinned": false,
-      "home": false
+      "home": true
     },
     {
       "id": "tag:123f282c-a5d5-4f3f-92f7-1b2d857fd9f5",
@@ -233,9 +235,9 @@
     },
     {
       "id": "tag:4fa8ee28-583e-4ddf-bc2d-0d68447ae316",
-      "title": "Component",
-      "color": "#84cc16",
-      "icon": "bg-[#84cc16]",
+      "title": "Family",
+      "color": "#00ff04",
+      "icon": "bg-[#00ff04]",
       "builtIn": false,
       "pinned": false,
       "home": true

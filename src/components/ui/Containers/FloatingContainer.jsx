@@ -3,8 +3,8 @@ import { useRef, useId, useEffect } from 'react';
 /* 
     this component is used to make floating components with focus trap.
     it requires 'hide' function, which is used to hide the element by certain interactions.
-    it requires 'lastFocused' HtmlElement, which is used to return the focus to the normal flow after the element is removed. important to maintain accessibility.
-    it takes optional 'scrolableParent' HtmlElement, which is used to hide the element when scrolled.
+    it requires 'lastFocused' HTMLElement, which is used to return the focus to the normal flow after the element is removed. important to maintain accessibility.
+    it takes optional 'scrolableParent' HTMLElement, which is used to hide the element when scrolled.
 */
 export default function FloatingContainer({ className = "", hide, lastFocused, scrolableParent = null, children, ...props }) {
     const self = useRef(null);

@@ -10,7 +10,7 @@ export default function FeatureCard({ feat, className = "", children, ...props }
         dark: "bg-[rgb(20,21,22)]"
     }
     return (
-        <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className={`w-full  rounded-[1rem]    ${bgColors[theme]}  ${className}`} {...props}>
+        <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className={`w-full  rounded-[1rem]    ${bgColors[theme]} h-full  ${className}`} {...props}>
             <div className="flex   p-[1.5rem] flex flex-col items-start">
                 <img src={`/src/assets/icons/${theme}/${feat.icon}.svg`} className={` shrink-0  h-[2rem] ${!feat.noOpacity ? "opacity-60" : "opacity-85"} w-[2rem]`} />
                 <h3 >{t(`features.${feat.key}`)}</h3>

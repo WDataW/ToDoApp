@@ -9,7 +9,9 @@ export default function CreateTaskButton({ customTheme, className, children, ...
     const [theme] = customTheme || useTheme();
     const selfRef = useRef();
     const [createTaskMode, setCreateTaskMode] = useState(false);
-
+    function rememeberFocus() {
+        selfRef.current.focus();
+    }
     function createTask() {
         hidePageContents(selfRef.current)
         setCreateTaskMode(true);
@@ -17,6 +19,7 @@ export default function CreateTaskButton({ customTheme, className, children, ...
     function stopCreatingTask() {
         showPageContents(selfRef.current)
         setCreateTaskMode(false);
+        rememeberFocus();
     }
     return (<>
         {createTaskMode && createPortal(<EditTask heading={t("terms.createTask")} close={stopCreatingTask} yes={t("terms.create")} no={t("terms.cancel")} {...props} />, selfRef.current.closest("main").parentElement)}

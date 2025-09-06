@@ -63,6 +63,8 @@
         "category": "Category"
     },
     "terms": {
+        "en": "English",
+        "ar": "العربية",
         "getStarted": "Get started",
         "stayFocused": "Stay focused on what matters most",
         "features": "Features",
@@ -187,7 +189,7 @@
         "achievements&rewardsD": "Unlock milestones and stay motivated as you complete tasks.",
         "stats&charts": "Stats & Charts",
         "stats&chartsD": "Track your productivity with detailed stats and visual charts.",
-        "arabic&english": "Arabic & English Support",
+        "arabic&english": "English & Arabic Support",
         "arabic&englishD": "Built for everyone: full support for both Arabic and English.",
         "dark&light": "Dark & Light Themes",
         "dark&lightD": "Work your way with flexible theme modes.",
@@ -195,5 +197,13 @@
         "accentColorsD": "Choose your own accent color to personalize your app.",
         "notifications": "Smart Notifications",
         "notificationsD": "Get timely reminders and alerts so you never miss a task."
+    },
+    "about": {
+        "control": "Take Control of Your Day",
+        "controlD": "Stay on top of everything that matters. Quickly capture tasks, organize priorities, and structure your day effortlessly so you can focus on achieving goals instead of managing chaos.",
+        "plan": "Plan Ahead With Confidence",
+        "planD": "Visualize your week, set due dates. Our Todo app helps you plan smarter, avoid last-minute stress, and make every day productive.",
+        "progress": "Progress You Can See",
+        "progressD": "Track your completed tasks and watch your productivity grow. With every checklist ticked off, you’ll build momentum and motivation to keep achieving more."
     }
 }

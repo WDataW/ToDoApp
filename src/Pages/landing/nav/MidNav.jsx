@@ -1,5 +1,8 @@
 import { useLang, useTranslation } from "@/context/Language";
 import { useTheme } from "@/context/Theme";
+import SettingButton from "./SettingButton";
+import ThemeButton from "./ThemeButton";
+import LanguageButton from "./LanguageButton";
 
 export const hovers = {
     light: " hover:bg-[rgba(0,0,0,0.1)] hover:opacity-100",
@@ -11,16 +14,16 @@ export default function MidNav({ children, itemStyle, ...props }) {
     const t = useTranslation();
 
     function Item({ children }) {
-        return <li>
-            <a className={itemStyle || commonStyles} href="">{children}</a>
+        return <li className={`  justify-center ${itemStyle || commonStyles}`}>
+            <a href="">{children}</a>
         </li>
 
     }
     return (
         <ul dir={document.body.dir} {...props}>
             <Item>{t("terms.features")}</Item>
-            <Item>{t("terms.language")}</Item>
-            <Item>{t("terms.theme")}</Item>
+            <LanguageButton isInBurger={itemStyle ? true : false} itemStyle={itemStyle} />
+            <ThemeButton isInBurger={itemStyle ? true : false} itemStyle={itemStyle} />
             <Item>{t("terms.about")}</Item>
         </ul>);
 }

@@ -19,11 +19,14 @@ const themeStyles = {
 const icons = {
     light: {
         calendar: "bg-[url(/src/assets/icons/light/calendar.svg)]",
-        clock: "bg-[url(/src/assets/icons/light/clock.svg)]"
+        clock: "bg-[url(/src/assets/icons/light/clock.svg)]",
+        pin: "bg-[url(/src/assets/icons/light/pin.svg)]"
     },
     dark: {
         calendar: "bg-[url(/src/assets/icons/dark/calendar.svg)]",
-        clock: "bg-[url(/src/assets/icons/dark/clock.svg)]"
+        clock: "bg-[url(/src/assets/icons/dark/clock.svg)]",
+        pin: "bg-[url(/src/assets/icons/dark/pin.svg)]"
+
     }
 }
 
@@ -47,17 +50,22 @@ export default function Task({ className = "", taskObj = {}, completed = "false"
         newTasks = [newTask, ...newTasks];
         if (meatballButtonRef.current) meatballButtonRef.current.click();
         setTasks(newTasks);
-
+        rememeberFocus();
+    }
+    function rememeberFocus() {
+        meatballButtonRef.current.focus();
     }
     function stopEditingTask() {
         showPageContents(selfRef.current);
         setEditMode(false);
+        rememeberFocus();
     }
     function startDeletingTask() {
         setDeleteMode(true)
     }
     function stopDeletingTask() {
-        setDeleteMode(false)
+        setDeleteMode(false);
+        rememeberFocus();
     }
     function handleMeatballClick(e) {
         const meatballButton = e.target;
@@ -100,7 +108,7 @@ export default function Task({ className = "", taskObj = {}, completed = "false"
             <div className="me-[0.5rem]">
                 <div className="text-[0.7rem] opacity-">
                     <div className=" opacity-60 flex items-center flex-wrap gap-x-[0.5rem]">
-                        {!checked && pinned && <div><span className="inline-block bg-size-[108%] h-[0.6rem] w-[0.6rem] me-[0.2rem] bg-[url(/src/assets/icons/dark/pin.svg)]  bg-no-repeat bg-center bg-cover " ></span>{t("terms.pinned")}</div>}
+                        {!checked && pinned && <div><span className={`inline-block bg-size-[108%] h-[0.6rem] w-[0.6rem] me-[0.2rem] ${icons[theme].pin}  bg-no-repeat bg-center bg-cover  `}></span>{t("terms.pinned")}</div>}
                         <div className="text-nowrap"> <span className={`inline-block h-[0.6rem] w-[0.6rem]  me-[0.2rem] ${icons[theme]["calendar"]} bg-cover bg-no-repeat bg-center `}></span>{getDueDate(taskObj)}</div>
                         <div className="text-nowrap">   <span className={`inline-block h-[0.6rem] w-[0.6rem]  me-[0.2rem] ${icons[theme]["clock"]} bg-cover bg-center bg-no-repeat`}></span>{getDueTime(taskObj)}</div>
                     </div>

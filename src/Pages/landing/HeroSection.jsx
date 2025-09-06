@@ -6,13 +6,10 @@ export default function HeroSection({ className = "", children, ...props }) {
     const [theme] = useTheme();
     const [lang] = useLang();
     const t = useTranslation();
-    const gradientColors = {
-        dark: "bg-linear-to-t from-[var(--dark-theme-accent-color)] from-0% to-70%  ",
-        light: "bg-linear-to-t from-[var(--light-theme-accent-color)] from-0% to-70% "
-    }
+
     return (
         <div className={`${className} border-b relative flex  md:flex-col    items-end  pt-[7.5rem] md:pt-[3rem] md:py-0 h-[calc(100vh-3.3rem)]  md:h-screen`} {...props}>
-            <img className={`h-full ${lang == "en" ? "-scale-x-100" : ""}  min-w-full object-cover`} src={`/images/${theme}Hero.jpg`} alt="" />
+            <img className={`h-full ${lang == "en" ? "-scale-x-100" : ""}  min-w-full object-cover`} src={`/images/${theme}/hero.jpg`} alt="" />
             <div className={` text-center   flex flex-col items-center md:block  md:text-start absolute  top-[14rem] w-full left-1/2 -translate-x-1/2 -translate-y-1/2 ${paddingX}`}>
                 <h1 className="text-center md:text-start text-[2.5rem] md:text-[3rem] w-full ">{t("titles.doMoreStressLess")}</h1>
                 <p className={`text-[1.3rem] opacity-80 ${lang == "ar" && "mt-[0.5rem]"}`}>{t("terms.stayFocused")}</p>

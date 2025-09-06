@@ -21,7 +21,7 @@ export default function OverlayPage({ overAnOverlay = false, close, heading = ""
     const icon = overAnOverlay ? `${backIcons[theme]} bg-size-[len:1rem_1.5rem] -scale-x-100` : xIcons[theme]
     const xRef = useRef();
     return (
-        <Page ref={selfRef} tabIndex={0} className={`overflow-auto  overlay-target h-screen fixed w-full ${!overAnOverlay && "sm:w-[calc(100%-4.7rem)]"} z-11 pb-[4rem] sm:pb-[2rem] top-0 ${className}`} {...props}>
+        <Page ref={selfRef} tabIndex={0} className={`overflow-auto  overlay-target h-screen fixed w-full  sm:w-[calc(100%-4.7rem)] z-11 pb-[4rem] sm:pb-[2rem] top-0 ${className}`} {...props}>
 
             <header dir="ltr" className="grid grid-rows-1 grid-cols-3 items-center h-[3rem] mb-[1rem] justify-items-center">
                 <h4 className="text-nowrap col-start-2">{heading}</h4>
