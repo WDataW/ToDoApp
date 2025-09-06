@@ -18,10 +18,10 @@ function App() {
       {/* <VerificationCodePage></VerificationCodePage> */}
       {/* <SignInPage></SignInPage> */}
       {/* <SignUpPage></SignUpPage> */}
-      {/* <TasksPage></TasksPage> */}
+      <TasksPage></TasksPage>
       {/* <StatsPage></StatsPage> */}
       {/* <HomePage></HomePage> */}
-      <LandingPage></LandingPage>
+      {/* <LandingPage></LandingPage> */}
     </>
   );
 }

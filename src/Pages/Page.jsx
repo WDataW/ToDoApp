@@ -6,8 +6,8 @@ export default function Page({ customTheme, className, children, ...props }) {
     return (
         <div className={`min-h-screen  ${className} ${textColors[theme]} ${bgColors[customTheme || theme]} `} {...props}>
             {children}
-            {/* <ToggleLang /> */}
-            {/* <ToggleTheme /> */}
+            <ToggleLang />
+            <ToggleTheme />
         </div>
     );
 }

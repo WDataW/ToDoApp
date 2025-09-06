@@ -6,7 +6,6 @@ export default function OverlayPage({ overAnOverlay = false, close, heading = ""
     useEffect(
         () => {
             xRef.current.focus()
-            const focusableChildren = selfRef.current.querySelectorAll("[tabIndex='0']");
         }, []
     );
     const [theme] = useTheme();
