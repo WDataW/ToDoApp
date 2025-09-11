@@ -56,10 +56,10 @@ export default function AccountSettings({ className = "", children, ...props }) 
     return (<>
 
         {deleteAccountMode && createPortal(<VerifyUser yesFunc={deleteAccount} customTheme={"danger"} heading={t("terms.deleteAccount")} yes={t("titles.delete")} no={t("terms.cancel")} close={hideDeleteAccount} />, selfRef.current.closest(".page-target"))}
-        {editInfoMode && createPortal(<AccountInfoPage heading={t("terms.editAccount")} yes={t("terms.save")} no={t("terms.cancel")} close={hideEditInfo}></AccountInfoPage>, selfRef.current.closest(".page-target"))}
+        {editInfoMode && createPortal(<AccountInfoPage heading={t("terms.editAccount")} yes={t("terms.continue")} no={t("terms.cancel")} close={hideEditInfo}></AccountInfoPage>, selfRef.current.closest(".page-target"))}
         <Setting ref={selfRef} setting={setting} expandHeight={() => getFinalHeight(expandRef.current)} className={`${className}`} {...props}>
             <ul className="sm:ms-[1.8rem] flex flex-col gap-[0.7rem] sm:me-[1.8rem]" ref={expandRef}>
-                {innerSettings.map((s) => <Setting onClick={s.title == "editAccount" ? showEditInfo : showDeleteAccount} setting={s}></Setting>)}
+                {innerSettings.map((s, i) => <li key={i}> <Setting onClick={s.title == "editAccount" ? showEditInfo : showDeleteAccount} setting={s}></Setting></li>)}
             </ul>
         </Setting>
     </>

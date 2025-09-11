@@ -6,6 +6,8 @@ import Page from "../Page";
 
 import { useTranslation } from "../../context/Language";
 import { useScreenWidth } from "@/context/ScreenSize";
+import { appName } from "@/App";
+import { Link } from "react-router-dom";
 const styles = commonStyles;
 
 export default function SignInPage({ children }) {
@@ -34,7 +36,7 @@ export default function SignInPage({ children }) {
         <Page className={styles["page"]}>
             <div className={`frosted-glass p-[1.5rem] rounded-[0.5rem] md:text-white w-full max-w-[25rem] `}>
                 <h1 className="leading-none">
-                    TODO
+                    {appName}
                 </h1>
                 <p className="text-center opacity-70 mb-[2rem]">*{t("titles.signIn")}*</p>
 
@@ -47,8 +49,8 @@ export default function SignInPage({ children }) {
                     </div>
                     <SignInButton customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} className="mt-[1.5rem] mb-[.1rem]" disabled={!userInfo["password"] || !userInfo["email"]} />
                 </form>
-                <a href={null} className="text-[0.8rem] opacity-50 ">{t("titles.forgotPassword")}</a>
-                <p className="text-[0.8rem] opacity-70 text-center mt-[0.75rem]">{t("terms.dontHaveAnAccount")} <ThemedAnchor href="">{t("titles.signUp")}</ThemedAnchor></p>
+                <Link to="/auth/forgot-password" href={null} className="text-[0.8rem] opacity-50 ">{t("titles.forgotPassword")}</Link>
+                <p className="text-[0.8rem] opacity-70 text-center mt-[0.75rem]">{t("terms.dontHaveAnAccount")} <ThemedAnchor to="/auth/sign-up">{t("titles.signUp")}</ThemedAnchor></p>
                 {children}
             </div>
         </Page>

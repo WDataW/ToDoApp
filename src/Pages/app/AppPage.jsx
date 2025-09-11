@@ -10,11 +10,10 @@ export default function AppPage({ title, className = "", children, ...props }) {
     const screenWidth = useScreenWidth();
     const t = useTranslation();
     const [viewInbox, setViewInbox] = useState(false)
-    const selfRef = useRef();
     const MainNavigation = screenWidth >= 640 ? <SideNav viewInbox={viewInbox} setViewInbox={setViewInbox} title={title} /> : <BottomNav title={title} />;
     function stopViewingInbox() {
         setViewInbox(false);
-        showPageContents(document.getElementById("inboxButton"));
+        showPageContents(<></>, document.querySelectorAll(".overlay-target").length >= 2);
     }
 
     return (<>

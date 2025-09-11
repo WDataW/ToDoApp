@@ -49,7 +49,7 @@ export default function LockFocusPage({ page, className = "", children, ...props
     );
 
     return (
-        <Page ref={selfRef} tabIndex={0} className={` overflow-scroll-auto z-50 fixed w-full sm:w-[calc(100%-4.7rem)] pb-[4rem] sm:pb-[2rem] top-0 ${className}`} {...props}>
+        <Page resetScroll={false} ref={selfRef} tabIndex={0} className={` overflow-scroll-auto z-50 fixed w-full sm:w-[calc(100%-4.7rem)] pb-[4rem] sm:pb-[2rem] top-0 ${className}`} {...props}>
             {children}
         </Page >
     );

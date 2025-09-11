@@ -61,11 +61,13 @@ export default function Task({ className = "", taskObj = {}, completed = "false"
         rememeberFocus();
     }
     function startDeletingTask() {
-        setDeleteMode(true)
+        setDeleteMode(true);
+        hidePageContents();
     }
     function stopDeletingTask() {
         setDeleteMode(false);
         rememeberFocus();
+        showPageContents();
     }
     function handleMeatballClick(e) {
         const meatballButton = e.target;

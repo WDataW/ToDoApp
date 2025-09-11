@@ -1,28 +1,44 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 // contexts
 
 // components
-import { OutlinedImageAnchor, MainNav, BottomNav, SideNav } from './components/ui';
-import { FloatingContainer } from './components/ui/containers';
-import { Page, VerificationCodePage, StatsPage, ForgotPasswordPage, SignInPage, SetNewPasswordPage, SignUpPage, HomePage, TasksPage, SettingsPage } from "./Pages";
-import ActionsContainer from './components/ui/Tasks/ActionsContainer';
-import { LandingPage } from './Pages/landing';
+import { LandingPage, VerificationCodePage, StatsPage, ForgotPasswordPage, SignInPage, SetNewPasswordPage, SignUpPage, HomePage, TasksPage, SettingsPage } from "./Pages";
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import PageNotFound from './Pages/PageNotFound';
+export const appName = "DOMORE";
 function App() {
-  return (
-    <>
+  const router = createBrowserRouter([
+    { path: "/", element: <LandingPage /> },
+    { path: "/app", element: <></> },
+    { path: "/app/home", element: <HomePage /> },
+    { path: "/app/tasks", element: <TasksPage /> },
+    { path: "/app/stats", element: <StatsPage /> },
+    { path: "/app/settings", element: <SettingsPage /> },
+    { path: "/auth/sign-up", element: <SignUpPage /> },
+    { path: "/auth/sign-in", element: <SignInPage /> },
+    { path: "/auth/forgot-password", element: <ForgotPasswordPage /> },
+    { path: "/auth/verification-code", element: <VerificationCodePage /> },
+    { path: "/auth/new-password", element: <SetNewPasswordPage /> },
+
+    { path: "*", element: <PageNotFound /> }
+  ]);
 
 
+  return (<>
+    <RouterProvider router={router}>
       {/* <SettingsPage></SettingsPage> */}
       {/* <ForgotPasswordPage ></ForgotPasswordPage > */}
       {/* <SetNewPasswordPage></SetNewPasswordPage> */}
       {/* <VerificationCodePage></VerificationCodePage> */}
       {/* <SignInPage></SignInPage> */}
       {/* <SignUpPage></SignUpPage> */}
-      <TasksPage></TasksPage>
+      {/* <TasksPage></TasksPage> */}
       {/* <StatsPage></StatsPage> */}
       {/* <HomePage></HomePage> */}
       {/* <LandingPage></LandingPage> */}
-    </>
+    </RouterProvider>
+  </>
+
   );
 }
 export default App

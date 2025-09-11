@@ -5,9 +5,9 @@ const innerSections = [
 ];
 export default function AboutSection({ className = "", children, ...props }) {
     return (
-        <div className={`${paddingX} border-b py-[5rem] md:py-[8rem] ${className}`} {...props}>
+        <div id="about" className={`${paddingX} border-b py-[5rem] md:py-[8rem] ${className}`} {...props}>
             <ul className="flex flex-col gap-[8rem]">
-                {innerSections.map((key, i) => <AboutInnerSection invert={i % 2 == 1} titleKey={key} />)}
+                {innerSections.map((key, i) => <li key={i}><AboutInnerSection invert={i % 2 == 1} titleKey={key} /></li>)}
             </ul>
         </div>
     );

@@ -111,9 +111,18 @@
         scrollbar-color: #8b8b8b transparent;
     }
 
+
     html {
         font-family: "Roboto Flex";
         @apply text-[17px] xl:text-[18px] 2xl:text-[23px] 3xl:text-[28px] 4xl:text-[33px] 5xl:text-[37px] 6xl:text-[45px] 7xl:text-[50px] 8xl:text-[54px] 9xl:text-[58px] 10xl:text-[63px] 11xl:text-[68px];
+    }
+
+    html[theme="dark"] {
+        @apply scheme-dark;
+    }
+
+    html[theme="light"] {
+        @apply scheme-light;
     }
 
     html:lang(ar) {

@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 import { FloatingContainer, SelectButtons } from "@/components/ui";
 
 let popUp;
-export default function LanguageButton({ isInBurger, className = "", yOffset = -2.5, children, ...props }) {
+export default function LanguageButton({ isInBurger, className = "", yOffset = -2.8, children, ...props }) {
     const t = useTranslation();
     const [show, setShow] = useState(false)
     const selfRef = useRef();
@@ -26,10 +26,12 @@ export default function LanguageButton({ isInBurger, className = "", yOffset = -
     function rememberFocus() {
         selfRef.current.focus();
     }
+
     function handleClick(e) {
         const position = selfRef.current.getBoundingClientRect();
+        const xOffset = lang == "ar" ? -2.8 : 2;
         const rem = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("font-size"));
-        popUp = <FloatingContainer aria-label="Press Escape to close." lastFocused={e.target} style={{ position: "fixed", top: position.top - yOffset * rem, left: position.left - 2.8 * rem }} hide={hideContainer} className={` text-[1rem] flex flex-col justify-center    `} >
+        popUp = <FloatingContainer aria-label="Press Escape to close." lastFocused={e.target} style={{ position: "fixed", top: position.top - yOffset * rem, left: position.left - xOffset * rem }} hide={hideContainer} className={` text-[1rem] flex flex-col justify-center    `} >
             <SelectButtons customZIndex={true} className={`w-[9rem]`} value={localLang} setValue={updateLanguage} options={["en", "ar"]}></SelectButtons>
         </FloatingContainer>;
         setShow(!show);
@@ -41,10 +43,7 @@ export default function LanguageButton({ isInBurger, className = "", yOffset = -
         return (
             <>
                 {show && createPortal(popUp, document.querySelector(".page-target"))}
-                <SettingButton label={t("terms.language")} ref={selfRef} active={show} onClick={handleClick} className={`${className}`} {...props}>
-
-                </SettingButton>
-
+                <SettingButton label={t("terms.language")} ref={selfRef} active={show} onClick={handleClick} className={`${className}`} {...props} />
             </>
         );
     }
@@ -54,7 +53,6 @@ export default function LanguageButton({ isInBurger, className = "", yOffset = -
                 <SettingButton ref={selfRef} label={t("terms.language")} active={show} onClick={handleBurgerClick} className={` ${className}`} {...props}>
                     <SelectButtons customZIndex={true} className={`mt-[0.1rem] w-[10rem] text-[1rem]`} value={localLang} setValue={updateLanguage} options={["en", "ar"]}></SelectButtons>
                 </SettingButton>
-
             </>
         );
     }

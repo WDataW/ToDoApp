@@ -11,7 +11,7 @@
     "role": "standard",
     "settings": {
       "language": "en",
-      "theme": "light",
+      "theme": "dark",
       "notifications": {
         "all": true,
         "taskReminder": true,

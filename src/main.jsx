@@ -6,15 +6,15 @@ import Theme from './context/Theme'
 import Language from './context/Language'
 import ScreenSize from './context/ScreenSize'
 createRoot(document.getElementById('root')).render(
-  // <StrictMode>
-  <User>
-    <Theme>
-      <Language>
-        <ScreenSize>
-          <App />
-        </ScreenSize>
-      </Language>
-    </Theme>
-  </User>
-  // </StrictMode>
+  <StrictMode>
+    <User>
+      <Theme>
+        <Language>
+          <ScreenSize>
+            <App />
+          </ScreenSize>
+        </Language>
+      </Theme>
+    </User>
+  </StrictMode>
 )

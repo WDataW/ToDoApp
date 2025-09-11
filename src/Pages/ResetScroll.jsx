@@ -1,0 +1,10 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+export default function ResetScroll({ className = "", children, ...props }) {
+    const { pathname } = useLocation();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        return () => console.log("unmounted");
+    }, [pathname]);
+
+}

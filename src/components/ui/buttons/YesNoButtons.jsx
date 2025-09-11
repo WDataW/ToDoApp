@@ -1,6 +1,6 @@
 import { useTheme, bgThemeColors, bgColors } from "@/context/Theme";
 
-export default function YesNoButtons({ customTheme, yes, yesFunc, disabled, no, noFunc, className = "", children, ...props }) {
+export default function YesNoButtons({ to, customTheme, yes, yesFunc, disabled, no, noFunc, className = "", children, ...props }) {
     const [theme] = useTheme();
     return (
         <div dir="ltr" className={`${className} flex gap-[0.5rem]`} {...props}>

@@ -8,6 +8,7 @@ import { paddingX } from "../LandingPage";
 import { useState } from "react";
 import { AnimatePresence } from "motion/react";
 import BurgerNav from "./BurgerNav";
+import { Link } from "react-router-dom";
 
 export default function Nav({ className = "", children, ...props }) {
     const [theme] = useTheme();
@@ -17,9 +18,8 @@ export default function Nav({ className = "", children, ...props }) {
     const [showBurger, setShowBurger] = useState(false);
     return (<>
         {((lang == "en" && w < 825) || (lang == "ar" && w < 885)) &&
-
             <AnimatePresence>
-                {showBurger && <BurgerNav />}
+                {showBurger && <BurgerNav setShowBurger={setShowBurger} />}
             </AnimatePresence>
         }
         <nav dir="ltr" className={`flex justify-between gap-[1rem] items-center ${theme == "dark" ? "dark-glass" : "light-glass"} flex items-center ${paddingX} h-[3.5rem] w-full fixed z-100 top-0 glass ${className}`} {...props}>
@@ -37,10 +37,14 @@ export default function Nav({ className = "", children, ...props }) {
                 {((lang == "en" && w >= 350) || (lang == "ar" && w >= 415)) &&
                     <>
                         <li>
-                            <button className={`${hovers[theme]} h-full opacity-70 transition-[background-color]  transition-[opacity] px-[0.5rem] py-[0.4rem] rounded-[0.5rem]   text-[0.8rem]`} >{t("titles.signIn")}</button>
+                            <Link to="auth/sign-in">
+                                <button className={`${hovers[theme]} h-full opacity-70 transition-[background-color]  transition-[opacity] px-[0.5rem] py-[0.4rem] rounded-[0.5rem]   text-[0.8rem]`} >{t("titles.signIn")}</button>
+                            </Link>
                         </li>
                         <li >
-                            <button className={`text-white max-h-[1.9rem] text-nowrap rounded-[0.5rem] px-[0.5rem] py-[0.3rem]  text-[0.8rem] ${bgThemeColors[theme]}`} >{t("titles.signUp")}</button>
+                            <Link to="auth/sign-up">
+                                <button className={`text-white max-h-[1.9rem] text-nowrap rounded-[0.5rem] px-[0.5rem] py-[0.3rem]  text-[0.8rem] ${bgThemeColors[theme]}`} >{t("titles.signUp")}</button>
+                            </Link>
                         </li>
                     </>
                 }

@@ -9,6 +9,7 @@ export function useTheme() {
 export function useUpdateUserTheme() {
     const [userInfo, setUserInfo] = useInfo();
     return (theme) => {
+        document.documentElement.setAttribute("theme", theme);
         setUserInfo({ ...userInfo, settings: { ...userInfo["settings"], theme: theme } });
     }
 }
@@ -29,7 +30,9 @@ export default function Theme({ children }) {
 
 
     function initTheme() {
-        setTheme(getBrowserPreference());
+        const theme = getBrowserPreference();
+        document.documentElement.setAttribute("theme", theme);
+        setTheme(theme);
     }
     useEffect(() => {
         if (!userTheme) {
@@ -41,6 +44,8 @@ export default function Theme({ children }) {
                     initTheme
                 );
             };
+        } else {
+            document.documentElement.setAttribute("theme", userTheme);
         }
     }, []
     );
@@ -109,8 +114,8 @@ export const hoverSurfaceBgColors = {
 
 }
 export const gradientColors = {
-    dark: " bg-[var(--dark-gradient-color)]  from-[var(--dark-gradient-color)] to-[var(--cross-gradient-color)]",
-    light: " bg-[var(--light-gradient-color)] from-[var(--light-gradient-color)] to-[var(--cross-gradient-color)]"
+    dark: "bg-[var(--dark-theme-accent-color)]   from-[var(--dark-theme-accent-color)] to-[var(--color-darker-dark-theme)]",
+    light: "bg-[var(--light-theme-accent-color)] from-[var(--light-theme-accent-color)] to-[var(--color-darker-light-theme)]"
 }
 
 export const hoverBgThemeColors = {
@@ -131,4 +136,9 @@ export const outlineFocusThemeColors = {
     dark: "focus:outline-[var(--dark-theme-accent-color)]",
     light: "focus:outline-[var(--light-theme-accent-color)]",
     transparent: "focus:outline-[#00000000]"
+}
+export const textShadowThemeColors = {
+    dark: "text-shadow-[color:var(--color-darker-dark-theme))]",
+    light: "text-shadow-[color:var(--color-darker-light-theme))]",
+
 }

@@ -28,7 +28,7 @@ export default function CategoriesSection({ activeTags, setActiveTags, className
         filteredTags = allTags.filter((tag) => tag.title.toLowerCase().startsWith(tagsFilter.toLowerCase()));
     }
     return (
-        <section className={className}>
+        <section id="categories-section" className={className}>
             <div className="flex gap-[0.4rem]">
                 <SearchInput required={false} value={tagsFilter} handleChange={handleSearchChange} placeholder={t("fields.searchTag")} className="text-[0.9rem] mb-[0.3rem] max-w-[20rem]"></SearchInput>
                 <CreateTagButton activeTags={activeTags} setActiveTags={setActiveTags} className={`text-[0.9rem] h-[2.10rem] outline-none  px-[0.8rem] text-nowrap `}>

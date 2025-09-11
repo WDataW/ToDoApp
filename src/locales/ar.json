@@ -63,6 +63,10 @@
         "category": "الصنف"
     },
     "terms": {
+        "oops": "عذرًا، الصفحة التي تبحث عنها غير موجودة",
+        "return": "عودة",
+        "back": "رجوع",
+        "continue": "التالي",
         "en": "English",
         "ar": "العربية",
         "getStarted": "ابدأ الآن",
@@ -149,7 +153,7 @@
         "lowPriority": "أولوية منخفضة",
         "dueSoon": "قريبًا",
         "letsMakeTodayProductive": "لنجعل هذا اليوم مثمرا، اطلع على مهامك!",
-        "welcomeBack": "مرحبا مجددا،",
+        "welcomeBack": "مرحبا مجددًا",
         "sendAgain": "أرسل مرة أخرى",
         "didntRecieveAnEmail": "لم يصلك بريد إلكتروني؟",
         "weSentACodeTo": "لقد أرسلنا رمزا إلى",

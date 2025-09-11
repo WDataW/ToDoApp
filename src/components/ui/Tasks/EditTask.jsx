@@ -16,7 +16,7 @@ export default function EditTask({ noNewTags = false, close, taskToEdit = { ...t
             <Main className="flex items-center flex-col ">
                 <div className="w-full  sm:max-w-3/4 ">
                     <TaskInit noNewTags={noNewTags} close={close} setNewTask={setNewTask} taskToEdit={taskToEdit} />
-                    <YesNoButtons disabled={!newTask?.title || !newTask?.dueDate} className="justify-center mt-[1rem] text-[0.9rem]" yesFunc={save} yes={yes} noFunc={close} no={no} />
+                    <YesNoButtons to={true} disabled={!newTask?.title || !newTask?.dueDate} className="justify-center mt-[1rem] text-[0.9rem]" yesFunc={save} yes={yes} noFunc={close} no={no} />
                 </div>
             </Main>
         </OverlayPage>

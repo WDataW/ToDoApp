@@ -67,7 +67,7 @@ export function numToRoman(num) {// limit =10
 
 export function updateLang(lang) {
     i18next.changeLanguage(lang);
-    document.documentElement.lang = lang;
+    document.documentElement.setAttribute("lang", lang);
     document.body.dir = getDirection(lang);
 
 }

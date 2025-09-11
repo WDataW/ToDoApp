@@ -6,7 +6,7 @@ import { FloatingContainer, SelectButtons } from "@/components/ui";
 import { useTheme } from "@/context/Theme";
 
 let popUp;
-export default function ThemeButton({ isInBurger, className = "", yOffset = -2.5, children, ...props }) {
+export default function ThemeButton({ isInBurger, className = "", yOffset = -2.8, children, ...props }) {
     const t = useTranslation();
     const [show, setShow] = useState(false)
     const selfRef = useRef();

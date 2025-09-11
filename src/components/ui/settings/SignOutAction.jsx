@@ -1,8 +1,9 @@
 import { useLang, useTranslation } from "@/context/Language";
 import Setting from "./Setting";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { YesNoPopUp } from "../buttons";
+import { hidePageContents, showPageContents } from "@/Pages/pages";
 
 export default function SignOutAction({ className = "", children, ...props }) {
     const [lang] = useLang();
@@ -20,15 +21,16 @@ export default function SignOutAction({ className = "", children, ...props }) {
     function singOut() {
         console.log("signed out");//to be handled later
         setConfirm(false);
+        showPageContents();
     }
     const t = useTranslation();
     const [confirm, setConfirm] = useState(false);
     return (<>
-        {confirm && createPortal(<YesNoPopUp yes={t("terms.signout")} yesFunc={singOut} noFunc={() => { setConfirm(false) }} no={t("terms.cancel")}>
+        {confirm && createPortal(<YesNoPopUp yes={t("terms.signout")} yesFunc={singOut} noFunc={() => { setConfirm(false); showPageContents(); }} no={t("terms.cancel")}>
             <h3 className="mb-[0.5rem]">{t("titles.signingOut")}</h3>
             <span >{t("terms.signoutConfirmation")}</span>
         </YesNoPopUp>, selfRef.current.closest(".page-target"))}
-        <Setting ref={selfRef} onClick={() => setConfirm(true)} setting={setting} className={`${className}`} {...props}>
+        <Setting ref={selfRef} onClick={() => { setConfirm(true); hidePageContents(); }} setting={setting} className={`${className}`} {...props}>
             {children}
         </Setting >
     </>

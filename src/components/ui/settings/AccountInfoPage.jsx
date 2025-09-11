@@ -31,7 +31,7 @@ export default function AccountInfoPage({ close, yes, no, className = "", childr
         close();
     }
     return (<>
-        {verifyMode && createPortal(<VerifyUser heading={t("terms.editAccount")} yes={t("terms.confirm")} yesFunc={endEdit} no={t("terms.cancel")} close={stopVerifyMode} overAnOverlay={true} ></VerifyUser>, selfRef.current.closest(".overlay-target"))}
+        {verifyMode && createPortal(<VerifyUser heading={t("terms.editAccount")} yes={t("terms.confirm")} yesFunc={endEdit} no={t("terms.back")} close={stopVerifyMode} overAnOverlay={true} ></VerifyUser>, selfRef.current.closest(".overlay-target"))}
         <OverlayPage close={close} className={`${className}`} {...props}>
             <Main ref={selfRef} className="flex items-center flex-col ">
                 <div className="max-w-full xs:w-[15rem] sm:w-[25rem]  ">

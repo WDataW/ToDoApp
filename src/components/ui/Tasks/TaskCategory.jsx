@@ -50,10 +50,12 @@ export default function TaskCategory({ i, setActiveTags, active, handleClick = (
     }
     function startDeleting() {
         setDeleteMode(true);
+        hidePageContents();
     }
     function stopDeleting() {
         setDeleteMode(false);
         rememeberFocus();
+        showPageContents();
     }
     function handleMeatballClick(e) {
         const meatballButton = e.target;

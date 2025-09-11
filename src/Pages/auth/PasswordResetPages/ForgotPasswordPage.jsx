@@ -5,6 +5,7 @@ import { useTheme } from "../../../context/Theme";
 import { commonStyles } from "../commonStyles";
 import { useTranslation } from "../../../context/Language";
 import { useScreenWidth } from "@/context/ScreenSize";
+import { Link } from "react-router-dom";
 export default function ForgotPasswordPage() {
     const [theme] = useTheme();
     const styles = commonStyles;
@@ -21,8 +22,8 @@ export default function ForgotPasswordPage() {
                         setEmail(e.target.value);
                     }} />
                     <ResetPasswordButton customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} disabled={!email} />
-                    <a href={null} className="text-[0.8rem] opacity-50 ">{t("titles.signIn")}</a>
-                    <p className="text-[0.8rem] opacity-70 text-center mt-[0.75rem]">{t("terms.dontHaveAnAccount")} <ThemedAnchor href="">{t("titles.signUp")}</ThemedAnchor></p>
+                    <Link to="/auth/sign-in" className="text-[0.8rem] opacity-50 ">{t("titles.signIn")}</Link>
+                    <p className="text-[0.8rem] opacity-70 text-center mt-[0.75rem]">{t("terms.dontHaveAnAccount")} <ThemedAnchor to="/auth/sign-up">{t("titles.signUp")}</ThemedAnchor></p>
 
                 </form>
             </div>

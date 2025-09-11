@@ -17,7 +17,7 @@ const features = [
 export default function FeaturesSection({ className = "", children, ...props }) {
     const t = useTranslation();
     return (
-        <div className={`${paddingX} border-b py-[2rem] ${className}`} {...props}>
+        <div id="features" className={`${paddingX} scroll-mt-[3rem] md:scroll-mt-0   border-b py-[2rem] md:py-[5rem] ${className}`} {...props}>
             <h1 className=" text-start text-[2rem] mb-[1rem] md:text-[2.5rem] w-full ">{t("titles.keyFeatures")}</h1>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-[1.5rem] auto-rows-auto">
                 {features.map((feat, i) => <li key={i}> <FeatureCard feat={feat} /></li>)}

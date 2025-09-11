@@ -63,6 +63,10 @@
         "category": "Category"
     },
     "terms": {
+        "oops": "Oops the page you're looking for doesn't exist",
+        "return": "Return",
+        "back": "Back",
+        "continue": "Continue",
         "en": "English",
         "ar": "العربية",
         "getStarted": "Get started",
@@ -202,7 +206,7 @@
         "control": "Take Control of Your Day",
         "controlD": "Stay on top of everything that matters. Quickly capture tasks, organize priorities, and structure your day effortlessly so you can focus on achieving goals instead of managing chaos.",
         "plan": "Plan Ahead With Confidence",
-        "planD": "Visualize your week, set due dates. Our Todo app helps you plan smarter, avoid last-minute stress, and make every day productive.",
+        "planD": "Visualize your week, set due dates. Our to-do app helps you plan smarter, avoid last-minute stress, and make every day productive.",
         "progress": "Progress You Can See",
         "progressD": "Track your completed tasks and watch your productivity grow. With every checklist ticked off, you’ll build momentum and motivation to keep achieving more."
     }

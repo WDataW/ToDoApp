@@ -6,6 +6,7 @@ import { commonStyles } from "./commonStyles";
 import { useValidation, validatePassword } from "./PasswordResetPages/PasswordValidation";
 import { useTranslation } from "../../context/Language";
 import { useScreenWidth } from "@/context/ScreenSize";
+import { Link } from "react-router-dom";
 const styles = commonStyles;
 
 
@@ -42,7 +43,7 @@ export default function SignUpPage({ children }) {
                     </div>
                     <ThemedRectButton disabled={!password || password !== confirmedPassword || passwordWarning !== "" || !agreed} >{t("titles.createAccount")}</ThemedRectButton>
                 </form>
-                <a href={null} className="text-[0.8rem] opacity-50 ">{t("titles.signIn")}</a>
+                <Link to="/auth/sign-in" className="text-[0.8rem] opacity-50 ">{t("titles.signIn")}</Link>
             </div>
         </Page>
     );

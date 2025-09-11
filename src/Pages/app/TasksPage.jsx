@@ -4,6 +4,7 @@ import AppPage from "./AppPage";
 import { AnimatePresence, motion } from "motion/react";
 import { CategoriesSection, CreateTaskButton, TasksSection, Main, SearchInput, TasksCalendar } from "../../components/ui";
 import { isUUID, taskSkeleton } from "@/components/ui/tasks/tasks";
+import { useLocation } from "react-router-dom";
 export default function TasksPage({ className = "", children, ...props }) {
     const t = useTranslation();
     const [activeTags, setActiveTags] = useState([]);
@@ -17,12 +18,20 @@ export default function TasksPage({ className = "", children, ...props }) {
         }
     }, [activeTags]);
 
+    const { hash } = useLocation();
+    useEffect(() => {
+        if (hash) {
+            console.log(hash);
+            const target = document.querySelector(hash);
+            target.scrollIntoView();
+        }
+    }, [hash]);
     const [searchFilter, setSearchFilter] = useState("");
     return (
         <AppPage id="tasksPage" title={"tasks"} className={`${className}`} {...props}>
             <Main >
                 <TasksCalendar className="mb-[4rem]" />
-                <CategoriesSection activeTags={activeTags} setActiveTags={setActiveTags} className="mb-[0.7rem]"></CategoriesSection>
+                <CategoriesSection activeTags={activeTags} setActiveTags={setActiveTags} className="mb-[0.7rem] scroll-mt-[2rem]"></CategoriesSection>
                 <AnimatePresence mode="wait">
                     <motion.div key={"k" + activeTags.length} exit={{ y: 25, opacity: 0 }} initial={{ y: 25, opacity: 0 }} animate={{ y: 0, opacity: 1 }} >
                         <div className="flex gap-[0.4rem] mb-[0.9rem]">
