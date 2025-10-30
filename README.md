@@ -51,7 +51,7 @@ DOMORE delivers a complete and polished **user experience** with all core UI fea
 
 
 
-## technologies:
+## Technologies:
   1. **React.js**
   2. **Tailwind CSS**
   3. **React Router** for routing
@@ -71,11 +71,11 @@ DOMORE delivers a complete and polished **user experience** with all core UI fea
   ``` cd ToDoApp ```
   3. Install dependencies:  
   ``` npm install ```
-  4. Run the development server:
+  4. Run the development server:  
   ``` npm run dev ```
-  5. Build for production:
+  5. Build for production:  
   ``` npm run build ```
-  6. Preview production build:
+  6. Preview production build:  
   ``` npm run preview ```
 
 ##  Deploy Instructions
