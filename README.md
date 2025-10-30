@@ -59,3 +59,28 @@ DOMORE delivers a complete and polished **user experience** with all core UI fea
   5. **Framer Motion** for animations
   6. **i18next** for internationalization
   7. Deployed on **Vercel**
+
+
+## Build Instrctions
+  * Requirements:
+    - Node.js v18 or higher.
+    - npm
+  1. Clone the repository:  
+  ``` git clone https://github.com/WDataW/ToDoApp.git ``` 
+  2. Move into the project directory:  
+  ``` cd ToDoApp ```
+  3. Install dependencies:  
+  ``` npm install ```
+  4. Run the development server:
+  ``` npm run dev ```
+  5. Build for production:
+  ``` npm run build ```
+  6. Preview production build:
+  ``` npm run preview ```
+
+##  Deploy Instructions
+  1. Clone or fork this repository in your github account.
+  2. Go to https://vercel.com/ 
+  3. Link your github account to Vercel
+  4. Import the cloned/forked github repo into Vercel.
+  5. Keep the default build configurations and click deploy.

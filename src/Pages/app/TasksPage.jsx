@@ -21,7 +21,6 @@ export default function TasksPage({ className = "", children, ...props }) {
     const { hash } = useLocation();
     useEffect(() => {
         if (hash) {
-            console.log(hash);
             const target = document.querySelector(hash);
             target.scrollIntoView();
         }
