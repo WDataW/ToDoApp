@@ -47,7 +47,9 @@ export default function SignInPage({ children }) {
                     <div className="mt-[0.5rem]">
                         <CheckboxInput className="h-[1rem] w-[1rem] align-middle">{t("fields.rememberMe")}</CheckboxInput>
                     </div>
-                    <SignInButton customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} className="mt-[1.5rem] mb-[.1rem]" disabled={!userInfo["password"] || !userInfo["email"]} />
+                    <Link to="/app/home">
+                        <SignInButton customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} className="mt-[1.5rem] mb-[.1rem]" disabled={!userInfo["password"] || !userInfo["email"]} />
+                    </Link>
                 </form>
                 <Link to="/auth/forgot-password" href={null} className="text-[0.8rem] opacity-50 ">{t("titles.forgotPassword")}</Link>
                 <p className="text-[0.8rem] opacity-70 text-center mt-[0.75rem]">{t("terms.dontHaveAnAccount")} <ThemedAnchor to="/auth/sign-up">{t("titles.signUp")}</ThemedAnchor></p>
