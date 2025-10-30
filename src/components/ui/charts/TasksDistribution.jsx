@@ -2,7 +2,7 @@ import BarChart from "./BarChart"
 import { Select } from "..";
 import { useState } from "react";
 import { useTranslation } from "@/context/Language";
-import { useTagBars } from "../tasks/tasks";
+import { useTagBars } from "../tasks/tasks.js";
 
 
 

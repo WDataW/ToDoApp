@@ -1,7 +1,7 @@
 import { useTranslation } from "@/context/Language";
 import PieChart from "./PieChart";
 import { useTasks } from "@/context/User";
-import { filterTasks, useActivity } from "../tasks/tasks";
+import { filterTasks, useActivity } from "../tasks/tasks.js";
 
 
 export default function TasksProgress({ className = "", children, ...props }) {

@@ -1,4 +1,4 @@
-import { trophyThemes, useGeneratedTrophies } from "../tasks/tasks";
+import { trophyThemes, useGeneratedTrophies } from "../tasks/tasks.js";
 import Goal from "./Goal";
 export default function Goals({ className = "", children, ...props }) {
     const trophies = useGeneratedTrophies();

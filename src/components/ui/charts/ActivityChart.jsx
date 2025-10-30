@@ -1,5 +1,5 @@
 import { useTranslation } from "@/context/Language";
-import { useActivity } from "../tasks/tasks";
+import { useActivity } from "../tasks/tasks.js";
 import { ChartRadarDots } from "./RadarChart";
 export default function ActivityChart({ className = "", children, ...props }) {
     const t = useTranslation();

@@ -1,5 +1,5 @@
 import Trophy from "./Trophy";
-import { useGeneratedTrophies } from "../tasks/tasks";
+import { useGeneratedTrophies } from "../tasks/tasks.js";
 export default function Trophies({ className = "", children, ...props }) {
     const trophies = useGeneratedTrophies().filter((t) => t.level !== 0);
     return (

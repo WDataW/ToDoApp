@@ -1,6 +1,6 @@
 import { numToArabic, useLang, useTranslation } from "@/context/Language";
 import { DoubleLineChart } from ".";
-import { useMonthlyTasksData, useYearlyTasksData } from "../tasks/tasks";
+import { useMonthlyTasksData, useYearlyTasksData } from "../tasks/tasks.js";
 import { useState } from "react";
 import { Select, MonthPicker, YearPicker } from "../selects";
 export default function TaskCompletionLines({ className = "", children, ...props }) {

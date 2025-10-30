@@ -1,5 +1,5 @@
 import { useInbox } from "@/context/User";
-import { quickSort } from "../tasks/tasks";
+import { quickSort } from "../tasks/tasks.js";
 import { useTranslation } from "@/context/Language";
 
 export function filterMail(mail, from, search) {
