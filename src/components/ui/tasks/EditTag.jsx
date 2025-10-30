@@ -1,6 +1,6 @@
 import { OverlayPage } from "@/Pages";
 import { Main, YesNoButtons } from "..";
-import TagInit from "./tagInit";
+import TagInit from "./TagInit";
 import { useState } from "react";
 import { isBuiltInTitle, useEditTag } from "./tasks";
 import { useTranslation } from "@/context/Language";
