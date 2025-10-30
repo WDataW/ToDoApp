@@ -1,3 +1,4 @@
+import { getIcon } from "@/assets/assetsHandler";
 import { useTranslation } from "../../../context/Language";
 import KeyboardInput from "./KeyboardInput";
 export default function UsernameInput({ handleChange, value, placeholder, ...props }) {
@@ -9,8 +10,8 @@ export default function UsernameInput({ handleChange, value, placeholder, ...pro
             label={t("fields.username")}
             placeholder={placeholder || t("fields.enterUsername")}
             handleChange={handleChange}
-            lightIcon="/src/assets/icons/light/user.svg"
-            darkIcon="/src/assets/icons/dark/user.svg"
+            lightIcon={getIcon("/src/assets/icons/light/user.svg")}
+            darkIcon={getIcon("/src/assets/icons/dark/user.svg")}
             alt="User Icon"
             className="mb-[0.5rem] "
             required={true}

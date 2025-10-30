@@ -9,8 +9,6 @@ export default function Page({ resetScroll = true, customTheme, className, child
         <div className={`min-h-[100dvh]  ${className} ${textColors[theme]} ${bgColors[customTheme || theme]} `} {...props}>
             {resetScroll && <ResetScroll />}
             {children}
-            <ToggleLang />
-            <ToggleTheme />
         </div>
     );
 }

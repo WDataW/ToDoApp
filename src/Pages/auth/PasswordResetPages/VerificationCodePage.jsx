@@ -5,6 +5,7 @@ import { commonStyles } from "../commonStyles";
 import { useTranslation } from "../../../context/Language";
 import { useState, useRef, useEffect } from "react";
 import { useScreenWidth } from "@/context/ScreenSize";
+import { useNavigate } from "react-router-dom";
 
 const initialCode = {
     0: "",
@@ -47,6 +48,7 @@ export default function VerificationCodePage({ email = "you@example.com" }) {
         }
     }
     const codeKeys = ["0", "1", "2", "3"];
+    const navigate = useNavigate();
     const [code, setCode] = useState(initialCode);
     function handleChange(e, i) {
         const inputValue = e.target.value;
@@ -64,7 +66,8 @@ export default function VerificationCodePage({ email = "you@example.com" }) {
                 return
             }
         }
-        document.getElementById("verificationCodeForm").submit();
+        navigate("/auth/new-password/");
+        // document.getElementById("verificationCodeForm").submit();
 
     }
 

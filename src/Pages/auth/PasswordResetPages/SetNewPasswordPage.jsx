@@ -6,6 +6,7 @@ import { useValidation, validatePassword } from "./PasswordValidation";
 import { useState } from "react";
 import { useTranslation } from "../../../context/Language";
 import { useScreenWidth } from "@/context/ScreenSize";
+import { Link } from "react-router-dom";
 export default function SetNewPasswordPage() {
     // styles
     const [theme] = useTheme();
@@ -29,7 +30,7 @@ export default function SetNewPasswordPage() {
                     <PasswordInput customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} className={"mb-[0.2rem]"} value={confirmedPassword} handleChange={(e) => { setConfirmedPassword(e.target.value) }} label={t("fields.confirmPassword")} placeholder={t("fields.reEnterPassword")} />
                     <WarningMessage className="ms-[0.2rem] mb-[0.5rem]">{password !== confirmedPassword && confirmedPassword ? t("warnings.passwordNotConfirmed") : ""}</WarningMessage>
 
-                    <ResetPasswordButton disabled={!password || password !== confirmedPassword || passwordWarning !== ""} />
+                    <Link to={"/auth/sign-in"}><ResetPasswordButton disabled={!password || password !== confirmedPassword || passwordWarning !== ""} /></Link>
                     <a href={null} className="text-[0.8rem] opacity-50 ">{t("titles.signIn")}</a>
                     <p className="text-[0.8rem] opacity-70 text-center mt-[0.75rem]">{t("terms.dontHaveAnAccount")} <ThemedAnchor href="">{t("titles.signUp")}</ThemedAnchor></p>
 

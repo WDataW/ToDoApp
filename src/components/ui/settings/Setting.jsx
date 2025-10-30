@@ -1,12 +1,12 @@
+import { getIcon } from "@/assets/assetsHandler";
 import { useLang, useTranslation } from "@/context/Language";
 import { useTheme } from "@/context/Theme";
 import { useState } from "react";
 
 export default function Setting({ setting, expandHeight, className = "", children, ...props }) {
     const [theme] = useTheme();
-    const img = `/src/assets/icons/${theme}/${setting.icon}.svg`
+    const img = getIcon(`/src/assets/icons/${theme}/${setting.icon}.svg`);
     const t = useTranslation();
-    const [lang] = useLang();
     const [expand, setExpand] = useState();
     const arrows = {
         light: "bg-[url(/src/assets/icons/light/arrowDown.svg)] ",
@@ -32,7 +32,7 @@ export default function Setting({ setting, expandHeight, className = "", childre
     }
 
     else if (setting.type == "criticalAction") {
-        const actionImg = `/src/assets/icons/${setting.icon}.svg`
+        const actionImg = getIcon(`/src/assets/icons/${setting.icon}.svg`);
         if (setting.position == "outer") {
             return (
                 <div className="w-full overflow-hidden  border-b">

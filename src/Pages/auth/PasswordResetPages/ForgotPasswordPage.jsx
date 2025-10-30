@@ -21,7 +21,9 @@ export default function ForgotPasswordPage() {
                     <EmailInput customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} handleChange={(e) => {
                         setEmail(e.target.value);
                     }} />
-                    <ResetPasswordButton customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} disabled={!email} />
+                    <Link to={"/auth/verification-code"}>
+                        <ResetPasswordButton customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} disabled={!email} />
+                    </Link>
                     <Link to="/auth/sign-in" className="text-[0.8rem] opacity-50 ">{t("titles.signIn")}</Link>
                     <p className="text-[0.8rem] opacity-70 text-center mt-[0.75rem]">{t("terms.dontHaveAnAccount")} <ThemedAnchor to="/auth/sign-up">{t("titles.signUp")}</ThemedAnchor></p>
 

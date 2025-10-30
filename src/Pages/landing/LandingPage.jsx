@@ -26,8 +26,7 @@ export default function LandingPage({ className = "", children, ...props }) {
                 <AboutSection></AboutSection>
                 <FeaturesSection></FeaturesSection>
                 <FooterSection></FooterSection>
-                <ToggleLang></ToggleLang>
-                <ToggleTheme></ToggleTheme>
+
             </main>
 
         </div >
