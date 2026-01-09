@@ -61,7 +61,7 @@ DOMORE delivers a complete and polished **user experience** with all core UI fea
   7. Deployed on **Vercel**
 
 
-## Build Instrctions
+## Build Instructions
   * Requirements:
     - Node.js v18 or higher.
     - npm
