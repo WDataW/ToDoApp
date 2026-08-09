@@ -1,4 +1,4 @@
-import { EmailInput, PasswordInput, UsernameInput, ThemedAnchor, CheckboxInput, ErrorMessage, ThemedRectButton, WarningMessage } from "../../components/ui";
+import { EmailInput, PasswordInput, GuestModeButton, UsernameInput, ThemedAnchor, CheckboxInput, ErrorMessage, ThemedRectButton, WarningMessage } from "../../components/ui";
 import Page from "../Page";
 import { useTheme } from "../../context/Theme";
 import { useState, useRef } from "react";
@@ -27,7 +27,6 @@ export default function SignUpPage({ children }) {
                     {t("titles.signUp")}
                 </h2>
                 <form action="">
-
                     <UsernameInput customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} placeholder={t("fields.enterUsername")} className="mb-[0.5rem]" />
                     <EmailInput customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} />
                     <PasswordInput customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} className="mb-[0.2rem]" value={password} handleChange={(e) => { setPassword(e.target.value); validatePassword(e.target.value, dispatch); }} />
@@ -43,6 +42,9 @@ export default function SignUpPage({ children }) {
                     </div>
                     <ThemedRectButton disabled={!password || password !== confirmedPassword || passwordWarning !== "" || !agreed} >{t("titles.createAccount")}</ThemedRectButton>
                 </form>
+                <Link to="/app/home">
+                    <GuestModeButton customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} className="mt-[0.5rem] mb-[.1rem]" />
+                </Link>
                 <Link to="/auth/sign-in" className="text-[0.8rem] opacity-50 ">{t("titles.signIn")}</Link>
             </div>
         </Page>

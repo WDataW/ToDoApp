@@ -1,4 +1,4 @@
-import { EmailInput, PasswordInput, SignInButton, CheckboxInput, ThemedAnchor, ErrorMessage } from "../../components/ui";
+import { EmailInput, PasswordInput, SignInButton, GuestModeButton, CheckboxInput, ThemedAnchor, ErrorMessage } from "../../components/ui";
 import { useTheme } from "../../context/Theme";
 import { useState } from "react";
 import { commonStyles } from "./commonStyles";
@@ -51,6 +51,9 @@ export default function SignInPage({ children }) {
                         <SignInButton customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} className="mt-[1.5rem] mb-[.1rem]" disabled={!userInfo["password"] || !userInfo["email"]} />
                     </Link>
                 </form>
+                <Link to="/app/home">
+                    <GuestModeButton customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} className="mt-[0.5rem] mb-[.1rem]" />
+                </Link>
                 <Link to="/auth/forgot-password" href={null} className="text-[0.8rem] opacity-50 ">{t("titles.forgotPassword")}</Link>
                 <p className="text-[0.8rem] opacity-70 text-center mt-[0.75rem]">{t("terms.dontHaveAnAccount")} <ThemedAnchor to="/auth/sign-up">{t("titles.signUp")}</ThemedAnchor></p>
                 {children}

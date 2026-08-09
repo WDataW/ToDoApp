@@ -11,3 +11,4 @@ export { default as YesNoPopUp } from "./YesNoPopUp";
 export { default as CreateTagButton } from "./CreateTagButton";
 export { default as SelectButtons } from "./SelectButtons";
 export { default as ToggleButton } from "./ToggleButton";
+export { default as GuestModeButton } from "./GuestModeButton";
