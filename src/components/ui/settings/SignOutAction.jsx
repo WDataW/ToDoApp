@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { YesNoPopUp } from "../buttons";
 import { hidePageContents, showPageContents } from "@/Pages/pages";
+import { logOut } from "@/scripts/requests";
 
 export default function SignOutAction({ className = "", children, ...props }) {
     const [lang] = useLang();
@@ -18,10 +19,13 @@ export default function SignOutAction({ className = "", children, ...props }) {
     }
     const selfRef = useRef();
 
-    function singOut() {
-        console.log("signed out");//to be handled later
-        setConfirm(false);
-        showPageContents();
+    async function singOut() {
+        const response = await logOut();
+        if (response.status == 200) {
+            setConfirm(false);
+            showPageContents();
+            window.location.href = '/';
+        }
     }
     const t = useTranslation();
     const [confirm, setConfirm] = useState(false);

@@ -13,23 +13,23 @@ export default function NotificationsSettings({ className = "", children, ...pro
 
     }
     const [info] = useInfo()
-    const notifications = info.settings.notifications;
+    const notifications = info?.settings?.notifications;
     const notificationsArray = [
         {
             label: "all",
-            toggled: notifications.all,
+            toggled: notifications?.all,
         },
         {
             label: "taskReminder",
-            toggled: notifications.taskReminder,
+            toggled: notifications?.reminders,
         },
         {
             label: "overdueAlert",
-            toggled: notifications.overdueAlert,
+            toggled: notifications?.alerts,
         },
         {
             label: "announcements",
-            toggled: notifications.announcements,
+            toggled: notifications?.announcements,
         },
 
     ];

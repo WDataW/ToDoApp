@@ -209,7 +209,6 @@ export function getTaskTags(task) {
         taskTags.push(...tagsBase.filter((tag) => tag.id == tagId));
     }
 
-
     return taskTags;
 }
 export function getFinalTaskTags(task) {
@@ -220,9 +219,12 @@ export function getFinalTaskTags(task) {
 }
 export function useDeleteTask() {
     const [tasks, setTasks] = useTasks();
-    function deleteTask(taskToDelete) {
-        let newTasks = tasks.filter((task) => task.id !== taskToDelete.id);
+    async function deleteTask(taskToDelete) {
+        const response = await eraseTask(taskToDelete);
+        if (response && response.status != 200) throw new Error('Error occured, deletion unsuccessful');
+        let newTasks = tasks.filter((task) => task.id !== response.data.id);
         setTasks(newTasks);
+        showPageContents();
     }
     return deleteTask;
 }
@@ -230,14 +232,18 @@ export function useDeleteTask() {
 export function useDeleteTag() {
     const [tags, setTags] = useAllTags();
     const [tasks, setTasks] = useTasks();
-    function deleteTag(tagToDelete) {
+    async function deleteTag(tagToDelete) {
+        const response = await eraseTag(tagToDelete);
+        if (response && response.status != 200) throw new Error('Error occured, deletion unsuccessful');
         let newTasks = tasks;
         for (let task of newTasks) {
-            task.tags = task.tags.filter((tag) => tag !== tagToDelete.id);
+            task.tags = task.tags.filter((tag) => tag !== response.data.id);
         }
-        let newTags = tags.filter((tag) => tag.id !== tagToDelete.id && tag.title !== tagToDelete.id);
+        let newTags = tags.filter((tag) => tag.id !== response.data.id && tag.title !== response.data.id);
         setTasks(newTasks);
         setTags(newTags);
+        showPageContents();
+
     }
     return deleteTag
 
@@ -343,6 +349,8 @@ export function isUUID(id) {
 /* double linechart */
 import { ISOToDate } from "../../../scripts/dateTime";
 import { getDaysInMonth } from "date-fns";
+import { eraseTag, eraseTask } from "@/scripts/requests";
+import { showPageContents } from "@/Pages/pages";
 
 export function useCreatedTasksInMonth(year, month) {
     const [tasks] = useTasks();
@@ -507,11 +515,10 @@ function getTasksTags(tasks) {
 }
 
 function convertTagsToBars(tags) {
-    if (tags.length == 0) {
+    if (!tags || tags.length == 0) {
         return [];
     }
     const key = tags[0];
-
     const [allTags] = useAllTags();
     const [targetTag] = allTags.filter((tag) => tag.id == key);
     const title = targetTag.title;

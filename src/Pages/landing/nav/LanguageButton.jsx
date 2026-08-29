@@ -15,6 +15,7 @@ export default function LanguageButton({ isInBurger, className = "", yOffset = -
     function updateLanguage(newLang) {
         updateLang(newLang)
         setLocalLang(newLang);
+        window.localStorage.setItem("lang", newLang);
         setLang(newLang);
         hideContainer();
     }
@@ -29,7 +30,7 @@ export default function LanguageButton({ isInBurger, className = "", yOffset = -
 
     function handleClick(e) {
         const position = selfRef.current.getBoundingClientRect();
-        const xOffset = lang == "ar" ? -2.8 : 2;
+        const xOffset = lang == "ar" ? 2 : 2;
         const rem = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("font-size"));
         popUp = <FloatingContainer aria-label="Press Escape to close." lastFocused={e.target} style={{ position: "fixed", top: position.top - yOffset * rem, left: position.left - xOffset * rem }} hide={hideContainer} className={` text-[1rem] flex flex-col justify-center    `} >
             <SelectButtons customZIndex={true} className={`w-[9rem]`} value={localLang} setValue={updateLanguage} options={["en", "ar"]}></SelectButtons>

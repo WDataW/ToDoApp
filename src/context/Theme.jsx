@@ -23,14 +23,14 @@ export function getBrowserPreference() {
 }
 export default function Theme({ children }) {
     const [userInfo] = useInfo();
-    const userTheme = userInfo?.settings?.theme;
+    const userTheme = userInfo?.settings?.theme || window.localStorage.getItem("theme");;
 
     const [theme, setTheme] = useState(userTheme || getBrowserPreference());
 
 
 
     function initTheme() {
-        const theme = getBrowserPreference();
+        let theme = getBrowserPreference();
         document.documentElement.setAttribute("theme", theme);
         setTheme(theme);
     }

@@ -7,7 +7,7 @@ export default function YearPicker({ year, setYear, children, ...props }) {
     const [info] = useInfo()
     let yearOptions = [];
     const startYear = new Date(info.createdAt).getFullYear();
-    const endYear = new Date().getFullYear();
+    const endYear = new Date().getFullYear() + 5;
     for (let i = startYear; i <= endYear; i++) {
         const option = lang == "ar" ? <option value={i} key={i}>{numToArabic(String(i))}</option> : <option value={i} key={i}>{String(i)}</option>
         yearOptions = [...yearOptions, option];

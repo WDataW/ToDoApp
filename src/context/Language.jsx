@@ -9,7 +9,8 @@ import userData from "../../src/assets/user.json";
 import { useInfo } from "./User";
 function getInitLang() {
     let userLang;
-    if (userData) userLang = userData?.info?.settings?.language;
+    userLang = window.localStorage.getItem("lang");
+    if (userData?.info?.settings?.language) userLang = userData?.info?.settings?.language;
     return userLang || getBrowserLanguage();
 }
 

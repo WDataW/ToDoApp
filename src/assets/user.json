@@ -8,9 +8,7 @@
     "highestLogInStreak": 12,
     "profileImage": "/images/users/wael.png",
     "createdAt": "2024-09-15T08:00:00Z",
-    "role": "standard",
     "settings": {
-      "language": "en",
       "theme": "dark",
       "notifications": {
         "all": true,

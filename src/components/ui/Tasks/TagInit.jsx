@@ -15,7 +15,7 @@ export default function TagInit({ setNewTag, tagToEdit, className = "", children
     const [tags] = useAllTags();
     const [title, setTitle] = useState(tagToEdit.title);
     const t = useTranslation();
-    const [home, setHome] = useState(tagToEdit.home);
+    const [home, setHome] = useState(tagToEdit.home || false);
     const builtInKey = isBuiltInTitle(title, t);
     function isUnique() {
         function isUniqueTitle() {
@@ -62,6 +62,7 @@ export default function TagInit({ setNewTag, tagToEdit, className = "", children
     }
     useEffect(() => {
         setNewTag(newTag);
+        console.log(newTag);
     }, [
         title, icon, home
     ]);

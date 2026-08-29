@@ -15,6 +15,7 @@ export default function ThemeButton({ isInBurger, className = "", yOffset = -2.8
 
     function updateTheme(newTheme) {
         setLocalTheme(newTheme);
+        window.localStorage.setItem("theme", newTheme);
         setTheme(newTheme);
     }
 

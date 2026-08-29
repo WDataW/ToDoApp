@@ -13,7 +13,7 @@ const plusIcons = {
     light: "bg-[url(/src/assets/icons/light/plus.svg)]"
 }
 
-export default function tagsPicker({ noNewTags, close, className = "", selectedTags, setSelectedTags }) {
+export default function tagsPicker({ className = "", selectedTags, setSelectedTags }) {
     const [createTagMode, setCreateTagMode] = useState(false);
 
     function createTag() {
@@ -38,6 +38,7 @@ export default function tagsPicker({ noNewTags, close, className = "", selectedT
 
         const newSelectedTags = [...tags.filter((tag) => tag.title == e.currentTarget.id), ...selectedTags,]
         setSelectedTags(newSelectedTags);
+        (newSelectedTags, "selecteeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeed");
     }
 
     function handleSelectedTagClick(e) {

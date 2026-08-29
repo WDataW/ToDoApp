@@ -12,6 +12,7 @@ import { useTranslation } from "@/context/Language";
 import DeleteSomething from "../buttons/DeleteSomething";
 import { useTasks } from "@/context/User";
 import { hidePageContents, showPageContents } from "@/Pages/pages";
+import { patchTask } from "@/scripts/requests";
 const themeStyles = {
     dark: "bg-[#222222] text-white",
     light: "bg-[#E9EBEB] text-black"
@@ -43,7 +44,9 @@ export default function Task({ className = "", taskObj = {}, completed = "false"
         setEditMode(true);
     }
     const [tasks, setTasks] = useTasks();
-    function editPin() {
+    async function editPin() {
+        const response = await patchTask({ ...taskObj, pinned: !pinned });
+        if (!response.status == 200) throw new Error('Error couldn\'t pin task');
         setPinned(!pinned);
         const newTask = { ...taskObj, pinned: !pinned };
         let newTasks = tasks.filter((cTask) => cTask.id !== taskObj.id);
@@ -137,8 +140,10 @@ export default function Task({ className = "", taskObj = {}, completed = "false"
         </div>
     );
 
-    function handleChecked() {
-        editTask({ ...taskObj, status: !checked ? "completed" : "active", completedAt: new Date().toISOString(), pinned: false });
+    async function handleChecked() {
+        const response = await patchTask({ ...taskObj, status: !checked ? "completed" : "active", completedAt: new Date().toISOString(), pinned: false })
+        if (response && response.status !== 200) throw new Error('Error Couldn\'t complete task');
+        editTask(response.data);
         setChecked(!checked);
         setOpened(false);
     }

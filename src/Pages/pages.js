@@ -4,4 +4,5 @@ export function hidePageContents(el, overlay = false) {
 }
 export function showPageContents(el, overlay = false) {
     if (!overlay) document.documentElement.classList.remove("overflow-hidden");
+
 }

@@ -27,6 +27,7 @@ export default function CategoriesSection({ activeTags, setActiveTags, className
     if (allTags.length !== 0) {
         filteredTags = allTags.filter((tag) => tag.title.toLowerCase().startsWith(tagsFilter.toLowerCase()));
     }
+    console.log(filteredTags);
     return (
         <section id="categories-section" className={className}>
             <div className="flex gap-[0.4rem]">
