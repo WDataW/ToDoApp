@@ -76,6 +76,22 @@ export const setPFP = async (formData) => {
         console.log(error)
     }
 }
+export const setLanguage = async (language) => {
+    try {
+        const response = await axios.patch('/api/v1/account/settings', { language });
+        if (response && response.status == 200) return response.data;
+    } catch (error) {
+        console.log(error)
+    }
+}
+export const setThemeSetting = async ({ base, lightAccentColor, lightSecondaryColor, darkAccentColor, darkSecondaryColor }) => {
+    try {
+        const response = await axios.patch('/api/v1/account/settings', { theme: { base, lightAccentColor, lightSecondaryColor, darkAccentColor, darkSecondaryColor } });
+        if (response && response.status == 200) return response.data;
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 export const isLogged = async () => {
     try {

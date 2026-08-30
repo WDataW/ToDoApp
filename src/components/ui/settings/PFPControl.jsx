@@ -55,7 +55,7 @@ export default function PFPControl({ className = "", children, ...props }) {
             {isExpanded && createPortal(
                 <div className="items-start h-[100dvh] flex justify-center w-[100vw] top-0 z-100  -translate-x-1/2 absolute left-1/2 bg-[rgba(0,0,0,0.8)]">
                     <button onClick={shrinkPhoto} className={`outline-none absolute h-[2rem] w-[2rem] border rounded-full top-[0.5rem] bg-black right-[0.5rem] bg-[url(/src/assets/icons/dark/x.svg)] bg-center  bg-no-repeat`}></button>
-                    <img className="max-h-full max-w-full object-contain" src={pfp} alt="Profile picture" />
+                    <img className="max-h-full max-w-full   object-contain" src={pfp} alt="Profile picture" />
                 </div>,
                 bodyRef.current
             )}

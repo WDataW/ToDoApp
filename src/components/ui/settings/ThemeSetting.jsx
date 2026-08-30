@@ -4,7 +4,9 @@ import Setting from "./Setting";
 import { useTranslation } from "@/context/Language";
 import { useInfo } from "@/context/User";
 import { getColorVar, getFinalHeight, useColor } from "./settings";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { setThemeSetting } from "@/scripts/requests";
+import { useEffectEvent } from "react";
 
 export default function ThemeSetting({ className = "", children, ...props }) {
     const setting = {
@@ -14,12 +16,15 @@ export default function ThemeSetting({ className = "", children, ...props }) {
     }
 
     const [theme, setTheme] = useTheme();
+
     const t = useTranslation();
     const updateUserTheme = useUpdateUserTheme();
 
-    function updateTheme(e) {
+    async function updateTheme(e) {
         const newTheme = e.target.value;
-        updateUserTheme(newTheme)
+        await setThemeSetting({ base: newTheme });
+        window.localStorage.setItem("theme", newTheme);
+        updateUserTheme(newTheme);
         if (!newTheme) {
             setTheme(getBrowserPreference());
             return
@@ -27,8 +32,6 @@ export default function ThemeSetting({ className = "", children, ...props }) {
             setTheme(newTheme);
         }
     }
-    const [info] = useInfo()
-    const userTheme = info?.settings?.theme || "";
     useEffect(() => {
         setAccentColor(getColorVar(`--${theme}-theme-accent-color`));
         setSecondaryColor(getColorVar(`--color-darker-${theme}-theme`));
@@ -36,11 +39,52 @@ export default function ThemeSetting({ className = "", children, ...props }) {
 
     const [accentColor, setAccentColor] = useColor(`--${theme}-theme-accent-color`);
     const [secondaryColor, setSecondaryColor] = useColor(`--color-darker-${theme}-theme`);
+    const postColors = useEffectEvent(async () => {
+        if (theme == "dark")
+            await setThemeSetting({ darkAccentColor: accentColor, darkSecondaryColor: secondaryColor });
+        else if (theme == "light")
+            await setThemeSetting({ lightAccentColor: accentColor, lightSecondaryColor: secondaryColor });
+    })
+    const [userInfo] = useInfo();
+    const [isFirstRender, setisFirstRender] = useState(true);
+    useEffect(() => {// debouncer
+        if (isFirstRender) {
+            setisFirstRender(false);
+            return;
+        }
+
+        const id = setTimeout(postColors, 1000);
+        return () => {
+            clearTimeout(id);
+        }
+    }, [accentColor, secondaryColor]);
+    useEffect(() => {
+        if (userInfo?.settings?.theme) {
+            const storedTheme = userInfo.settings.theme;
+            if (storedTheme?.darkAccentColor) {
+                if (theme == "dark") setAccentColor(storedTheme.darkAccentColor);
+                document.documentElement.style.setProperty("--dark-theme-accent-color", storedTheme.darkAccentColor);
+            }
+            if (storedTheme?.lightAccentColor) {
+                if (theme == "light") setAccentColor(storedTheme.lightAccentColor);
+                document.documentElement.style.setProperty("--light-theme-accent-color", storedTheme.lightAccentColor);
+            }
+            if (storedTheme?.darkSecondaryColor) {
+                if (theme == "dark") setSecondaryColor(storedTheme.darkSecondaryColor);
+                document.documentElement.style.setProperty("--color-darker-dark-theme", storedTheme.darkSecondaryColor);
+            }
+            if (storedTheme?.lightSecondaryColor) {
+                if (theme == "light") setSecondaryColor(storedTheme.lightSecondaryColor);
+                document.documentElement.style.setProperty("--color-darker-light-theme", storedTheme.lightSecondaryColor);
+            }
+        }
+    }, [userInfo])
+
     const expandRef = useRef();
     return (
         <Setting setting={setting} expandHeight={() => getFinalHeight(expandRef.current)} className={`${className}`} {...props}>
             <div ref={expandRef} className="sm:ms-[1.8rem] sm:w-[12rem] flex flex-col gap-[1rem]">
-                <Select value={userTheme} onChange={updateTheme}>
+                <Select value={theme} onChange={updateTheme}>
                     <option value="">{t("terms.auto")}</option>
                     <option value="light">{t("terms.light")}</option>
                     <option value="dark">{t("terms.dark")}</option>

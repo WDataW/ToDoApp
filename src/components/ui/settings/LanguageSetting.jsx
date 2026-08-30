@@ -3,6 +3,7 @@ import Setting from "./Setting";
 import { Select } from "../selects";
 import { useRef } from "react";
 import { getFinalHeight } from "./settings";
+import { setLanguage } from "@/scripts/requests";
 
 export default function LanguageSetting({ className = "", children, ...props }) {
     const setting = {
@@ -14,9 +15,11 @@ export default function LanguageSetting({ className = "", children, ...props }) 
     const [lang, setLang] = useLang();
     const updateUserLang = useUpdateUserLang()
 
-    function updateLang(e) {
-        updateUserLang(e.target.value);
-        setLang(e.target.value);
+    async function updateLang(e) {
+        const data = await setLanguage(e.target.value);
+        window.localStorage.setItem("lang", data.language)
+        updateUserLang(data.language);
+        setLang(data.language);
     }
     const expandRef = useRef();
     return (
