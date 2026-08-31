@@ -6,6 +6,7 @@ import { createPortal } from "react-dom";
 import { useTranslation } from "@/context/Language";
 import { hidePageContents, showPageContents } from "@/Pages/pages";
 import VerifyUser from "./VerifyUser";
+import { deleteAccountAndData } from "@/scripts/requests";
 
 export default function AccountSettings({ className = "", children, ...props }) {
     const setting = {
@@ -31,6 +32,7 @@ export default function AccountSettings({ className = "", children, ...props }) 
         }
     ]
     const selfRef = useRef();
+    const [password, setPassword] = useState("")
     const [editInfoMode, setEditInfoMode] = useState(false);
     const [deleteAccountMode, setDeleteAccountMode] = useState(false);
     function showEditInfo() {
@@ -49,14 +51,14 @@ export default function AccountSettings({ className = "", children, ...props }) 
         showPageContents(selfRef.current)
         setDeleteAccountMode(false);
     }
-    function deleteAccount() {
-        console.log("Account deleted");// to be handled later
-        hideDeleteAccount();
+    async function deleteAccount() {
+        await deleteAccountAndData(password);
+        // window.location.href = "/"
     }
     return (<>
 
-        {deleteAccountMode && createPortal(<VerifyUser yesFunc={deleteAccount} customTheme={"danger"} heading={t("terms.deleteAccount")} yes={t("titles.delete")} no={t("terms.cancel")} close={hideDeleteAccount} />, selfRef.current.closest(".page-target"))}
-        {editInfoMode && createPortal(<AccountInfoPage heading={t("terms.editAccount")} yes={t("terms.continue")} no={t("terms.cancel")} close={hideEditInfo}></AccountInfoPage>, selfRef.current.closest(".page-target"))}
+        {deleteAccountMode && createPortal(<VerifyUser password={password} setPassword={setPassword} yesFunc={deleteAccount} customTheme={"danger"} heading={t("terms.deleteAccount")} yes={t("titles.delete")} no={t("terms.cancel")} close={hideDeleteAccount} />, selfRef.current.closest(".page-target"))}
+        {editInfoMode && createPortal(<AccountInfoPage heading={t("terms.editAccount")} yes={t("terms.save")} no={t("terms.cancel")} close={hideEditInfo}></AccountInfoPage>, selfRef.current.closest(".page-target"))}
         <Setting ref={selfRef} setting={setting} expandHeight={() => getFinalHeight(expandRef.current)} className={`${className}`} {...props}>
             <ul className="sm:ms-[1.8rem] flex flex-col gap-[0.7rem] sm:me-[1.8rem]" ref={expandRef}>
                 {innerSettings.map((s, i) => <li key={i}> <Setting onClick={s.title == "editAccount" ? showEditInfo : showDeleteAccount} setting={s}></Setting></li>)}

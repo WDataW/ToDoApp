@@ -1,15 +1,17 @@
 import { getTags, getTasks, getUserInfo, isLogged } from "@/scripts/requests";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useInfo, useTags, useTasks } from "@/context/User";
 import { useLang } from "@/context/Language";
+import { hidePageContents, showPageContents } from "../pages";
 export default function LoginChecker() {
-    const navigate = useNavigate()
     const [infoState, setInfoState] = useInfo();
     const [tagsState, setTagsState] = useTags();
     const [tasksState, setTasksState] = useTasks();
     const [lang, setLang] = useLang();
+    const [isLoading, setIsLoading] = useState(false);
     const loadUser = async () => {
+        setIsLoading(true);
         const storedInfo = await getUserInfo();
         const storedTags = await getTags();
         const storedTasks = await getTasks();
@@ -17,6 +19,7 @@ export default function LoginChecker() {
         setLang(storedInfo?.settings?.language)
         setTagsState(storedTags);
         setTasksState(storedTasks);
+        setIsLoading(false);
     }
     const location = useLocation();
     const checkLogin = async () => {
@@ -31,6 +34,11 @@ export default function LoginChecker() {
     }
     useEffect(() => checkLogin, [location.pathname]);
     return <div>
+        {isLoading && !infoState.email &&
+            < div className="h-[100dvh] flex items-center justify-center w-[100dvw] absolute bg-black z-999">
+                <div className="animate-spin animate-ping h-[8rem] aspect-1/1 rounded-full border   border-b-[#7C7C7C] border-[1.2rem]"></div>
+            </div>
+        }
         <Outlet></Outlet>
-    </div>
+    </div >
 }

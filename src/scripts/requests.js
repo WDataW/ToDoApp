@@ -10,9 +10,21 @@ export const login = async ({ email, password }) => {
         console.log(error);
     }
 }
+export const deleteAccountAndData = async (password) => {
+    try {
+        const response = await axios.post('/api/v1/account/delete-account', {
+            password
+        });
+        (response);
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
+}
 export const getUserInfo = async () => {
     const { fullname, createdAt, email } = await getUser();
     const { signedUrl } = await getPFP();
+    console.log(fullname);
     const settings = await getSettings();
     const info = {
         email,
@@ -72,6 +84,14 @@ export const getPFP = async () => {
 export const setPFP = async (formData) => {
     try {
         const response = await axios.post('/api/v1/account/pfp', formData);
+        if (response && response.status == 200) return response.data;
+    } catch (error) {
+        console.log(error)
+    }
+}
+export const updateName = async (newName) => {
+    try {
+        const response = await axios.patch('/api/v1/account/name', { name: newName });
         if (response && response.status == 200) return response.data;
     } catch (error) {
         console.log(error)
