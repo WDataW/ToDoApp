@@ -14,7 +14,6 @@ export default function AccountInfoPage({ close, yes, no, className = "", childr
         // close();
     }
     const [info, setInfo] = useInfo();
-    const [newInfo, setNewInfo] = useState(info);
     const selfRef = useRef();
     const [verifyMode, setVerifyMode] = useState(false);
     function startVerifyMode() {
@@ -35,7 +34,7 @@ export default function AccountInfoPage({ close, yes, no, className = "", childr
         <OverlayPage close={close} className={`${className}`} {...props}>
             <Main ref={selfRef} className="flex items-center flex-col ">
                 <div className="max-w-full xs:w-[15rem] sm:w-[25rem]  ">
-                    <UserInit info={newInfo} setInfo={setNewInfo}></UserInit>
+                    <UserInit info={info} setInfo={setInfo}></UserInit>
                     <YesNoButtons className="justify-center flex mt-[1rem] text-[0.9rem]" yesFunc={startVerifyMode} yes={yes} noFunc={close} no={no} />
                 </div>
             </Main>

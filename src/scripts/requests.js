@@ -11,10 +11,11 @@ export const login = async ({ email, password }) => {
     }
 }
 export const getUserInfo = async () => {
-    const { fullname, createdAt } = await getUser();
+    const { fullname, createdAt, email } = await getUser();
     const { signedUrl } = await getPFP();
     const settings = await getSettings();
     const info = {
+        email,
         name: fullname,
         pfp: signedUrl || "/images/defaultPFP.png",
         createdAt,
