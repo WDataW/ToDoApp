@@ -63,19 +63,15 @@ export default function ThemeSetting({ className = "", children, ...props }) {
             const storedTheme = userInfo.settings.theme;
             if (storedTheme?.darkAccentColor) {
                 if (theme == "dark") setAccentColor(storedTheme.darkAccentColor);
-                document.documentElement.style.setProperty("--dark-theme-accent-color", storedTheme.darkAccentColor);
             }
             if (storedTheme?.lightAccentColor) {
                 if (theme == "light") setAccentColor(storedTheme.lightAccentColor);
-                document.documentElement.style.setProperty("--light-theme-accent-color", storedTheme.lightAccentColor);
             }
             if (storedTheme?.darkSecondaryColor) {
                 if (theme == "dark") setSecondaryColor(storedTheme.darkSecondaryColor);
-                document.documentElement.style.setProperty("--color-darker-dark-theme", storedTheme.darkSecondaryColor);
             }
             if (storedTheme?.lightSecondaryColor) {
                 if (theme == "light") setSecondaryColor(storedTheme.lightSecondaryColor);
-                document.documentElement.style.setProperty("--color-darker-light-theme", storedTheme.lightSecondaryColor);
             }
         }
     }, [userInfo])
