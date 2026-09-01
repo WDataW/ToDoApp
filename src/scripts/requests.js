@@ -22,15 +22,15 @@ export const deleteAccountAndData = async (password) => {
     }
 }
 export const getUserInfo = async () => {
-    const { fullname, createdAt, email } = await getUser();
+    const { fullname, createdAt, email, highestLogInStreak, currentLogInStreak, lastLogIn } = await getUser();
     const { signedUrl } = await getPFP();
-    console.log(fullname);
     const settings = await getSettings();
     const info = {
         email,
         name: fullname,
         pfp: signedUrl || "/images/defaultPFP.png",
         createdAt,
+        highestLogInStreak, currentLogInStreak, lastLogIn,
         settings
     }
     return info;
