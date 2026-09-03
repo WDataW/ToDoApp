@@ -14,7 +14,7 @@ export default function InboxPage({ close, className = "", children, ...props })
         <OverlayPage id="inboxPage" close={close} className={` ${className}`} {...props}>
             <Main className="flex items-center flex-col ">
                 <div className="w-full ">
-                    <SelectButtons className="w-full" value={category} setValue={setCategory} options={["all", "tasks", "system"]}></SelectButtons>
+                    <SelectButtons className="w-full" value={category} setValue={setCategory} options={["all", "offers", "system"]}></SelectButtons>
                     <section >
                         <SearchInput placeholder={t("fields.searchMail")} value={search} handleChange={(e) => { setSearch(e.target.value) }} required={false} className="mb-[0.5rem]"></SearchInput>
                         <MailContainer search={search} from={category}></MailContainer>

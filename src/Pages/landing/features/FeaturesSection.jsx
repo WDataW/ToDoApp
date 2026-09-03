@@ -1,11 +1,9 @@
 import { useTranslation } from "@/context/Language";
 import { paddingX } from "../LandingPage";
 import FeatureCard from "./FeatureCard";
-import { SelectButtons } from "@/components/ui";
 const features = [
     { key: "create&edit", icon: "edit-contained" },
     { key: "tags&categories", icon: "tag" },
-    { key: "notifications", icon: "bell" },
     { key: "stats&charts", icon: "pie-chart", noOpacity: true },
     { key: "achievements&rewards", icon: "star" },
     { key: "arabic&english", icon: "language" },

@@ -3,7 +3,6 @@ import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useInfo, useTags, useTasks } from "@/context/User";
 import { useLang } from "@/context/Language";
-import { hidePageContents, showPageContents } from "../pages";
 export default function LoginChecker() {
     const [infoState, setInfoState] = useInfo();
     const [tagsState, setTagsState] = useTags();
@@ -24,7 +23,7 @@ export default function LoginChecker() {
     const location = useLocation();
     const checkLogin = async () => {
         const isLoggedIn = await isLogged();
-
+        console.log(isLoggedIn)
         if (isLoggedIn) {
             loadUser();
             if (!location.pathname.startsWith('/app')) window.location.href = '/app/home';
@@ -32,7 +31,10 @@ export default function LoginChecker() {
             window.location.href = '/';
         }
     }
-    useEffect(() => checkLogin, [location.pathname]);
+    useEffect(() => {
+        checkLogin()
+    }
+        , [location.pathname]);
     return <div>
         {isLoading && !infoState.email &&
             < div className="h-[100dvh] flex items-center justify-center w-[100dvw] absolute bg-black z-999">
