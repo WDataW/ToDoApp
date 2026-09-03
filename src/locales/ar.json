@@ -122,6 +122,7 @@
         "all": "الكل",
         "tasksCompleted": "مهام منجزة",
         "system": "النظام",
+        "personal": "شخصي",
         "tasks": "المهام",
         "tasks_one": "مهمة",
         "tasks_two": "مهمتين",
@@ -191,10 +192,6 @@
         "passwordNotConfirmed": "كلمتا المرور لا تتطابقان"
     },
     "mail": {
-        "welcome": {
-            "title": "مرحبا بك في التطبيق!",
-            "content": "يسعدنا انضمامك إلينا، نتمنى لك تجربة ممتعة!"
-        },
         "isDueIn_one": "{{task}} مستحقة خلال ساعة واحدة",
         "isDueIn_two": "{{task}} مستحقة خلال ساعتين",
         "isDueIn_few": "{{task}} مستحقة خلال {{count, arabNum}} ساعات.",

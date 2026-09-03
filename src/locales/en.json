@@ -120,6 +120,7 @@
         "all": "All",
         "tasksCompleted": "Tasks Completed",
         "system": "System",
+        "personal": "Personal",
         "tasks": "Tasks",
         "tasks_one": "Task",
         "tasks_other": "Tasks",
@@ -185,10 +186,6 @@
         "passwordNotConfirmed": "Passwords don't match"
     },
     "mail": {
-        "welcome": {
-            "title": "Welcome to the app!",
-            "content": "We're glad to have you here. Enjoy your journey!"
-        },
         "isDueIn_one": "{{task}} is due in {{count}} hour.",
         "isDueIn_other": "{{task}} is due in {{count}} hours."
     },

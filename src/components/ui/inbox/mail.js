@@ -5,8 +5,9 @@ import { useTranslation } from "@/context/Language";
 export function filterMail(mail, from, search) {
     const newMail = mail.filter((m) => m.title.toLowerCase().includes(search.toLowerCase()) || m.content.toLowerCase().includes(search.toLowerCase()));
     if (from == "all") return newMail;
-    return newMail.filter((m) => m.from == from);
-
+    if (from == "system")
+        return newMail.filter((m) => m.from == "system");
+    return newMail.filter((m) => m.from !== "system");
 }
 
 export function sortInbox(inbox) {
@@ -20,7 +21,7 @@ function partitionMail(array, start, end) {
     const pivot = new Date(array[end].receivedAt).getTime();
 
     for (let j = start; j < end; j++) {
-        if (new Date(array[j].receivedAt).getTime() < pivot) {
+        if (new Date(array[j].receivedAt).getTime() > pivot) {
             i++;
             [array[i], array[j]] = [array[j], array[i]]
         }

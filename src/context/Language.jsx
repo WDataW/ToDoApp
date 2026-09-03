@@ -6,7 +6,7 @@ function getBrowserLanguage() {
     return navigator.language.startsWith("ar") ? "ar" : "en";
 }
 import { useInfo } from "./User";
-function getInitLang() {
+export function getInitLang() {
     let userLang;
     userLang = window.localStorage.getItem("lang");
     return userLang || getBrowserLanguage();

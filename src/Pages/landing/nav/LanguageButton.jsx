@@ -3,6 +3,9 @@ import SettingButton from "./SettingButton";
 import { useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { FloatingContainer, SelectButtons } from "@/components/ui";
+import { useInbox } from "@/context/User";
+import { getInbox } from "@/scripts/requests";
+import { sortInbox } from "@/components/ui/inbox/mail";
 
 let popUp;
 export default function LanguageButton({ isInBurger, className = "", yOffset = -2.8, children, ...props }) {
@@ -11,12 +14,14 @@ export default function LanguageButton({ isInBurger, className = "", yOffset = -
     const selfRef = useRef();
     const [lang, setLang] = useLang();
     const [localLang, setLocalLang] = useState(lang);
-
-    function updateLanguage(newLang) {
+    const [inbox, setInbox] = useInbox();
+    async function updateLanguage(newLang) {
         updateLang(newLang)
         setLocalLang(newLang);
         window.localStorage.setItem("lang", newLang);
         setLang(newLang);
+        const newInbox = await getInbox();
+        setInbox(sortInbox(newInbox));
         hideContainer();
     }
 

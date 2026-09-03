@@ -123,6 +123,16 @@ export const isLogged = async () => {
         console.log(error)
     }
 }
+
+export const getInbox = async () => {
+    try {
+        const response = await axios.get('/api/v1/account/inbox');
+        if (response && response.status == 200) return response.data;
+        throw new Error('Failed to GET inbox');
+    } catch (error) {
+        console.log(error)
+    }
+}
 export const signUp = (newUser) => {
     return axios.post('/api/v1/auth/register', newUser)
 }
@@ -140,6 +150,15 @@ export const logOut = () => axios.post('/api/v1/auth/logout');
 export const createTask = async (newTask) => {
     const createdTask = await axios.put('/api/v1/tasks/create-task', newTask);
     return createdTask;
+}
+export const readMessage = async ({ messageId, from }) => {
+    try {
+        const response = await axios.patch(`/api/v1/account/inbox/read/${messageId}`, { from });
+        if (response && response.status == 200) return response.data;
+        throw new Error('Failed to update Message');
+    } catch (error) {
+        console.log(error)
+    }
 }
 export const patchTask = async (taskToEdit) => {
     const editedTask = await axios.patch(`/api/v1/tasks/${taskToEdit.id}`, taskToEdit);
