@@ -23,7 +23,7 @@ export function useTags() {
 
 export default function User({ children }) {
     const [infoState, setInfoState] = useState({});
-    const [tasksState, setTasksState] = useState(sortTasksByDate([]));
+    const [tasksState, setTasksState] = useState([]);
     const [inboxState, setInboxState] = useState([]);
     const [tagsState, setTagsState] = useState([]);
     return (

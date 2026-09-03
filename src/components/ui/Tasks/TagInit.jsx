@@ -62,7 +62,6 @@ export default function TagInit({ setNewTag, tagToEdit, className = "", children
     }
     useEffect(() => {
         setNewTag(newTag);
-        console.log(newTag);
     }, [
         title, icon, home
     ]);

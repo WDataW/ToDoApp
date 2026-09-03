@@ -5,13 +5,16 @@ import User from './context/User'
 import Theme from './context/Theme'
 import Language from './context/Language'
 import ScreenSize from './context/ScreenSize'
+import PageLevel from './context/PageLevel'
 createRoot(document.getElementById('root')).render(
   // <StrictMode>
   <User>
     <Theme>
       <Language>
         <ScreenSize>
-          <App />
+          <PageLevel>
+            <App />
+          </PageLevel>
         </ScreenSize>
       </Language>
     </Theme>

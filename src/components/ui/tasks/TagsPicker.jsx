@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import MiniTag from "./MiniTag";
 import { useAllTags } from "./tasks";
 import { SectionContainer } from "../containers";
@@ -7,6 +7,8 @@ import { useTranslation } from "@/context/Language";
 import { hidePageContents, showPageContents } from "@/Pages/pages";
 import { createPortal } from "react-dom";
 import { EditTag } from ".";
+import { useLevel } from "@/context/PageLevel";
+import { useEffectEvent } from "react";
 
 const plusIcons = {
     dark: "bg-[url(/src/assets/icons/dark/plus.svg)]",
@@ -38,7 +40,6 @@ export default function tagsPicker({ className = "", selectedTags, setSelectedTa
 
         const newSelectedTags = [...tags.filter((tag) => tag.title == e.currentTarget.id), ...selectedTags,]
         setSelectedTags(newSelectedTags);
-        (newSelectedTags, "selecteeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeed");
     }
 
     function handleSelectedTagClick(e) {
@@ -54,6 +55,19 @@ export default function tagsPicker({ className = "", selectedTags, setSelectedTa
     const selfRef = useRef();
     const [tags, setTags] = useState(useAllTags(false)[0].filter((tag) => !selectedTags.includes(tag)));
     const buttonRef = useRef();
+
+    const [level] = useLevel();
+    const closePopstate = useEffectEvent(
+        () => {
+            if (level == 2) stopCreatingTag()
+        }
+    )
+    useEffect(() => {
+        window.addEventListener("popstate", closePopstate);
+        return () => window.removeEventListener("popstate", closePopstate);
+
+    }, []);
+
     return (<>
         {createTagMode && createPortal(<EditTag yesFunc={(newTag) => { setTags([newTag, ...tags]) }} overAnOverlay={true} heading={t("terms.createTag")} close={stopCreatingTag} yes={t("terms.create")} no={t("terms.cancel")} />, selfRef.current.closest(".overlay-target"))}
 

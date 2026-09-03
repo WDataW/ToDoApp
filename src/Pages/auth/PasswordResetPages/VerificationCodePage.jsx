@@ -75,7 +75,6 @@ export default function VerificationCodePage() {
         const verificationCode = code["0"] + code["1"] + code["2"] + code["3"] + code["4"] + code["5"]
 
         const response = await verifyEmail(email, verificationCode);
-        console.log(response);
         if (!response || response.status !== 200) throw new Error('Email verification failed');
         window.location.href = '/app/home';
     }
