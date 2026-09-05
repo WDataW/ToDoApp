@@ -20,6 +20,8 @@ const initialCode = {
 
 export default function VerificationCodePage() {
     const [searchParams, _] = useSearchParams();
+    const [loading, setLoading] = useState(false);
+
     const email = searchParams.get('email');
     useEffect(() => {
         for (let i = 0; i < 6; i++) {
@@ -74,9 +76,17 @@ export default function VerificationCodePage() {
         e.preventDefault();
         const verificationCode = code["0"] + code["1"] + code["2"] + code["3"] + code["4"] + code["5"]
 
-        const response = await verifyEmail(email, verificationCode);
-        if (!response || response.status !== 200) throw new Error('Email verification failed');
-        window.location.href = '/app/home';
+        try {
+            setLoading(true);
+            const response = await verifyEmail(email, verificationCode);
+            if (!response || response.status !== 200) throw new Error('Email verification failed');
+            window.location.href = '/app/home';
+
+        } catch (error) {
+            // 
+        } finally {
+            setLoading(false);
+        }
     }
 
 
@@ -116,7 +126,7 @@ export default function VerificationCodePage() {
                             )
                         }
                     </div>
-                    <ThemedRectButton handleClick={handleSubmit} type="submit" disabled={!code["0"] || !code["1"] || !code["2"] || !code["3"] || !code["4" || !code["5"]]}>{t("titles.continue")}</ThemedRectButton>
+                    <ThemedRectButton loading={loading} handleClick={handleSubmit} type="submit" disabled={!code["0"] || !code["1"] || !code["2"] || !code["3"] || !code["4" || !code["5"]]}>{t("titles.continue")}</ThemedRectButton>
                 </form>
                 <a href={null} className="text-[0.8rem] opacity-50 ">{t("titles.signIn")}</a>
                 <p className="text-[0.8rem] opacity-70 text-center mt-[0.75rem]">{t("terms.didntRecieveAnEmail")} <ThemedAnchor href="">{t("terms.sendAgain")}</ThemedAnchor></p>
