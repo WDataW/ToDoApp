@@ -39,18 +39,26 @@ export default function SignInPage({ children }) {
     const [infoState, setInfoState] = useInfo();
     const [tagsState, setTagsState] = useTags();
     const [tasksState, setTasksState] = useTasks();
+    const [loading, setLoading] = useState(false);
     const loginHandler = async (e) => {
         e.preventDefault();
-        setUserInfo({ ...userInfo, password: "" });
-        const response = await login(userInfo);
-        if (response) setIsSuccessful(response.status == 200);
-        else {
-            setIsSuccessful(false);
-            return;
+        setLoading(true);
+        // setUserInfo({ ...userInfo, password: "" });
+        try {
+            const response = await login(userInfo);
+            if (response) setIsSuccessful(response.status == 200);
+            else {
+                setIsSuccessful(false);
+                return;
+            }
+            // load user data
+            loadUser();
+            navigate('/app/home');
+        } catch (error) {
+            // 
+        } finally {
+            setLoading(false);
         }
-        // load user data
-        loadUser();
-        navigate('/app/home');
     }
     const loadUser = async () => {
         const storedInfo = await getUserInfo();
@@ -76,7 +84,7 @@ export default function SignInPage({ children }) {
                     <div className="mt-[0.5rem]">
                         <CheckboxInput className="h-[1rem] w-[1rem] align-middle">{t("fields.rememberMe")}</CheckboxInput>
                     </div>
-                    <SignInButton customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} className="mt-[1.5rem] mb-[.1rem]" disabled={!userInfo["password"] || !userInfo["email"] || !validator.isEmail(userInfo.email)} />
+                    <SignInButton loading={loading} className="mt-[1.5rem] mb-[.1rem]" disabled={!userInfo["password"] || !userInfo["email"] || !validator.isEmail(userInfo.email)} />
                 </form>
                 {/* <Link to="/app/home">
                     <GuestModeButton customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} className="mt-[0.5rem] mb-[.1rem]" />
