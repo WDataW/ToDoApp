@@ -5,7 +5,7 @@ import { commonStyles } from "../commonStyles";
 import { useTranslation } from "../../../context/Language";
 import { useState, useRef, useEffect } from "react";
 import { useScreenWidth } from "@/context/ScreenSize";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { resendVerificationEmail, verifyEmail } from "@/scripts/requests";
 import { useEffectEvent } from "react";
 
@@ -144,7 +144,7 @@ export default function VerificationCodePage() {
                     </div>
                     <ThemedRectButton loading={loading} handleClick={handleSubmit} type="submit" disabled={!code["0"] || !code["1"] || !code["2"] || !code["3"] || !code["4" || !code["5"]]}>{t("titles.continue")}</ThemedRectButton>
                 </form>
-                <a href={null} className="text-[0.8rem] opacity-50 ">{t("titles.signIn")}</a>
+                <Link to="/auth/sign-in" className="text-[0.8rem] opacity-50 ">{t("titles.signIn")}</Link>
                 <p className="text-[0.8rem] opacity-70 text-center mt-[0.75rem]">{t("terms.didntRecieveAnEmail")} {sendAgainTimer <= 0 ? <ThemedAnchor onClick={handleSendAgain} href="">{t("terms.sendAgain")}</ThemedAnchor > : <span className="ms-[0.2rem]">{sendAgainTimer}</span>}</p>
             </div>
 
