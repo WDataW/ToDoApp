@@ -13,6 +13,8 @@ const styles = commonStyles;
 
 
 export default function SignUpPage() {
+    const [loading, setLoading] = useState(false);
+
     const w = useScreenWidth();
     const agreeToTermsCheckbox = useRef(null)
     const [theme] = useTheme();
@@ -26,9 +28,16 @@ export default function SignUpPage() {
     const navigate = useNavigate();
     const createNewAccount = async (e) => {
         e.preventDefault();
-        const response = await signUp({ email, password, fullname });
-        if (response.status !== 201) throw new Error('Error couldn\'t register');
-        navigate(`/auth/verify-email?email=${email}`);
+        try {
+            setLoading(true)
+            const response = await signUp({ email, password, fullname });
+            if (response.status !== 201) throw new Error('Error couldn\'t register');
+            navigate(`/auth/verify-email?email=${email}`);
+        } catch (error) {
+            //  
+        } finally {
+            setLoading(false)
+        }
     }
     return (
         <Page className={styles["page"]}>
@@ -51,7 +60,7 @@ export default function SignUpPage() {
                             {t("terms.iAgree")} <ThemedAnchor>{t("terms.ToS")}</ThemedAnchor> {t("terms.and")} <ThemedAnchor>{t("terms.PP")}</ThemedAnchor>
                         </CheckboxInput>
                     </div>
-                    <ThemedRectButton handleClick={createNewAccount} disabled={fullname == "" || !validator.isEmail(email) || !password || password !== confirmedPassword || passwordWarning !== "" || !agreed} >{t("titles.createAccount")}</ThemedRectButton>
+                    <ThemedRectButton loading={loading} handleClick={createNewAccount} disabled={fullname == "" || !validator.isEmail(email) || !password || password !== confirmedPassword || passwordWarning !== "" || !agreed} >{t("titles.createAccount")}</ThemedRectButton>
                 </form>
                 {/* <Link to="/app/home">
                     <GuestModeButton customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} className="mt-[0.5rem] mb-[.1rem]" />
