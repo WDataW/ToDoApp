@@ -133,6 +133,16 @@ export const getInbox = async () => {
         console.log(error)
     }
 }
+
+export const resendVerificationEmail = async (email) => {
+    try {
+        const response = await axios.post(`/api/v1/auth/resend-verification-email`, { email });
+        if (response && response.status == 200) return response.data;
+        throw new Error('Failed to update Message');
+    } catch (error) {
+        console.log(error)
+    }
+}
 export const signUp = (newUser) => {
     return axios.post('/api/v1/auth/register', newUser)
 }

@@ -49,10 +49,10 @@ export default function SetNewPasswordPage() {
                     <WarningMessage className="ms-[0.2rem] mb-[0.5rem]">{password !== confirmedPassword && confirmedPassword ? t("warnings.passwordNotConfirmed") : ""}</WarningMessage>
 
                     <ResetPasswordButton loading={loading} disabled={!password || password !== confirmedPassword || passwordWarning !== ""} />
-                    <Link to={"/auth/sign-in"}>
-                        <a href={null} className="text-[0.8rem] opacity-50 ">{t("titles.signIn")}</a>
+                    <Link to={"/auth/sign-in"} className="text-[0.8rem] opacity-50 " >
+                        {t("titles.signIn")}
                     </Link>
-                    <p className="text-[0.8rem] opacity-70 text-center mt-[0.75rem]">{t("terms.dontHaveAnAccount")} <ThemedAnchor href="">{t("titles.signUp")}</ThemedAnchor></p>
+                    <p className="text-[0.8rem] opacity-70 text-center mt-[0.75rem]">{t("terms.dontHaveAnAccount")} <ThemedAnchor to="/auth/sign-up">{t("titles.signUp")}</ThemedAnchor></p>
 
                 </form>
             </div>
