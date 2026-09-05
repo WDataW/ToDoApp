@@ -16,6 +16,8 @@ export default function SetNewPasswordPage() {
     const [email] = useState(searchParams.get("email"));
     const [token] = useState(searchParams.get("token"));
     // state
+    const [loading, setLoading] = useState(false);
+
     const [passwordWarning, dispatch] = useValidation();
     const [password, setPassword] = useState("");
     const [confirmedPassword, setConfirmedPassword] = useState("");
@@ -25,9 +27,15 @@ export default function SetNewPasswordPage() {
     const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        const response = await resetPassword(email, token, password);
-        if (response && response.status == 200) navigate(`/auth/sign-in?email=${email}`);
+        try {
+            setLoading(true);
+            const response = await resetPassword(email, token, password);
+            if (response && response.status == 200) navigate(`/auth/sign-in?email=${email}`);
+        } catch (error) {
+            // 
+        } finally {
+            setLoading(false);
+        }
     }
     return (
         <Page className={styles["page"]}>
@@ -40,7 +48,7 @@ export default function SetNewPasswordPage() {
                     <PasswordInput customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} className={"mb-[0.2rem]"} value={confirmedPassword} handleChange={(e) => { setConfirmedPassword(e.target.value) }} label={t("fields.confirmPassword")} placeholder={t("fields.reEnterPassword")} />
                     <WarningMessage className="ms-[0.2rem] mb-[0.5rem]">{password !== confirmedPassword && confirmedPassword ? t("warnings.passwordNotConfirmed") : ""}</WarningMessage>
 
-                    <ResetPasswordButton disabled={!password || password !== confirmedPassword || passwordWarning !== ""} />
+                    <ResetPasswordButton loading={loading} disabled={!password || password !== confirmedPassword || passwordWarning !== ""} />
                     <Link to={"/auth/sign-in"}>
                         <a href={null} className="text-[0.8rem] opacity-50 ">{t("titles.signIn")}</a>
                     </Link>
