@@ -22,7 +22,6 @@ export default function ErrorHandler({ className = "", children, ...props }) {
     useEffect(() => {
         return subscribeToErrors(pushError);
     }, []);
-    console.log(errors);
     return (
         <div>
             {errors.length > 0 && createPortal(<PopUp error={errors[0]} onClose={popError} />, document.querySelector('body'))}

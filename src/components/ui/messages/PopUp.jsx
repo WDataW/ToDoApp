@@ -7,12 +7,12 @@ export default function PopUp({ error, onClose }) {
     const [visible, setVisible] = useState(true);
     useEffect(() => {
         setVisible(true);
-        const timerId = setTimeout(handleClose, 5000);
+        const timerId = setTimeout(handleClose, 2000);
         return () => { clearTimeout(timerId) }
     }, [error]);
     const handleClose = () => {
         setVisible(false);
-        setTimeout(onClose, 1000)
+        setTimeout(onClose, 200)
     }
 
     return (

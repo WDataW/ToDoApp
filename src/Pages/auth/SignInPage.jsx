@@ -89,7 +89,6 @@ export default function SignInPage({ children }) {
                 {/* <Link to="/app/home">
                     <GuestModeButton customTheme={`auth${theme}`} customIcon={w >= 768 && "dark"} className="mt-[0.5rem] mb-[.1rem]" />
                 </Link> */}
-                {isSuccesful == false && <ErrorMessage className={'ps-[0.1rem]'}>{t("errors.invalidEmailPassword")}</ErrorMessage>}
                 <Link to={`/auth/forgot-password?email=${userInfo.email}`} href={null} className="text-[0.8rem] opacity-50 ">{t("titles.forgotPassword")}</Link>
                 <p className="text-[0.8rem] opacity-70 text-center mt-[0.75rem]">{t("terms.dontHaveAnAccount")} <ThemedAnchor to="/auth/sign-up">{t("titles.signUp")}</ThemedAnchor></p>
                 {children}
