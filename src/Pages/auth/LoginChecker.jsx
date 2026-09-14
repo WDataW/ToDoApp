@@ -43,7 +43,7 @@ export default function LoginChecker() {
     return <div>
         {isLoading && !infoState.email &&
             < div className="h-[100dvh] flex items-center justify-center w-[100dvw] fixed  bottom-0 bg-black z-999">
-                <div className="animate-spin animate-ping h-[8rem] aspect-1/1 rounded-full border   border-b-[#7C7C7C] border-[1.2rem]"></div>
+                <div className="animate-spin h-[8rem] aspect-1/1 rounded-full border   border-b-[#7C7C7C] border-[1.2rem]"></div>
             </div>
         }
         <Outlet></Outlet>

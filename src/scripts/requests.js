@@ -1,3 +1,4 @@
+import { broadcastError } from '@/ErrorHandler';
 import axios from 'axios';
 export const login = async ({ email, password }) => {
     try {
@@ -7,7 +8,7 @@ export const login = async ({ email, password }) => {
         (response);
         return response;
     } catch (error) {
-        console.log(error);
+        broadcastError(error);
     }
 }
 export const deleteAccountAndData = async (password) => {
@@ -120,7 +121,6 @@ export const isLogged = async () => {
         if (response && response.status == 200) return true;
         else return false;
     } catch (error) {
-        console.log(error)
     }
 }
 

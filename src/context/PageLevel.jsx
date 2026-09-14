@@ -6,7 +6,6 @@ export function useLevel() {
 }
 export default function PageLevel({ children }) {
     const [level, setLevel] = useState(0);
-    console.log(level);
     return (
         <PageLevelContext value={[level, setLevel]}>
             {children}

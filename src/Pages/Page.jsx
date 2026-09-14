@@ -1,3 +1,4 @@
+import PopUp from "@/components/ui/messages/PopUp";
 import { useTheme, textColors, bgColors } from "../context/Theme";
 import ResetScroll from "./ResetScroll";
 export default function Page({ resetScroll = true, customTheme, className, children, ...props }) {

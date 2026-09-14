@@ -1,9 +1,4 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { sortTasksByDate } from "../components/ui/Tasks/tasks";
-import userJSON from "/src/assets/user.json";
-import { sortInbox } from "@/components/ui/inbox/mail";
-import { getTags, getTasks, getUserInfo, isLogged } from "@/scripts/requests";
-import { useNavigate } from "react-router-dom";
 const UserInfoContext = createContext();
 const UserTasksContext = createContext();
 const UserInboxContext = createContext();

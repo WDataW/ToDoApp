@@ -1,7 +1,6 @@
 "use client"
 
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts"
-import { AnimatePresence, motion } from "motion/react";
 import {
     ChartContainer,
     ChartTooltip,
