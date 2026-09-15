@@ -8,6 +8,7 @@ import { useScreenWidth } from "@/context/ScreenSize";
 import { Link, useSearchParams } from "react-router-dom";
 import { resendVerificationEmail, verifyEmail } from "@/scripts/requests";
 import { useEffectEvent } from "react";
+import { preload } from "react-dom";
 
 const initialCode = {
     0: "",
@@ -117,6 +118,12 @@ export default function VerificationCodePage() {
     const t = useTranslation();
     const styles = commonStyles;
     const w = useScreenWidth();
+
+    useEffect(() => {
+        if (w >= 768) preload("/images/desk.jpg", { as: "image" })
+    }, []);
+
+
     return (
         <Page className={styles["page"]}>
             <div className={`frosted-glass p-[1.5rem] rounded-[0.5rem] md:text-white w-full max-w-[23.5rem]`}>

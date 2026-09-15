@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { EmailInput, ResetPasswordButton, ThemedAnchor } from "../../../components/ui";
 import Page from "../../Page";
 import { useTheme } from "../../../context/Theme";
@@ -7,6 +7,7 @@ import { useTranslation } from "../../../context/Language";
 import { useScreenWidth } from "@/context/ScreenSize";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { forgotPassword } from "@/scripts/requests";
+import { preload } from "react-dom";
 export default function ForgotPasswordPage() {
     const [theme] = useTheme();
     const styles = commonStyles;
@@ -16,6 +17,10 @@ export default function ForgotPasswordPage() {
     const w = useScreenWidth();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        if (w >= 768) preload("/images/desk.jpg", { as: "image" })
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

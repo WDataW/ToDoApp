@@ -10,6 +10,7 @@ import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { getTags, getTasks, getUserInfo, login } from "@/scripts/requests";
 import { useInfo, useTags, useTasks } from "@/context/User";
 import validator from 'validator'
+import { preload } from "react-dom";
 const styles = commonStyles;
 
 export default function SignInPage({ children }) {
@@ -70,6 +71,11 @@ export default function SignInPage({ children }) {
     }
 
     const w = useScreenWidth();
+
+    useEffect(() => {
+        if (w >= 768) preload("/images/desk.jpg", { as: "image" })
+    }, []);
+
     return (
         <Page className={styles["page"]}>
             <div className={`frosted-glass p-[1.5rem] rounded-[0.5rem] md:text-white w-full max-w-[25rem] `}>

@@ -1,7 +1,7 @@
 import { EmailInput, PasswordInput, GuestModeButton, UsernameInput, ThemedAnchor, CheckboxInput, ErrorMessage, ThemedRectButton, WarningMessage } from "../../components/ui";
 import Page from "../Page";
 import { useTheme } from "../../context/Theme";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { commonStyles } from "./commonStyles";
 import { useValidation, validatePassword } from "./PasswordResetPages/PasswordValidation";
 import { useTranslation } from "../../context/Language";
@@ -9,6 +9,7 @@ import { useScreenWidth } from "@/context/ScreenSize";
 import { Link, useNavigate } from "react-router-dom";
 import validator from "validator";
 import { signUp } from "@/scripts/requests";
+import { preload } from "react-dom";
 const styles = commonStyles;
 
 
@@ -26,6 +27,11 @@ export default function SignUpPage() {
     const t = useTranslation();
     const [email, setEmail] = useState('');
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (w >= 768) preload("/images/desk.jpg", { as: "image" })
+    }, []);
+
     const createNewAccount = async (e) => {
         e.preventDefault();
         try {
