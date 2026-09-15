@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { FloatingContainer, SelectButtons } from "@/components/ui";
 import { useInbox } from "@/context/User";
-import { getInbox } from "@/scripts/requests";
+import { getInbox, isLogged } from "@/scripts/requests";
 import { sortInbox } from "@/components/ui/inbox/mail";
 
 let popUp;
@@ -20,6 +20,12 @@ export default function LanguageButton({ isInBurger, className = "", yOffset = -
         setLocalLang(newLang);
         window.localStorage.setItem("lang", newLang);
         setLang(newLang);
+        const isLoggedIn = await isLogged();
+        if (!isLoggedIn) {
+            hideContainer();
+            return;
+        }
+        // update inbox to reflect the new language
         const newInbox = await getInbox();
         setInbox(sortInbox(newInbox));
         hideContainer();
@@ -57,7 +63,7 @@ export default function LanguageButton({ isInBurger, className = "", yOffset = -
         return (
             <>
                 <SettingButton ref={selfRef} label={t("terms.language")} active={show} onClick={handleBurgerClick} className={` ${className}`} {...props}>
-                    <SelectButtons customZIndex={true} className={`mt-[0.1rem] w-[10rem] text-[1rem]`} value={localLang} setValue={updateLanguage} options={["en", "ar"]}></SelectButtons>
+                    {show && <SelectButtons customZIndex={true} className={`mt-[0.1rem] w-[10rem] text-[1rem]`} value={localLang} setValue={updateLanguage} options={["en", "ar"]}></SelectButtons>}
                 </SettingButton>
             </>
         );
