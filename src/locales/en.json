@@ -171,6 +171,7 @@
         "today": "Today"
     },
     "errors": {
+        "somethingWentWrong": "Something went wrong, try again later.",
         "invalidEmailPassword": "Incorrect email or password",
         "invalidEmail": "Invalid Email address"
     },

@@ -24,7 +24,7 @@ export default function ErrorHandler({ className = "", children, ...props }) {
     }, []);
     return (
         <div>
-            {errors.length > 0 && createPortal(<PopUp error={errors[0]} onClose={popError} />, document.querySelector('body'))}
+            {errors.length > 0 && createPortal(<PopUp error={errors[0]} onClose={popError} />, document.getElementById('root'))}
             {children}
         </div>
     );

@@ -9,19 +9,19 @@ import PageLevel from './context/PageLevel'
 import Error from './ErrorHandler'
 import ErrorHandler from './ErrorHandler'
 createRoot(document.getElementById('root')).render(
-  // <StrictMode>
-  <ErrorHandler>
+  <StrictMode>
     <User>
       <Theme>
         <Language>
           <ScreenSize>
             <PageLevel>
-              <App />
+              <ErrorHandler>
+                <App />
+              </ErrorHandler>
             </PageLevel>
           </ScreenSize>
         </Language>
       </Theme>
     </User>
-  </ErrorHandler>
-  // </StrictMode>
+  </StrictMode>
 )
