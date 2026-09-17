@@ -53,7 +53,7 @@ export default function SignInPage({ children }) {
                 return;
             }
             // load user data
-            loadUser();
+            await loadUser();
             navigate('/app/home');
         } catch (error) {
             if (error?.response?.data?.message === "Please verify your Email address before logging in")
