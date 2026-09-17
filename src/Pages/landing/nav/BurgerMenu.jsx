@@ -15,16 +15,27 @@ export default function BurgerMenu({ value, setValue, className = "", children, 
     const [theme] = useTheme();
     const selfRef = useRef();
     function handleBurgerClick() {
-        if (!value) hidePageContents();
+        if (!value) {
+            hidePageContents();
+            history.pushState({}, "", window.location.href)
+        }
         if (value) showPageContents();
         setValue(!value);
     }
+    const closeBurger = () => {
+        setValue(false);
+        showPageContents();
+    }
     useEffect(() => {
-        return () => {
-            setValue(false);
-            showPageContents();
-        }
+        return closeBurger
     }, []);
+
+    useEffect(() => {
+        window.addEventListener("popstate", closeBurger);
+        return () => window.removeEventListener("popstate", closeBurger);
+
+    }, []);
+
     return (
         <button onClick={handleBurgerClick} ref={selfRef} className={`${value ? activeIcons[theme] : icons[theme]} opacity-80  bg-cover bg-no-repeat bg-center h-[1.5rem] w-[1.5rem]`}></button>
     );

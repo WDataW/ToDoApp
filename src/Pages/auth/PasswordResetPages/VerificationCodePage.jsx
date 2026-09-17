@@ -5,26 +5,47 @@ import { commonStyles } from "../commonStyles";
 import { useTranslation } from "../../../context/Language";
 import { useState, useRef, useEffect } from "react";
 import { useScreenWidth } from "@/context/ScreenSize";
-import { useNavigate } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
+import { resendVerificationEmail, verifyEmail } from "@/scripts/requests";
+import { useEffectEvent } from "react";
+import { preload } from "react-dom";
 
 const initialCode = {
     0: "",
     1: "",
     2: "",
-    3: ""
+    3: "",
+    4: "",
+    5: "",
 }
 
 
-export default function VerificationCodePage({ email = "you@example.com" }) {
+export default function VerificationCodePage() {
+    const [searchParams, _] = useSearchParams();
+    const [loading, setLoading] = useState(false);
+    const [sendAgainTimer, setSendAgainTimer] = useState(60);
+    const email = searchParams.get('email');
+    const countDown = useEffectEvent(() => {
+        if (sendAgainTimer <= 0) {
+            setSendAgainTimer(0);
+            return;
+        }
+        setSendAgainTimer((t) => --t)
+    }
+    );
     useEffect(() => {
-        for (let i = 0; i < 4; i++) {
+        const timerId = setInterval(countDown, 1000);
+
+        for (let i = 0; i < 6; i++) {
             getMap().get(i).addEventListener("keydown", handleBackspace);
         }
         getMap().get(0).focus();
         return () => {
-            for (let i = 0; i < 4; i++) {
+            for (let i = 0; i < 6; i++) {
                 if (getMap().get(i)) getMap().get(i).removeEventListener("keydown", handleBackspace);
             }
+
+            clearInterval(timerId)
         }
     }, []);
 
@@ -41,14 +62,10 @@ export default function VerificationCodePage({ email = "you@example.com" }) {
     }, [currentIndex])
     function handleBackspace(e) {
         if (e.key == "Backspace") {
-
             setCurrentIndex((c) => c - 1);
-
-
         }
     }
-    const codeKeys = ["0", "1", "2", "3"];
-    const navigate = useNavigate();
+    const codeKeys = ["0", "1", "2", "3", "4", "5"];
     const [code, setCode] = useState(initialCode);
     function handleChange(e, i) {
         const inputValue = e.target.value;
@@ -56,22 +73,39 @@ export default function VerificationCodePage({ email = "you@example.com" }) {
         setCode({ ...code, [i]: newValue });
 
         const map = getMap()
-        const nextInputIndex = i == 3 ? 0 : i + 1
+        const nextInputIndex = i == 5 ? 0 : i + 1
         if (!map.get(i).value) return;// means the current input box has been cleared no need to move to the next
 
         setCurrentIndex(nextInputIndex);
 
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < 6; i++) {
             if (!map.get(i).value) {
                 return
             }
         }
-        navigate("/auth/new-password/");
-        // document.getElementById("verificationCodeForm").submit();
 
     }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const verificationCode = code["0"] + code["1"] + code["2"] + code["3"] + code["4"] + code["5"]
 
+        try {
+            setLoading(true);
+            const response = await verifyEmail(email, verificationCode);
+            if (!response || response.status !== 200) throw new Error('Email verification failed');
+            window.location.href = '/app/home';
+
+        } catch (error) {
+            // 
+        } finally {
+            setLoading(false);
+        }
+    }
+    const handleSendAgain = async () => {
+        setSendAgainTimer(60);
+        await resendVerificationEmail(email);
+    }
 
     const inputElements = useRef(null);
     function getMap() {
@@ -84,10 +118,16 @@ export default function VerificationCodePage({ email = "you@example.com" }) {
     const t = useTranslation();
     const styles = commonStyles;
     const w = useScreenWidth();
+
+    useEffect(() => {
+        if (w >= 768) preload("/images/desk.jpg", { as: "image" })
+    }, []);
+
+
     return (
         <Page className={styles["page"]}>
             <div className={`frosted-glass p-[1.5rem] rounded-[0.5rem] md:text-white w-full max-w-[23.5rem]`}>
-                <h2 className="text-center ">{t("titles.resetPassword")}</h2>
+                <h2 className="text-center ">{t("titles.verificationCodeSent")}</h2>
                 <p className="text-center opacity-70 mb-[2rem]">{t("terms.weSentACodeTo")} {email}</p>
                 <form id={"verificationCodeForm"} action="">
                     <div className="flex gap-[0.4rem]" dir="ltr">
@@ -109,10 +149,10 @@ export default function VerificationCodePage({ email = "you@example.com" }) {
                             )
                         }
                     </div>
-                    <ThemedRectButton type="submit" disabled={!code["0"] || !code["1"] || !code["2"] || !code["3"]}>{t("titles.continue")}</ThemedRectButton>
+                    <ThemedRectButton loading={loading} handleClick={handleSubmit} type="submit" disabled={!code["0"] || !code["1"] || !code["2"] || !code["3"] || !code["4" || !code["5"]]}>{t("titles.continue")}</ThemedRectButton>
                 </form>
-                <a href={null} className="text-[0.8rem] opacity-50 ">{t("titles.signIn")}</a>
-                <p className="text-[0.8rem] opacity-70 text-center mt-[0.75rem]">{t("terms.didntRecieveAnEmail")} <ThemedAnchor href="">{t("terms.sendAgain")}</ThemedAnchor></p>
+                <Link to="/auth/sign-in" className="text-[0.8rem] opacity-50 ">{t("titles.signIn")}</Link>
+                <p className="text-[0.8rem] opacity-70 text-center mt-[0.75rem]">{t("terms.didntRecieveAnEmail")} {sendAgainTimer <= 0 ? <ThemedAnchor onClick={handleSendAgain} href="">{t("terms.sendAgain")}</ThemedAnchor > : <span className="ms-[0.2rem]">{sendAgainTimer}</span>}</p>
             </div>
 
         </Page>

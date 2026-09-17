@@ -1,11 +1,19 @@
 import { Page } from ".";
 import { useEffect, useRef } from "react";
 import { useTheme } from "@/context/Theme";
+import { useLevel } from "@/context/PageLevel";
 export default function OverlayPage({ overAnOverlay = false, close, heading = "", className = "", children, ...props }) {
     const selfRef = useRef(null);
+    const [pageLevel, setPageLevel] = useLevel();
     useEffect(
         () => {
+            history.pushState({}, "", window.location.href);
+            setPageLevel((l) => ++l);
             xRef.current.focus()
+            return () => {
+                setPageLevel((l) => --l);
+
+            }
         }, []
     );
     const [theme] = useTheme();

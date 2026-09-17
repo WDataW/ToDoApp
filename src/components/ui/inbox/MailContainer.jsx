@@ -1,16 +1,19 @@
 import { useInbox } from "@/context/User";
-import { filterMail, processMail } from "./mail";
+import { filterMail } from "./mail";
 import Mail from "./Mail.jsx";
 import { hidePageContents, showPageContents } from "@/Pages/pages";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import MailPage from "./MailPage";
 import { createPortal } from "react-dom";
 import { useTranslation } from "@/context/Language";
 export default function MailContainer({ from, search, className = "", children, ...props }) {
     const [inbox] = useInbox();
+    const [filteredInbox, setFilteredInbox] = useState(filterMail(inbox, from, search));
 
-    const processedInbox = processMail(inbox);
-    const filteredInbox = filterMail(processedInbox, from, search);
+    useEffect(() => {
+        setFilteredInbox(filterMail(inbox, from, search));
+    }, [inbox, search, from])
+
     const [currentMail, setCurrentMail] = useState(null);
     const t = useTranslation();
     const [viewMail, setViewMail] = useState(false);

@@ -1,20 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { EmailInput, UsernameInput } from "../keyboardInputs";
 
-export default function UserInit({ info, setInfo, className = "", children, ...props }) {
-    const [fullName, setFullName] = useState(info.fullName);
+export default function UserInit({ name, setName, info, className = "", children, ...props }) {
     const [email, setEmail] = useState(info.email);
-
-    useEffect(() => {
-        setInfo({ ...info, fullName, email });
-    }, [fullName, email]);
     return (
         <div className={`flex flex-col  gap-[0.5rem] ${className}`} {...props}>
             <div>
-                <UsernameInput value={fullName} handleChange={(e) => { setFullName(e.target.value) }}></UsernameInput>
+                <EmailInput className={"opacity-50"} value={email} disabled ></EmailInput>
             </div>
             <div>
-                <EmailInput value={email} handleChange={(e) => { setEmail(e.target.value) }}></EmailInput>
+                <UsernameInput value={name} handleChange={(e) => { setName(e.target.value) }}></UsernameInput>
             </div>
 
         </div>

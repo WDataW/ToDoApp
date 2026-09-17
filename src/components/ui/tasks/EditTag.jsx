@@ -4,12 +4,17 @@ import TagInit from "./TagInit";
 import { useState } from "react";
 import { isBuiltInTitle, useEditTag } from "./tasks";
 import { useTranslation } from "@/context/Language";
+import { createTag, patchTag } from "@/scripts/requests";
 export default function EditTag({ yesFunc, setActiveTags, activeTags, close, tagToEdit = { title: "", icon: "" }, yes, no, className = "", children, ...props }) {
     const editTag = useEditTag();
     const [newTag, setNewTag] = useState();
     const t = useTranslation();
-    function save() {
-        editTag(newTag);
+    async function save() {
+        let response
+        if (!tagToEdit?.id) response = await createTag(newTag); // indicates we're creating a tag not editing one
+        else response = await patchTag(newTag);
+        if (response && response.status == 200 || response.status == 201) editTag(response.data);
+        else throw new Error('Error couldn\'t save tag');
         if (activeTags && activeTags.length == 0) setActiveTags(newTag.builtIn ? [t(`terms.${isBuiltInTitle(newTag.title, t)}`)] : [newTag.id]);
         if (yesFunc) yesFunc(newTag);
         close();

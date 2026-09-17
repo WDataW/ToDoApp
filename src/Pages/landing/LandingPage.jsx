@@ -1,10 +1,7 @@
 import { useTheme } from "@/context/Theme";
 import Nav from "./nav/Nav";
-import ToggleLang from "@/components/other/ToggleLang";
-import ToggleTheme from "@/components/other/ToggleTheme";
 import HeroSection from "./HeroSection";
 import FeaturesSection from "./features/FeaturesSection";
-import { SelectButtons } from "@/components/ui";
 import FooterSection from "./footer/FooterSection";
 import AboutSection from "./about/AboutSection";
 import ResetScroll from "../ResetScroll";

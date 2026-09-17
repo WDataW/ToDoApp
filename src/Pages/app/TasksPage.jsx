@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import AppPage from "./AppPage";
 import { AnimatePresence, motion } from "motion/react";
 import { CategoriesSection, CreateTaskButton, TasksSection, Main, SearchInput, TasksCalendar } from "../../components/ui";
-import { isUUID, taskSkeleton } from "@/components/ui/tasks/tasks";
+import { isUUID, taskSkeleton, useAllTags } from "@/components/ui/tasks/tasks";
 import { useLocation } from "react-router-dom";
+import { useTags } from "@/context/User";
 export default function TasksPage({ className = "", children, ...props }) {
     const t = useTranslation();
     const [activeTags, setActiveTags] = useState([]);
@@ -17,6 +18,7 @@ export default function TasksPage({ className = "", children, ...props }) {
             }
         }
     }, [activeTags]);
+    const tags = useTags()
 
     const { hash } = useLocation();
     useEffect(() => {

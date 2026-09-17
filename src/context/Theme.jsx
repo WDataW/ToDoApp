@@ -23,17 +23,19 @@ export function getBrowserPreference() {
 }
 export default function Theme({ children }) {
     const [userInfo] = useInfo();
-    const userTheme = userInfo?.settings?.theme;
+    const userTheme = userInfo?.settings?.theme?.base || window.localStorage.getItem("theme");;
 
     const [theme, setTheme] = useState(userTheme || getBrowserPreference());
 
 
-
     function initTheme() {
-        const theme = getBrowserPreference();
+        let theme = getBrowserPreference();
+        theme = window.localStorage.getItem("theme");
         document.documentElement.setAttribute("theme", theme);
         setTheme(theme);
     }
+
+
     useEffect(() => {
         if (!userTheme) {
             window.matchMedia('(prefers-color-scheme: dark)').addEventListener("change",
@@ -49,6 +51,23 @@ export default function Theme({ children }) {
         }
     }, []
     );
+    useEffect(() => {
+        if (userInfo?.settings?.theme) {
+            const storedTheme = userInfo.settings.theme;
+            if (storedTheme?.darkAccentColor) {
+                document.documentElement.style.setProperty("--dark-theme-accent-color", storedTheme.darkAccentColor);
+            }
+            if (storedTheme?.lightAccentColor) {
+                document.documentElement.style.setProperty("--light-theme-accent-color", storedTheme.lightAccentColor);
+            }
+            if (storedTheme?.darkSecondaryColor) {
+                document.documentElement.style.setProperty("--color-darker-dark-theme", storedTheme.darkSecondaryColor);
+            }
+            if (storedTheme?.lightSecondaryColor) {
+                document.documentElement.style.setProperty("--color-darker-light-theme", storedTheme.lightSecondaryColor);
+            }
+        }
+    }, [userInfo])
 
     return (
         <ThemeContext value={[theme, setTheme]}>

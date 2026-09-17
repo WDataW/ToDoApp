@@ -3,6 +3,9 @@ import SettingButton from "./SettingButton";
 import { useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { FloatingContainer, SelectButtons } from "@/components/ui";
+import { useInbox, useInfo } from "@/context/User";
+import { getInbox, isLogged } from "@/scripts/requests";
+import { sortInbox } from "@/components/ui/inbox/mail";
 
 let popUp;
 export default function LanguageButton({ isInBurger, className = "", yOffset = -2.8, children, ...props }) {
@@ -11,11 +14,26 @@ export default function LanguageButton({ isInBurger, className = "", yOffset = -
     const selfRef = useRef();
     const [lang, setLang] = useLang();
     const [localLang, setLocalLang] = useState(lang);
-
-    function updateLanguage(newLang) {
+    const [info, setInfo] = useInfo();
+    const [inbox, setInbox] = useInbox();
+    async function updateLanguage(newLang) {
         updateLang(newLang)
         setLocalLang(newLang);
+        setInfo({
+            settings: {
+                language: newLang
+            }
+        });
+        window.localStorage.setItem("lang", newLang);
         setLang(newLang);
+        const isLoggedIn = await isLogged();
+        if (!isLoggedIn) {
+            hideContainer();
+            return;
+        }
+        // update inbox to reflect the new language
+        const newInbox = await getInbox();
+        setInbox(sortInbox(newInbox));
         hideContainer();
     }
 
@@ -29,7 +47,7 @@ export default function LanguageButton({ isInBurger, className = "", yOffset = -
 
     function handleClick(e) {
         const position = selfRef.current.getBoundingClientRect();
-        const xOffset = lang == "ar" ? -2.8 : 2;
+        const xOffset = lang == "ar" ? 2 : 2;
         const rem = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("font-size"));
         popUp = <FloatingContainer aria-label="Press Escape to close." lastFocused={e.target} style={{ position: "fixed", top: position.top - yOffset * rem, left: position.left - xOffset * rem }} hide={hideContainer} className={` text-[1rem] flex flex-col justify-center    `} >
             <SelectButtons customZIndex={true} className={`w-[9rem]`} value={localLang} setValue={updateLanguage} options={["en", "ar"]}></SelectButtons>
@@ -51,7 +69,7 @@ export default function LanguageButton({ isInBurger, className = "", yOffset = -
         return (
             <>
                 <SettingButton ref={selfRef} label={t("terms.language")} active={show} onClick={handleBurgerClick} className={` ${className}`} {...props}>
-                    <SelectButtons customZIndex={true} className={`mt-[0.1rem] w-[10rem] text-[1rem]`} value={localLang} setValue={updateLanguage} options={["en", "ar"]}></SelectButtons>
+                    {show && <SelectButtons customZIndex={true} className={`mt-[0.1rem] w-[10rem] text-[1rem]`} value={localLang} setValue={updateLanguage} options={["en", "ar"]}></SelectButtons>}
                 </SettingButton>
             </>
         );

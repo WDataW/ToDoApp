@@ -3,7 +3,7 @@ import { numToArabic, useLang } from "@/context/Language";
 export default function ProgressBar({ numerator, denominator, className = "", children, ...props }) {
     const progress = numerator / denominator * 100;
     const [lang] = useLang();
-    const ratio = lang == "ar" ? numToArabic(numerator + " / " + denominator) : numerator + " / " + denominator;
+    const ratio = lang == "ar" ? numToArabic(numerator + " من " + denominator) : numerator + " / " + denominator;
     return (
         <div className={`${className} w-full`} {...props}>
             <p className="text-[0.7rem] w-full text-start">{ratio}</p>

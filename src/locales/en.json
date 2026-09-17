@@ -1,5 +1,7 @@
 {
     "titles": {
+        "checkYourEmail": "Check your email",
+        "verificationCodeSent": "Verify your email",
         "guestMode": "Guest Mode",
         "keyFeatures": "Key Features",
         "doMoreStressLess": "Do More. Worry Less",
@@ -27,6 +29,7 @@
         "forgotPassword": "Forgot Password?",
         "continue": "Continue",
         "signIn": "Sign in",
+        "changePhoto": "Change photo",
         "home": "Home",
         "tasks": "Tasks",
         "stats": "Stats",
@@ -53,8 +56,9 @@
         "enterUsername": "Enter full name",
         "email": "Email",
         "enterEmail": "Enter email",
-        "password": "Enter password",
+        "password": "Password",
         "enterPassword": "Enter password",
+        "enterNewPassword": "Enter new password",
         "confirmPassword": "Confirm password",
         "reEnterPassword": "Re-enter password",
         "searchTask": "Search tasks",
@@ -64,6 +68,8 @@
         "category": "Category"
     },
     "terms": {
+        "returnToHome": "Return to homepage",
+        "sentYouALink": "We’ve sent you a link to continue. Please check your inbox and follow the link.",
         "oops": "Oops the page you're looking for doesn't exist",
         "return": "Return",
         "back": "Back",
@@ -114,6 +120,7 @@
         "all": "All",
         "tasksCompleted": "Tasks Completed",
         "system": "System",
+        "personal": "Personal",
         "tasks": "Tasks",
         "tasks_one": "Task",
         "tasks_other": "Tasks",
@@ -164,12 +171,14 @@
         "today": "Today"
     },
     "errors": {
-        "invalidEmailPassword": "Invalid email or password"
+        "somethingWentWrong": "Something went wrong, try again later.",
+        "invalidEmailPassword": "Incorrect email or password",
+        "invalidEmail": "Invalid Email address"
     },
     "warnings": {
         "emptyTitle": "Title can not be empty.",
         "pastDate": "The date and time you picked is in the past.",
-        "passwordLength": "Password must be between 8 and 64 characters",
+        "passwordLength": "Password must be between 8 and 24 characters",
         "passwordUppercase": "Password must include at least one uppercase letter",
         "passwordLowercase": "Password must include at least one lowercase letter",
         "passwordDigit": "Password must include at least one digit",
@@ -178,10 +187,6 @@
         "passwordNotConfirmed": "Passwords don't match"
     },
     "mail": {
-        "welcome": {
-            "title": "Welcome to the app!",
-            "content": "We're glad to have you here. Enjoy your journey!"
-        },
         "isDueIn_one": "{{task}} is due in {{count}} hour.",
         "isDueIn_other": "{{task}} is due in {{count}} hours."
     },

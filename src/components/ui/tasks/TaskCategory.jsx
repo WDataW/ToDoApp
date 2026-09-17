@@ -8,6 +8,7 @@ import { useTranslation } from "@/context/Language";
 import { interpreteBuiltInTagTitle, useAllTags, useDeleteTag } from "./tasks";
 import DeleteSomething from "../buttons/DeleteSomething";
 import { hidePageContents, showPageContents } from "@/Pages/pages";
+import { patchTag } from "@/scripts/requests";
 
 let actionsMenu;
 export default function TaskCategory({ i, setActiveTags, active, handleClick = () => { }, tag = {}, className = "", children, ...props }) {
@@ -27,7 +28,9 @@ export default function TaskCategory({ i, setActiveTags, active, handleClick = (
         tagId = tagTitle;
     }
     const [tags, setTags] = useAllTags();
-    function editPin() {
+    async function editPin() {
+        const response = await patchTag({ ...tag, pinned: !pinned });
+        if (!response.status == 200) throw new Error('Error couldn\'t pin task');
         setPinned(!pinned);
         const newTag = { ...tag, pinned: !pinned };
         let newTags = tags.filter((cTag) => cTag.id !== tag.id);

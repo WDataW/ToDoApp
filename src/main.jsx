@@ -5,16 +5,22 @@ import User from './context/User'
 import Theme from './context/Theme'
 import Language from './context/Language'
 import ScreenSize from './context/ScreenSize'
+import PageLevel from './context/PageLevel'
+import ErrorHandler from './ErrorHandler'
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <User>
-      <Theme>
-        <Language>
-          <ScreenSize>
-            <App />
-          </ScreenSize>
-        </Language>
-      </Theme>
-    </User>
-  </StrictMode>
+  // <StrictMode>
+  <User>
+    <Theme>
+      <Language>
+        <ScreenSize>
+          <PageLevel>
+            <ErrorHandler>
+              <App />
+            </ErrorHandler>
+          </PageLevel>
+        </ScreenSize>
+      </Language>
+    </Theme>
+  </User>
+  // </StrictMode>
 )

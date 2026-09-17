@@ -19,7 +19,7 @@ function setIcons(light, dark) {
     icons["light"] = light;
     icons["dark"] = dark;
 }
-export default function KeyboardInput({ type = "text", required = true, customStyles, customIcon, customTheme, label = "", placeholder = "", lightIcon = "", darkIcon = "", iconAlt = "", className = "", handleChange, value, ref, ...props }) {
+export default function KeyboardInput({ type = "text", required = true, customStyles, customIcon, customTheme, label = "", placeholder = "", lightIcon = "", darkIcon = "", iconAlt = "", className = "", handleChange, customId, inputStyle = "", value, ref, ...props }) {
     const [theme] = useTheme();
     setIcons(lightIcon, darkIcon);
     const id = useId();
@@ -28,7 +28,7 @@ export default function KeyboardInput({ type = "text", required = true, customSt
             {label && <label className="ms-[0.2rem]" htmlFor={id}>{label}</label>}
             <div className={`relative ${className} `}>
                 <img src={icons[customIcon || theme]} alt={iconAlt} className="absolute top-1/2 -translate-y-1/2 start-[0.8rem] h-1/2" />
-                <input type={type} value={value} id={id} required={required} ref={ref} placeholder={placeholder} onChange={handleChange} className={`${commonStyles} ${themeStyles[customTheme || theme]}  ps-[2.5rem]`}{...props} />
+                <input type={type} value={value} id={customId || id} required={required} ref={ref} placeholder={placeholder} onChange={handleChange} className={`${commonStyles} ${themeStyles[customTheme || theme]} ${inputStyle}  ps-[2.5rem]`}{...props} />
             </div>
         </>
         );
@@ -36,7 +36,7 @@ export default function KeyboardInput({ type = "text", required = true, customSt
     else {
         return (<>
             {label && <label className="ms-[0.2rem]" htmlFor={id}>{label}</label>}
-            <input type={type} value={value} id={id} required={required} ref={ref} placeholder={placeholder} onChange={handleChange} className={`${customStyles || commonStyles} ${themeStyles[customTheme || theme]} ${className} `} {...props} />
+            <input type={type} value={value} id={customId || id} required={required} ref={ref} placeholder={placeholder} onChange={handleChange} className={`${customStyles || commonStyles} ${themeStyles[customTheme || theme]} ${inputStyle} ${className} `} {...props} />
         </>
         );
     }

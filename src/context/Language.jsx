@@ -5,11 +5,10 @@ import ar from "../locales/ar.json";
 function getBrowserLanguage() {
     return navigator.language.startsWith("ar") ? "ar" : "en";
 }
-import userData from "../../src/assets/user.json";
 import { useInfo } from "./User";
-function getInitLang() {
+export function getInitLang() {
     let userLang;
-    if (userData) userLang = userData?.info?.settings?.language;
+    userLang = window.localStorage.getItem("lang");
     return userLang || getBrowserLanguage();
 }
 
@@ -93,6 +92,7 @@ const LangContext = createContext();
 
 
 export default function Language({ children }) {
+    const [userInfo] = useInfo();
     const [lang, setLang] = useState(getInitLang());
 
 
@@ -101,7 +101,15 @@ export default function Language({ children }) {
     useEffect(() => {// to initialize app language
         updateUserLang(lang);
     }, []);
-
+    useEffect(() => {
+        console.log("updated lang");
+        if (userInfo?.settings?.language) {
+            console.log(userInfo?.settings?.language);
+            setLang(userInfo?.settings?.language);
+            updateUserLang(userInfo?.settings?.language)
+        }
+    }, [userInfo?.settings?.language])
+    console.log(lang)
     return (
         <TranslationContext value={(args, inter) => i18next.t(args, inter)}>
             <LangContext value={[lang, setLang]}>

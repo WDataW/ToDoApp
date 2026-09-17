@@ -2,16 +2,13 @@ import { OverlayPage } from "@/Pages";
 import { Main, PasswordInput, WarningMessage, YesNoButtons } from "..";
 import { useTranslation } from "@/context/Language";
 import { useState } from "react";
-import { useTheme } from "@/context/Theme";
 import { useValidation, validatePassword } from "@/Pages/auth/PasswordResetPages/PasswordValidation";
-export default function VerifyUser({ customTheme, close, yesFunc, yes, no, className = "", children, ...props }) {
+export default function VerifyUser({ password, setPassword, customTheme, close, yesFunc, yes, no, className = "", children, ...props }) {
     const t = useTranslation();
     function confirm() {
         yesFunc();
     }
-    const [theme] = useTheme();
     const [passwordWarning, dispatch] = useValidation();
-    const [password, setPassword] = useState("");
     const [confirmedPassword, setConfirmedPassword] = useState("");
 
 
