@@ -102,14 +102,12 @@ export default function Language({ children }) {
         updateUserLang(lang);
     }, []);
     useEffect(() => {
-        console.log("updated lang");
         if (userInfo?.settings?.language) {
-            console.log(userInfo?.settings?.language);
+            (userInfo?.settings?.language);
             setLang(userInfo?.settings?.language);
             updateUserLang(userInfo?.settings?.language)
         }
     }, [userInfo?.settings?.language])
-    console.log(lang)
     return (
         <TranslationContext value={(args, inter) => i18next.t(args, inter)}>
             <LangContext value={[lang, setLang]}>
