@@ -20,6 +20,7 @@ export default function User({ children }) {
     const [infoState, setInfoState] = useState({});
     const [tasksState, setTasksState] = useState([]);
     const [inboxState, setInboxState] = useState([]);
+    console.log(infoState.settings);
     const [tagsState, setTagsState] = useState([]);
     return (
         <UserInfoContext value={[infoState, setInfoState]}>

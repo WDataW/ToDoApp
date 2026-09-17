@@ -8,7 +8,7 @@ import {
     ChartTooltipContent,
 } from "@/components/ui/charts/chart"
 import { useTheme } from "@/context/Theme"
-import { useLang, useTranslation } from "@/context/Language"
+import { useLang } from "@/context/Language"
 
 export const description = "A radar chart with dots"
 
@@ -17,7 +17,6 @@ export const description = "A radar chart with dots"
 export function ChartRadarDots({ chartData, chartConfig, dataKey, axisKey, name, title }) {
     const [theme] = useTheme();
     const [lang] = useLang();
-    const t = useTranslation();
     function renderPolarAngleAxis({ payload, x, y, cx, cy, ...rest }) {
         return (
             <Text

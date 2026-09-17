@@ -24,7 +24,6 @@ export default function LoginChecker() {
         setLang(storedInfo?.settings?.language || getInitLang())
         setTagsState(storedTags);
         setTasksState(storedTasks);
-        console.log("recalled");
         setTimeout(() => setIsLoading(false), 100);
     }
     const checkLogin = async () => {

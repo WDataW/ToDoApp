@@ -515,11 +515,11 @@ function getTasksTags(tasks) {
 }
 
 function convertTagsToBars(tags) {
+    const [allTags] = useAllTags();
     if (!tags || tags.length == 0) {
         return [];
     }
     const key = tags[0];
-    const [allTags] = useAllTags();
     const [targetTag] = allTags.filter((tag) => tag.id == key);
     const title = targetTag.title;
     const color = targetTag.color

@@ -38,7 +38,6 @@ export default function Task({ className = "", taskObj = {}, completed = "false"
     const meatballButtonRef = useRef(null);
     const selfRef = useRef();
     const [editMode, setEditMode] = useState(false);
-    console.log(taskObj);
     function editTaskAction(e) {
         hidePageContents(e.target)
         setEditMode(true);

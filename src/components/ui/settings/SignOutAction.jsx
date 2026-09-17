@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import { YesNoPopUp } from "../buttons";
 import { hidePageContents, showPageContents } from "@/Pages/pages";
 import { logOut } from "@/scripts/requests";
+import { useTasks } from "@/context/User";
 
 export default function SignOutAction({ className = "", children, ...props }) {
     const [lang] = useLang();
@@ -19,8 +20,17 @@ export default function SignOutAction({ className = "", children, ...props }) {
     }
     const selfRef = useRef();
 
+    const [tasks, setTasks] = useTasks();
+    const [info, setInfo] = useTasks();
+    const [inbox, setInbox] = useTasks();
+    const [tags, setTags] = useTasks();
+
     async function singOut() {
         const response = await logOut();
+        setTasks([]);
+        setTags([]);
+        setInbox([]);
+        setInfo({});
         if (response.status == 200) {
             setConfirm(false);
             showPageContents();
