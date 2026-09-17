@@ -56,7 +56,8 @@ export default function SignInPage({ children }) {
             loadUser();
             navigate('/app/home');
         } catch (error) {
-            // 
+            if (error?.response?.data?.message === "Please verify your Email address before logging in")
+                navigate(`/auth/verify-email?email=${userInfo.email}`);
         } finally {
             setLoading(false);
         }

@@ -7,8 +7,8 @@ api.interceptors.response.use(
         if (!error?.config?.isSilent) {
             broadcastError({ message: error?.response?.data?.message });
         }
+        return Promise.reject(error);
     }
-
 );
 export const login = async ({ email, password }) => {
     const response = await api.post('/api/v1/auth/login', {
