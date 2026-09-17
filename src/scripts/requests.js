@@ -2,7 +2,10 @@ import { broadcastError } from '@/ErrorHandler';
 import axios from 'axios';
 
 const BASE_URL = import.meta.env.DEV ? "/api/v1" : "https://api.domores.nerdos.site/api/v1";
-const api = axios.create();
+const api = axios.create({
+    baseURL: BASE_URL,
+    withCredentials: true
+});
 api.interceptors.response.use(
     (response) => response,
     (error) => {
@@ -14,13 +17,13 @@ api.interceptors.response.use(
 );
 
 export const login = async ({ email, password }) => {
-    const response = await api.post(`${BASE_URL}/auth/login`, {
+    const response = await api.post(`/auth/login`, {
         email, password
     });
     return response;
 }
 export const deleteAccountAndData = async (password) => {
-    const response = await api.post(`${BASE_URL}/account/delete-account`, {
+    const response = await api.post(`/account/delete-account`, {
         password
     });
     (response);
@@ -42,97 +45,97 @@ export const getUserInfo = async () => {
 }
 
 const getUser = async () => {
-    const response = await api.get(`${BASE_URL}/auth/showMe`);
+    const response = await api.get(`/auth/showMe`);
     return response.data;
 }
 
 export const getTasks = async () => {
-    const response = await api.get(`${BASE_URL}/tasks`);
+    const response = await api.get(`/tasks`);
     return response.data;
 }
 export const getSettings = async () => {
-    const response = await api.get(`${BASE_URL}/account/settings`);
+    const response = await api.get(`/account/settings`);
     return response.data;
 }
 export const getTags = async () => {
-    const response = await api.get(`${BASE_URL}/tags`);
+    const response = await api.get(`/tags`);
     return response.data;
 }
 export const getPFP = async () => {
-    const response = await api.get(`${BASE_URL}/account/pfp`);
+    const response = await api.get(`/account/pfp`);
     return response.data;
 }
 export const setPFP = async (formData) => {
-    const response = await api.post(`${BASE_URL}/account/pfp`, formData);
+    const response = await api.post(`/account/pfp`, formData);
     return response.data;
 }
 export const updateName = async (newName) => {
-    const response = await api.patch(`${BASE_URL}/account/name`, { name: newName });
+    const response = await api.patch(`/account/name`, { name: newName });
     return response.data;
 }
 export const setLanguage = async (language) => {
-    const response = await api.patch(`${BASE_URL}/account/settings`, { language });
+    const response = await api.patch(`/account/settings`, { language });
     return response.data;
 }
 export const setThemeSetting = async ({ base, lightAccentColor, lightSecondaryColor, darkAccentColor, darkSecondaryColor }) => {
-    const response = await api.patch(`${BASE_URL}/account/settings`, { theme: { base, lightAccentColor, lightSecondaryColor, darkAccentColor, darkSecondaryColor } });
+    const response = await api.patch(`/account/settings`, { theme: { base, lightAccentColor, lightSecondaryColor, darkAccentColor, darkSecondaryColor } });
     if (response && response.status == 200) return response.data;
 }
 
 export const isLogged = async () => {
-    const response = await api.get(`${BASE_URL}/auth/showMe`, { isSilent: true });
+    const response = await api.get(`/auth/showMe`, { isSilent: true });
     if (response && response.status == 200) return true;
     else return false;
 }
 
 export const getInbox = async () => {
-    const response = await api.get(`${BASE_URL}/account/inbox`);
+    const response = await api.get(`/account/inbox`);
     return response.data;
 }
 
 export const resendVerificationEmail = async (email) => {
-    const response = await api.post(`${BASE_URL}/auth/resend-verification-email`, { email });
+    const response = await api.post(`/auth/resend-verification-email`, { email });
     return response.data;
 }
 export const signUp = (newUser) => {
-    return api.post(`${BASE_URL}/auth/register`, newUser)
+    return api.post(`/auth/register`, newUser)
 }
 export const verifyEmail = (email, code) => {
-    return api.post(`${BASE_URL}/auth/verify-email`, { email, code })
+    return api.post(`/auth/verify-email`, { email, code })
 }
 export const forgotPassword = (email) => {
-    return api.post(`${BASE_URL}/auth/forgot-password`, { email })
+    return api.post(`/auth/forgot-password`, { email })
 }
 export const resetPassword = (email, resetToken, newPassword) => {
-    return api.post(`${BASE_URL}/auth/reset-password`, { email, resetToken, newPassword })
+    return api.post(`/auth/reset-password`, { email, resetToken, newPassword })
 }
-export const logOut = () => api.post(`${BASE_URL}/auth/logout`);
+export const logOut = () => api.post(`/auth/logout`);
 
 export const createTask = async (newTask) => {
-    const createdTask = await api.put(`${BASE_URL}/tasks/create-task`, newTask);
+    const createdTask = await api.put(`/tasks/create-task`, newTask);
     return createdTask;
 }
 export const readMessage = async ({ messageId, from }) => {
-    const response = await api.patch(`${BASE_URL}/account/inbox/read/${messageId}`, { from });
+    const response = await api.patch(`/account/inbox/read/${messageId}`, { from });
     return response.data;
 }
 export const patchTask = async (taskToEdit) => {
-    const editedTask = await api.patch(`${BASE_URL}/tasks/${taskToEdit.id}`, taskToEdit);
+    const editedTask = await api.patch(`/tasks/${taskToEdit.id}`, taskToEdit);
     return editedTask;
 }
 export const createTag = async (newTag) => {
-    const createdTag = await api.put(`${BASE_URL}/tags/create-tag`, newTag);
+    const createdTag = await api.put(`/tags/create-tag`, newTag);
     return createdTag;
 }
 export const patchTag = async (tagToEdit) => {
-    const editedTag = await api.patch(`${BASE_URL}/tags/${tagToEdit.id}`, tagToEdit);
+    const editedTag = await api.patch(`/tags/${tagToEdit.id}`, tagToEdit);
     return editedTag;
 
 }
 export const eraseTag = (tagToDelete) => {
-    return api.delete(`${BASE_URL}/tags/${tagToDelete.id}`);
+    return api.delete(`/tags/${tagToDelete.id}`);
 }
 export const eraseTask = (taskToDelete) => {
-    return api.delete(`${BASE_URL}/tasks/${taskToDelete.id}`);
+    return api.delete(`/tasks/${taskToDelete.id}`);
 }
 
