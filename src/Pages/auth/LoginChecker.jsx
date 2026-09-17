@@ -24,9 +24,11 @@ export default function LoginChecker() {
         setLang(storedInfo?.settings?.language || getInitLang())
         setTagsState(storedTags);
         setTasksState(storedTasks);
-        setIsLoading(false);
+        console.log("recalled");
+        setTimeout(() => setIsLoading(false), 100);
     }
     const checkLogin = async () => {
+        if (infoState.email) return;
         const isLoggedIn = await isLogged();
         if (isLoggedIn) {
             loadUser();
@@ -41,7 +43,7 @@ export default function LoginChecker() {
     }
         , [location.pathname]);
     return <div>
-        {isLoading && !infoState.email &&
+        {(isLoading || (!infoState.email && location.pathname.startsWith('/app'))) &&
             < div className="h-[100dvh] flex items-center justify-center w-[100dvw] fixed  bottom-0 bg-black z-999">
                 <div className="animate-spin h-[8rem] aspect-1/1 rounded-full border   border-b-[#7C7C7C] border-[1.2rem]"></div>
             </div>

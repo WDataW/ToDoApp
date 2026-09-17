@@ -4,8 +4,9 @@ const api = axios.create();
 api.interceptors.response.use(
     (response) => response,
     (error) => {
-        if (!error?.config?.isSilent)
+        if (!error?.config?.isSilent) {
             broadcastError({ message: error?.response?.data?.message });
+        }
     }
 
 );

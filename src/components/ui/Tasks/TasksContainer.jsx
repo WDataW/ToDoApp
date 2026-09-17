@@ -15,7 +15,7 @@ export default function TasksContainer({ className = "", dateFilter, tagsFilter 
             <AnimatePresence >
                 {filteredTasks.map((task, i) => {
                     return (
-                        <motion.li key={task.id} exit={{ opacity: 0, scale: 0.8 }} initial={{ opacity: 0 }} viewport={{ once: true }} whileInView={{ opacity: 1, transition: { duration: 0.4 } }}>
+                        <motion.li key={task.id} exit={{ opacity: 0, scale: 0.8 }} >
                             <div >
                                 <Task taskObj={task} completed={task.status == "completed"} />
                             </div>

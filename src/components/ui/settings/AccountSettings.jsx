@@ -53,7 +53,7 @@ export default function AccountSettings({ className = "", children, ...props }) 
     }
     async function deleteAccount() {
         await deleteAccountAndData(password);
-        // window.location.href = "/"
+        window.location.href = "/"
     }
     return (<>
 

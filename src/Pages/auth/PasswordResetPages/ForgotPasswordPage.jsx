@@ -14,10 +14,10 @@ export default function ForgotPasswordPage() {
     const t = useTranslation();
     const [searchParams, _] = useSearchParams();
     const [email, setEmail] = useState(searchParams.get("email") || "");
-    const w = useScreenWidth();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
 
+    const w = useScreenWidth();
     useEffect(() => {
         if (w >= 768) preload("/images/desk.jpg", { as: "image" })
     }, []);
