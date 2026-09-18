@@ -83,9 +83,10 @@ export const setThemeSetting = async ({ base, lightAccentColor, lightSecondaryCo
 }
 
 export const isLogged = async () => {
-    const response = await api.get(`/auth/showMe`, { isSilent: true });
-    if (response && response.status == 200) return true;
-    else return false;
+    try {
+        const response = await api.get(`/auth/showMe`, { isSilent: true });
+        if (response && response.status == 200) return true;
+    } catch (error) { return false; }
 }
 
 export const getInbox = async () => {
