@@ -70,7 +70,7 @@ export default function TagInit({ setNewTag, tagToEdit, className = "", children
 
         <div className=" flex text-[0.9rem] flex-col  gap-[0.8rem]">
             <div className="flex flex-col  max-w-[22rem]">
-                <KeyboardInput disabled={builtInTitle} value={builtInTitle || title} handleChange={handleTitleChange} label={t("fields.title")} placeholder={t("fields.enterTaskTitle")} className={`w-full ${className}`} {...props} />
+                <KeyboardInput maxLength="25" disabled={builtInTitle} value={builtInTitle || title} handleChange={handleTitleChange} label={t("fields.title")} placeholder={t("fields.enterTaskTitle")} className={`w-full ${className}`} {...props} />
                 {!title && <WarningMessage className={"ms-[0.2rem] mt-[0.3rem]"}>{t("warnings.emptyTitle")}</WarningMessage>}
                 {!uniqueTitle && <WarningMessage className={"ms-[0.2rem] mt-[0.3rem]"}>{t("terms.uniqueTitle")}</WarningMessage>}
             </div>
