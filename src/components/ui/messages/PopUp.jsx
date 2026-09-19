@@ -21,9 +21,9 @@ export default function PopUp({ error, onClose }) {
         <AnimatePresence>
             {
                 visible &&
-                <motion.div initial={{ y: "-130%" }} exit={{ y: "-130%" }} animate={{ y: 0 }} className="flex gap-[0.5rem] justify-between items-center px-[0.8rem] py-[0.45rem] left-1/2 -translate-x-[calc(50%+0.5rem)] border-[0.1rem] border-[#78000e] fixed z-99999 top-[0.7rem] h-[4rem] max-w-[20rem] w-[80%] mx-[0.5rem]  max-w-[20rem] rounded-[0.8rem] bg-[#ECC8C5] " >
+                <motion.div initial={{ y: "-130%" }} exit={{ y: "-130%" }} animate={{ y: 0 }} className="flex gap-[0.5rem] justify-between items-center px-[0.8rem] py-[0.45rem] left-1/2 -translate-x-[calc(50%+0.5rem)] border-[0.1rem] border-[#78000e] fixed z-99999 top-[0.7rem]  max-w-[20rem] w-[80%] mx-[0.5rem]  max-w-[20rem] rounded-[0.8rem] bg-[#ECC8C5] " >
                     <ErrorMessage className={"text-[1rem]"}>{error?.message || t("errors.somethingWentWrong")}</ ErrorMessage>
-                    <button onClick={handleClose} className="p-[0.2rem] flex-shrink-0 bg-[url(/src/assets/icons/light/x.svg)] bg-contain bg-center bg-no-repeat h-full w-[1rem]"></button>
+                    <button onClick={handleClose} className="flex-none p-[0.2rem] flex-shrink-0 bg-[url(/src/assets/icons/light/x.svg)] bg-contain bg-center bg-no-repeat aspect-1/1 w-[1rem]"></button>
                 </motion.div >
             }
         </AnimatePresence>

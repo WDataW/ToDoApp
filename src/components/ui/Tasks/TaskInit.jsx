@@ -33,10 +33,10 @@ export default function TaskInit({ noNewTags, setNewTask, taskToEdit, close, cla
         <div className="flex text-[0.9rem] flex-col gap-[0.8rem]">
             <DateTimePicker dateTime={dateTime} setDateTime={setDateTime} />
             <div className="flex flex-col">
-                <KeyboardInput value={title} handleChange={(e) => { setTitle(e.target.value) }} label={t("fields.title")} placeholder={t("fields.enterTaskTitle")} className={`sm:max-w-[20rem] ${className}`} {...props} />
+                <KeyboardInput maxLength="100" value={title} handleChange={(e) => { setTitle(e.target.value) }} label={t("fields.title")} placeholder={t("fields.enterTaskTitle")} className={`sm:max-w-[20rem] ${className}`} {...props} />
                 {!title ? <WarningMessage className={"ms-[0.2rem] mt-[0.3rem]"}>{t("warnings.emptyTitle")}</WarningMessage> : <></>}
             </div>
-            <Textarea value={description} onChange={(e) => { setDescription(e.target.value) }} className="sm:max-w-[20rem]" label={t("fields.description")} placeholder={t("fields.enterTaskDescription")}></Textarea>
+            <Textarea maxLength="500" value={description} onChange={(e) => { setDescription(e.target.value) }} className="sm:max-w-[20rem]" label={t("fields.description")} placeholder={t("fields.enterTaskDescription")}></Textarea>
             <PriorityPicker priority={priority} setPriority={setPriority} labelClassName="w-1/2 max-w-[10rem]"></PriorityPicker>
             <TagsPicker noNewTags={noNewTags} close={close} selectedTags={selectedTags} setSelectedTags={setSelectedTags}  ></TagsPicker>
         </div>
